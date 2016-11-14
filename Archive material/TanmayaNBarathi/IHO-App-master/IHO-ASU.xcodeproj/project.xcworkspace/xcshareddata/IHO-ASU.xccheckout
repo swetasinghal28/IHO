@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>31B33206-462F-4C0A-BD07-A7324520BEB8</string>
+	<key>IDESourceControlProjectName</key>
+	<string>IHO-ASU</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>33E23C1F553FC4B0844A8492253079318CABA3FE</key>
+		<string>https://github.com/IHOASU/IHO-IOS.git</string>
+		<key>50587961-25DF-4DEC-9A25-D65EBBB44D8B</key>
+		<string>ssh://github.com/tanela16/IHO-ASU.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>IHO-ASU.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>33E23C1F553FC4B0844A8492253079318CABA3FE</key>
+		<string>../..</string>
+		<key>50587961-25DF-4DEC-9A25-D65EBBB44D8B</key>
+		<string>../../../IHO-ASU</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/IHOASU/IHO-IOS.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>33E23C1F553FC4B0844A8492253079318CABA3FE</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>50587961-25DF-4DEC-9A25-D65EBBB44D8B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>IHO-ASU</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>33E23C1F553FC4B0844A8492253079318CABA3FE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>IHO-IOS</string>
+		</dict>
+	</array>
+</dict>
+</plist>

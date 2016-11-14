@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/per_lecturer">
+    <ImageButton
+        android:layout_width="384dp"
+        android:layout_height="40dp"
+        android:id="@+id/customLecturerBackbutton"
+        android:background="@drawable/header_lecturers"
+        android:onClick="onClick"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true" />
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/customLecturerBackbutton"
+        android:id="@+id/scrollView2"
+        android:background="@android:color/background_light">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1.30"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:weightSum="1">
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="349dp"
+        android:layout_height="300dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1.32">
+    </ImageView>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/bio"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp" />
+    <Button
+        android:id="@+id/lectureLink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape"
+        android:textColor="@android:color/background_light"
+        android:textStyle="bold"
+        android:text="Learn More About This Lecture"
+        android:onClick="onClick"/>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/emailButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape"
+            android:textColor="@android:color/background_light"
+            android:textStyle="bold"
+            android:text="Ask A Question"
+            android:onClick="onClick" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/viewGallery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape"
+            android:textColor="@android:color/background_light"
+            android:textStyle="bold"
+            android:text="View Gallery"
+            android:onClick="onClick" />
+
+    </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

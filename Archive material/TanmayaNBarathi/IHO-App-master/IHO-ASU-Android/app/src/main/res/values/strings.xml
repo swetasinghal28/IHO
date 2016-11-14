@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">IHO</string>
+    <string name="action_settings">Settings</string>
+    <string name="news">News + Events</string>
+    <string name="field">Field Notes</string>
+    <string name="about">About</string>
+    <string name="gallery">Gallery</string>
+    <string name="connect">Connect</string>
+    <string name="donate">Donate</string>
+    <string name="aboutInfo">The Institute of Human Origins is one of the preeminent research organizations in the world devoted to the science of human origins. IHO pursues an integrative strategy for research and discovery central to its over 30-year-old founding mission, bridging social, earth, and life science approaches to the most important questions concerning the course, causes, and timing of events in the human career over deep time. IHO fosters public awareness of human origins and its relevance to contemporary society through innovative outreach programs that create timely, accurate information for both education and lay communities.
+The Institute of Human Origins is a research center of the College of Liberal Arts and Sciences in the School of Human Evolution and Social Change at Arizona State University.</string>
+    <string name="locationInfo">951 South Cady Mall
+    Social Sciences building #103
+    ASU Tempe Campus</string>
+    <string name="contactInfo">480.727.6580\n
+    iho@asu.edu</string>
+    <string name="mailInfo">ASU Institute of Human Origins\nPO Box 874101\nTempe, AZ 85287-4101</string>
+    <string name="donateInfo">        \nThe Institute of Human Origins invites you to share in the excitement of discovery, the pursuit of new knowledge, and the public discussion of the enduring puzzle of how we “became human.” The study of how and where humans developed on Earth has never been more vibrant than today. We are seeking visionary partners to join our mission to advance the science of human origins and explore the ongoing challenges of our field and laboratory research.\n
+        \nAn investment in IHO helps to fund student scholarships, support research in laboratories and field sites, and meet the growing needs of our researchers and students. Please help us continue the search!\n
+        \nPlease contact IHO at 480.727.6580 for more information or to talk to someone about making an annual contribution, or to target your contribution for a particular scholarship, endowment, or fund.\n
+        \nIf you would like to send donation by check, please make your donation payable to "ASU Foundation" and mail to ASU Institute of Human Origins, PO Box 874101, Tempe, AZ 85287-4101.</string>
+    <string name="creditInfo">William Kimbel, Director\nJulie Russ, Program Coordinator Sr.\nLindsay Mullen, Coordinator</string>
+    <string name="asuTeamInfo">Barathi Baburaj\nDr.Timothy Lindquist, Faculty Adviser</string>
+    <string name="creditsLucy">Thank you IHO graduate student Neysa Grider-Potter for the "Lucy" facts.\n
+Special thanks to IHO Board Member Ross Leventhal for supporting this project!</string>
+    <string name="videos">Videos</string>
+    <string name="becomingHuman">Becoming Human brings together interactive multimedia, research, and scholarship to promote greater understanding of the course of human evolution.</string>
+    <string name="trvl_learn">IHO’s travel program is different from any other travel experience. This is not just travel—it is immersion in the span of human history, hosted by IHO and ASU scientists who add a richer understanding of your travel destination. At the same time, our travel adventures are designed for fun, excitement, and comfort and take advantage of the best accommodations and sailing vessels available in the industry. We partner with top travel providers who are specialists in exotic areas of the world. Plus, tour leaders, such as Bill Kimbel and Don Johanson, have been accompanying our travelers since the 1980s to Ethiopia, France, Galápagos, Madagascar, South Africa, and Tanzania, as well as being seasoned world travelers themselves. From years of experience, we understand the balance between a great travel experience and a rich learning program. In fact, our trips are so unique and engaging that we have many satisfied repeat travelers.</string>
+    <string name="title_activity_lecturer">LecturerActivity</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>

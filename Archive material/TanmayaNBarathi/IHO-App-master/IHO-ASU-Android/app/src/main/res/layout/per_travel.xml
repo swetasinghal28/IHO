@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/per_event">
+    <ImageButton
+        android:layout_width="384dp"
+        android:layout_height="40dp"
+        android:id="@+id/customEventsBackbutton"
+        android:background="@drawable/header_trvl_lrn"
+        android:onClick="onClick"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true" />
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/customEventsBackbutton"
+        android:id="@+id/scrollView2"
+        android:background="@android:color/background_light">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1.30"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:weightSum="1">
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+        <Button
+        android:id="@+id/travelLink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape"
+        android:textColor="@android:color/background_light"
+        android:textStyle="bold"
+        android:text="Click To Read More"
+        android:onClick="onClick"/>
+    </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
