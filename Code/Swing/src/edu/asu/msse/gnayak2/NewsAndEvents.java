@@ -11,6 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 public class NewsAndEvents extends JFrame {
 		
@@ -26,40 +28,13 @@ public class NewsAndEvents extends JFrame {
 	private JButton eventsButton;
 	private JButton travelButton;
 	private CardLayout cardLayout;
-
+	private JButton viewButton;
+	private JButton deleteButton;
+	private News selectedNews;
 	
 	// List components
 	JList<News> jlist;
 	DefaultListModel<News>  model;
-	
-	
-	private class News {
-		String id;
-		String desc;
-		
-		public News(String identifier, String description) {
-			id = identifier;
-			desc = description;
-		}
-		
-		public String getId() {
-			return id;
-		}
-		public void setId(String id) {
-			this.id = id;
-		}
-		public String getDesc() {
-			return desc;
-		}
-		public void setDesc(String desc) {
-			this.desc = desc;
-		}
-		
-		@Override
-		public String toString() {
-			return id;
-		}
-	}
 	
 	/**
 	 * Create the frame.
@@ -79,6 +54,8 @@ public class NewsAndEvents extends JFrame {
 		newsButton = new JButton("News");
 		travelButton = new JButton("Travel");
 		cardLayout = new CardLayout();
+		viewButton = new JButton("View");
+		deleteButton = new JButton("Delete");
 		
 		jlist =  new JList<>();
 		model = new DefaultListModel<>();
@@ -125,9 +102,42 @@ public class NewsAndEvents extends JFrame {
 		
 		JScrollPane jscrollPane = new JScrollPane(jlist);
 		newsPanel.add(jscrollPane);
+		newsPanel.add(viewButton);
+		newsPanel.add(deleteButton);
+		
+		// add a list listener
+		jlist.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				selectedNews = jlist.getSelectedValue();
+				System.out.println(selectedNews.getDesc());
+			}
+		});
 	}
 	
 	public void setButtonActionListeners() {
+		
+		viewButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (selectedNews != null) {
+					EditNewsFrame editFrame = new EditNewsFrame(selectedNews);
+					editFrame.setVisible(true);
+				}
+			}
+		});
+		
+		deleteButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (selectedNews != null) {
+					model.removeElement(selectedNews);
+				}
+			}
+		});
+		
 		// back button action listener
 		newsBackButton.addActionListener(new ActionListener() {
 
