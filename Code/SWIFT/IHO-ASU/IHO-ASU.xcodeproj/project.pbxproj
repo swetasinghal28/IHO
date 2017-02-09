@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F87E3651E4D35560030F231 /* asu_logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9F87E3641E4D35560030F231 /* asu_logo.jpg */; };
 		9FB7C57D1E4AAA5900B88166 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB7C57C1E4AAA5900B88166 /* AppDelegate.swift */; };
 		9FB7C57F1E4AAA5900B88166 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB7C57E1E4AAA5900B88166 /* ViewController.swift */; };
 		9FB7C5821E4AAA5900B88166 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FB7C5801E4AAA5900B88166 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9F87E3641E4D35560030F231 /* asu_logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = asu_logo.jpg; sourceTree = "<group>"; };
 		9FB7C5791E4AAA5900B88166 /* IHO-ASU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IHO-ASU.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FB7C57C1E4AAA5900B88166 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FB7C57E1E4AAA5900B88166 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F87E3631E4D35470030F231 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9F87E3641E4D35560030F231 /* asu_logo.jpg */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		9FB7C5701E4AAA5900B88166 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +109,7 @@
 		9FB7C57B1E4AAA5900B88166 /* IHO-ASU */ = {
 			isa = PBXGroup;
 			children = (
+				9F87E3631E4D35470030F231 /* Resources */,
 				9FB7C57C1E4AAA5900B88166 /* AppDelegate.swift */,
 				9FB7C57E1E4AAA5900B88166 /* ViewController.swift */,
 				9FB7C5801E4AAA5900B88166 /* Main.storyboard */,
@@ -235,6 +246,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F87E3651E4D35560030F231 /* asu_logo.jpg in Resources */,
 				9FB7C58A1E4AAA5900B88166 /* LaunchScreen.storyboard in Resources */,
 				9FB7C5871E4AAA5900B88166 /* Assets.xcassets in Resources */,
 				9FB7C5821E4AAA5900B88166 /* Main.storyboard in Resources */,
@@ -509,6 +521,7 @@
 				9FB7C5A61E4AAA5A00B88166 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9FB7C5A71E4AAA5A00B88166 /* Build configuration list for PBXNativeTarget "IHO-ASUTests" */ = {
 			isa = XCConfigurationList;
@@ -517,6 +530,7 @@
 				9FB7C5A91E4AAA5A00B88166 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9FB7C5AA1E4AAA5A00B88166 /* Build configuration list for PBXNativeTarget "IHO-ASUUITests" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +539,7 @@
 				9FB7C5AC1E4AAA5A00B88166 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

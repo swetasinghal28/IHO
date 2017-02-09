@@ -26,6 +26,21 @@ class ViewController: UIViewController {
         gallery.layer.cornerRadius = 15
         connect.layer.cornerRadius = 15
         field.layer.cornerRadius = 15
+        
+        // ASU LOGO at navigation bar
+        var imageView: UIImageView?
+        var ipad: Bool = (UIDevice.current.userInterfaceIdiom == .pad)
+        //var htmlpath: String? = nil
+        if !ipad {
+            imageView = UIImageView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(self.navigationController!.navigationBar.frame.size.width / 1.75), height: CGFloat(self.navigationController!.navigationBar.frame.size.height / 1.25)))
+        }
+        else {
+            imageView = UIImageView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(self.navigationController!.navigationBar.frame.size.width / 2.5), height: CGFloat(self.navigationController!.navigationBar.frame.size.height / 1.5)))
+        }
+        var logoView = UIView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat((imageView?.frame.size.width)!), height: CGFloat((imageView?.frame.size.height)!)))
+        logoView.addSubview(imageView!)
+        self.navigationItem.titleView = logoView
+        imageView?.image = UIImage(named: "asu_logo.jpg")
     }
 
     override func didReceiveMemoryWarning() {
