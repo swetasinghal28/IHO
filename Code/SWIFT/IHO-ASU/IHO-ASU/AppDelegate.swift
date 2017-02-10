@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         UINavigationBar.appearance().barTintColor = UIColor(red: CGFloat((6 / 255.0)), green: CGFloat((56 / 255.0)), blue: CGFloat((104 / 255.0)), alpha: CGFloat(1))
         UIToolbar.appearance().barTintColor = UIColor(red: CGFloat((6 / 255.0)), green: CGFloat((56 / 255.0)), blue: CGFloat((104 / 255.0)), alpha: CGFloat(1))
+        
 
 
         return true

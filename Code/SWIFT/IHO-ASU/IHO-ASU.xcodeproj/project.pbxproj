@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		9F87E3651E4D35560030F231 /* asu_logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9F87E3641E4D35560030F231 /* asu_logo.jpg */; };
+		9F87E3671E4D3DAE0030F231 /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F87E3661E4D3DAE0030F231 /* ConnectViewController.swift */; };
+		9F87E3691E4D3FAC0030F231 /* NewsEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F87E3681E4D3FAC0030F231 /* NewsEventsViewController.swift */; };
+		9F87E36B1E4D40740030F231 /* FieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F87E36A1E4D40740030F231 /* FieldViewController.swift */; };
+		9F87E36D1E4D41610030F231 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F87E36C1E4D41610030F231 /* GalleryViewController.swift */; };
 		9FB7C57D1E4AAA5900B88166 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB7C57C1E4AAA5900B88166 /* AppDelegate.swift */; };
 		9FB7C57F1E4AAA5900B88166 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB7C57E1E4AAA5900B88166 /* ViewController.swift */; };
 		9FB7C5821E4AAA5900B88166 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FB7C5801E4AAA5900B88166 /* Main.storyboard */; };
@@ -37,6 +41,10 @@
 
 /* Begin PBXFileReference section */
 		9F87E3641E4D35560030F231 /* asu_logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = asu_logo.jpg; sourceTree = "<group>"; };
+		9F87E3661E4D3DAE0030F231 /* ConnectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
+		9F87E3681E4D3FAC0030F231 /* NewsEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsEventsViewController.swift; sourceTree = "<group>"; };
+		9F87E36A1E4D40740030F231 /* FieldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldViewController.swift; sourceTree = "<group>"; };
+		9F87E36C1E4D41610030F231 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		9FB7C5791E4AAA5900B88166 /* IHO-ASU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IHO-ASU.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FB7C57C1E4AAA5900B88166 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FB7C57E1E4AAA5900B88166 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +125,10 @@
 				9FB7C5881E4AAA5900B88166 /* LaunchScreen.storyboard */,
 				9FB7C58B1E4AAA5900B88166 /* Info.plist */,
 				9FB7C5831E4AAA5900B88166 /* IHO_ASU.xcdatamodeld */,
+				9F87E3661E4D3DAE0030F231 /* ConnectViewController.swift */,
+				9F87E3681E4D3FAC0030F231 /* NewsEventsViewController.swift */,
+				9F87E36A1E4D40740030F231 /* FieldViewController.swift */,
+				9F87E36C1E4D41610030F231 /* GalleryViewController.swift */,
 			);
 			path = "IHO-ASU";
 			sourceTree = "<group>";
@@ -274,9 +286,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F87E3691E4D3FAC0030F231 /* NewsEventsViewController.swift in Sources */,
+				9F87E36D1E4D41610030F231 /* GalleryViewController.swift in Sources */,
 				9FB7C57F1E4AAA5900B88166 /* ViewController.swift in Sources */,
 				9FB7C57D1E4AAA5900B88166 /* AppDelegate.swift in Sources */,
 				9FB7C5851E4AAA5900B88166 /* IHO_ASU.xcdatamodeld in Sources */,
+				9F87E3671E4D3DAE0030F231 /* ConnectViewController.swift in Sources */,
+				9F87E36B1E4D40740030F231 /* FieldViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

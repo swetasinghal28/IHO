@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var iho_footer: UIBarButtonItem!
     @IBOutlet weak var donate: UIButton!
     @IBOutlet weak var about: UIButton!
     @IBOutlet weak var gallery: UIButton!
@@ -41,6 +42,12 @@ class ViewController: UIViewController {
         logoView.addSubview(imageView!)
         self.navigationItem.titleView = logoView
         imageView?.image = UIImage(named: "asu_logo.jpg")
+        
+        
+        //tab bar
+        if let font = UIFont(name: "ASU IHO 2017", size: 15) {
+            iho_footer.setTitleTextAttributes([NSFontAttributeName:font], for: .normal)
+        }
     }
 
     override func didReceiveMemoryWarning() {
