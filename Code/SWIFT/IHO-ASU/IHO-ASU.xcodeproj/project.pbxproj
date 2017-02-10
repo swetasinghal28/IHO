@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		230EE9051E4E147100B4F9F9 /* About.html in Resources */ = {isa = PBXBuildFile; fileRef = 230EE8FE1E4E147100B4F9F9 /* About.html */; };
+		230EE9061E4E147100B4F9F9 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230EE8FF1E4E147100B4F9F9 /* AboutViewController.swift */; };
+		230EE9071E4E147100B4F9F9 /* ASU IHO vertical.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 230EE9001E4E147100B4F9F9 /* ASU IHO vertical.jpg */; };
+		230EE9081E4E147100B4F9F9 /* DonationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230EE9011E4E147100B4F9F9 /* DonationController.swift */; };
+		230EE9091E4E147100B4F9F9 /* DonationWebController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230EE9021E4E147100B4F9F9 /* DonationWebController.swift */; };
+		230EE90A1E4E147100B4F9F9 /* invest.png in Resources */ = {isa = PBXBuildFile; fileRef = 230EE9031E4E147100B4F9F9 /* invest.png */; };
+		230EE90B1E4E147100B4F9F9 /* search-icon-64.png in Resources */ = {isa = PBXBuildFile; fileRef = 230EE9041E4E147100B4F9F9 /* search-icon-64.png */; };
+		230EE90D1E4E149800B4F9F9 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 230EE90C1E4E149800B4F9F9 /* Info.plist */; };
 		9F87E3651E4D35560030F231 /* asu_logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9F87E3641E4D35560030F231 /* asu_logo.jpg */; };
 		9F87E3671E4D3DAE0030F231 /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F87E3661E4D3DAE0030F231 /* ConnectViewController.swift */; };
 		9F87E3691E4D3FAC0030F231 /* NewsEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F87E3681E4D3FAC0030F231 /* NewsEventsViewController.swift */; };
@@ -40,6 +48,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		230EE8FE1E4E147100B4F9F9 /* About.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = About.html; sourceTree = "<group>"; };
+		230EE8FF1E4E147100B4F9F9 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		230EE9001E4E147100B4F9F9 /* ASU IHO vertical.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ASU IHO vertical.jpg"; sourceTree = "<group>"; };
+		230EE9011E4E147100B4F9F9 /* DonationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationController.swift; sourceTree = "<group>"; };
+		230EE9021E4E147100B4F9F9 /* DonationWebController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationWebController.swift; sourceTree = "<group>"; };
+		230EE9031E4E147100B4F9F9 /* invest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = invest.png; sourceTree = "<group>"; };
+		230EE9041E4E147100B4F9F9 /* search-icon-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-icon-64.png"; sourceTree = "<group>"; };
+		230EE90C1E4E149800B4F9F9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F87E3641E4D35560030F231 /* asu_logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = asu_logo.jpg; sourceTree = "<group>"; };
 		9F87E3661E4D3DAE0030F231 /* ConnectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
 		9F87E3681E4D3FAC0030F231 /* NewsEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsEventsViewController.swift; sourceTree = "<group>"; };
@@ -52,7 +68,6 @@
 		9FB7C5841E4AAA5900B88166 /* IHO_ASU.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IHO_ASU.xcdatamodel; sourceTree = "<group>"; };
 		9FB7C5861E4AAA5900B88166 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9FB7C5891E4AAA5900B88166 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		9FB7C58B1E4AAA5900B88166 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FB7C5901E4AAA5A00B88166 /* IHO-ASUTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "IHO-ASUTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FB7C5941E4AAA5A00B88166 /* IHO_ASUTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IHO_ASUTests.swift; sourceTree = "<group>"; };
 		9FB7C5961E4AAA5A00B88166 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -117,13 +132,20 @@
 		9FB7C57B1E4AAA5900B88166 /* IHO-ASU */ = {
 			isa = PBXGroup;
 			children = (
+				230EE90C1E4E149800B4F9F9 /* Info.plist */,
+				230EE8FE1E4E147100B4F9F9 /* About.html */,
+				230EE8FF1E4E147100B4F9F9 /* AboutViewController.swift */,
+				230EE9001E4E147100B4F9F9 /* ASU IHO vertical.jpg */,
+				230EE9011E4E147100B4F9F9 /* DonationController.swift */,
+				230EE9021E4E147100B4F9F9 /* DonationWebController.swift */,
+				230EE9031E4E147100B4F9F9 /* invest.png */,
+				230EE9041E4E147100B4F9F9 /* search-icon-64.png */,
 				9F87E3631E4D35470030F231 /* Resources */,
 				9FB7C57C1E4AAA5900B88166 /* AppDelegate.swift */,
 				9FB7C57E1E4AAA5900B88166 /* ViewController.swift */,
 				9FB7C5801E4AAA5900B88166 /* Main.storyboard */,
 				9FB7C5861E4AAA5900B88166 /* Assets.xcassets */,
 				9FB7C5881E4AAA5900B88166 /* LaunchScreen.storyboard */,
-				9FB7C58B1E4AAA5900B88166 /* Info.plist */,
 				9FB7C5831E4AAA5900B88166 /* IHO_ASU.xcdatamodeld */,
 				9F87E3661E4D3DAE0030F231 /* ConnectViewController.swift */,
 				9F87E3681E4D3FAC0030F231 /* NewsEventsViewController.swift */,
@@ -258,9 +280,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				230EE90B1E4E147100B4F9F9 /* search-icon-64.png in Resources */,
 				9F87E3651E4D35560030F231 /* asu_logo.jpg in Resources */,
+				230EE90D1E4E149800B4F9F9 /* Info.plist in Resources */,
+				230EE9051E4E147100B4F9F9 /* About.html in Resources */,
+				230EE9071E4E147100B4F9F9 /* ASU IHO vertical.jpg in Resources */,
 				9FB7C58A1E4AAA5900B88166 /* LaunchScreen.storyboard in Resources */,
 				9FB7C5871E4AAA5900B88166 /* Assets.xcassets in Resources */,
+				230EE90A1E4E147100B4F9F9 /* invest.png in Resources */,
 				9FB7C5821E4AAA5900B88166 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,10 +315,13 @@
 			files = (
 				9F87E3691E4D3FAC0030F231 /* NewsEventsViewController.swift in Sources */,
 				9F87E36D1E4D41610030F231 /* GalleryViewController.swift in Sources */,
+				230EE9091E4E147100B4F9F9 /* DonationWebController.swift in Sources */,
 				9FB7C57F1E4AAA5900B88166 /* ViewController.swift in Sources */,
 				9FB7C57D1E4AAA5900B88166 /* AppDelegate.swift in Sources */,
 				9FB7C5851E4AAA5900B88166 /* IHO_ASU.xcdatamodeld in Sources */,
 				9F87E3671E4D3DAE0030F231 /* ConnectViewController.swift in Sources */,
+				230EE9081E4E147100B4F9F9 /* DonationController.swift in Sources */,
+				230EE9061E4E147100B4F9F9 /* AboutViewController.swift in Sources */,
 				9F87E36B1E4D40740030F231 /* FieldViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
