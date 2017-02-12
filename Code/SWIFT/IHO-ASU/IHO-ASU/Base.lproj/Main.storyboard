@@ -460,13 +460,18 @@ If you would like to send donation by check, please make your donation payable t
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wdy-40-VdB">
+                            <webView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wdy-40-VdB">
                                 <rect key="frame" x="0.0" y="64" width="375" height="559"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Sku-DR-GrY" firstAttribute="top" secondItem="wdy-40-VdB" secondAttribute="bottom" id="5xu-VF-bTK"/>
+                            <constraint firstAttribute="trailing" secondItem="wdy-40-VdB" secondAttribute="trailing" id="Vuo-CQ-y3U"/>
+                            <constraint firstItem="wdy-40-VdB" firstAttribute="leading" secondItem="sKE-WT-CLy" secondAttribute="leading" id="fd9-b9-B4F"/>
+                            <constraint firstItem="wdy-40-VdB" firstAttribute="top" secondItem="a2C-Cp-vmN" secondAttribute="bottom" id="xrl-Ny-HC9"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="openWeb" destination="wdy-40-VdB" id="9VX-Et-DXA"/>
