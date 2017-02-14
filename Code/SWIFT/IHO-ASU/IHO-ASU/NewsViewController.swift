@@ -1,23 +1,22 @@
 //
-//  NewsEventsViewController.swift
+//  NewsViewController.swift
 //  IHO-ASU
 //
-//  Created by Sweta Singhal on 2/9/17.
+//  Created by Sweta Singhal on 2/13/17.
 //  Copyright © 2017 Sweta Singhal. All rights reserved.
 //
 
 import UIKit
 
-class NewsEventsViewController: UITableViewController {
+class NewsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
-        self.navigationItem.title = "News + Events"
+        self.navigationItem.title = "News"
         
-
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -33,17 +32,15 @@ class NewsEventsViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 3
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
-    
-    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 0
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return 0
+    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
