@@ -1,0 +1,164 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/main_fragment"
+    >
+    <ImageButton
+        android:layout_width="384dp"
+        android:layout_height="55dp"
+        android:id="@+id/button"
+        android:background="@drawable/ihologo"
+        android:onClick="onClick"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true" />
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/button"
+        android:background="@android:color/background_light"
+        android:fillViewport="false">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:layout_alignRight="@+id/button"
+            android:layout_alignParentLeft="true"
+            android:padding="@dimen/activity_horizontal_margin">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/ne"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape"
+                    android:text="@string/news"
+                    android:textColor="@android:color/background_light"
+                    android:textStyle="bold"
+                    android:onClick="onClick"
+                    android:layout_weight="0.55" />
+
+                <Button
+                    android:id="@+id/field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:text="@string/field"
+                    android:background="@drawable/shape"
+                    android:textColor="@android:color/background_light"
+                    android:textStyle="bold"
+                    android:onClick="onClick" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView2" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/about"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.74"
+                    android:text="@string/about"
+                    android:background="@drawable/shape"
+                    android:textColor="@android:color/background_light"
+                    android:textStyle="bold"
+                    android:onClick="onClick" />
+
+                <Button
+                    android:id="@+id/gallery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:text="@string/gallery"
+                    android:background="@drawable/shape"
+                    android:textColor="@android:color/background_light"
+                    android:textStyle="bold"
+                    android:onClick="onClick" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView3" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/connect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:text="@string/connect"
+                    android:background="@drawable/shape"
+                    android:textColor="@android:color/background_light"
+                    android:textStyle="bold"
+                    android:onClick="onClick" />
+
+                <Button
+                    android:id="@+id/donate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:text="@string/donate"
+                    android:background="@drawable/shape"
+                    android:textColor="@android:color/background_light"
+                    android:textStyle="bold"
+                    android:onClick="onClick" />
+            </LinearLayout>
+            <WebView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/webView"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="111dp" />
+
+        </LinearLayout>
+        </ScrollView>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:id="@+id/creditsButton"
+        android:background="@drawable/credits"
+        android:onClick="onClick"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true" />
+
+
+</RelativeLayout>
