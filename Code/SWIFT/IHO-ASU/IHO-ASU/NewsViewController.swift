@@ -7,8 +7,20 @@
 //
 
 import UIKit
+import CoreData
 
 class NewsViewController: UITableViewController {
+   
+    @IBOutlet var newsTableView: UITableView!
+    var urlString:String = ""
+    var news: [News]? = []
+    var names:[String]=[String]()
+//    var NumberOfRows = 0
+//    var newsList = [NSManagedObject]()
+//    var appDel:AppDelegate?
+//    var mContext:NSManagedObjectContext?
+
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +28,47 @@ class NewsViewController: UITableViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
         self.navigationItem.title = "News"
+        
+        // getting URL string from Info.plist
+//        if let infoPlist = Bundle.main.infoDictionary {
+//            self.urlString = ((infoPlist["ServerURLString"]) as?  String!)!
+//            NSLog("The default urlString from info.plist is \(self.urlString)")
+//        } else {
+//            NSLog("error getting urlString from info.plist")
+//        }
+        
+
+        
+        
+//        self.names.removeAll()
+//        if let infoPlist = Bundle.main.infoDictionary {
+//            self.urlString = ((infoPlist["ServerURLString"]) as?  String!)!
+//            NSLog("The default urlString from info.plist is \(self.urlString)")
+//        } else {
+//            NSLog("error getting urlString from info.plist")
+//        }
+//        // These vars are used to access the Movie and Genre entities
+//        appDel = (UIApplication.shared.delegate as! AppDelegate)
+//        mContext = appDel!.managedObjectContext
+//        let selectRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "title")
+//        do{
+//            let results = try mContext!.fetch(selectRequest)
+//            newsList = results as! [NSManagedObject]
+//            NSLog("Trying to see NewsList\(newsList)")
+//        } catch let error as NSError{
+//            NSLog("Error selecting all movies: \(error)")
+//        }
+//        if newsList.count > 0 {
+//            for news in newsList{
+//                if(news.value(forKey: "title") != nil){
+//                    let title:String = (news.value(forKey: "title") as? String)!
+//                    self.names.append(title)
+//                }
+//            }
+//        }
+        //self.tableview.reloadData()
+        
+        
         
 
         // Uncomment the following line to preserve selection between presentations
@@ -34,23 +87,27 @@ class NewsViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        //print("rows",self.names.count)
+        return self.names.count
     }
+    
+//    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCellWithIdentifier("News Cell", forIndexPath: indexPath)
+//        
+//        cell.textLabel?.text = self.names[indexPath.row]
+//        //cell.detailTextLabel?.text = "Testing huhhahhahah"
+//        return cell
+//    }
+   
+    
+  
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
+ 
 
     /*
     // Override to support conditional editing of the table view.
