@@ -49,4 +49,9 @@ public class News {
     public void setNewsLink(String newsLink) {
         this.newsLink = newsLink;
     }
+
+    @Override
+    public String toString(){
+        return title;
+    }
 }
