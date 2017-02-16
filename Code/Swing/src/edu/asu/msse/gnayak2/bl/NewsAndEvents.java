@@ -22,6 +22,8 @@ import org.json.JSONObject;
 import edu.asu.msse.gnayak2.models.Event;
 import edu.asu.msse.gnayak2.models.News;
 import edu.asu.msse.gnayak2.models.NewsDelegate;
+import edu.asu.msse.gnayak2.models.Travel;
+import edu.asu.msse.gnayak2.models.TravelDelegate;
 import edu.asu.msse.gnayak2.networking.HTTPConnectionHelper;
 
 public class NewsAndEvents extends JFrame implements NewsDelegate{
@@ -29,7 +31,7 @@ public class NewsAndEvents extends JFrame implements NewsDelegate{
 	HashMap<String, News> map = new HashMap<String, News>();
 	ArrayList<String> newsArray = new ArrayList<String>();
 	NewsDelegate newsDelegate;
-	
+	TravelDelegate travelDelegate;
 	private JPanel containerPanel;
 	private JPanel mainPanel;
 	private JPanel newsPanel;
@@ -55,6 +57,11 @@ public class NewsAndEvents extends JFrame implements NewsDelegate{
 	private JList<Event> eventsList;
 	private DefaultListModel<Event>  eventsModel;
 	
+	private JButton viewTravelButton;
+	private JButton deleteTravelButton;
+	private Travel selectedTravel;
+	private JList<Travel> travel_list;
+	private DefaultListModel<Travel>  travelModel;
 	private JButton sendToServerButton;
 	
 	
@@ -239,7 +246,20 @@ public class NewsAndEvents extends JFrame implements NewsDelegate{
 	
 	public void initializeTravel() {
 		travelBackButton = new JButton("Back");
+		viewTravelButton = new JButton("View");
+		deleteTravelButton = new JButton("Delete");
+
 		travelPanel.add(travelBackButton);
+		travelPanel.add(viewTravelButton);
+		travelPanel.add(deleteTravelButton);
+		
+		travel_list =  new JList<>();
+		travelModel = new DefaultListModel<>();
+		travelPanel.add(new JScrollPane(travel_list));
+		
+		travel_list.setModel(travelModel);
+	//	travel_list.addElement(new Travel("Indonesia","is known for satay"));
+		
 		
 		travelBackButton.addActionListener(new ActionListener() {
 
@@ -248,6 +268,46 @@ public class NewsAndEvents extends JFrame implements NewsDelegate{
 				cardLayout.show(containerPanel, "1");
 			}
 		});
+
+		travel_list.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				selectedTravel = travel_list.getSelectedValue();
+				System.out.println(selectedTravel.getDesc());
+			}
+		});
+		
+		viewTravelButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (selectedTravel != null) {
+					EditTravelFrame editFrame = new EditTravelFrame(selectedTravel, travelDelegate);
+					editFrame.setVisible(true);
+				}
+			}
+		});
+		
+		deleteTravelButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (selectedTravel != null) {
+					travelModel.removeElement(selectedTravel);
+				}
+			}
+		});
+//		travelBackButton = new JButton("Back");
+//		
+//		travelPanel.add(travelBackButton);
+//		
+//		travelBackButton.addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				cardLayout.show(containerPanel, "1");
+//			}
+//		});
 	}
 	
 	public void setButtonActionListeners() {
@@ -264,7 +324,7 @@ public class NewsAndEvents extends JFrame implements NewsDelegate{
 					jsonNewsArray.put(jsonObject);
 				}
 				try {
-					helper.post("newsnames", jsonNewsIdArray);
+//					helper.post("newsnames", jsonNewsIdArray);
 					helper.post("news", jsonNewsArray);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
