@@ -37,7 +37,68 @@ class NewsViewController: UITableViewController {
 //            NSLog("error getting urlString from info.plist")
 //        }
         
+       let url = URL(string:"http://107.170.239.62:3000/news" )
+        
+        let task = URLSession.shared.dataTask(with: url!){ (data, response, error) in
+            if error != nil
+            {
+                print("ERROR",error ?? "There is an error")
+            }
+            else
+            {
+                if let content = data
+                {
+                    self.news = [News]()
+                    do{
+                        //Array
+                    let myJSON = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
+                        
+                       // let myJSON = try JSONSerialization.jsonObject(with: data!,options:.mutableContainers) as? [String:AnyObject]
+                        
+                        //print("myJSON", myJSON)
+                        
+//                        for dict2 in myJSON {
+//                            let id = dict2["id"]
+//                            let title = dict2["title"]
+//                            let desc = dict2["desc"]
+//                            println(id)
+//                            println(main)
+//                            println(description)
+//                        }
+                        
+                        
+                        
+                        if let newsFromJSON = myJSON as? [[String: AnyObject]]{
+                            //print("newsFromJSON", newsFromJSON)
+                            for news in newsFromJSON{
+                                let newsObject = News()
+                                if let title = news["title"] as? String,let desc = news["desc"] as? String,let id = news["id"] as? String{
+                                    newsObject.id = id
+                                    newsObject.title = title
+                                    newsObject.desc = desc
+                                    self.names.append(newsObject.title)
+                                    print(title)
+                                
+                                }
+                                self.news?.append(newsObject)
+                            }
+                        }
+                        
+                        //print (self.news)
+                        //self.tableView.reloadData()
+                        self.newsTableView.reloadData()
 
+                        
+                    }
+                    catch let error{
+                        print(error)
+                    }
+                }
+            }
+            
+            
+        }
+        task.resume()
         
         
 //        self.names.removeAll()
@@ -107,6 +168,18 @@ class NewsViewController: UITableViewController {
     
   
 
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = newsTableView.dequeueReusableCell(withIdentifier: "News Cell", for: indexPath)
+        
+        // Configure the cell...
+        cell.textLabel?.text = self.names[indexPath.row]
+        
+
+        
+
+        return cell
+    }
  
 
     /*
