@@ -143,8 +143,8 @@ public class NewsAndEvents extends JFrame implements NewsDelegate, EventsDelegat
 		newsPanel.add(new JScrollPane(newsList));
 		
 		newsList.setModel(newsModel);
-//		newsLibrary = NewsLibrary.getInstance();
-//		Set<String> newsIds = newsLibrary.getKeySet();
+		newsLibrary = NewsLibrary.getInstance();
+		Set<String> newsIds = newsLibrary.getKeySet();
 //		
 //		for(String id: newsIds) {
 //			newsModel.addElement(newsLibrary.getNews(id));
