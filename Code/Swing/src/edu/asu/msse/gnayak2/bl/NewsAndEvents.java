@@ -143,12 +143,12 @@ public class NewsAndEvents extends JFrame implements NewsDelegate, EventsDelegat
 		newsPanel.add(new JScrollPane(newsList));
 		
 		newsList.setModel(newsModel);
-		newsLibrary = NewsLibrary.getInstance();
-		Set<String> newsIds = newsLibrary.getKeySet();
-		
-		for(String id: newsIds) {
-			newsModel.addElement(newsLibrary.getNews(id));
-		}
+//		newsLibrary = NewsLibrary.getInstance();
+//		Set<String> newsIds = newsLibrary.getKeySet();
+//		
+//		for(String id: newsIds) {
+//			newsModel.addElement(newsLibrary.getNews(id));
+//		}
 		
 		newsBackButton.addActionListener(new ActionListener() {
 
@@ -213,7 +213,6 @@ public class NewsAndEvents extends JFrame implements NewsDelegate, EventsDelegat
 		eventsPanel.add(new JScrollPane(eventsList));
 		
 		eventsList.setModel(eventsModel);
-		
 		eventsLibrary = EventsLibrary.getInstance();
 		Set<String> eventIds = eventsLibrary.getKeySet();
 		
@@ -300,6 +299,13 @@ public class NewsAndEvents extends JFrame implements NewsDelegate, EventsDelegat
 			}
 		});
 
+		btnAddEvent.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				EditEventsFrame eventsFrame = new EditEventsFrame(eventsDelegate);
+				eventsFrame.setVisible(true);
+			}
+		});
 		
 		// back button action listener
 		
