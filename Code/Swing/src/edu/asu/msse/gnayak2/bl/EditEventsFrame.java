@@ -12,9 +12,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import edu.asu.msse.gnayak2.delegates.EventsDelegate;
 import edu.asu.msse.gnayak2.models.Event;
-import edu.asu.msse.gnayak2.models.News;
-import edu.asu.msse.gnayak2.models.EventsDelegate;
 import net.miginfocom.swing.MigLayout;
 
 public class EditEventsFrame extends JFrame {
