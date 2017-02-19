@@ -2,24 +2,26 @@ package edu.asu.msse.gnayak2.models;
 
 import java.util.UUID;
 
+import org.json.JSONObject;
+
 public class News {
 	String id;
 	String title;
 	String desc;
 	String link;
 
-	public News(String newsTitle, String description) {
-		id = UUID.randomUUID().toString().replace("-", "");
-		
-		title = newsTitle;
-		desc = description;
-	}
-
 	public News(String newsTitle, String description, String linkMore) {
 		id = UUID.randomUUID().toString().replace("-", "");
 		title = newsTitle;
 		desc = description;
 		link = linkMore;
+	}
+	
+	public News(JSONObject object) {
+		id = object.getString("id");
+		title = object.getString("title");
+		desc = object.getString("desc");
+		link = object.getString("link");
 	}
 
 	public String getId() {

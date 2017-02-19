@@ -39,14 +39,19 @@ public class EditNewsFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public EditNewsFrame(News item, NewsDelegate newsdelegate) {
-		newsDelegate = newsdelegate;
 		news = item;
+		newsDelegate = newsdelegate;
+		setUpFrame();
+		populateFileds(news);
+	}
+	
+	public void setUpFrame() {
 		setResizable(false);
 		setPreferredSize(new Dimension(Constants.WIDTH,Constants.HEIGHT));
-		tfTitle = new JTextField(news.getTitle());
-		taDescription = new JTextArea("helo world",20,20);
+		tfTitle = new JTextField();
+		taDescription = new JTextArea("",20,20);
 		lblReadMore = new JLabel("Read More: ");
-		tfLink = new JTextField("http:// google.com");
+		tfLink = new JTextField("http://");
 		scrollPane = new JScrollPane(taDescription);
 		btnSubmit = new JButton("Submit");
 		
@@ -58,7 +63,7 @@ public class EditNewsFrame extends JFrame {
 		panel.add(tfLink, "wrap");
 		panel.add(scrollPane,"span,push,grow, wrap");	
 		panel.add(btnSubmit);
-//		panel.add();
+
 		add(panel);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		pack();
@@ -66,17 +71,30 @@ public class EditNewsFrame extends JFrame {
 		setActionListenerForButton();
 	}
 	
+	public void populateFileds(News news) {
+		tfTitle.setText(news.getTitle());
+		taDescription.setText(news.getDesc());
+		tfLink.setText(news.getLink());
+	}
+ 	
+	public EditNewsFrame(NewsDelegate newsdelegate) {
+		this.newsDelegate = newsdelegate;
+		setUpFrame();
+	}
+	
 	public void setActionListenerForButton() {
+		// delete old news
 		btnSubmit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				News news = new News(tfTitle.getText(), taDescription.getText());
-				newsDelegate.addNewsToList(news);
+				News newNews = new News(tfTitle.getText(), taDescription.getText(),tfLink.getText());
+				// delete old news
+				newsDelegate.addNews(newNews);
+				if (news != null){
+					newsDelegate.deleteNews(news);
+				}
 				dispose();
 			}
 		});
 	}
-	
-	
-
 }

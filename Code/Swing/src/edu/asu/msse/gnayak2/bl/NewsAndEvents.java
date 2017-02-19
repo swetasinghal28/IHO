@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -17,21 +18,22 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import edu.asu.msse.gnayak2.library.NewsLibrary;
 import edu.asu.msse.gnayak2.models.Event;
+import edu.asu.msse.gnayak2.models.Identifier;
 import edu.asu.msse.gnayak2.models.News;
 import edu.asu.msse.gnayak2.models.NewsDelegate;
-import edu.asu.msse.gnayak2.models.Travel;
-import edu.asu.msse.gnayak2.models.TravelDelegate;
 import edu.asu.msse.gnayak2.networking.HTTPConnectionHelper;
 
 public class NewsAndEvents extends JFrame implements NewsDelegate{
 		
-	HashMap<String, News> map = new HashMap<String, News>();
-	ArrayList<String> newsArray = new ArrayList<String>();
+//	HashMap<String, News> map = new HashMap<String, News>();
+//	ArrayList<String> newsArray = new ArrayList<String>();
 	NewsDelegate newsDelegate;
-	TravelDelegate travelDelegate;
+	
 	private JPanel containerPanel;
 	private JPanel mainPanel;
 	private JPanel newsPanel;
@@ -57,13 +59,8 @@ public class NewsAndEvents extends JFrame implements NewsDelegate{
 	private JList<Event> eventsList;
 	private DefaultListModel<Event>  eventsModel;
 	
-	private JButton viewTravelButton;
-	private JButton deleteTravelButton;
-	private Travel selectedTravel;
-	private JList<Travel> travel_list;
-	private DefaultListModel<Travel>  travelModel;
-	private JButton sendToServerButton;
-	
+	private JButton btnAddNews;
+	private NewsLibrary newsLibrary;
 	
 //	private JButton viewEventsButton;
 //	private JButton deleteEventsButton;
@@ -118,7 +115,7 @@ public class NewsAndEvents extends JFrame implements NewsDelegate{
 		eventsPanel = new JPanel();
 		travelPanel = new JPanel();
 		newsPanel = new JPanel();
-		sendToServerButton = new JButton("Send to Server");
+		btnAddNews = new JButton("Add");
 		
 		eventsButton = new JButton("Events");
 		newsButton = new JButton("News");
@@ -126,9 +123,7 @@ public class NewsAndEvents extends JFrame implements NewsDelegate{
 		
 		mainPanel.add(newsButton);
 		mainPanel.add(eventsButton);
-		mainPanel.add(travelButton);
-		mainPanel.add(sendToServerButton);
-		
+		mainPanel.add(travelButton);		
 	}
 	
 	// intitalize news
@@ -140,15 +135,19 @@ public class NewsAndEvents extends JFrame implements NewsDelegate{
 		newsPanel.add(newsBackButton);
 		newsPanel.add(viewNewsButton);
 		newsPanel.add(deleteNewsButton);
+		newsPanel.add(btnAddNews);
 		
 		newsList =  new JList<>();
 		newsModel = new DefaultListModel<>();
 		newsPanel.add(new JScrollPane(newsList));
 		
 		newsList.setModel(newsModel);
-		newsModel.addElement(new News("Sansa Stark","Is an amazing lady"));
-		newsModel.addElement(new News("Tyrion Lannister","Is the hand of the king"));
-		newsModel.addElement(new News("Daenerys Targerian","Owns 3 dragons"));
+		newsLibrary = NewsLibrary.getInstance();
+		Set<String> newsIds = newsLibrary.getKeySet();
+		
+		for(String id: newsIds) {
+			newsModel.addElement(newsLibrary.getNews(id));
+		}
 		
 		newsBackButton.addActionListener(new ActionListener() {
 
@@ -163,7 +162,7 @@ public class NewsAndEvents extends JFrame implements NewsDelegate{
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
 				selectedNews = newsList.getSelectedValue();
-				System.out.println(selectedNews.getDesc());
+				//System.out.println(selectedNews.getDesc());
 			}
 		});
 		
@@ -182,7 +181,16 @@ public class NewsAndEvents extends JFrame implements NewsDelegate{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (selectedNews != null) {
-					newsModel.removeElement(selectedNews);
+					HTTPConnectionHelper helper = new HTTPConnectionHelper();
+					try {
+						helper.delete("newsobjects/" + selectedNews.getId());
+						helper.delete("newsid/" + selectedNews.getId());
+						newsLibrary.deleteNews(selectedNews.getId());
+						newsModel.removeElement(selectedNews);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 			}
 		});
@@ -246,20 +254,7 @@ public class NewsAndEvents extends JFrame implements NewsDelegate{
 	
 	public void initializeTravel() {
 		travelBackButton = new JButton("Back");
-		viewTravelButton = new JButton("View");
-		deleteTravelButton = new JButton("Delete");
-
 		travelPanel.add(travelBackButton);
-		travelPanel.add(viewTravelButton);
-		travelPanel.add(deleteTravelButton);
-		
-		travel_list =  new JList<>();
-		travelModel = new DefaultListModel<>();
-		travelPanel.add(new JScrollPane(travel_list));
-		
-		travel_list.setModel(travelModel);
-	//	travel_list.addElement(new Travel("Indonesia","is known for satay"));
-		
 		
 		travelBackButton.addActionListener(new ActionListener() {
 
@@ -268,69 +263,28 @@ public class NewsAndEvents extends JFrame implements NewsDelegate{
 				cardLayout.show(containerPanel, "1");
 			}
 		});
-
-		travel_list.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-
-			@Override
-			public void valueChanged(ListSelectionEvent e) {
-				selectedTravel = travel_list.getSelectedValue();
-				System.out.println(selectedTravel.getDesc());
-			}
-		});
-		
-		viewTravelButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (selectedTravel != null) {
-					EditTravelFrame editFrame = new EditTravelFrame(selectedTravel, travelDelegate);
-					editFrame.setVisible(true);
-				}
-			}
-		});
-		
-		deleteTravelButton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (selectedTravel != null) {
-					travelModel.removeElement(selectedTravel);
-				}
-			}
-		});
-//		travelBackButton = new JButton("Back");
-//		
-//		travelPanel.add(travelBackButton);
-//		
-//		travelBackButton.addActionListener(new ActionListener() {
-//
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				cardLayout.show(containerPanel, "1");
-//			}
-//		});
 	}
 	
+	/*public void postHelper(HTTPConnectionHelper helper, String section, JSONArray jsonArray) {
+		for (int i=0;i<jsonArray.length();i++) {
+			try {
+				helper.post(section, (JSONObject) jsonArray.get(i));
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}*/
+	
 	public void setButtonActionListeners() {
-		sendToServerButton.addActionListener(new ActionListener() {
-
+		btnAddNews.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				HTTPConnectionHelper helper = new HTTPConnectionHelper();
-				JSONArray jsonNewsArray = new JSONArray();
-				JSONArray jsonNewsIdArray = new JSONArray();
-				for(String id: newsArray) {
-					jsonNewsIdArray.put(id);
-					JSONObject jsonObject = new JSONObject(map.get(id));
-					jsonNewsArray.put(jsonObject);
-				}
-				try {
-//					helper.post("newsnames", jsonNewsIdArray);
-					helper.post("news", jsonNewsArray);
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
+				EditNewsFrame newsFrame = new EditNewsFrame(newsDelegate);
+				newsFrame.setVisible(true);
 			}
 		});
 
@@ -367,10 +321,32 @@ public class NewsAndEvents extends JFrame implements NewsDelegate{
 				cardLayout.show(containerPanel, "4");
 			}
 		});
+	}	
+	
+	public void deleteNews(News news) {
+		HTTPConnectionHelper helper = new HTTPConnectionHelper();
+		try {
+			helper.delete("newsobjects/" + news.getId());
+			helper.delete("newsid/" + news.getId());
+			newsLibrary.deleteNews(news.getId());
+			newsModel.removeElement(news);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
 	}
 	
-	public void addNewsToList(News news) {
-		map.put(news.getId(), news);
-		newsArray.add(news.getId());
+	public void addNews(News news) {
+		
+		HTTPConnectionHelper helper = new HTTPConnectionHelper();
+		try {
+			helper.post("newsobjects", new JSONObject(news));
+			helper.post("newsid", new JSONObject(new Identifier(news.getId())));
+			newsModel.addElement(news);
+			newsLibrary.getInstance().addToLibrary(news);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
