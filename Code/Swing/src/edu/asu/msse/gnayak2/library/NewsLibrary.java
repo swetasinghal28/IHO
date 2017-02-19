@@ -47,7 +47,7 @@ public class NewsLibrary {
 	}
 	
 	public void deleteNews(String id) {
-		
+		newsMap.remove(id);
 	}
 	
 	public News editNews(News news) {
