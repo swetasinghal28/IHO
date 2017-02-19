@@ -145,10 +145,10 @@ public class NewsAndEvents extends JFrame implements NewsDelegate, EventsDelegat
 		newsList.setModel(newsModel);
 		newsLibrary = NewsLibrary.getInstance();
 		Set<String> newsIds = newsLibrary.getKeySet();
-//		
-//		for(String id: newsIds) {
-//			newsModel.addElement(newsLibrary.getNews(id));
-//		}
+		
+		for(String id: newsIds) {
+			newsModel.addElement(newsLibrary.getNews(id));
+		}
 		
 		newsBackButton.addActionListener(new ActionListener() {
 
