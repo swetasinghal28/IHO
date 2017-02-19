@@ -47,7 +47,7 @@ public class EventsLibrary {
 	}
 	
 	public void deleteEvent(String id) {
-		
+		eventMap.remove(id);
 	}
 	
 	public Event editEvent(Event event) {
