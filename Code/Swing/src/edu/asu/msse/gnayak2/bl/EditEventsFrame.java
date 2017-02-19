@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 
 import edu.asu.msse.gnayak2.models.Event;
 import edu.asu.msse.gnayak2.models.News;
-import edu.asu.msse.gnayak2.models.EventDelegate;
+import edu.asu.msse.gnayak2.models.EventsDelegate;
 import net.miginfocom.swing.MigLayout;
 
 public class EditEventsFrame extends JFrame {
@@ -28,12 +28,12 @@ public class EditEventsFrame extends JFrame {
 	private Event event;
 	private JButton btnSubmit;
 	private JButton addButton;
-	EventDelegate eventDelegate;
+	EventsDelegate eventDelegate;
 	
 	/**
 	 * Create the frame.
 	 */
-	public EditEventsFrame(Event item, EventDelegate eventdelegate) {
+	public EditEventsFrame(Event item, EventsDelegate eventdelegate) {
 		event = item;
 		this.eventDelegate = eventdelegate;
 		setUpFrame();
@@ -72,7 +72,7 @@ public class EditEventsFrame extends JFrame {
 		tfLink.setText(event.getLink());
 	}
  	
-	public EditEventsFrame(EventDelegate eventDelegate) {
+	public EditEventsFrame(EventsDelegate eventDelegate) {
 		this.eventDelegate = eventDelegate;
 		setUpFrame();
 	}
