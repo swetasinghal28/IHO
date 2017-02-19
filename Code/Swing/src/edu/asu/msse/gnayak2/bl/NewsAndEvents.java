@@ -4,8 +4,6 @@ import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Set;
 
 import javax.swing.DefaultListModel;
@@ -17,22 +15,21 @@ import javax.swing.JScrollPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
+import edu.asu.msse.gnayak2.library.EventsLibrary;
 import edu.asu.msse.gnayak2.library.NewsLibrary;
 import edu.asu.msse.gnayak2.models.Event;
+import edu.asu.msse.gnayak2.models.EventsDelegate;
 import edu.asu.msse.gnayak2.models.Identifier;
 import edu.asu.msse.gnayak2.models.News;
 import edu.asu.msse.gnayak2.models.NewsDelegate;
 import edu.asu.msse.gnayak2.networking.HTTPConnectionHelper;
 
-public class NewsAndEvents extends JFrame implements NewsDelegate {
+public class NewsAndEvents extends JFrame implements NewsDelegate, EventsDelegate {
 		
 //	HashMap<String, News> map = new HashMap<String, News>();
 //	ArrayList<String> newsArray = new ArrayList<String>();
-	NewsDelegate newsDelegate;
 	
 	private JPanel containerPanel;
 	private JPanel mainPanel;
@@ -52,15 +49,18 @@ public class NewsAndEvents extends JFrame implements NewsDelegate {
 	private News selectedNews;
 	private JList<News> newsList;
 	private DefaultListModel<News>  newsModel;
+	private JButton btnAddNews;
+	private NewsLibrary newsLibrary;
+	NewsDelegate newsDelegate;
 	
 	private JButton viewEventsButton;
 	private JButton deleteEventsButton;
 	private Event selectedEvent;
 	private JList<Event> eventsList;
 	private DefaultListModel<Event>  eventsModel;
-	
-	private JButton btnAddNews;
-	private NewsLibrary newsLibrary;
+	private JButton btnAddEvent;
+	private EventsLibrary eventsLibrary;
+	EventsDelegate eventsDelegate;
 	
 //	private JButton viewEventsButton;
 //	private JButton deleteEventsButton;
@@ -77,6 +77,7 @@ public class NewsAndEvents extends JFrame implements NewsDelegate {
 	 */
 	public NewsAndEvents() {
 		newsDelegate = this;
+		eventsDelegate = this;
 		setResizable(false);
 		setPreferredSize(new Dimension(Constants.WIDTH,Constants.HEIGHT));
 		
@@ -115,8 +116,7 @@ public class NewsAndEvents extends JFrame implements NewsDelegate {
 		eventsPanel = new JPanel();
 		travelPanel = new JPanel();
 		newsPanel = new JPanel();
-		btnAddNews = new JButton("Add");
-		
+
 		eventsButton = new JButton("Events");
 		newsButton = new JButton("News");
 		travelButton = new JButton("Travel");
@@ -131,6 +131,7 @@ public class NewsAndEvents extends JFrame implements NewsDelegate {
 		newsBackButton = new JButton("Back");
 		viewNewsButton = new JButton("View");
 		deleteNewsButton = new JButton("Delete");
+		btnAddNews = new JButton("Add");
 
 		newsPanel.add(newsBackButton);
 		newsPanel.add(viewNewsButton);
@@ -200,19 +201,35 @@ public class NewsAndEvents extends JFrame implements NewsDelegate {
 		eventsBackButton = new JButton("Back");
 		viewEventsButton = new JButton("View");
 		deleteEventsButton = new JButton("Delete");
+		btnAddEvent = new JButton("Add");
 		
 		eventsPanel.add(eventsBackButton);
 		eventsPanel.add(viewEventsButton);
 		eventsPanel.add(deleteEventsButton);
+		eventsPanel.add(btnAddEvent);
 		
 		eventsList =  new JList<>();
 		eventsModel = new DefaultListModel<>();
 		eventsPanel.add(new JScrollPane(eventsList));
 		
 		eventsList.setModel(eventsModel);
-		eventsModel.addElement(new Event("Sansa Stark","Is an amazing lady"));
-		eventsModel.addElement(new Event("Tyrion Lannister","Is the hand of the king"));
-		eventsModel.addElement(new Event("Daenerys Targerian","Owns 3 dragons"));
+		
+		eventsLibrary = EventsLibrary.getInstance();
+		Set<String> eventIds = eventsLibrary.getKeySet();
+		
+		for(String id: eventIds) {
+			eventsModel.addElement(eventsLibrary.getEvent(id));
+		}
+		
+		eventsBackButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cardLayout.show(containerPanel, "1");
+			}
+		});
+		
+		
 		
 		eventsBackButton.addActionListener(new ActionListener() {
 
@@ -227,7 +244,7 @@ public class NewsAndEvents extends JFrame implements NewsDelegate {
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
 				selectedEvent = eventsList.getSelectedValue();
-				System.out.println(selectedEvent.getDesc());
+//				System.out.println(selectedEvent.getDesc());
 			}
 		});
 		
@@ -235,7 +252,7 @@ public class NewsAndEvents extends JFrame implements NewsDelegate {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (selectedEvent != null) {
-					EditEventsFrame editFrame = new EditEventsFrame(selectedEvent);
+					EditEventsFrame editFrame = new EditEventsFrame(selectedEvent, eventsDelegate);
 					editFrame.setVisible(true);
 				}
 			}
@@ -246,7 +263,16 @@ public class NewsAndEvents extends JFrame implements NewsDelegate {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (selectedEvent != null) {
-					eventsModel.removeElement(selectedEvent);
+					HTTPConnectionHelper helper = new HTTPConnectionHelper();
+					try {
+						helper.delete("eventobjects/" + selectedEvent.getId());
+						helper.delete("eventid/" + selectedEvent.getId());
+						eventsLibrary.deleteEvent(selectedEvent.getId());
+						eventsModel.removeElement(selectedEvent);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 			}
 		});
@@ -334,5 +360,33 @@ public class NewsAndEvents extends JFrame implements NewsDelegate {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void addEvent(Event event) {
+		HTTPConnectionHelper helper = new HTTPConnectionHelper();
+		try {
+			helper.post("eventobjects", new JSONObject(event));
+			helper.post("eventid", new JSONObject(new Identifier(event.getId())));
+			eventsModel.addElement(event);
+			eventsLibrary.getInstance().addToLibrary(event);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void deleteEvent(Event event) {
+		HTTPConnectionHelper helper = new HTTPConnectionHelper();
+		try {
+			helper.delete("eventobjects/" + selectedEvent.getId());
+			helper.delete("eventid/" + selectedEvent.getId());
+			eventsLibrary.deleteEvent(selectedEvent.getId());
+			eventsModel.removeElement(selectedEvent);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}	
 	}
 }
