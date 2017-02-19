@@ -17,8 +17,8 @@ import javax.swing.JTextField;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import edu.asu.msse.gnayak2.delegates.NewsDelegate;
 import edu.asu.msse.gnayak2.models.News;
-import edu.asu.msse.gnayak2.models.NewsDelegate;
 import edu.asu.msse.gnayak2.networking.HTTPConnectionHelper;
 import net.miginfocom.swing.MigLayout;
 
