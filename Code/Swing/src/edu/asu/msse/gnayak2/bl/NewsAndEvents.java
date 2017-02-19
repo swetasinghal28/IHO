@@ -28,7 +28,7 @@ import edu.asu.msse.gnayak2.models.News;
 import edu.asu.msse.gnayak2.models.NewsDelegate;
 import edu.asu.msse.gnayak2.networking.HTTPConnectionHelper;
 
-public class NewsAndEvents extends JFrame implements NewsDelegate{
+public class NewsAndEvents extends JFrame implements NewsDelegate {
 		
 //	HashMap<String, News> map = new HashMap<String, News>();
 //	ArrayList<String> newsArray = new ArrayList<String>();
@@ -264,21 +264,7 @@ public class NewsAndEvents extends JFrame implements NewsDelegate{
 			}
 		});
 	}
-	
-	/*public void postHelper(HTTPConnectionHelper helper, String section, JSONArray jsonArray) {
-		for (int i=0;i<jsonArray.length();i++) {
-			try {
-				helper.post(section, (JSONObject) jsonArray.get(i));
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}*/
-	
+
 	public void setButtonActionListeners() {
 		btnAddNews.addActionListener(new ActionListener() {
 			@Override

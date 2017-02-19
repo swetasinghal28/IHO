@@ -13,7 +13,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import edu.asu.msse.gnayak2.models.Event;
-import edu.asu.msse.gnayak2.models.NewsDelegate;
+import edu.asu.msse.gnayak2.models.News;
+import edu.asu.msse.gnayak2.models.EventDelegate;
 import net.miginfocom.swing.MigLayout;
 
 public class EditEventsFrame extends JFrame {
@@ -26,20 +27,26 @@ public class EditEventsFrame extends JFrame {
 	private JScrollPane scrollPane;
 	private Event event;
 	private JButton btnSubmit;
-	
-	
+	private JButton addButton;
+	EventDelegate eventDelegate;
 	
 	/**
 	 * Create the frame.
 	 */
-	public EditEventsFrame(Event item) {
+	public EditEventsFrame(Event item, EventDelegate eventdelegate) {
 		event = item;
+		this.eventDelegate = eventdelegate;
+		setUpFrame();
+		populateFileds(event);
+	}
+	
+	public void setUpFrame() {
 		setResizable(false);
 		setPreferredSize(new Dimension(Constants.WIDTH,Constants.HEIGHT));
-		tfTitle = new JTextField(event.getId());
-		taDescription = new JTextArea("helo world",20,20);
+		tfTitle = new JTextField();
+		taDescription = new JTextArea("",20,20);
 		lblReadMore = new JLabel("Read More: ");
-		tfLink = new JTextField("http:// google.com");
+		tfLink = new JTextField("http://");
 		scrollPane = new JScrollPane(taDescription);
 		btnSubmit = new JButton("Submit");
 		
@@ -51,7 +58,7 @@ public class EditEventsFrame extends JFrame {
 		panel.add(tfLink, "wrap");
 		panel.add(scrollPane,"span,push,grow, wrap");	
 		panel.add(btnSubmit);
-//		panel.add();
+
 		add(panel);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		pack();
@@ -59,13 +66,29 @@ public class EditEventsFrame extends JFrame {
 		setActionListenerForButton();
 	}
 	
+	public void populateFileds(Event event) {
+		tfTitle.setText(event.getTitle());
+		taDescription.setText(event.getDesc());
+		tfLink.setText(event.getLink());
+	}
+ 	
+	public EditEventsFrame(EventDelegate eventDelegate) {
+		this.eventDelegate = eventDelegate;
+		setUpFrame();
+	}
+	
 	public void setActionListenerForButton() {
+		// delete old event
 		btnSubmit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				event.setId(tfTitle.getText());
-				event.setDesc(taDescription.getText());
-//				dispose();
+				Event newEvent = new Event(tfTitle.getText(), taDescription.getText(),tfLink.getText());
+				// delete old event
+				eventDelegate.addEvent(newEvent);
+				if (event != null){
+					eventDelegate.deleteEvent(event);
+				}
+				dispose();
 			}
 		});
 	}

@@ -1,29 +1,62 @@
 package edu.asu.msse.gnayak2.models;
 
+import java.util.UUID;
+
+import org.json.JSONObject;
+
 public class Event {
 	String id;
+	String title;
 	String desc;
-	
-	public Event(String identifier, String description) {
-		id = identifier;
+	String link;
+
+	public Event(String newsTitle, String description, String linkMore) {
+		id = UUID.randomUUID().toString().replace("-", "");
+		title = newsTitle;
 		desc = description;
+		link = linkMore;
 	}
 	
+	public Event(JSONObject object) {
+		id = object.getString("id");
+		title = object.getString("title");
+		desc = object.getString("desc");
+		link = object.getString("link");
+	}
+
 	public String getId() {
 		return id;
 	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
+	
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	public String getDesc() {
 		return desc;
 	}
+
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
+
+	public String getLink() {
+		return link;
+	}
+
+	public void setLink(String link) {
+		this.link = link;
+	}
 	
-	@Override
 	public String toString() {
-		return id;
+		return title;
 	}
 }

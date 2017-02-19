@@ -38,9 +38,9 @@ public class EditNewsFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public EditNewsFrame(News item, NewsDelegate newsdelegate) {
+	public EditNewsFrame(News item, NewsDelegate newsDelegate) {
 		news = item;
-		newsDelegate = newsdelegate;
+		this.newsDelegate = newsDelegate;
 		setUpFrame();
 		populateFileds(news);
 	}
