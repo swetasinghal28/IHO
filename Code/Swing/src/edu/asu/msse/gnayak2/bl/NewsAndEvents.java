@@ -17,14 +17,15 @@ import javax.swing.event.ListSelectionListener;
 
 import org.json.JSONObject;
 
+import edu.asu.msse.gnayak2.delegates.EventsDelegate;
+import edu.asu.msse.gnayak2.delegates.NewsDelegate;
 import edu.asu.msse.gnayak2.library.EventsLibrary;
 import edu.asu.msse.gnayak2.library.NewsLibrary;
 import edu.asu.msse.gnayak2.models.Event;
-import edu.asu.msse.gnayak2.models.EventsDelegate;
 import edu.asu.msse.gnayak2.models.Identifier;
 import edu.asu.msse.gnayak2.models.News;
-import edu.asu.msse.gnayak2.models.NewsDelegate;
 import edu.asu.msse.gnayak2.networking.HTTPConnectionHelper;
+import net.miginfocom.swing.MigLayout;
 
 public class NewsAndEvents extends JFrame implements NewsDelegate, EventsDelegate {
 		
@@ -133,15 +134,15 @@ public class NewsAndEvents extends JFrame implements NewsDelegate, EventsDelegat
 		deleteNewsButton = new JButton("Delete");
 		btnAddNews = new JButton("Add");
 
+		newsPanel.setLayout(new MigLayout());
 		newsPanel.add(newsBackButton);
 		newsPanel.add(viewNewsButton);
 		newsPanel.add(deleteNewsButton);
-		newsPanel.add(btnAddNews);
-		
+		newsPanel.add(btnAddNews, "wrap");
 		newsList =  new JList<>();
-		newsModel = new DefaultListModel<>();
-		newsPanel.add(new JScrollPane(newsList));
+		newsPanel.add(new JScrollPane(newsList),"span,push,grow, wrap");
 		
+		newsModel = new DefaultListModel<>();
 		newsList.setModel(newsModel);
 		newsLibrary = NewsLibrary.getInstance();
 		Set<String> newsIds = newsLibrary.getKeySet();
@@ -188,6 +189,7 @@ public class NewsAndEvents extends JFrame implements NewsDelegate, EventsDelegat
 						helper.delete("newsid/" + selectedNews.getId());
 						newsLibrary.deleteNews(selectedNews.getId());
 						newsModel.removeElement(selectedNews);
+						selectedNews = null;
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -203,15 +205,15 @@ public class NewsAndEvents extends JFrame implements NewsDelegate, EventsDelegat
 		deleteEventsButton = new JButton("Delete");
 		btnAddEvent = new JButton("Add");
 		
+		eventsPanel.setLayout(new MigLayout());
 		eventsPanel.add(eventsBackButton);
 		eventsPanel.add(viewEventsButton);
 		eventsPanel.add(deleteEventsButton);
-		eventsPanel.add(btnAddEvent);
-		
+		eventsPanel.add(btnAddEvent, "wrap");
 		eventsList =  new JList<>();
-		eventsModel = new DefaultListModel<>();
-		eventsPanel.add(new JScrollPane(eventsList));
+		eventsPanel.add(new JScrollPane(eventsList),"span,push,grow, wrap");
 		
+		eventsModel = new DefaultListModel<>();
 		eventsList.setModel(eventsModel);
 		eventsLibrary = EventsLibrary.getInstance();
 		Set<String> eventIds = eventsLibrary.getKeySet();
@@ -268,6 +270,7 @@ public class NewsAndEvents extends JFrame implements NewsDelegate, EventsDelegat
 						helper.delete("eventid/" + selectedEvent.getId());
 						eventsLibrary.deleteEvent(selectedEvent.getId());
 						eventsModel.removeElement(selectedEvent);
+						selectedEvent = null;
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -348,6 +351,7 @@ public class NewsAndEvents extends JFrame implements NewsDelegate, EventsDelegat
 			helper.delete("newsid/" + news.getId());
 			newsLibrary.deleteNews(news.getId());
 			newsModel.removeElement(news);
+			selectedNews = null;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -390,6 +394,7 @@ public class NewsAndEvents extends JFrame implements NewsDelegate, EventsDelegat
 			helper.delete("eventid/" + selectedEvent.getId());
 			eventsLibrary.deleteEvent(selectedEvent.getId());
 			eventsModel.removeElement(selectedEvent);
+			selectedEvent = null;
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
