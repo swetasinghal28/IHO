@@ -1,5 +1,7 @@
 package com.iho.asu.Database.Tables;
 
+import java.util.Arrays;
+
 /**
  * Created by Barathi on 7/4/2014.
  */
@@ -52,6 +54,7 @@ public class News {
 
     @Override
     public String toString(){
-        return title;
+        StringBuilder sb = new StringBuilder("");
+        return sb.append(title).append(" ").append(Arrays.toString(image)).toString();
     }
 }

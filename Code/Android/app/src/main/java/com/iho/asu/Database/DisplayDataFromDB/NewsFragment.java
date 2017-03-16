@@ -5,24 +5,24 @@ import android.app.ListFragment;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 
 import com.iho.asu.AppController;
 import com.iho.asu.Database.Columns;
-import com.iho.asu.Database.CustomList2;
 import com.iho.asu.Database.DataBaseHelper;
 import com.iho.asu.Database.Tables.News;
 import com.iho.asu.R;
@@ -32,15 +32,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.iho.asu.IHOConstants.NEWS_URL;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class NewsFragment extends ListFragment {
 
     private static final String DB_NAME = "asuIHO.db";
-    private static final String URL = "http://107.170.239.62:3000/news";
     //A good practice is to define database field names as constants
     private static final String TABLE_NAME = "News";
     private static final String TAG = "News";
@@ -87,7 +90,7 @@ public class NewsFragment extends ListFragment {
 
     private void getNewsJson() {
         Log.i(TAG, "getNewsJson");
-        JsonArrayRequest request = new JsonArrayRequest(URL.toString(),
+        JsonArrayRequest request = new JsonArrayRequest(NEWS_URL.toString(),
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray result) {
@@ -110,7 +113,7 @@ public class NewsFragment extends ListFragment {
             //JSONArray jsonArray = result.getJSONArray("results");
             //ArrayAdapter myAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1);
                 Log.i(TAG, "parseJSONResult");
-                String title = null, newsDesc = null;
+                String title = null, newsDesc = null, newsLink = null, image = null;
                 long id = 0;
                 //mMap.clear();
 
@@ -127,12 +130,29 @@ public class NewsFragment extends ListFragment {
                         newsDesc = news.getString("desc");
                     }
 
+                    if (!news.isNull("link")) {
+                        newsLink = news.getString("link");
+                    }
+
+                    if (!news.isNull("image")) {
+                        image = news.getString("image");
+                    }
+
+
+                    Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                    byte[] byteArray = stream.toByteArray();
+
                     News n = new News();
                     n.setId(id++);
                     n.setTitle(title);
                     n.setText(newsDesc);
-                    n.setImage(dummyImage);
-                    n.setNewsLink(dummyLink);
+                    /*byte[] temp = Base64.decode(image, Base64.DEFAULT) ;
+                    temp = dummyImage;*/
+                    n.setImage(Base64.decode(image, Base64.DEFAULT));
+                    n.setNewsLink(newsLink);
+                    Log.i(TAG, Arrays.toString(dummyImage));
                     Log.i(TAG, i + ": " + n.toString());
                     newsTitle.add(title);
                     newsItems.put(title, n);
@@ -140,29 +160,8 @@ public class NewsFragment extends ListFragment {
                     ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, newsTitle);
                     this.setListAdapter(adapter);
                     adapter.notifyDataSetChanged();
-                    
-                    /*if (!place.isNull(VICINITY)) {
-                        vicinity = place.getString(VICINITY);
-                    }
-                    latitude = place.getJSONObject(GEOMETRY).getJSONObject(LOCATION)
-                            .getDouble(LATITUDE);
-                    longitude = place.getJSONObject(GEOMETRY).getJSONObject(LOCATION)
-                            .getDouble(LONGITUDE);
-                    reference = place.getString(REFERENCE);*/
 
-
-                    //myAdapter.add(placeName + "    Rating ( " + rate + " ) ");
-                    //MarkerOptions markerOptions = new MarkerOptions();
-                    //LatLng latLng = new LatLng(latitude, longitude);
-                    //markerOptions.position(latLng);
-                    //markerOptions.title(placeName + " : " + vicinity);
-
-                    // mMap.addMarker(markerOptions);
-                    //lstPlaces.setAdapter(myAdapter);
                 }
-
-               // Toast.makeText(getBaseContext(), jsonArray.length() + " Supermarkets found!",
-                     //   Toast.LENGTH_LONG).show();
 
 
         } catch (JSONException e) {
