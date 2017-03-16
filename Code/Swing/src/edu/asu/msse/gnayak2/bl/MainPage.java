@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -11,8 +12,10 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class MainPage extends JFrame {
@@ -28,7 +31,8 @@ public class MainPage extends JFrame {
 	private JButton btnConnect;
 	private JButton btnDonate;
 	private BufferedImage bufferedImage;
-
+	private ImageIcon imageLogo; 
+	private JLabel labelLogoHolder; 
 	/**
 	 * Create the frame.
 	 */
@@ -41,12 +45,23 @@ public class MainPage extends JFrame {
 //		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
 		row1 = new JPanel();
+		row1.setSize(new Dimension(Constants.WIDTH,75));
+		Image myImage = null;
+		try {
+			myImage = ImageIO.read(new File(System.getProperty("user.dir") + "/images/IHOlogoforapp.jpg"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	    myImage = myImage.getScaledInstance(row1.getWidth(), row1.getHeight(), Image.SCALE_SMOOTH);
+		imageLogo= new ImageIcon(myImage);
+		labelLogoHolder =  new JLabel("", imageLogo, JLabel.CENTER);
+		row1.add(labelLogoHolder);
+		
 		row2 = new JPanel();
 		row3 = new JPanel();
-		
-		row1.setSize(new Dimension(Constants.WIDTH-10,50));
-		
-		
+
 		row2.setPreferredSize(new Dimension(Constants.WIDTH, 10));
 		panel.setLayout(new BorderLayout());
 		panel.add(row1, BorderLayout.NORTH);

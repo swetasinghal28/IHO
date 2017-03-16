@@ -1,39 +1,30 @@
 //
-//  GalleryViewController.swift
+//  BecomingHumanViewController.swift
 //  IHO-ASU
 //
-//  Created by Sweta Singhal on 2/9/17.
+//  Created by Sweta Singhal on 3/14/17.
 //  Copyright © 2017 Sweta Singhal. All rights reserved.
 //
 
 import UIKit
 
-class GalleryViewController: UIViewController {
-    @IBAction func youtube(_ sender: Any) {
-        let url = URL(string: "http://www.youtube.com/user/LucyASUIHO")!
+class BecomingHumanViewController: UIViewController {
+
+    @IBAction func becomingHuman(_ sender: Any) {
+        let url = URL(string: "http://becominghuman.org")!
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         } else {
             UIApplication.shared.openURL(url)
         }
 
-    }
-
-    @IBAction func vimeo(_ sender: Any) {
-        let url = URL(string: "http://vimeo.com/user5956652")!
-        if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        } else {
-            UIApplication.shared.openURL(url)
-        }
-
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
-        self.navigationItem.title = "Gallery"
+        self.navigationItem.title = "Becoming Human"
     }
 
     override func didReceiveMemoryWarning() {
