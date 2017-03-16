@@ -37,7 +37,7 @@ class NewsViewController: UITableViewController {
 //            NSLog("error getting urlString from info.plist")
 //        }
         
-       let url = URL(string:"http://107.170.239.62:3000/news" )
+       let url = URL(string:"http://107.170.239.62:3000/newsobjects" )
         
         let task = URLSession.shared.dataTask(with: url!){ (data, response, error) in
             if error != nil
@@ -55,7 +55,7 @@ class NewsViewController: UITableViewController {
                         
                        // let myJSON = try JSONSerialization.jsonObject(with: data!,options:.mutableContainers) as? [String:AnyObject]
                         
-                        //print("myJSON", myJSON)
+                        print("myJSON", myJSON)
                         
 //                        for dict2 in myJSON {
 //                            let id = dict2["id"]
