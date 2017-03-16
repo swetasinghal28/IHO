@@ -10,10 +10,21 @@ import UIKit
 
 class BecomingHumanViewController: UIViewController {
 
+    @IBAction func becomingHuman(_ sender: Any) {
+        let url = URL(string: "http://becominghuman.org")!
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        
+        self.navigationItem.title = "Becoming Human"
     }
 
     override func didReceiveMemoryWarning() {
