@@ -1,22 +1,24 @@
 package com.iho.asu.Database.Tables;
 
 import java.util.Arrays;
+import java.util.Date;
 
 /**
  * Created by Barathi on 7/4/2014.
  */
 public class News {
-    private long id;
+    private String id;
     private String title;
     private String text;
     private byte[] image;
     private String newsLink;
+    private Date creationDate;
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -52,9 +54,18 @@ public class News {
         this.newsLink = newsLink;
     }
 
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder("");
         return sb.append(title).append(" ").append(Arrays.toString(image)).toString();
     }
+
 }
