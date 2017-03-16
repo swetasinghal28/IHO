@@ -3,12 +3,10 @@ package edu.asu.msse.gnayak2.bl;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -34,8 +32,6 @@ public class EditNewsFrame extends JFrame {
 	private JScrollPane scrollPane;
 	private News news;
 	private JButton btnSubmit;
-	private JButton browseButton;
-	private JTextField imageFileButton;
 	private JButton addButton;
 	NewsDelegate newsDelegate;
 	
@@ -55,10 +51,7 @@ public class EditNewsFrame extends JFrame {
 		tfTitle = new JTextField();
 		taDescription = new JTextArea("",20,20);
 		lblReadMore = new JLabel("Read More: ");
-		browseButton = new JButton("Browse");
-		imageFileButton = new JTextField("",20);
 		tfLink = new JTextField("http://");
-		
 		scrollPane = new JScrollPane(taDescription);
 		btnSubmit = new JButton("Submit");
 		
@@ -68,10 +61,7 @@ public class EditNewsFrame extends JFrame {
 		panel.add(tfTitle, "span,pushx,growx, wrap");
 		panel.add(lblReadMore);
 		panel.add(tfLink, "wrap");
-		
 		panel.add(scrollPane,"span,push,grow, wrap");	
-		panel.add(browseButton, "wrap");
-		panel.add(imageFileButton, "wrap");
 		panel.add(btnSubmit);
 
 		add(panel);
@@ -106,19 +96,5 @@ public class EditNewsFrame extends JFrame {
 				dispose();
 			}
 		});
-		
-		 browseButton.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
-					  JFileChooser chooser = new JFileChooser();
-					    chooser.showOpenDialog(null);
-					    File f = chooser.getSelectedFile();
-					    String filename = f.getAbsolutePath();
-					    imageFileButton.setText(filename);
-					
-				}
-			});
 	}
 }
