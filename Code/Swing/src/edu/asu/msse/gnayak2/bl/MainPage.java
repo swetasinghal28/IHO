@@ -88,7 +88,7 @@ public class MainPage extends JFrame {
 		row3.setPreferredSize(new Dimension(Constants.WIDTH, 190));
 		Image skullImage = null;
 		try {
-			skullImage = ImageIO.read(new File(System.getProperty("user.dir") + "/images/IHOlogoforapp.jpg"));
+			skullImage = ImageIO.read(new File(System.getProperty("user.dir") + "/images/IHOlogoblueskulls.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
