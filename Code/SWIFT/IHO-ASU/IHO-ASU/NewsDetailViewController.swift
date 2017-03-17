@@ -11,6 +11,15 @@ import UIKit
 
 class NewsDetailViewController: UITableViewController {
     
+    @IBAction func readMoreLink(_ sender: Any) {
+        let url = URL(string: newsLink!)!
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+
+    }
     @IBOutlet weak var nTitle: UILabel!
     @IBOutlet weak var nDesc: UILabel!
     @IBOutlet weak var nImage: UIImageView!
@@ -18,6 +27,7 @@ class NewsDetailViewController: UITableViewController {
     var newsDesc: String?
     var newsId: String?
     var newsImage: String?
+    var newsLink: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +41,7 @@ class NewsDetailViewController: UITableViewController {
         print("News Id",newsId ?? "no value")
         print("News Desc",newsDesc ?? "no value")
         print("News Image", newsImage ?? "no value")
+        print("News Link", newsLink ?? "no value")
         
         nTitle.text = newsTitle
         nTitle.lineBreakMode = NSLineBreakMode.byWordWrapping

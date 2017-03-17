@@ -70,14 +70,15 @@ class NewsViewController: UITableViewController {
                         
                         
                         if let newsFromJSON = myJSON as? [[String: AnyObject]]{
-                            //print("newsFromJSON", newsFromJSON)
+                            print("newsFromJSON", newsFromJSON)
                             for news in newsFromJSON{
                                 let newsObject = News()
-                                if let title = news["title"] as? String,let desc = news["desc"] as? String,let id = news["id"] as? String,let image = news["image"] as? String{
+                                if let title = news["title"] as? String,let desc = news["desc"] as? String,let id = news["id"] as? String,let image = news["image"] as? String, let link = news["link"] as? String{
                                     newsObject.id = id
                                     newsObject.title = title
                                     newsObject.desc = desc
                                     newsObject.image = image
+                                    newsObject.link = link
                                     self.names.append(newsObject.title)
                                     //print(title)
                                 
@@ -249,6 +250,7 @@ class NewsViewController: UITableViewController {
             viewController.newsDesc = newsObjectToBeSend.desc
             viewController.newsId = newsObjectToBeSend.id
             viewController.newsImage = newsObjectToBeSend.image
+            viewController.newsLink = newsObjectToBeSend.link
         }
     }
 
