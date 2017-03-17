@@ -13,7 +13,8 @@ class NewsViewController: UITableViewController {
    
     @IBOutlet var newsTableView: UITableView!
     var urlString:String = ""
-    var news: [News]? = []
+    //var news: [News]? = []
+    var newsList:[String : News] = [String : News]()
     var names:[String]=[String]()
 //    var NumberOfRows = 0
 //    var newsList = [NSManagedObject]()
@@ -48,7 +49,7 @@ class NewsViewController: UITableViewController {
             {
                 if let content = data
                 {
-                    self.news = [News]()
+                    //self.news = [News]()
                     do{
                         //Array
                     let myJSON = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
@@ -72,15 +73,17 @@ class NewsViewController: UITableViewController {
                             //print("newsFromJSON", newsFromJSON)
                             for news in newsFromJSON{
                                 let newsObject = News()
-                                if let title = news["title"] as? String,let desc = news["desc"] as? String,let id = news["id"] as? String{
+                                if let title = news["title"] as? String,let desc = news["desc"] as? String,let id = news["id"] as? String,let image = news["image"] as? String{
                                     newsObject.id = id
                                     newsObject.title = title
                                     newsObject.desc = desc
+                                    newsObject.image = image
                                     self.names.append(newsObject.title)
-                                    print(title)
+                                    //print(title)
                                 
                                 }
-                                self.news?.append(newsObject)
+                                //self.news?.append(newsObject)
+                                self.newsList[newsObject.title] = newsObject
                             }
                         }
                         
@@ -226,5 +229,27 @@ class NewsViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        NSLog("seque identifier is \(segue.identifier)")
+        if segue.identifier == "NewsDetail" {
+            let viewController:NewsDetailViewController = segue.destination as! NewsDetailViewController
+            let indexPath = self.tableView.indexPathForSelectedRow!
+            
+            //let moviedata = self.tableView.indexPathForSelectedRow
+            
+           // let aMovie = movieLib.movies[movieLib.names[indexPath.row]]! as MovieDescription
+            let title = self.names[(indexPath.row)]
+            let newsObjectToBeSend = newsList[title]! as News
+            
+            //print( "Trying to print selected news object ", newsList[title]?.desc ?? "No value" , title)
+            
+            
+            viewController.newsTitle = title
+            viewController.newsDesc = newsObjectToBeSend.desc
+            viewController.newsId = newsObjectToBeSend.id
+            viewController.newsImage = newsObjectToBeSend.image
+        }
+    }
 
 }

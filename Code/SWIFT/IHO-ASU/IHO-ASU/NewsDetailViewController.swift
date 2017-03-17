@@ -11,12 +11,39 @@ import UIKit
 
 class NewsDetailViewController: UITableViewController {
     
+    @IBOutlet weak var nTitle: UILabel!
+    @IBOutlet weak var nDesc: UILabel!
+    @IBOutlet weak var nImage: UIImageView!
+    var newsTitle: String?
+    var newsDesc: String?
+    var newsId: String?
+    var newsImage: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
         self.navigationItem.title = "News Details"
+        
+        print("Inside News detail view controller")
+        print("News Title", newsTitle ?? "no value")
+        print("News Id",newsId ?? "no value")
+        print("News Desc",newsDesc ?? "no value")
+        print("News Image", newsImage ?? "no value")
+        
+        nTitle.text = newsTitle
+        nTitle.lineBreakMode = NSLineBreakMode.byWordWrapping
+        nTitle.numberOfLines = 0
+        nDesc.text = newsDesc
+        nDesc.lineBreakMode = NSLineBreakMode.byWordWrapping
+        nDesc.numberOfLines = 0
+        
+        //base64 string to NSData
+        let decodedData = NSData(base64Encoded: newsImage!, options: NSData.Base64DecodingOptions(rawValue: 0))
+        
+        //NSData to UIImage
+        nImage.image = UIImage(data: decodedData! as Data)
         
         
         
