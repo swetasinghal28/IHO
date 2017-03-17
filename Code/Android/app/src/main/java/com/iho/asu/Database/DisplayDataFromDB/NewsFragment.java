@@ -70,7 +70,7 @@ public class NewsFragment extends ListFragment {
         newsItems.clear();
         newsTitle.clear();
         //getNewsItems();
-        getDummyImageAndLink();
+        //getDummyImageAndLink();
         getNewsJson();
 
         //CustomList2 adapter = new

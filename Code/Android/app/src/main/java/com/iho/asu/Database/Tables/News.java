@@ -1,6 +1,5 @@
 package com.iho.asu.Database.Tables;
 
-import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -65,7 +64,7 @@ public class News {
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder("");
-        return sb.append(title).append(" ").append(Arrays.toString(image)).toString();
+        return sb.append(title).append(" ").toString();
     }
 
 }
