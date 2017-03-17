@@ -20,12 +20,12 @@ public class IHOConstants {
     public static final String NEWS_DESC = "desc";
 
     public static final String EVENT_TITLE = "title";
-    public static final String EVENT_ID = "image";
-    public static final String EVENT_WHEN = "id";
-    public static final String EVENT_WHERE = "link";
-    public static final String EVENT_LOC_LINK = "desc";
+    public static final String EVENT_ID = "id";
+    public static final String EVENT_WHEN = "date";
+    public static final String EVENT_WHERE = "place";
+    public static final String EVENT_LOC_LINK = "location";
     public static final String EVENT_DESC = "desc";
-    public static final String EVENT_REG = "reg";
+    public static final String EVENT_REG = "regURL";
 
 
 
