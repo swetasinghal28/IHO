@@ -28,12 +28,14 @@ class GalleryViewController: UIViewController {
         }
 
     }
+    @IBOutlet weak var clickButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
         self.navigationItem.title = "Gallery"
+        clickButton.layer.cornerRadius = 15
     }
 
     override func didReceiveMemoryWarning() {

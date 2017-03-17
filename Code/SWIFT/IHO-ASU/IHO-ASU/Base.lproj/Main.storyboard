@@ -20,15 +20,15 @@
                         <sections>
                             <tableViewSection id="zEw-it-Fkx">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="iVW-xS-wlm" rowHeight="80" style="IBUITableViewCellStyleDefault" id="BR4-WT-bY2">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="iVW-xS-wlm" rowHeight="70" style="IBUITableViewCellStyleDefault" id="BR4-WT-bY2">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BR4-WT-bY2" id="UEO-41-qKi">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="79.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="69.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iVW-xS-wlm">
-                                                    <rect key="frame" x="15" y="0.0" width="384" height="79.666666666666671"/>
+                                                    <rect key="frame" x="15" y="0.0" width="384" height="69.666666666666671"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -38,7 +38,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="228" id="iub-Iv-PFS">
-                                        <rect key="frame" x="0.0" y="80" width="414" height="228"/>
+                                        <rect key="frame" x="0.0" y="70" width="414" height="228"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iub-Iv-PFS" id="tJh-G9-jWf">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="227.5"/>
@@ -51,28 +51,28 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="eb9-z3-RHH" rowHeight="201" style="IBUITableViewCellStyleDefault" id="XfM-YK-fCA">
-                                        <rect key="frame" x="0.0" y="308" width="414" height="201"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="eb9-z3-RHH" rowHeight="100" style="IBUITableViewCellStyleDefault" id="XfM-YK-fCA">
+                                        <rect key="frame" x="0.0" y="298" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XfM-YK-fCA" id="BQe-Js-zmR">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="200.66666666666666"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="99.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eb9-z3-RHH">
-                                                    <rect key="frame" x="15" y="0.0" width="384" height="200.66666666666666"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eb9-z3-RHH">
+                                                    <rect key="frame" x="15" y="0.0" width="384" height="99.666666666666671"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="95" id="RWd-Bg-LOz">
-                                        <rect key="frame" x="0.0" y="509" width="414" height="95"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="50" id="RWd-Bg-LOz">
+                                        <rect key="frame" x="0.0" y="398" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RWd-Bg-LOz" id="1Kf-YI-E1c">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="94.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxg-Ip-EFg">
@@ -102,11 +102,12 @@
                         <outlet property="nDesc" destination="eb9-z3-RHH" id="F6Y-Jx-KQm"/>
                         <outlet property="nImage" destination="dqU-S5-A3p" id="Mxh-jn-FnR"/>
                         <outlet property="nTitle" destination="iVW-xS-wlm" id="yHF-H5-g4u"/>
+                        <outlet property="readMoreButton" destination="gxg-Ip-EFg" id="1f4-u4-6ct"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jVl-f5-rEe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="170" y="-1247"/>
+            <point key="canvasLocation" x="169.56521739130437" y="-1247.2826086956522"/>
         </scene>
         <!--News View Controller-->
         <scene sceneID="yZ9-wN-o9f">
@@ -471,7 +472,7 @@
                                 </connections>
                             </button>
                             <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jGh-Ym-7hR">
-                                <rect key="frame" x="30" y="260" width="331" height="297"/>
+                                <rect key="frame" x="27" y="260" width="331" height="297"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
@@ -541,6 +542,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="clickButton" destination="dMm-lM-xDm" id="Ig0-w8-iAx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V7z-FP-Edb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -665,8 +669,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="176.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Like us on Facebook, follow us on Twitter!" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="289" translatesAutoresizingMaskIntoConstraints="NO" id="oW7-8t-dPD">
-                                                    <rect key="frame" x="11" y="20" width="289" height="47"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Like us on Facebook, follow us on Twitter!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="289" translatesAutoresizingMaskIntoConstraints="NO" id="oW7-8t-dPD">
+                                                    <rect key="frame" x="11" y="20" width="340" height="47"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -729,7 +733,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="6" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="290" translatesAutoresizingMaskIntoConstraints="NO" id="iVO-AP-2Bg">
-                                <rect key="frame" x="14" y="103" width="290" height="161"/>
+                                <rect key="frame" x="14" y="103" width="350" height="161"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <string key="text">The "Webby"-award winning BecomingHuman.org brings together interactive multimedia, research, and scholarship to promote greater understanding of the course of human evolution.</string>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
@@ -751,6 +755,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="beacomingButton" destination="Wwp-lI-alz" id="Nj4-r7-yPn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9LX-SX-ECc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -774,11 +781,11 @@
                                         <rect key="frame" x="0.0" y="35" width="414" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="601-vW-35B" id="CaF-mW-xXc">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="id0-bO-xwh">
-                                                    <rect key="frame" x="69" y="0.0" width="171" height="45"/>
+                                                    <rect key="frame" x="105" y="0.33333333333333331" width="171" height="45"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.0037125688977539539" green="0.17571765184402466" blue="0.35848188400268555" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
@@ -805,7 +812,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rjz-Xp-HaN">
-                                                    <rect key="frame" x="-14" y="6" width="114" height="21"/>
+                                                    <rect key="frame" x="0.0" y="6" width="114" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -845,7 +852,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Contact" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gc9-RN-8Ah">
-                                                    <rect key="frame" x="-14" y="6" width="114" height="21"/>
+                                                    <rect key="frame" x="0.0" y="6" width="114" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -882,6 +889,9 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="contactButton" destination="dz4-xM-4bh" id="28R-ui-Ro4"/>
+                        <outlet property="locationButton" destination="XT7-XU-Uv6" id="S5G-IK-cC2"/>
+                        <outlet property="officialButton" destination="id0-bO-xwh" id="Zli-hf-nlf"/>
                         <outlet property="textContact" destination="ryM-ID-Yho" id="als-qg-U16"/>
                         <outlet property="textLocation" destination="8Hz-I7-98c" id="WxB-Cf-VnG"/>
                     </connections>
@@ -1175,7 +1185,7 @@ If you would like to send donation by check, please make your donation payable t
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="9" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="290" translatesAutoresizingMaskIntoConstraints="NO" id="h4X-wk-21h">
-                                <rect key="frame" x="14" y="300" width="290" height="178"/>
+                                <rect key="frame" x="14" y="340" width="330" height="178"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <string key="text">AskAnAnthropologist— inspired by the “wildly” successful AskABiologist.asu. edu—is a resource where students and teachers can  and information about the science of anthropology. Aimed primarily at the middle school level, the articles and activities are challenging and may be used for higher school levels as well.</string>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
@@ -1183,7 +1193,7 @@ If you would like to send donation by check, please make your donation payable t
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7SD-oF-ywV">
-                                <rect key="frame" x="14" y="500" width="201" height="30"/>
+                                <rect key="frame" x="14" y="540" width="201" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0037125688980000002" green="0.17571765180000001" blue="0.35848188399999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
@@ -1195,12 +1205,15 @@ If you would like to send donation by check, please make your donation payable t
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="askananthropologist.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="mp9-9U-Miy">
-                                <rect key="frame" x="14" y="75" width="290" height="189"/>
+                                <rect key="frame" x="14" y="75" width="330" height="230"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="askButton" destination="7SD-oF-ywV" id="dmw-gn-zgu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7fe-4Z-h0d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

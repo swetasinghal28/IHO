@@ -9,6 +9,7 @@
 import UIKit
 
 class AskAnAnthropologistViewController: UIViewController, UITextViewDelegate {
+    @IBOutlet weak var askButton: UIButton!
     
     
     @IBAction func visitAnthropologist(_ sender: Any) {
@@ -33,6 +34,8 @@ class AskAnAnthropologistViewController: UIViewController, UITextViewDelegate {
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
         self.navigationItem.title = "Ask An Anthropologist"
+        
+        askButton.layer.cornerRadius = 15
         
 
     }

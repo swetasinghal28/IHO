@@ -9,6 +9,9 @@
 import UIKit
 
 class ConnectInfoViewController: UITableViewController {
+    @IBOutlet weak var locationButton: UIButton!
+    @IBOutlet weak var contactButton: UIButton!
+    @IBOutlet weak var officialButton: UIButton!
     @IBAction func officialWebsite(_ sender: Any) {
         let url = URL(string: "https://iho.asu.edu/")!
         if #available(iOS 10.0, *) {
@@ -16,6 +19,7 @@ class ConnectInfoViewController: UITableViewController {
         } else {
             UIApplication.shared.openURL(url)
         }
+        
     }
 
     @IBAction func ihoLocation(_ sender: Any) {
@@ -42,6 +46,12 @@ class ConnectInfoViewController: UITableViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
         self.navigationItem.title = "Connect Info"
+        
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        
+        contactButton.layer.cornerRadius = 15
+        officialButton.layer.cornerRadius = 15
+        locationButton.layer.cornerRadius = 15
         
         //Button style
         

@@ -13,6 +13,7 @@ class NewsDetailViewController: UITableViewController {
     
     @IBAction func readMoreLink(_ sender: Any) {
         let url = URL(string: newsLink!)!
+        
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         } else {
@@ -20,6 +21,7 @@ class NewsDetailViewController: UITableViewController {
         }
 
     }
+    @IBOutlet weak var readMoreButton: UIButton!
     @IBOutlet weak var nTitle: UILabel!
     @IBOutlet weak var nDesc: UILabel!
     @IBOutlet weak var nImage: UIImageView!
@@ -33,8 +35,16 @@ class NewsDetailViewController: UITableViewController {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+//        
+//        tableView.rowHeight = UITableViewAutomaticDimension
+//        tableView.estimatedRowHeight = 40
         
-        self.navigationItem.title = "News Details"
+        //self.navigationItem.title = "News Details"
+        
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        //tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        
+        readMoreButton.layer.cornerRadius = 15
         
         print("Inside News detail view controller")
         print("News Title", newsTitle ?? "no value")
