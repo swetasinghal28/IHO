@@ -5,8 +5,6 @@ import android.app.ListFragment;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Base64;
@@ -20,24 +18,33 @@ import android.widget.ListView;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-
+import com.google.gson.Gson;
 import com.iho.asu.AppController;
+import com.iho.asu.Comparators.NewsComparator;
+import com.iho.asu.Containers.NewsContainer;
 import com.iho.asu.Database.Columns;
 import com.iho.asu.Database.DataBaseHelper;
 import com.iho.asu.Database.Tables.News;
+import com.iho.asu.JSONResourceReader;
 import com.iho.asu.R;
-//import com.sun.mail.iap.Response;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import static com.iho.asu.IHOConstants.NEWS_DATE;
+import static com.iho.asu.IHOConstants.NEWS_DESC;
+import static com.iho.asu.IHOConstants.NEWS_ID;
+import static com.iho.asu.IHOConstants.NEWS_IMAGE;
+import static com.iho.asu.IHOConstants.NEWS_LINK;
+import static com.iho.asu.IHOConstants.NEWS_TITLE;
 import static com.iho.asu.IHOConstants.NEWS_URL;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -63,7 +70,7 @@ public class NewsFragment extends ListFragment {
         newsItems.clear();
         newsTitle.clear();
         //getNewsItems();
-        getDummyImageAndLink();
+        //getDummyImageAndLink();
         getNewsJson();
 
         //CustomList2 adapter = new
@@ -90,6 +97,7 @@ public class NewsFragment extends ListFragment {
 
     private void getNewsJson() {
         Log.i(TAG, "getNewsJson");
+
         JsonArrayRequest request = new JsonArrayRequest(NEWS_URL.toString(),
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -104,64 +112,87 @@ public class NewsFragment extends ListFragment {
                     public void onErrorResponse(VolleyError error) {
                         Log.e(TAG, "onErrorResponse: Error= " + error);
                         Log.e(TAG, "onErrorResponse: Error= " + error.getMessage());
+                        //fetchJSONRaw();
                     }
                 });
         AppController.getInstance().addToRequestQueue(request);
     }
+    private void fetchJSONRaw(){
+        JSONResourceReader resourceReader = new JSONResourceReader(getResources(), R.raw.newsobjects);
+        String str = resourceReader.jsonString;
+
+        Gson gson = new Gson();
+        NewsContainer newsContainer = gson.fromJson(str, NewsContainer.class);
+
+        ArrayList<News> newsList = newsContainer.getNewsList();
+
+        for (News news: newsList) {
+            newsTitle.add(news.getTitle());
+        }
+
+        ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, newsTitle);
+        this.setListAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
+
     private void parseJSONResult(JSONArray jsonArray) {
         try {
-            //JSONArray jsonArray = result.getJSONArray("results");
-            //ArrayAdapter myAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1);
-                Log.i(TAG, "parseJSONResult");
-                String title = null, newsDesc = null, newsLink = null, image = null;
-                long id = 0;
-                //mMap.clear();
 
+                Log.i(TAG, "parseJSONResult");
+                String id = null, title = null, newsDesc = null, newsLink = null, image = null, dateStr = null;
+
+
+                List<News> newsList = new ArrayList<News>();
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject news = jsonArray.getJSONObject(i);
 
-                    //id = place.getString(SUPERMARKET_ID);
-                    //place_id = place.getString(PLACE_ID);
-                    if (!news.isNull("title")) {
-                        title = news.getString("title");
+                    if (!news.isNull(NEWS_ID)) {
+                        id = news.getString(NEWS_ID);
                     }
 
-                    if (!news.isNull("desc")) {
-                        newsDesc = news.getString("desc");
+                    if (!news.isNull(NEWS_TITLE)) {
+                        title = news.getString(NEWS_TITLE);
                     }
 
-                    if (!news.isNull("link")) {
-                        newsLink = news.getString("link");
+                    if (!news.isNull(NEWS_DESC)) {
+                        newsDesc = news.getString(NEWS_DESC);
                     }
 
-                    if (!news.isNull("image")) {
-                        image = news.getString("image");
+                    if (!news.isNull(NEWS_LINK)) {
+                        newsLink = news.getString(NEWS_LINK);
                     }
 
+                    if (!news.isNull(NEWS_IMAGE)) {
+                        image = news.getString(NEWS_IMAGE);
+                    }
 
-                    Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
-                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                    bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                    byte[] byteArray = stream.toByteArray();
+                    if (!news.isNull(NEWS_DATE)) {
+                        dateStr = news.getString(NEWS_DATE);
+                    }
+
 
                     News n = new News();
-                    n.setId(id++);
+                    n.setId(id);
                     n.setTitle(title);
                     n.setText(newsDesc);
-                    /*byte[] temp = Base64.decode(image, Base64.DEFAULT) ;
-                    temp = dummyImage;*/
                     n.setImage(Base64.decode(image, Base64.DEFAULT));
                     n.setNewsLink(newsLink);
-                    Log.i(TAG, Arrays.toString(dummyImage));
+                    n.setCreationDate(new Date(dateStr));
+
                     Log.i(TAG, i + ": " + n.toString());
-                    newsTitle.add(title);
+
+                    newsList.add(n);
                     newsItems.put(title, n);
-
-                    ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, newsTitle);
-                    this.setListAdapter(adapter);
-                    adapter.notifyDataSetChanged();
-
                 }
+
+                Collections.sort(newsList, Collections.<News>reverseOrder(new NewsComparator()));
+                for (News news: newsList) {
+                    newsTitle.add(news.getTitle());
+                }
+
+                ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, newsTitle);
+                this.setListAdapter(adapter);
+                adapter.notifyDataSetChanged();
 
 
         } catch (JSONException e) {
@@ -200,7 +231,7 @@ public class NewsFragment extends ListFragment {
     private void cursorToNews(Cursor cursor) {
         News n = new News();
         String title = cursor.getString(1);
-        n.setId(cursor.getLong(0));
+        //n.setId(cursor.getLong(0));
         n.setTitle(title);
         n.setText(cursor.getString(2));
         n.setImage(cursor.getBlob(3));

@@ -1,16 +1,19 @@
 package com.iho.asu.Database.Tables;
 
+import java.util.Date;
+
 /**
  * Created by Barathi on 7/4/2014.
  */
 public class Events {
-    private long id;
+    private String id;
     private String when;
     private String where;
     private String description;
     private String title;
     private String location_link;
     private String reg;
+    private Date date;
 
     public String getReg() {
         return reg;
@@ -60,12 +63,25 @@ public class Events {
         this.location_link = location_link;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder("");
+        return sb.append(title).append(" ").toString();
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 }
