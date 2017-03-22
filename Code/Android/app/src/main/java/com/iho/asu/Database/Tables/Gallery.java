@@ -4,8 +4,8 @@ package com.iho.asu.Database.Tables;
  * Created by Barathi on 7/4/2014.
  */
 public class Gallery {
-    private long id;
-    private byte[] name;
+    private String id;
+    private byte[] image;
     private String imageCaption;
     private String lectEmail;
 
@@ -25,19 +25,25 @@ public class Gallery {
         return lectEmail;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public byte[] getName() {
-        return name;
+    public byte[] getImage() {
+        return image;
     }
 
-    public void setName(byte[] name) {
-        this.name = name;
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder("");
+        return sb.append(imageCaption).append(" ").toString();
     }
 }

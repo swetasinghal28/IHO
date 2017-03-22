@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,8 @@ import com.iho.asu.R;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.iho.asu.IHOConstants.TRAVEL_URL;
 
 public class TravelFragment extends ListFragment {
 
@@ -40,7 +43,7 @@ public class TravelFragment extends ListFragment {
         database = dbOpenHelper.openDataBase();
         travelItems.clear();
         travelTitle.clear();
-        getTravelItems();
+        getTravelItem();
         CustomList2 adapter = new
                 CustomList2(this.getActivity(), travelTitle);
         this.setListAdapter(adapter);
@@ -54,8 +57,19 @@ public class TravelFragment extends ListFragment {
         String travel_text = travelTitle.get(position);
         Travel travel = travelItems.get(travel_text);
         Uri uri = Uri.parse(travel.getLink());
+        Log.i("Travel: onListItemClick", uri.toString());
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
+    }
+
+    private void getTravelItem() {
+        Travel n = new Travel();
+        String text = "Click to read more";
+        n.setId(1);
+        n.setText(text);
+        n.setLink(TRAVEL_URL);
+        travelTitle.add(text);
+        travelItems.put(text, n);
     }
 
     //Extracting elements from the database
