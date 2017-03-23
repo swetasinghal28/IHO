@@ -4,14 +4,17 @@ import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.Set;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -41,6 +44,7 @@ public class NewsAndEvents extends JFrame implements NewsDelegate, EventsDelegat
 	private JButton travelBackButton;
 	private JButton eventsBackButton;
 	private JButton newsButton;
+	
 	private JButton eventsButton;
 	private JButton travelButton;
 	private CardLayout cardLayout;
@@ -108,7 +112,7 @@ public class NewsAndEvents extends JFrame implements NewsDelegate, EventsDelegat
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
-		//set everythign for list
+		
 		
 	}
 	
@@ -132,12 +136,15 @@ public class NewsAndEvents extends JFrame implements NewsDelegate, EventsDelegat
 		newsBackButton = new JButton("Back");
 		viewNewsButton = new JButton("View");
 		deleteNewsButton = new JButton("Delete");
+		
 		btnAddNews = new JButton("Add");
+		
 
 		newsPanel.setLayout(new MigLayout());
 		newsPanel.add(newsBackButton);
 		newsPanel.add(viewNewsButton);
 		newsPanel.add(deleteNewsButton);
+		
 		newsPanel.add(btnAddNews, "wrap");
 		newsList =  new JList<>();
 		newsPanel.add(new JScrollPane(newsList),"span,push,grow, wrap");
@@ -158,7 +165,8 @@ public class NewsAndEvents extends JFrame implements NewsDelegate, EventsDelegat
 				cardLayout.show(containerPanel, "1");
 			}
 		});
-
+		
+       
 		newsList.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 
 			@Override

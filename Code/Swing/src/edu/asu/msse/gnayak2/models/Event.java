@@ -8,20 +8,31 @@ public class Event {
 	String id;
 	String title;
 	String desc;
-	String link;
+	String place;
+	String location;
+	String regURL;
+	String date;
 
-	public Event(String newsTitle, String description, String linkMore) {
+	public Event(String newsTitle, String description, String place, String location, String date, String regURL) {
 		id = UUID.randomUUID().toString().replace("-", "");
 		title = newsTitle;
 		desc = description;
-		link = linkMore;
+		this.place = place;
+		this.location = location; 
+		this.regURL = regURL;
+		this.date = date;
+		
 	}
 	
 	public Event(JSONObject object) {
 		id = object.getString("id");
 		title = object.getString("title");
 		desc = object.getString("desc");
-		link = object.getString("link");
+		place = object.getString("place");
+		location = object.getString("location");
+		regURL = object.getString("regURL");
+		date = object.getString("date");
+		
 	}
 
 	public String getId() {
@@ -48,12 +59,35 @@ public class Event {
 		this.desc = desc;
 	}
 
-	public String getLink() {
-		return link;
+
+	public String getLocation() {
+		return location;
 	}
 
-	public void setLink(String link) {
-		this.link = link;
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+	public String getRegURL() {
+		return regURL;
+	}
+
+	public void setRegURL(String regURL) {
+		this.regURL = regURL;
+	}
+	public String getPlace() {
+		return place;
+	}
+
+	public void setPlace(String place) {
+		this.place = place;
 	}
 	
 	public String toString() {

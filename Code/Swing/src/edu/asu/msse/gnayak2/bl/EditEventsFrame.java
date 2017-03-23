@@ -3,6 +3,9 @@ package edu.asu.msse.gnayak2.bl;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,14 +23,17 @@ public class EditEventsFrame extends JFrame {
 	
 	private JPanel panel;
 	private JTextField tfTitle;
+	private JTextField tfLocation;
 	private JTextArea taDescription;
-	private JTextField tfLink;
+	private JTextField tfRegURL;
+	private JTextField tfDate;
 	private JLabel lblReadMore;
 	private JScrollPane scrollPane;
 	private Event event;
 	private JButton btnSubmit;
 	private JButton addButton;
 	EventsDelegate eventDelegate;
+	String locationURL;
 	
 	/**
 	 * Create the frame.
@@ -45,7 +51,10 @@ public class EditEventsFrame extends JFrame {
 		tfTitle = new JTextField();
 		taDescription = new JTextArea("",20,20);
 		lblReadMore = new JLabel("Read More: ");
-		tfLink = new JTextField("http://");
+//		tfPlace = new JTextField("");
+		tfRegURL = new JTextField("Registration URL",20);
+		tfLocation = new JTextField("Location",20);
+		tfDate = new JTextField("Date",20);
 		scrollPane = new JScrollPane(taDescription);
 		btnSubmit = new JButton("Submit");
 		
@@ -54,7 +63,10 @@ public class EditEventsFrame extends JFrame {
 		panel.setLayout(new MigLayout());
 		panel.add(tfTitle, "span,pushx,growx, wrap");
 		panel.add(lblReadMore);
-		panel.add(tfLink, "wrap");
+		//panel.add(tfPlace, "wrap");
+		panel.add(tfLocation,"wrap");
+		panel.add(tfDate,"wrap");
+		panel.add(tfRegURL, "wrap");
 		panel.add(scrollPane,"span,push,grow, wrap");	
 		panel.add(btnSubmit);
 
@@ -68,7 +80,10 @@ public class EditEventsFrame extends JFrame {
 	public void populateFileds(Event event) {
 		tfTitle.setText(event.getTitle());
 		taDescription.setText(event.getDesc());
-		tfLink.setText(event.getLink());
+		//tfPlace.setText(event.getPlace());
+		tfLocation.setText(event.getLocation());
+		tfRegURL.setText(event.getRegURL());
+		tfDate.setText(event.getDate());
 	}
  	
 	public EditEventsFrame(EventsDelegate eventDelegate) {
@@ -81,7 +96,10 @@ public class EditEventsFrame extends JFrame {
 		btnSubmit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Event newEvent = new Event(tfTitle.getText(), taDescription.getText(),tfLink.getText());
+				String eventLocation = tfLocation.getText();
+				locationURL = "http://maps.google.com/?q=" + eventLocation;
+				
+				Event newEvent = new Event(tfTitle.getText(), taDescription.getText(),tfLocation.getText(), locationURL, tfDate.getText(), tfRegURL.getText());
 				// delete old event
 				eventDelegate.addEvent(newEvent);
 				if (event != null){
