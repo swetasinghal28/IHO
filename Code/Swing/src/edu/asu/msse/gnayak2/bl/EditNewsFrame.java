@@ -1,10 +1,12 @@
 package edu.asu.msse.gnayak2.bl;
 
 import java.awt.Dimension;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.HashMap;
 
 import javax.swing.JButton;
@@ -23,6 +25,15 @@ import edu.asu.msse.gnayak2.delegates.NewsDelegate;
 import edu.asu.msse.gnayak2.models.News;
 import edu.asu.msse.gnayak2.networking.HTTPConnectionHelper;
 import net.miginfocom.swing.MigLayout;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
+import javax.imageio.ImageIO;
 
 public class EditNewsFrame extends JFrame {
 
@@ -38,6 +49,10 @@ public class EditNewsFrame extends JFrame {
 	private JTextField imageFileButton;
 	private JButton addButton;
 	NewsDelegate newsDelegate;
+	String filename;
+	String encodedImage;
+	
+	byte[] imageInByte;
 	
 	/**
 	 * Create the frame.
@@ -85,6 +100,7 @@ public class EditNewsFrame extends JFrame {
 		tfTitle.setText(news.getTitle());
 		taDescription.setText(news.getDesc());
 		tfLink.setText(news.getLink());
+		//imageFileButton.setText(news.getDate());
 	}
  	
 	public EditNewsFrame(NewsDelegate newsdelegate) {
@@ -97,8 +113,32 @@ public class EditNewsFrame extends JFrame {
 		btnSubmit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				News newNews = new News(tfTitle.getText(), taDescription.getText(),tfLink.getText());
+
+			   try{
+
+		 	BufferedImage originalImage =
+		                               ImageIO.read(new File(filename));
+      	 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
+  		 	ImageIO.write( originalImage, "jpg", baos );
+		 	baos.flush();
+		 	imageInByte = baos.toByteArray();
+	
+
+            encodedImage = Base64.getEncoder().encodeToString(imageInByte);
+		 	System.out.println("BYTE ARRAY_________"+imageInByte);
+		 	baos.close();
+           	}catch(IOException e1){
+		 		System.out.println(e1.getMessage());
+			 	}
+     			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+				Date date = new Date();
+				System.out.println(dateFormat.format(date)); 
+				
+				News newNews = new News(tfTitle.getText(), taDescription.getText(),tfLink.getText(), date.toString(), encodedImage);
 				// delete old news
+			//	System.out.println("BYTE_STRING_________"+imageInByte.toString());
+				
+				
 				newsDelegate.addNews(newNews);
 				if (news != null){
 					newsDelegate.deleteNews(news);
@@ -115,8 +155,10 @@ public class EditNewsFrame extends JFrame {
 					  JFileChooser chooser = new JFileChooser();
 					    chooser.showOpenDialog(null);
 					    File f = chooser.getSelectedFile();
-					    String filename = f.getAbsolutePath();
+					    filename = f.getAbsolutePath();
 					    imageFileButton.setText(filename);
+					    
+
 					
 				}
 			});

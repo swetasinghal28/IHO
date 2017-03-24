@@ -27,9 +27,12 @@ import edu.asu.msse.gnayak2.models.GalleryModel;
 import edu.asu.msse.gnayak2.networking.HTTPConnectionHelper;
 import net.miginfocom.swing.MigLayout;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+
 import javax.imageio.ImageIO;
 
 public class EditGallery extends JFrame {
@@ -48,6 +51,7 @@ public class EditGallery extends JFrame {
 	GalleryDelegate galleryDelegate;
 	String filename, encodedImage;
 	byte[] imageInByte;
+	byte[] decoded;
 	
 	/**
 	 * Create the frame.
@@ -85,11 +89,27 @@ public class EditGallery extends JFrame {
 	
 	public void populateFileds(GalleryModel gallery) {
 		tfTitle.setText(gallery.getTitle());
-		imageFileButton.setText(gallery.getImage());
+//imageFileButton.setText(gallery.getImage());
+//	 decoded = Base64.getDecoder().decode(gallery.getImage());
+//	 InputStream in = new ByteArrayInputStream(imageInByte);
+//	 BufferedImage bImageFromConvert;
+//		try {
+//			 bImageFromConvert = ImageIO.read(in);
+//		    ImageIcon image = new ImageIcon(bImageFromConvert);
+//			JLabel label = new JLabel("", image, JLabel.CENTER);
+//				
+//			panel.add( label,"wrap");
+//		    
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
 	}
  	
 	public EditGallery(GalleryDelegate galleryDelegate) {
 	    this.galleryDelegate = galleryDelegate;
+	    
 		setUpFrame();
 	}
 	
@@ -137,9 +157,11 @@ public class EditGallery extends JFrame {
 					  JFileChooser chooser = new JFileChooser();
 					    chooser.showOpenDialog(null);
 					    File f = chooser.getSelectedFile();
+					    if(f!=null)
+					    {
 					    filename = f.getAbsolutePath();
 					    imageFileButton.setText(filename);
-					    
+					    }
 
 					
 				}
