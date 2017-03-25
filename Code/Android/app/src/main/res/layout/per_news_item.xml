@@ -31,6 +31,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="30dp"
+        android:maxLines="2"
+        android:maxLength="56"
         android:textStyle="bold" />
     <ImageView
         android:id="@+id/image"
@@ -42,21 +44,37 @@
         android:layout_weight="1.32">
     </ImageView>
 
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textSize="15dp"
-        android:textAlignment="center" />
-    <Button
-        android:id="@+id/newsLink"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/shape"
-        android:textColor="@android:color/background_light"
-        android:textStyle="bold"
-        android:text="Click here to read more"
-        android:onClick="onClick"/>
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:textAlignment="center"
+            android:maxLines="6"
+            android:maxLength="342"
+            android:ellipsize="end" />
+
+        <TextView
+            android:id="@+id/textspace"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:textAlignment="center"
+            android:text="                                                                                                                " />
+
+        <Button
+            android:id="@+id/newsLink"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/shape"
+            android:textColor="@android:color/background_light"
+            android:textStyle="bold"
+            android:text="Click here to read more"
+            android:onClick="onClick"
+            />
+
     </LinearLayout>
     </ScrollView>
+
 </RelativeLayout>
