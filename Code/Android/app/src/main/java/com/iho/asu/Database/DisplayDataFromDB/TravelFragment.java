@@ -10,11 +10,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.iho.asu.Database.Columns;
-import com.iho.asu.Database.CustomList2;
-import com.iho.asu.Database.DataBaseHelper;
 import com.iho.asu.Database.Tables.Travel;
 import com.iho.asu.R;
 
@@ -39,13 +38,14 @@ public class TravelFragment extends ListFragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(
                 R.layout.fragment_travel_lrn, container, false);
-        DataBaseHelper dbOpenHelper = new DataBaseHelper(this.getActivity(), DB_NAME);
-        database = dbOpenHelper.openDataBase();
+       // DataBaseHelper dbOpenHelper = new DataBaseHelper(this.getActivity(), DB_NAME);
+        //database = dbOpenHelper.openDataBase();
         travelItems.clear();
         travelTitle.clear();
         getTravelItem();
-        CustomList2 adapter = new
-                CustomList2(this.getActivity(), travelTitle);
+        //CustomList2 adapter = new
+                //CustomList2(this.getActivity(), travelTitle);
+        ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), R.layout.simplelist , travelTitle);
         this.setListAdapter(adapter);
         adapter.notifyDataSetChanged();
         return v;

@@ -7,6 +7,7 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.iho.asu.Database.Columns;
@@ -61,6 +62,7 @@ public class ViewActivity extends Activity implements View.OnClickListener {
             case R.id.lectureLink:
             case R.id.scienceLink:
             case R.id.travelLink:
+                Log.i("V_TravelLink: ", link);
                 startActivity(intent);
                 break;
             case R.id.registerEvent:
