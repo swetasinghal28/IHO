@@ -1,6 +1,7 @@
 package com.iho.asu.Database.DisplayDataFromDB;
 
 import android.app.ListFragment;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -62,6 +63,29 @@ public class GalleryFragment extends ListFragment {
         return v;
     }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        Log.i(TAG, " onConfigurationChanged");
+        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            Log.i(TAG, " ORIENTATION_LANDSCAPE");
+            galleryItems.clear();
+            galleryTitle.clear();
+            getGalleryJson();
+        }
+
+        else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Log.i(TAG, " ORIENTATION_LANDSCAPE");
+            galleryItems.clear();
+            galleryTitle.clear();
+            getGalleryItems();
+            CustomList adapter = new
+                    CustomList(this.getActivity(), galleryTitle, galleryItems);
+            this.setListAdapter(adapter);
+            adapter.notifyDataSetChanged();
+        }
+    }
+
     private void getGalleryJson() {
         Log.i(TAG, "getEventsJson");
 
@@ -70,7 +94,7 @@ public class GalleryFragment extends ListFragment {
                     @Override
                     public void onResponse(JSONArray result) {
 
-                        Log.i(TAG, "onResponse: Result = " + result.toString());
+                        Log.i(TAG, "onResponse: Result = ");
                         parseJSONResult(result);
                     }
                 },
@@ -132,7 +156,7 @@ public class GalleryFragment extends ListFragment {
                 img.setImage(Base64.decode(image, Base64.DEFAULT));
 
 
-                Log.i(TAG, i + ": " + img.toString());
+                //Log.i(TAG, i + ": " + img.toString());
 
                 gallery.add(img);
                 galleryItems.add(img.getImage());
