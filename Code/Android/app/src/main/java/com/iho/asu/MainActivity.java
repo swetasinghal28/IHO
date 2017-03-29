@@ -121,7 +121,12 @@ public class MainActivity extends Activity implements OnClickListener{
                 startActivity(intent);
                 break;
             case R.id.twButton:
-                uri = Uri.parse("https://twitter.com/LucyASUIHO");
+                uri = Uri.parse("https://twitter.com/HumanOriginsASU");
+                intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+                break;
+            case R.id.instaButton:
+                uri = Uri.parse("https://www.instagram.com/human_origins_asu/");
                 intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
                 break;
