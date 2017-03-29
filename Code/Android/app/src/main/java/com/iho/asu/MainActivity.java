@@ -106,12 +106,12 @@ public class MainActivity extends Activity implements OnClickListener{
                 startActivity(intent);
                 break;
             case R.id.linkToLocation:
-                uri = Uri.parse("https://www.google.com/maps/preview?q=951+South+Cady+Mall,+Tempe,+AZ&hl=en&ll=33.420231,-111.930749&spn=0.011158,0.014999&sll=33.41972,-111.934757&sspn=0.002933,0.002591&oq=951+South+Cady+Mall&hnear=951+S+Cady+Mall,+Tempe,+Maricopa,+Arizona+85281&t=m&z=16");
+                uri = Uri.parse("https://iho.asu.edu/contact-us");
                 intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
                 break;
             case R.id.linkToContact:
-                uri = Uri.parse("https://iho.asu.edu/contact/contact-us");
+                uri = Uri.parse("https://iho.asu.edu/contact-us");
                 intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
                 break;
