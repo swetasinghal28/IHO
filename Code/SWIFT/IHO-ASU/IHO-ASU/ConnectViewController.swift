@@ -46,8 +46,26 @@ class ConnectViewController: UITableViewController, MFMailComposeViewControllerD
         self.navigationItem.title = "Connect"
         
         
+        //toolbar
+        let label = UILabel(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(350), height: CGFloat(21)))
+        label.text = "ASU IHO 2017"
+        label.center = CGPoint(x: view.frame.midX, y: view.frame.height)
+        label.textAlignment = NSTextAlignment.center
+        label.textColor = UIColor.white
+        let toolbarTitle = UIBarButtonItem(customView: label)
+        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        self.toolbarItems = [flexible,toolbarTitle]
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setToolbarHidden(false, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setToolbarHidden(true, animated: false)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
