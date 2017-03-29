@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <ImageButton
+        android:layout_width="384dp"
+        android:layout_height="40dp"
+        android:id="@+id/customConnectBackButton"
+        android:background="@drawable/header_aaa"
+        android:onClick="onClick"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:id="@+id/anthropologistLayout"
+        android:background="@drawable/border"
+        android:layout_below="@+id/customConnectBackButton">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView1"
+            android:textSize="5dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@android:color/white"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="@android:color/white">
+
+            <ImageView
+                android:layout_width="351dp"
+                android:layout_height="145dp"
+                android:id="@+id/imageView"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/anthropologist"
+                />
+        </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2"
+            android:textSize="10dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@android:color/white"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/askananthropologist"
+            android:textSize="16dp"
+            android:autoLink="web"
+            android:linksClickable="true"
+            android:layout_gravity="left"
+            android:paddingRight="12dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            android:textSize="16dp"
+            android:layout_gravity="center_horizontal" />
+        <Button
+            android:id="@+id/visitAskAnAnthropologist"
+            android:layout_width="334dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.00"
+            android:background="@drawable/shape"
+            android:text="Visit AskAnAnthropologist"
+            android:textColor="@android:color/background_light"
+            android:textStyle="bold"
+            android:onClick="onClick"
+            android:layout_gravity="center_horizontal"/>
+
+    </LinearLayout>
+</RelativeLayout>

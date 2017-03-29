@@ -167,6 +167,11 @@ public class MainActivity extends Activity implements OnClickListener{
                 email.putExtra(Intent.EXTRA_SUBJECT, "IHO E-News Subscription");
                 startActivity(Intent.createChooser(email, "Choose an Email Client:"));
                 break;
+            case R.id.connect4:
+                fragment = new Connect(R.layout.fragment_anthropologist);
+                fragmentTransaction.replace(R.id.main_layout, fragment);
+                fragmentTransaction.commit();
+                break;
             case R.id.watchNow:
                 uri = Uri.parse("http://video.nationalgeographic.com/video/news/112811-prehistoric-caves-ngtoday");
                 intent = new Intent(Intent.ACTION_VIEW, uri);
@@ -179,6 +184,11 @@ public class MainActivity extends Activity implements OnClickListener{
                 break;
             case R.id.visitBecomingHumanBtn:
                 uri = Uri.parse("http://www.becominghuman.org/");
+                intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+                break;
+            case R.id.visitAskAnAnthropologist:
+                uri = Uri.parse("https://askananthropologist.asu.edu/");
                 intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
                 break;
