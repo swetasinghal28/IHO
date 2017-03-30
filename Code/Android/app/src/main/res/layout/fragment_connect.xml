@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    >
+    android:background="@android:color/white">
 
     <ImageButton
         android:layout_width="384dp"
@@ -16,12 +16,13 @@
         android:layout_alignParentLeft="true" />
 
     <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@+id/customBackButton"
         android:id="@+id/scrollView2"
-        android:background="@android:color/background_light">
+        android:background="@android:color/background_light"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -42,6 +43,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:id="@+id/connect4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape"
+            android:text="Ask An Anthropologist                            >"
+            android:textColor="@android:color/background_light"
+            android:textStyle="bold"
+            android:onClick="onClick" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4"
             android:layout_gravity="center_horizontal" />
 
         <Button
@@ -81,8 +98,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Like us on Facebook, follow us on Twitter! "
-            android:textSize="20dp" />
+            android:text="Like us on Facebook, follow us on Twitter and Instagram! "
+            android:textSize="20dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="11dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -90,23 +109,36 @@
             android:orientation="horizontal"
             android:visibility="visible"
             android:padding="@dimen/activity_horizontal_margin"
-            >
+            android:weightSum="1">
         <ImageButton
-            android:layout_width="149dp"
-            android:layout_height="149dp"
+            android:layout_width="100dp"
             android:id="@+id/fbButton"
             android:background="@drawable/fb"
-            android:onClick="onClick" />
+            android:onClick="onClick"
+            android:layout_height="100dp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="         "/>
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="151dp"
-            android:id="@+id/twButton"
-            android:background="@drawable/twitter"
-            android:onClick="onClick" />
+                android:text="        "/>
+
+            <ImageButton
+                android:id="@+id/twButton"
+                android:background="@drawable/twitter"
+                android:onClick="onClick"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="      "/>
+
+            <ImageButton
+                android:id="@+id/instaButton"
+                android:background="@drawable/insta"
+                android:onClick="onClick"
+                android:layout_width="102dp"
+                android:layout_height="103dp" />
     </LinearLayout>
 
     </LinearLayout>

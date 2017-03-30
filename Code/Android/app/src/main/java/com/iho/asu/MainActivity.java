@@ -106,12 +106,12 @@ public class MainActivity extends Activity implements OnClickListener{
                 startActivity(intent);
                 break;
             case R.id.linkToLocation:
-                uri = Uri.parse("https://www.google.com/maps/preview?q=951+South+Cady+Mall,+Tempe,+AZ&hl=en&ll=33.420231,-111.930749&spn=0.011158,0.014999&sll=33.41972,-111.934757&sspn=0.002933,0.002591&oq=951+South+Cady+Mall&hnear=951+S+Cady+Mall,+Tempe,+Maricopa,+Arizona+85281&t=m&z=16");
+                uri = Uri.parse("https://iho.asu.edu/contact-us");
                 intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
                 break;
             case R.id.linkToContact:
-                uri = Uri.parse("https://iho.asu.edu/contact/contact-us");
+                uri = Uri.parse("https://iho.asu.edu/contact-us");
                 intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
                 break;
@@ -121,7 +121,12 @@ public class MainActivity extends Activity implements OnClickListener{
                 startActivity(intent);
                 break;
             case R.id.twButton:
-                uri = Uri.parse("https://twitter.com/LucyASUIHO");
+                uri = Uri.parse("https://twitter.com/HumanOriginsASU");
+                intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+                break;
+            case R.id.instaButton:
+                uri = Uri.parse("https://www.instagram.com/human_origins_asu/");
                 intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
                 break;
@@ -167,6 +172,11 @@ public class MainActivity extends Activity implements OnClickListener{
                 email.putExtra(Intent.EXTRA_SUBJECT, "IHO E-News Subscription");
                 startActivity(Intent.createChooser(email, "Choose an Email Client:"));
                 break;
+            case R.id.connect4:
+                fragment = new Connect(R.layout.fragment_anthropologist);
+                fragmentTransaction.replace(R.id.main_layout, fragment);
+                fragmentTransaction.commit();
+                break;
             case R.id.watchNow:
                 uri = Uri.parse("http://video.nationalgeographic.com/video/news/112811-prehistoric-caves-ngtoday");
                 intent = new Intent(Intent.ACTION_VIEW, uri);
@@ -179,6 +189,11 @@ public class MainActivity extends Activity implements OnClickListener{
                 break;
             case R.id.visitBecomingHumanBtn:
                 uri = Uri.parse("http://www.becominghuman.org/");
+                intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+                break;
+            case R.id.visitAskAnAnthropologist:
+                uri = Uri.parse("https://askananthropologist.asu.edu/");
                 intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
                 break;

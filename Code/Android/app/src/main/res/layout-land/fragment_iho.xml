@@ -2,7 +2,8 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
 
     <ImageButton
         android:layout_width="384dp"
@@ -29,13 +30,14 @@
         android:baselineAligned="false"
         android:background="@drawable/border"
         android:visibility="visible"
-        android:layout_below="@+id/customConnectBackButton">
+        android:layout_below="@+id/customConnectBackButton"
+        android:weightSum="1">
         <Button
             android:id="@+id/website"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/shape"
-            android:text="Website"
+            android:text="Offical Website"
             android:textColor="@android:color/background_light"
             android:textStyle="bold"
             android:onClick="onClick" />
@@ -50,24 +52,36 @@
             android:id="@+id/textView"
             android:textSize="22dp"
             android:textStyle="bold" />
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textIsSelectable="false"
+            android:textSize="10dp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/locationInfo"
             android:textIsSelectable="false"
             android:textSize="16dp" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Link to location"
+            android:textIsSelectable="false"
+            android:textSize="10dp" />
+        <TextView
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:text="IHO Location Page"
+            android:onClick="onClick"
             android:id="@+id/linkToLocation"
             android:textStyle="bold"
-            android:textIsSelectable="true"
-            android:onClick="onClick"
-            android:textColor="@android:color/holo_blue_dark"
-            android:textSize="20dp" />
+            android:textColor="@android:color/white"
+            android:background="@drawable/shape"
+            android:paddingLeft="10dp"
+            android:textSize="18dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textIsSelectable="true"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -80,48 +94,39 @@
             android:id="@+id/textView2"
             android:textSize="22dp"
             android:textStyle="bold" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textIsSelectable="false"
+            android:textSize="10dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
             android:text="Phone 480.727.6580 \nFax 480.727.6570 \nEmail iho@asu.edu\n"
             android:textIsSelectable="false"
-            android:textSize="16dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mailing Address"
-            android:textStyle="bold"
-            android:textIsSelectable="true"
-            android:onClick="onClick"
-            android:textSize="20dp" />
-
+            android:textSize="16dp"
+            android:layout_weight="0.16" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textIsSelectable="false"
-            android:text="ASU Institute of Human Origins PO Box 874101 Tempe, AZ 85287-4101"
-            android:textSize="16dp" />
+            android:textSize="10dp" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="175dp"
             android:layout_height="wrap_content"
-            android:textIsSelectable="false"
             android:id="@+id/linkToContact"
-            android:text="Link to Contact"
-            android:textColor="@android:color/holo_blue_dark"
-            android:textStyle="bold"
+            android:text="IHO Contact Page"
             android:onClick="onClick"
-            android:textSize="20dp" />
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:background="@drawable/shape"
+            android:paddingLeft="10dp"
+            android:textSize="18dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textIsSelectable="true"/>
 
     </LinearLayout>
     </ScrollView>
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/footer"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true" />
-    </RelativeLayout>
+</RelativeLayout>

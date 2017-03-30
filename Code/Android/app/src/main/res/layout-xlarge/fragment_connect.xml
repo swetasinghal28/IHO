@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    >
+    android:background="@android:color/white">
 
     <ImageButton
         android:layout_width="384dp"
@@ -46,6 +46,23 @@
             android:layout_gravity="center_horizontal" />
 
         <Button
+            android:id="@+id/connect4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape"
+            android:text="Ask An Anthropologist                                                                                         >"
+            android:textColor="@android:color/background_light"
+            android:textStyle="bold"
+            android:onClick="onClick"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
             android:id="@+id/connect2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,8 +101,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Like us on Facebook, follow us on Twitter! "
-            android:textSize="24dp" />
+            android:text="Like us on Facebook, follow us on Twitter and Instagram! "
+            android:textSize="24dp"
+            android:paddingLeft="20dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -95,23 +113,38 @@
             android:padding="@dimen/activity_horizontal_margin"
             android:weightSum="1">
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="170dp"
+            android:layout_height="220dp"
             android:id="@+id/fbButton"
             android:background="@drawable/fb"
-            android:onClick="onClick" />
+            android:onClick="onClick"
+            android:layout_weight="0.33"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="         "/>
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/twButton"
-            android:background="@drawable/twitter"
-            android:onClick="onClick"
-            android:layout_weight="0.71" />
-    </LinearLayout>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/twButton"
+                android:background="@drawable/twitter"
+                android:onClick="onClick"
+                android:layout_weight="0.33" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="         "/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/instaButton"
+                android:background="@drawable/insta"
+                android:onClick="onClick"
+                android:layout_weight="0.33" />
+        </LinearLayout>
 
     </LinearLayout>
 
