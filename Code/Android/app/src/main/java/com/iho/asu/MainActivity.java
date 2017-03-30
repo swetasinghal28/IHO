@@ -101,7 +101,7 @@ public class MainActivity extends Activity implements OnClickListener{
                 fragmentTransaction.commit();
                 break;
             case R.id.investButton:
-                uri = Uri.parse("https://securelb.imodules.com/s/1469/foundation/Inner2Columns3.aspx?sid=1469&gid=2&pgid=426&cid=1155&bledit=1&dids=216");
+                uri = Uri.parse("https://iho.asu.edu/support-iho");
                 intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
                 break;
