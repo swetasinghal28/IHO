@@ -43,6 +43,10 @@
                     android:textAlignment="textStart"
                     android:textSize="16dp" />
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_gravity="center_horizontal" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -55,6 +59,10 @@
                     android:layout_gravity="center"
                     android:background="@drawable/line" />
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_gravity="center_horizontal" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -62,7 +70,29 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="ASU Team"
+                    android:text="ASU Team—Version 2"
+                    android:textStyle="bold"
+                    android:textSize="20dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/asuTeamInfo2"
+                    android:layout_gravity="center"
+                    android:textAlignment="textStart"
+                    android:textSize="16dp" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_gravity="center_horizontal" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ASU Team—Version 1"
                     android:textStyle="bold"
                     android:textSize="20dp" />
                 <TextView
@@ -73,6 +103,32 @@
                     android:textAlignment="textStart"
                     android:textSize="16dp" />
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_gravity="center_horizontal" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mobile App Team"
+                    android:textStyle="bold"
+                    android:textSize="20dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mobileAppTeam"
+                    android:layout_gravity="center"
+                    android:textAlignment="textStart"
+                    android:textSize="16dp" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_gravity="center_horizontal" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -85,6 +141,10 @@
                     android:layout_gravity="center"
                     android:background="@drawable/line" />
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_gravity="center_horizontal" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -96,14 +156,10 @@
                     android:layout_gravity="center"
                     android:textAlignment="textStart"
                     android:textSize="20dp"
-                    android:text="@string/creditsLucy" />
+                    android:text="@string/creditsLucy"
+                    android:textStyle="bold|italic"/>
             </LinearLayout>
         </LinearLayout>
         </ScrollView>
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/imageView5"
-        android:background="@drawable/footer"
-        android:layout_below="@+id/scrollView2" />
+
 </RelativeLayout>

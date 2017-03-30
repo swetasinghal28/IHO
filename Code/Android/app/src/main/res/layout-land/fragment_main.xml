@@ -145,20 +145,21 @@
                 android:id="@+id/webView"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="111dp" />
+                android:layout_marginBottom="111dp"
+                android:layout_gravity="center_vertical" />
 
         </LinearLayout>
         </ScrollView>
 
     <ImageButton
         android:layout_width="wrap_content"
-        android:layout_height="25dp"
         android:id="@+id/creditsButton"
         android:background="@drawable/credits"
         android:onClick="onClick"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_height="25dp" />
 
 
 </RelativeLayout>
