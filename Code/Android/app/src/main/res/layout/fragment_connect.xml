@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:background="@android:color/white">
 
+
     <ImageButton
         android:layout_width="384dp"
         android:layout_height="40dp"
@@ -16,13 +17,12 @@
         android:layout_alignParentLeft="true" />
 
     <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_below="@+id/customBackButton"
         android:id="@+id/scrollView2"
-        android:background="@android:color/background_light"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:background="@android:color/background_light">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -99,7 +99,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Like us on Facebook, follow us on Twitter and Instagram! "
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:paddingLeft="16dp"
             android:paddingRight="11dp" />
 
