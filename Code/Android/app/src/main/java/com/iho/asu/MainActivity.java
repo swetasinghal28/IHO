@@ -232,6 +232,8 @@ public class MainActivity extends Activity implements OnClickListener{
                 fragmentTransaction.replace(R.id.field_layout, fragment);
                 fragmentTransaction.commit();
                 break;
+            case R.id.studentBlogLayout:
+            case R.id.blogTextView:
             case R.id.fn4:
                 uri = Uri.parse("http://asuiho.wordpress.com/");
                 intent = new Intent(Intent.ACTION_VIEW, uri);
