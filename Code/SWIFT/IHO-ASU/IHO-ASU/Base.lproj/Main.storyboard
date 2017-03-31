@@ -580,7 +580,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell tag="100" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="imageCell" rowHeight="484" id="jQE-Cf-fRW">
+                            <tableViewCell tag="100" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="imageCell" rowHeight="484" id="jQE-Cf-fRW" customClass="GalleryTableViewCell" customModule="IHO_ASU" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="56" width="375" height="484"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jQE-Cf-fRW" id="eRp-qw-xqc">
@@ -602,6 +602,10 @@
                                     </subviews>
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="imageview" destination="nip-Ju-Q90" id="Xem-4f-apn"/>
+                                    <outlet property="textlabel" destination="aIj-3o-5V8" id="q6G-CY-9el"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
