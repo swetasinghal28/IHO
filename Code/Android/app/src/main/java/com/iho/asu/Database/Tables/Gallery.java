@@ -8,6 +8,7 @@ public class Gallery {
     private byte[] image;
     private String imageCaption;
     private String lectEmail;
+    private Integer order;
 
     public void setImageCaption(String imageCaption) {
         this.imageCaption = imageCaption;
@@ -44,6 +45,14 @@ public class Gallery {
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder("");
-        return sb.append(imageCaption).append(" ").toString();
+        return sb.append(order.toString()).append(imageCaption).append(" ").toString();
+    }
+
+    public Integer getOrder() {
+        return order;
+    }
+
+    public void setOrder(Integer order) {
+        this.order = order;
     }
 }

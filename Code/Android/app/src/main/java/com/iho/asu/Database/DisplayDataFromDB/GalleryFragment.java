@@ -16,6 +16,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.google.gson.Gson;
 import com.iho.asu.AppController;
+import com.iho.asu.Comparators.ImageComparator;
 import com.iho.asu.Containers.NewsContainer;
 import com.iho.asu.Database.CustomList;
 import com.iho.asu.Database.DataBaseHelper;
@@ -29,11 +30,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static com.iho.asu.IHOConstants.GALLERY_URL;
 import static com.iho.asu.IHOConstants.IMAGE;
 import static com.iho.asu.IHOConstants.IMAGE_ID;
+import static com.iho.asu.IHOConstants.IMAGE_ORDER;
 import static com.iho.asu.IHOConstants.IMAGE_TITLE;
 
 public class GalleryFragment extends ListFragment {
@@ -87,7 +90,7 @@ public class GalleryFragment extends ListFragment {
     }
 
     private void getGalleryJson() {
-        Log.i(TAG, "getEventsJson");
+        Log.i(TAG, "getGalleryJson");
 
         JsonArrayRequest request = new JsonArrayRequest(GALLERY_URL.toString(),
                 new Response.Listener<JSONArray>() {
@@ -131,7 +134,7 @@ public class GalleryFragment extends ListFragment {
         try {
 
             Log.i(TAG, "parseJSONResult");
-            String id = null, image = null, title = null;
+            String id = null, image = null, title = null, order = null;
 
 
             List<Gallery> gallery = new ArrayList<Gallery>();
@@ -150,15 +153,25 @@ public class GalleryFragment extends ListFragment {
                     image = obj.getString(IMAGE);
                 }
 
+                if (!obj.isNull(IMAGE_ORDER)) {
+                    order = obj.getString(IMAGE_ORDER);
+                }
+
                 Gallery img = new Gallery();
                 img.setId(id);
                 img.setImageCaption(title);
                 img.setImage(Base64.decode(image, Base64.DEFAULT));
-
+                img.setOrder(Integer.parseInt(order));
 
                 //Log.i(TAG, i + ": " + img.toString());
 
                 gallery.add(img);
+
+            }
+
+            Collections.sort(gallery, new ImageComparator());
+            for(Gallery img: gallery) {
+                Log.i(TAG, img.toString());
                 galleryItems.add(img.getImage());
                 galleryTitle.add(img.getImageCaption());
             }

@@ -189,7 +189,7 @@ public class LecturerFragment extends ListFragment {
                 lecturers.put(name,l);
             }
 
-            Collections.sort(lectList, Collections.<Lecturer>reverseOrder(Collections.reverseOrder(new LecturerComparator())));
+            Collections.sort(lectList, new LecturerComparator());
             for (Lecturer lect: lectList) {
                 lecturerNames.add(lect.getName());
             }
