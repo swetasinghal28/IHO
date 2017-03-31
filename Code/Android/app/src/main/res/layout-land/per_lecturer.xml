@@ -42,19 +42,32 @@
         android:layout_marginTop="5dp"
         android:layout_weight="1.32">
     </ImageView>
-
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:textAlignment="center" />
     <TextView
         android:id="@+id/title"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="15dp"
         android:textAlignment="center" />
-
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:textAlignment="center" />
     <TextView
         android:id="@+id/bio"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="15dp" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:textAlignment="center" />
     <Button
         android:id="@+id/lectureLink"
         android:layout_width="match_parent"

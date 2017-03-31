@@ -4,13 +4,14 @@ package com.iho.asu.Database.Tables;
  * Created by Barathi on 7/4/2014.
  */
 public class Lecturer {
-    private long id;
+    private String id;
     private String name;
     private String title;
     private String bio;
     private String link;
     private byte[] image;
     private String email;
+    private Integer order;
 
     public String getEmail() {
         return email;
@@ -20,11 +21,11 @@ public class Lecturer {
         this.email = email;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -66,5 +67,18 @@ public class Lecturer {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder("");
+        return sb.append(order.toString()).append(" ").append(name).toString();
+    }
+    public Integer getOrder() {
+        return order;
+    }
+
+    public void setOrder(Integer order) {
+        this.order = order;
     }
 }

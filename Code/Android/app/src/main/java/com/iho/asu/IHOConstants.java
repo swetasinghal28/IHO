@@ -8,8 +8,8 @@ public class IHOConstants {
     public static final String BASE_URL = "http://107.170.239.62:3000/";
     public static final String NEWS_URL = "http://107.170.239.62:3000/newsobjects";
     public static final String EVENTS_URL = "http://107.170.239.62:3000/eventobjects";
-    public static final String LECTURER_URL = "http://107.170.239.62:3000/newscienceobjects";
-    public static final String SCIENCE_URL = "http://107.170.239.62:3000/lectureobjects";
+    public static final String LECTURER_URL = "http://107.170.239.62:3000/lectureobjects";
+    public static final String SCIENCE_URL = "http://107.170.239.62:3000/newscienceobjects";
     public static final String GALLERY_URL = "http://107.170.239.62:3000/galleryobjects";
     public static final String TRAVEL_URL = "https://iho.asu.edu/outreach/travel";
 
@@ -32,6 +32,15 @@ public class IHOConstants {
     public static final String IMAGE_TITLE = "title";
     public static final String IMAGE_ID = "id";
     public static final String IMAGE = "image";
+
+    public static final String LECTURER_TITLE = "title";
+    public static final String LECTURER_IMAGE = "image";
+    public static final String LECTURER_ID = "id";
+    public static final String LECTURER_LINK = "link";
+    public static final String LECTURER_BIO = "bio";
+    public static final String LECTURER_EMAIL = "email";
+    public static final String LECTURER_NAME = "name";
+    public static final String LECTURER_ORDER = "order";
 
 
 
