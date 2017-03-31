@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:id="@+id/main_fragment"
-    >
+    android:background="@android:color/white">
     <ImageButton
         android:layout_width="384dp"
         android:layout_height="96dp"

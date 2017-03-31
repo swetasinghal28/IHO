@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/lucy_fragment"
-    >
+    android:background="@android:color/white">
     <Button
         android:layout_width="384dp"
         android:layout_height="40dp"
