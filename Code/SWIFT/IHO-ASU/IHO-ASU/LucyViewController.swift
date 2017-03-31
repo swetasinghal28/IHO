@@ -1,21 +1,30 @@
 //
-//  FieldViewController.swift
+//  LucyViewController.swift
 //  IHO-ASU
 //
-//  Created by Sweta Singhal on 2/9/17.
+//  Created by Sweta Singhal on 3/30/17.
 //  Copyright © 2017 Sweta Singhal. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-class FieldViewController: UITableViewController {
-
+class LucyViewController: UIViewController {
+    
+    var htmlpath: String? = nil
+    
+    @IBOutlet weak var lucyLogo: UIWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
-        self.navigationItem.title = "Field Notes"
+        // Lucy LOGO
+        htmlpath = Bundle.main.path(forResource: "lucy", ofType: "html")
+        var html = try? String(contentsOfFile: htmlpath!, encoding: String.Encoding.utf8)
+        var baseURL = URL(fileURLWithPath: "\(Bundle.main.bundlePath)")
+        self.lucyLogo.scalesPageToFit = false
+        self.lucyLogo.loadHTMLString(html!, baseURL: baseURL)
+        self.lucyLogo.scrollView.isScrollEnabled = false
         
         
         //toolbar
@@ -41,24 +50,12 @@ class FieldViewController: UITableViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.tableView.deselectRow(at: self.tableView.indexPathForSelectedRow!, animated: true)
-        
-        if indexPath.section == 3 {
-            
-            
-            let url = URL(string: "https://asuiho.wordpress.com")!
-            
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            } else {
-                UIApplication.shared.openURL(url)
-            }
-            
-        }
-    }
-
-
+    
+    
+    
+    
 }
+

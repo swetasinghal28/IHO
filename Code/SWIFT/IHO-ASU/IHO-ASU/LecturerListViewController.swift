@@ -1,20 +1,18 @@
 //
-//  NewsViewController.swift
+//  LecturerListViewController.swift
 //  IHO-ASU
 //
-//  Created by Sweta Singhal on 2/13/17.
+//  Created by Sweta Singhal on 3/30/17.
 //  Copyright © 2017 Sweta Singhal. All rights reserved.
-//
 
 import UIKit
 import CoreData
 
-class EventsViewController: UITableViewController {
+class LecturerListViewController: UITableViewController {
+    @IBOutlet var lecturerTableView: UITableView!
     
-    @IBOutlet var eventsTableView: UITableView!
     var urlString:String = ""
-    //var news: [News]? = []
-    var eventsList:[String : Events] = [String : Events]()
+    var lecturerList:[String : Lecturer] = [String : Lecturer]()
     var names:[String]=[String]()
     //    var NumberOfRows = 0
     //    var newsList = [NSManagedObject]()
@@ -28,7 +26,7 @@ class EventsViewController: UITableViewController {
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
-        self.navigationItem.title = "Events"
+        self.navigationItem.title = "Lecturers"
         
         // getting URL string from Info.plist
         //        if let infoPlist = Bundle.main.infoDictionary {
@@ -38,7 +36,7 @@ class EventsViewController: UITableViewController {
         //            NSLog("error getting urlString from info.plist")
         //        }
         
-        let url = URL(string:"http://107.170.239.62:3000/eventobjects" )
+        let url = URL(string:"http://107.170.239.62:3000/lectureobjects" )
         
         let task = URLSession.shared.dataTask(with: url!){ (data, response, error) in
             if error != nil
@@ -69,30 +67,30 @@ class EventsViewController: UITableViewController {
                         
                         
                         
-                        if let eventsFromJSON = myJSON as? [[String: AnyObject]]{
-                            print("eventsFromJSON", eventsFromJSON)
-                            for event in eventsFromJSON{
-                                let eventsObject = Events()
-                                if let title = event["title"] as? String,let desc = event["desc"] as? String,let id = event["id"] as? String,let date = event["date"] as? String, let place = event["place"] as? String, let location = event["location"] as? String, let regURL = event["regURL"] as? String{
-                                    eventsObject.id = id
-                                    eventsObject.title = title
-                                    eventsObject.desc = desc
-                                    eventsObject.place = place
-                                    eventsObject.regURL = regURL
-                                    eventsObject.date = date
-                                    eventsObject.location = location
-                                    self.names.append(eventsObject.title)
+                        if let lecturerFromJSON = myJSON as? [[String: AnyObject]]{
+                            print("lecturerFromJSON", lecturerFromJSON)
+                            for lecturer in lecturerFromJSON{
+                                let lecturerObject = Lecturer()
+                                if let title = lecturer["title"] as? String,let bio = lecturer["bio"] as? String,let id = lecturer["id"] as? String,let image = lecturer["image"] as? String, let link = lecturer["link"] as? String, let name = lecturer["name"] as? String, let email = lecturer["email"] as? String{
+                                    lecturerObject.id = id
+                                    lecturerObject.title = title
+                                    lecturerObject.bio = bio
+                                    lecturerObject.image = image
+                                    lecturerObject.link = link
+                                    lecturerObject.name = name
+                                    lecturerObject.email = email
+                                    self.names.append(lecturerObject.title)
                                     //print(title)
                                     
                                 }
                                 //self.news?.append(newsObject)
-                                self.eventsList[eventsObject.title] = eventsObject
+                                self.lecturerList[lecturerObject.title] = lecturerObject
                             }
                         }
                         
                         //print (self.news)
                         //self.tableView.reloadData()
-                        self.eventsTableView.reloadData()
+                        self.lecturerTableView.reloadData()
                         
                         
                     }
@@ -105,45 +103,6 @@ class EventsViewController: UITableViewController {
             
         }
         task.resume()
-        
-        
-        //        self.names.removeAll()
-        //        if let infoPlist = Bundle.main.infoDictionary {
-        //            self.urlString = ((infoPlist["ServerURLString"]) as?  String!)!
-        //            NSLog("The default urlString from info.plist is \(self.urlString)")
-        //        } else {
-        //            NSLog("error getting urlString from info.plist")
-        //        }
-        //        // These vars are used to access the Movie and Genre entities
-        //        appDel = (UIApplication.shared.delegate as! AppDelegate)
-        //        mContext = appDel!.managedObjectContext
-        //        let selectRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "title")
-        //        do{
-        //            let results = try mContext!.fetch(selectRequest)
-        //            newsList = results as! [NSManagedObject]
-        //            NSLog("Trying to see NewsList\(newsList)")
-        //        } catch let error as NSError{
-        //            NSLog("Error selecting all movies: \(error)")
-        //        }
-        //        if newsList.count > 0 {
-        //            for news in newsList{
-        //                if(news.value(forKey: "title") != nil){
-        //                    let title:String = (news.value(forKey: "title") as? String)!
-        //                    self.names.append(title)
-        //                }
-        //            }
-        //        }
-        //self.tableview.reloadData()
-        
-        
-        
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
         
         //toolbar
         let label = UILabel(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(350), height: CGFloat(21)))
@@ -197,7 +156,7 @@ class EventsViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = eventsTableView.dequeueReusableCell(withIdentifier: "Events Cell", for: indexPath)
+        let cell = lecturerTableView.dequeueReusableCell(withIdentifier: "Lecturer Cell", for: indexPath)
         
         // Configure the cell...
         cell.textLabel?.text = self.names[indexPath.row]
@@ -256,27 +215,28 @@ class EventsViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         NSLog("seque identifier is \(segue.identifier)")
-        if segue.identifier == "EventsDetail" {
-            let viewController:EventsDetailViewController = segue.destination as! EventsDetailViewController
+        if segue.identifier == "LecturerDetail" {
+            let viewController:LecturerDetailViewController = segue.destination as! LecturerDetailViewController
             let indexPath = self.tableView.indexPathForSelectedRow!
             
             //let moviedata = self.tableView.indexPathForSelectedRow
             
             // let aMovie = movieLib.movies[movieLib.names[indexPath.row]]! as MovieDescription
             let title = self.names[(indexPath.row)]
-            let eventsObjectToBeSend = eventsList[title]! as Events
+            let lecturerObjectToBeSend = lecturerList[title]! as Lecturer
             
             //print( "Trying to print selected news object ", newsList[title]?.desc ?? "No value" , title)
             
             
-            viewController.eTitle = title
-            viewController.eventDesc = eventsObjectToBeSend.desc
-            viewController.eventId = eventsObjectToBeSend.id
-            viewController.eventPlace = eventsObjectToBeSend.place
-            viewController.eventRegURL = eventsObjectToBeSend.regURL
-            viewController.eventLocation = eventsObjectToBeSend.location
-            viewController.eventDate = eventsObjectToBeSend.date
+            viewController.newsTitle = title
+            viewController.newsBio = lecturerObjectToBeSend.bio
+            viewController.newsId = lecturerObjectToBeSend.id
+            viewController.newsImage = lecturerObjectToBeSend.image
+            viewController.newsLink = lecturerObjectToBeSend.link
+            viewController.newsName = lecturerObjectToBeSend.name
+            viewController.newsEmail = lecturerObjectToBeSend.email
         }
     }
     
 }
+

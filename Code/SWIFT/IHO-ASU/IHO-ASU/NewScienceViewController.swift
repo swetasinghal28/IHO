@@ -1,20 +1,21 @@
 //
-//  NewsViewController.swift
+//  NewScienceViewController.swift
 //  IHO-ASU
 //
-//  Created by Sweta Singhal on 2/13/17.
+//  Created by Sweta Singhal on 3/30/17.
 //  Copyright © 2017 Sweta Singhal. All rights reserved.
 //
 
+import Foundation
 import UIKit
-import CoreData
 
-class EventsViewController: UITableViewController {
+
+class NewScienceViewController: UITableViewController {
     
-    @IBOutlet var eventsTableView: UITableView!
+    @IBOutlet var newScienceTableView: UITableView!
     var urlString:String = ""
     //var news: [News]? = []
-    var eventsList:[String : Events] = [String : Events]()
+    var newsList:[String : Science] = [String : Science]()
     var names:[String]=[String]()
     //    var NumberOfRows = 0
     //    var newsList = [NSManagedObject]()
@@ -28,7 +29,7 @@ class EventsViewController: UITableViewController {
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
-        self.navigationItem.title = "Events"
+        self.navigationItem.title = "Science"
         
         // getting URL string from Info.plist
         //        if let infoPlist = Bundle.main.infoDictionary {
@@ -38,7 +39,7 @@ class EventsViewController: UITableViewController {
         //            NSLog("error getting urlString from info.plist")
         //        }
         
-        let url = URL(string:"http://107.170.239.62:3000/eventobjects" )
+        let url = URL(string:"http://107.170.239.62:3000/newscienceobjects" )
         
         let task = URLSession.shared.dataTask(with: url!){ (data, response, error) in
             if error != nil
@@ -69,30 +70,27 @@ class EventsViewController: UITableViewController {
                         
                         
                         
-                        if let eventsFromJSON = myJSON as? [[String: AnyObject]]{
-                            print("eventsFromJSON", eventsFromJSON)
-                            for event in eventsFromJSON{
-                                let eventsObject = Events()
-                                if let title = event["title"] as? String,let desc = event["desc"] as? String,let id = event["id"] as? String,let date = event["date"] as? String, let place = event["place"] as? String, let location = event["location"] as? String, let regURL = event["regURL"] as? String{
-                                    eventsObject.id = id
-                                    eventsObject.title = title
-                                    eventsObject.desc = desc
-                                    eventsObject.place = place
-                                    eventsObject.regURL = regURL
-                                    eventsObject.date = date
-                                    eventsObject.location = location
-                                    self.names.append(eventsObject.title)
+                        if let newsFromJSON = myJSON as? [[String: AnyObject]]{
+                            print("newsFromJSON", newsFromJSON)
+                            for news in newsFromJSON{
+                                let newsObject = Science()
+                                if let title = news["title"] as? String,let desc = news["desc"] as? String,let id = news["id"] as? String,let link = news["link"] as? String{
+                                    newsObject.id = id
+                                    newsObject.title = title
+                                    newsObject.desc = desc
+                                    newsObject.link = link
+                                    self.names.append(newsObject.title)
                                     //print(title)
                                     
                                 }
                                 //self.news?.append(newsObject)
-                                self.eventsList[eventsObject.title] = eventsObject
+                                self.newsList[newsObject.title] = newsObject
                             }
                         }
                         
                         //print (self.news)
                         //self.tableView.reloadData()
-                        self.eventsTableView.reloadData()
+                        self.newScienceTableView.reloadData()
                         
                         
                     }
@@ -193,11 +191,28 @@ class EventsViewController: UITableViewController {
     //    }
     
     
-    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: self.tableView.indexPathForSelectedRow!, animated: true)
+        //var info: Science? = (names[indexPath.row] as? Science)
+        
+        let title = self.names[(indexPath.row)]
+        let scienceObjectToBeSend = newsList[title]! as Science
+        
+        
+        let url = URL(string: scienceObjectToBeSend.link)!
+        
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+
+        //UIApplication.shared.openURL(URL(string: scienceObjectToBeSend.link)!)
+    }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = eventsTableView.dequeueReusableCell(withIdentifier: "Events Cell", for: indexPath)
+        let cell = newScienceTableView.dequeueReusableCell(withIdentifier: "News Cell", for: indexPath)
         
         // Configure the cell...
         cell.textLabel?.text = self.names[indexPath.row]
@@ -252,31 +267,30 @@ class EventsViewController: UITableViewController {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
      }
-     */
+ 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         NSLog("seque identifier is \(segue.identifier)")
-        if segue.identifier == "EventsDetail" {
-            let viewController:EventsDetailViewController = segue.destination as! EventsDetailViewController
+        if segue.identifier == "NewsDetail" {
+            let viewController:NewsDetailViewController = segue.destination as! NewsDetailViewController
             let indexPath = self.tableView.indexPathForSelectedRow!
             
             //let moviedata = self.tableView.indexPathForSelectedRow
             
             // let aMovie = movieLib.movies[movieLib.names[indexPath.row]]! as MovieDescription
             let title = self.names[(indexPath.row)]
-            let eventsObjectToBeSend = eventsList[title]! as Events
+            let newsObjectToBeSend = newsList[title]! as News
             
             //print( "Trying to print selected news object ", newsList[title]?.desc ?? "No value" , title)
             
             
-            viewController.eTitle = title
-            viewController.eventDesc = eventsObjectToBeSend.desc
-            viewController.eventId = eventsObjectToBeSend.id
-            viewController.eventPlace = eventsObjectToBeSend.place
-            viewController.eventRegURL = eventsObjectToBeSend.regURL
-            viewController.eventLocation = eventsObjectToBeSend.location
-            viewController.eventDate = eventsObjectToBeSend.date
+            viewController.newsTitle = title
+            viewController.newsDesc = newsObjectToBeSend.desc
+            viewController.newsId = newsObjectToBeSend.id
+            viewController.newsImage = newsObjectToBeSend.image
+            viewController.newsLink = newsObjectToBeSend.link
         }
     }
+ */
     
 }
