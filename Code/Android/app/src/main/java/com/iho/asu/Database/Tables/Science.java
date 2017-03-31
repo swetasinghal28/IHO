@@ -4,15 +4,15 @@ package com.iho.asu.Database.Tables;
  * Created by Barathi on 7/4/2014.
  */
 public class Science {
-    private long id;
+    private String id;
     private String title;
     private String link;
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -30,5 +30,10 @@ public class Science {
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    @Override
+    public String toString(){
+        return title;
     }
 }

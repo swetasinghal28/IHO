@@ -32,6 +32,7 @@ public class IHOConstants {
     public static final String IMAGE_TITLE = "title";
     public static final String IMAGE_ID = "id";
     public static final String IMAGE = "image";
+    public static final String IMAGE_ORDER = "order";
 
     public static final String LECTURER_TITLE = "title";
     public static final String LECTURER_IMAGE = "image";
@@ -41,6 +42,10 @@ public class IHOConstants {
     public static final String LECTURER_EMAIL = "email";
     public static final String LECTURER_NAME = "name";
     public static final String LECTURER_ORDER = "order";
+
+    public static final String SCIENCE_TITLE = "title";
+    public static final String SCIENCE_ID = "id";
+    public static final String SCIENCE_LINK = "link";
 
 
 

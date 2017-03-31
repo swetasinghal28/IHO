@@ -33,6 +33,12 @@
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:textStyle="bold" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:textAlignment="center" />
     <Button
         android:id="@+id/scienceLink"
         android:layout_width="match_parent"
