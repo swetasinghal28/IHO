@@ -1,17 +1,20 @@
 //
-//  NewsDetailViewController.swift
+//  LecturerDetailViewController.swift
 //  IHO-ASU
 //
-//  Created by Sweta Singhal on 3/14/17.
+//  Created by Sweta Singhal on 3/30/17.
 //  Copyright © 2017 Sweta Singhal. All rights reserved.
 //
 
 import Foundation
+import MessageUI
 import UIKit
 
-class NewsDetailViewController: UITableViewController {
+
+class LecturerDetailViewController: UITableViewController, MFMailComposeViewControllerDelegate {
     
-    @IBAction func readMoreLink(_ sender: Any) {
+    
+    @IBAction func linkReadMore(_ sender: Any) {
         let url = URL(string: newsLink!)!
         
         if #available(iOS 10.0, *) {
@@ -21,52 +24,84 @@ class NewsDetailViewController: UITableViewController {
         }
 
     }
-    @IBOutlet weak var readMoreButton: UIButton!
-    @IBOutlet weak var nTitle: UILabel!
-    @IBOutlet weak var nDesc: UILabel!
+    @IBAction func lEmail(_ sender: Any) {
+        
+        if MFMailComposeViewController.canSendMail() {
+            print("Can send mail \n \n")
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients([newsEmail!])
+            mail.setSubject("Ask a question")
+            mail.setMessageBody("<p>Enter your question here</p>", isHTML: true)
+            
+            present(mail, animated: true)
+        } else {
+            // show failure alert
+        }
+      
+        
+
+    }
+    
+    @IBAction func lGallery(_ sender: Any) {
+    }
     @IBOutlet weak var nImage: UIImageView!
+    @IBOutlet weak var buttonReadMore: UIButton!
+    @IBOutlet weak var nTitle: UILabel!
+    @IBOutlet weak var lecEmail: UIButton!
+    
+    @IBOutlet weak var gallery: UIButton!
+    @IBOutlet weak var nDesc: UILabel!
+    @IBOutlet weak var lecTitle: UILabel!
     var newsTitle: String?
-    var newsDesc: String?
+    var newsBio: String?
     var newsId: String?
     var newsImage: String?
     var newsLink: String?
+    var newsName: String?
+    var newsEmail: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-//        
-//        tableView.rowHeight = UITableViewAutomaticDimension
-//        tableView.estimatedRowHeight = 40
+        //
+        //        tableView.rowHeight = UITableViewAutomaticDimension
+        //        tableView.estimatedRowHeight = 40
         
         //self.navigationItem.title = "News Details"
         
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         //tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
-        readMoreButton.layer.cornerRadius = 15
+        buttonReadMore.layer.cornerRadius = 15
+        gallery.layer.cornerRadius = 15
+        lecEmail.layer.cornerRadius = 15
         
         print("Inside News detail view controller")
         print("News Title", newsTitle ?? "no value")
         print("News Id",newsId ?? "no value")
-        print("News Desc",newsDesc ?? "no value")
+        print("News Bio",newsBio ?? "no value")
         print("News Image", newsImage ?? "no value")
         print("News Link", newsLink ?? "no value")
         
-        nTitle.text = newsTitle
+        nTitle.text = newsName
         nTitle.lineBreakMode = NSLineBreakMode.byWordWrapping
         nTitle.numberOfLines = 0
-        nDesc.text = newsDesc
+        nDesc.text = newsBio
         nDesc.lineBreakMode = NSLineBreakMode.byWordWrapping
         nDesc.numberOfLines = 0
+        lecTitle.text = newsTitle
+        lecTitle.lineBreakMode = NSLineBreakMode.byWordWrapping
+        lecTitle.numberOfLines = 0
         
         if (newsImage != nil)
         {
-        //base64 string to NSData
-        let decodedData = NSData(base64Encoded: newsImage!, options: NSData.Base64DecodingOptions(rawValue: 0))
-        
-        //NSData to UIImage
-        nImage.image = UIImage(data: decodedData! as Data)
+            //base64 string to NSData
+            let decodedData = NSData(base64Encoded: newsImage!, options: NSData.Base64DecodingOptions(rawValue: 0))
+            
+            //NSData to UIImage
+            nImage.image = UIImage(data: decodedData! as Data)
         }
         
         
@@ -76,8 +111,8 @@ class NewsDetailViewController: UITableViewController {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    
-    
+        
+        
         //toolbar
         let label = UILabel(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(350), height: CGFloat(21)))
         label.text = "ASU IHO 2017"
@@ -173,4 +208,5 @@ class NewsDetailViewController: UITableViewController {
      */
     
 }
+
 

@@ -9,21 +9,6 @@
 import Foundation
 
 
-//
-//  MovieDescription.swift
-//  MovieDescCoreData
-//  Created by Sweta Singhal on 4/20/16.
-//  Copyright © 2016 Sweta Singhal. All rights reserved.
-////  @author   Sweta Singhal    mailto:sweta.singhal@asu.edu.
-//  @version 4/20/16
-//
-//  Created by Sweta Singhal on 4/20/16.
-//  Copyright © 2016 Sweta Singhal.
-//  I provide the instuctor - Prof. Tim Lindquist and the University- Arizona State University with the right to build and evaluate the software package and for making further changes whatsoever is required for the purpose of determining my grade and program assessment.
-//
-
-import Foundation
-
 open class News{
     var title: String
     var id: String
