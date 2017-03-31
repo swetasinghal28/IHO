@@ -25,6 +25,8 @@ class ViewController: UIViewController {
 //        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 //        self.toolbarItems = [flexible,toolbarTitle]
         
+        UINavigationBar.appearance().barTintColor = UIColor(red: CGFloat((255.0 / 255.0)), green: CGFloat((255.0 / 255.0)), blue: CGFloat((255.0 / 255.0)), alpha: CGFloat(1))
+        
         // button sytle
         news.layer.cornerRadius = 15
         about.layer.cornerRadius = 15
@@ -38,7 +40,7 @@ class ViewController: UIViewController {
         var ipad: Bool = (UIDevice.current.userInterfaceIdiom == .pad)
         //var htmlpath: String? = nil
         if !ipad {
-            imageView = UIImageView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(self.navigationController!.navigationBar.frame.size.width / 1.75), height: CGFloat(self.navigationController!.navigationBar.frame.size.height / 1.25)))
+            imageView = UIImageView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(self.navigationController!.navigationBar.frame.size.width / 1.6), height: CGFloat(self.navigationController!.navigationBar.frame.size.height / 1)))
         }
         else {
             imageView = UIImageView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(self.navigationController!.navigationBar.frame.size.width / 2.5), height: CGFloat(self.navigationController!.navigationBar.frame.size.height / 1.5)))
@@ -77,6 +79,7 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: CGFloat((255.0 / 255.0)), green: CGFloat((255.0 / 255.0)), blue: CGFloat((255.0 / 255.0)), alpha: CGFloat(1))
         self.navigationController?.setToolbarHidden(false, animated: false)
     }
     
