@@ -62,13 +62,42 @@
             android:maxLength="56"
             android:ellipsize="end"
             android:text="                                                                   "/>
-        <TextView
-            android:id="@+id/where"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:maxLines="3"
-            android:textAlignment="center" />
+
+        <LinearLayout
+            android:layout_width="384dp"
+            android:layout_height="80dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="280dp"
+                android:layout_height="80dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="280dp"
+                    android:layout_height="10dp"
+                    android:layout_gravity="center_horizontal" />
+
+                <TextView
+                    android:id="@+id/where"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/locationInfo"
+                    android:layout_gravity="left"
+                    android:textAlignment="textStart"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/eventsLink"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:background="@drawable/location"
+                android:onClick="onClick"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+
         <TextView
             android:id="@+id/space3"
             android:layout_width="fill_parent"
@@ -80,15 +109,7 @@
             android:ellipsize="end"
             android:text="                                                                   "/>
 
-        <Button
-            android:id="@+id/eventsLink"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape"
-            android:textColor="@android:color/background_light"
-            android:textStyle="bold"
-            android:text="MapIt"
-            android:onClick="onClick"/>
+
         <TextView
             android:id="@+id/description"
             android:layout_width="fill_parent"
@@ -109,6 +130,7 @@
             android:maxLength="104"
             android:ellipsize="end"
             android:text="                                                                                                                 "/>
+
         <Button
             android:id="@+id/registerEvent"
             android:layout_width="match_parent"

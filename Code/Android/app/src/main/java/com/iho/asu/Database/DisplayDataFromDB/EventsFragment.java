@@ -69,9 +69,9 @@ public class EventsFragment extends ListFragment {
         eventsTitle.clear();
         //getEventsItems();
         getEventsJson();
-        /*//CustomList2 adapter = new
+        //CustomList2 adapter = new
           //      CustomList2(this.getActivity(), eventsTitle);
-        ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, eventsTitle);
+        /*ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, eventsTitle);
         this.setListAdapter(adapter);
         adapter.notifyDataSetChanged();*/
         return v;
@@ -216,6 +216,10 @@ public class EventsFragment extends ListFragment {
             cursorToEvents(eventsCursor);
             eventsCursor.moveToNext();
         }
+        String temp = "Friday, February 15, 2018, 5:30 PM";
+        Log.i(TAG, new Date(temp).toString());
+        String temp2 = "Tuesday, Apr 27, 2018, 4:00 PM";
+        Log.i(TAG, new Date(temp2).toString());
         eventsCursor.close();
     }
 
@@ -224,13 +228,13 @@ public class EventsFragment extends ListFragment {
         String title = cursor.getString(4);
         //n.setId(cursor.getLong(0));
         n.setTitle(title);
-        //n.setWhen(cursor.getString(1));
+        n.setWhen(cursor.getString(1));
         n.setLocation_link(cursor.getString(2));
         n.setWhere(cursor.getString(3));
         n.setDescription(cursor.getString(5));
         n.setReg(cursor.getString(6));
 
-        Log.i(TAG, n.toString() + " " + n.getLocation_link() + "    " + n.getReg());
+        //Log.i(TAG, n.toString() + " " + n.getLocation_link() + "    " + n.getReg());
 
         eventsTitle.add(title);
         eventsItems.put(title, n);
