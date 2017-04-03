@@ -15,6 +15,54 @@
 		230EE90A1E4E147100B4F9F9 /* invest.png in Resources */ = {isa = PBXBuildFile; fileRef = 230EE9031E4E147100B4F9F9 /* invest.png */; };
 		230EE90B1E4E147100B4F9F9 /* search-icon-64.png in Resources */ = {isa = PBXBuildFile; fileRef = 230EE9041E4E147100B4F9F9 /* search-icon-64.png */; };
 		230EE90D1E4E149800B4F9F9 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 230EE90C1E4E149800B4F9F9 /* Info.plist */; };
+		9F30DEAB1E8EC79E00F40E06 /* askananthropologist.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE7B1E8EC79E00F40E06 /* askananthropologist.jpg */; };
+		9F30DEAC1E8EC79E00F40E06 /* AskAnAnthropologistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE7C1E8EC79E00F40E06 /* AskAnAnthropologistViewController.swift */; };
+		9F30DEAD1E8EC79E00F40E06 /* BecomingHumanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE7D1E8EC79E00F40E06 /* BecomingHumanViewController.swift */; };
+		9F30DEAE1E8EC79E00F40E06 /* claszen_logo_maroon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE7E1E8EC79E00F40E06 /* claszen_logo_maroon.png */; };
+		9F30DEAF1E8EC79E00F40E06 /* ConnectInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE7F1E8EC79E00F40E06 /* ConnectInfoViewController.swift */; };
+		9F30DEB01E8EC79E00F40E06 /* Contact.html in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE801E8EC79E00F40E06 /* Contact.html */; };
+		9F30DEB11E8EC79E00F40E06 /* CreditDetails.html in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE811E8EC79E00F40E06 /* CreditDetails.html */; };
+		9F30DEB21E8EC79E00F40E06 /* custom.css in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE821E8EC79E00F40E06 /* custom.css */; };
+		9F30DEB31E8EC79E00F40E06 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE831E8EC79E00F40E06 /* Events.swift */; };
+		9F30DEB41E8EC79E00F40E06 /* EventsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE841E8EC79E00F40E06 /* EventsDetailViewController.swift */; };
+		9F30DEB51E8EC79E00F40E06 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE851E8EC79E00F40E06 /* EventsViewController.swift */; };
+		9F30DEB61E8EC79E00F40E06 /* FB.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE861E8EC79E00F40E06 /* FB.png */; };
+		9F30DEB71E8EC79E00F40E06 /* FeaturedNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE871E8EC79E00F40E06 /* FeaturedNewsViewController.swift */; };
+		9F30DEB81E8EC79E00F40E06 /* GalleryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE881E8EC79E00F40E06 /* GalleryTableViewController.swift */; };
+		9F30DEB91E8EC79E00F40E06 /* IHO_h_mg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE891E8EC79E00F40E06 /* IHO_h_mg.png */; };
+		9F30DEBA1E8EC79E00F40E06 /* IHOlogoforapp.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE8A1E8EC79E00F40E06 /* IHOlogoforapp.jpg */; };
+		9F30DEBB1E8EC79E00F40E06 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE8B1E8EC79E00F40E06 /* Image.swift */; };
+		9F30DEBC1E8EC79E00F40E06 /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE8C1E8EC79E00F40E06 /* index.js */; };
+		9F30DEBD1E8EC79E00F40E06 /* instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE8D1E8EC79E00F40E06 /* instagram.png */; };
+		9F30DEBE1E8EC79E00F40E06 /* jqm-icon-pack-2.0-original.css in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE8E1E8EC79E00F40E06 /* jqm-icon-pack-2.0-original.css */; };
+		9F30DEBF1E8EC79E00F40E06 /* jquery-1.10.2.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE8F1E8EC79E00F40E06 /* jquery-1.10.2.min.js */; };
+		9F30DEC01E8EC79E00F40E06 /* jquery-1.11.0.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE901E8EC79E00F40E06 /* jquery-1.11.0.min.js */; };
+		9F30DEC11E8EC79E00F40E06 /* jquery.mobile-1.4.2.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE911E8EC79E00F40E06 /* jquery.mobile-1.4.2.min.css */; };
+		9F30DEC21E8EC79E00F40E06 /* jquery.mobile-1.4.2.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE921E8EC79E00F40E06 /* jquery.mobile-1.4.2.min.js */; };
+		9F30DEC31E8EC79E00F40E06 /* Lecturer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE931E8EC79E00F40E06 /* Lecturer.swift */; };
+		9F30DEC41E8EC79E00F40E06 /* LecturerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE941E8EC79E00F40E06 /* LecturerDetailViewController.swift */; };
+		9F30DEC51E8EC79E00F40E06 /* LecturerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE951E8EC79E00F40E06 /* LecturerListViewController.swift */; };
+		9F30DEC61E8EC79E00F40E06 /* lucy_chin.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE961E8EC79E00F40E06 /* lucy_chin.png */; };
+		9F30DEC71E8EC79E00F40E06 /* Lucy_FullSkeleton_uncolored.ai in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE971E8EC79E00F40E06 /* Lucy_FullSkeleton_uncolored.ai */; };
+		9F30DEC81E8EC79E00F40E06 /* lucy_skull.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE981E8EC79E00F40E06 /* lucy_skull.png */; };
+		9F30DEC91E8EC79E00F40E06 /* lucy.html in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE991E8EC79E00F40E06 /* lucy.html */; };
+		9F30DECA1E8EC79E00F40E06 /* lucy.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE9A1E8EC79E00F40E06 /* lucy.png */; };
+		9F30DECB1E8EC79E00F40E06 /* LucyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE9B1E8EC79E00F40E06 /* LucyViewController.swift */; };
+		9F30DECC1E8EC79E00F40E06 /* newLogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE9C1E8EC79E00F40E06 /* newLogo.jpg */; };
+		9F30DECD1E8EC79E00F40E06 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE9D1E8EC79E00F40E06 /* News.swift */; };
+		9F30DECE1E8EC79E00F40E06 /* NewScienceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE9E1E8EC79E00F40E06 /* NewScienceViewController.swift */; };
+		9F30DECF1E8EC79E00F40E06 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE9F1E8EC79E00F40E06 /* NewsDetailViewController.swift */; };
+		9F30DED01E8EC79E00F40E06 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DEA01E8EC79E00F40E06 /* NewsViewController.swift */; };
+		9F30DED11E8EC79E00F40E06 /* photoswipe.css in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DEA11E8EC79E00F40E06 /* photoswipe.css */; };
+		9F30DED21E8EC79E00F40E06 /* rsz_iho_h_mg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DEA21E8EC79E00F40E06 /* rsz_iho_h_mg.png */; };
+		9F30DED31E8EC79E00F40E06 /* Science.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DEA31E8EC79E00F40E06 /* Science.swift */; };
+		9F30DED41E8EC79E00F40E06 /* sediments.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DEA41E8EC79E00F40E06 /* sediments.jpg */; };
+		9F30DED51E8EC79E00F40E06 /* skull.html in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DEA51E8EC79E00F40E06 /* skull.html */; };
+		9F30DED61E8EC79E00F40E06 /* travellearnimge.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DEA61E8EC79E00F40E06 /* travellearnimge.jpg */; };
+		9F30DED71E8EC79E00F40E06 /* TravelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DEA71E8EC79E00F40E06 /* TravelViewController.swift */; };
+		9F30DED81E8EC79E00F40E06 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DEA81E8EC79E00F40E06 /* twitter.png */; };
+		9F30DED91E8EC79E00F40E06 /* vimeo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DEA91E8EC79E00F40E06 /* vimeo.png */; };
+		9F30DEDA1E8EC79E00F40E06 /* youtube.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DEAA1E8EC79E00F40E06 /* youtube.png */; };
 		9F87E3651E4D35560030F231 /* asu_logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9F87E3641E4D35560030F231 /* asu_logo.jpg */; };
 		9F87E3671E4D3DAE0030F231 /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F87E3661E4D3DAE0030F231 /* ConnectViewController.swift */; };
 		9F87E3691E4D3FAC0030F231 /* NewsEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F87E3681E4D3FAC0030F231 /* NewsEventsViewController.swift */; };
@@ -56,6 +104,54 @@
 		230EE9031E4E147100B4F9F9 /* invest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = invest.png; sourceTree = "<group>"; };
 		230EE9041E4E147100B4F9F9 /* search-icon-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-icon-64.png"; sourceTree = "<group>"; };
 		230EE90C1E4E149800B4F9F9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9F30DE7B1E8EC79E00F40E06 /* askananthropologist.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = askananthropologist.jpg; sourceTree = "<group>"; };
+		9F30DE7C1E8EC79E00F40E06 /* AskAnAnthropologistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AskAnAnthropologistViewController.swift; sourceTree = "<group>"; };
+		9F30DE7D1E8EC79E00F40E06 /* BecomingHumanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BecomingHumanViewController.swift; sourceTree = "<group>"; };
+		9F30DE7E1E8EC79E00F40E06 /* claszen_logo_maroon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = claszen_logo_maroon.png; sourceTree = "<group>"; };
+		9F30DE7F1E8EC79E00F40E06 /* ConnectInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectInfoViewController.swift; sourceTree = "<group>"; };
+		9F30DE801E8EC79E00F40E06 /* Contact.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Contact.html; sourceTree = "<group>"; };
+		9F30DE811E8EC79E00F40E06 /* CreditDetails.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = CreditDetails.html; sourceTree = "<group>"; };
+		9F30DE821E8EC79E00F40E06 /* custom.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = custom.css; sourceTree = "<group>"; };
+		9F30DE831E8EC79E00F40E06 /* Events.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
+		9F30DE841E8EC79E00F40E06 /* EventsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsDetailViewController.swift; sourceTree = "<group>"; };
+		9F30DE851E8EC79E00F40E06 /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		9F30DE861E8EC79E00F40E06 /* FB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FB.png; sourceTree = "<group>"; };
+		9F30DE871E8EC79E00F40E06 /* FeaturedNewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedNewsViewController.swift; sourceTree = "<group>"; };
+		9F30DE881E8EC79E00F40E06 /* GalleryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryTableViewController.swift; sourceTree = "<group>"; };
+		9F30DE891E8EC79E00F40E06 /* IHO_h_mg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IHO_h_mg.png; sourceTree = "<group>"; };
+		9F30DE8A1E8EC79E00F40E06 /* IHOlogoforapp.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IHOlogoforapp.jpg; sourceTree = "<group>"; };
+		9F30DE8B1E8EC79E00F40E06 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		9F30DE8C1E8EC79E00F40E06 /* index.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
+		9F30DE8D1E8EC79E00F40E06 /* instagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instagram.png; sourceTree = "<group>"; };
+		9F30DE8E1E8EC79E00F40E06 /* jqm-icon-pack-2.0-original.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "jqm-icon-pack-2.0-original.css"; sourceTree = "<group>"; };
+		9F30DE8F1E8EC79E00F40E06 /* jquery-1.10.2.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-1.10.2.min.js"; sourceTree = "<group>"; };
+		9F30DE901E8EC79E00F40E06 /* jquery-1.11.0.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-1.11.0.min.js"; sourceTree = "<group>"; };
+		9F30DE911E8EC79E00F40E06 /* jquery.mobile-1.4.2.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "jquery.mobile-1.4.2.min.css"; sourceTree = "<group>"; };
+		9F30DE921E8EC79E00F40E06 /* jquery.mobile-1.4.2.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery.mobile-1.4.2.min.js"; sourceTree = "<group>"; };
+		9F30DE931E8EC79E00F40E06 /* Lecturer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lecturer.swift; sourceTree = "<group>"; };
+		9F30DE941E8EC79E00F40E06 /* LecturerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturerDetailViewController.swift; sourceTree = "<group>"; };
+		9F30DE951E8EC79E00F40E06 /* LecturerListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturerListViewController.swift; sourceTree = "<group>"; };
+		9F30DE961E8EC79E00F40E06 /* lucy_chin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lucy_chin.png; sourceTree = "<group>"; };
+		9F30DE971E8EC79E00F40E06 /* Lucy_FullSkeleton_uncolored.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Lucy_FullSkeleton_uncolored.ai; sourceTree = "<group>"; };
+		9F30DE981E8EC79E00F40E06 /* lucy_skull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lucy_skull.png; sourceTree = "<group>"; };
+		9F30DE991E8EC79E00F40E06 /* lucy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = lucy.html; sourceTree = "<group>"; };
+		9F30DE9A1E8EC79E00F40E06 /* lucy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lucy.png; sourceTree = "<group>"; };
+		9F30DE9B1E8EC79E00F40E06 /* LucyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LucyViewController.swift; sourceTree = "<group>"; };
+		9F30DE9C1E8EC79E00F40E06 /* newLogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = newLogo.jpg; sourceTree = "<group>"; };
+		9F30DE9D1E8EC79E00F40E06 /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		9F30DE9E1E8EC79E00F40E06 /* NewScienceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewScienceViewController.swift; sourceTree = "<group>"; };
+		9F30DE9F1E8EC79E00F40E06 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
+		9F30DEA01E8EC79E00F40E06 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		9F30DEA11E8EC79E00F40E06 /* photoswipe.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = photoswipe.css; sourceTree = "<group>"; };
+		9F30DEA21E8EC79E00F40E06 /* rsz_iho_h_mg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rsz_iho_h_mg.png; sourceTree = "<group>"; };
+		9F30DEA31E8EC79E00F40E06 /* Science.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Science.swift; sourceTree = "<group>"; };
+		9F30DEA41E8EC79E00F40E06 /* sediments.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sediments.jpg; sourceTree = "<group>"; };
+		9F30DEA51E8EC79E00F40E06 /* skull.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = skull.html; sourceTree = "<group>"; };
+		9F30DEA61E8EC79E00F40E06 /* travellearnimge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = travellearnimge.jpg; sourceTree = "<group>"; };
+		9F30DEA71E8EC79E00F40E06 /* TravelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelViewController.swift; sourceTree = "<group>"; };
+		9F30DEA81E8EC79E00F40E06 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter.png; sourceTree = "<group>"; };
+		9F30DEA91E8EC79E00F40E06 /* vimeo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vimeo.png; sourceTree = "<group>"; };
+		9F30DEAA1E8EC79E00F40E06 /* youtube.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = youtube.png; sourceTree = "<group>"; };
 		9F87E3641E4D35560030F231 /* asu_logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = asu_logo.jpg; sourceTree = "<group>"; };
 		9F87E3661E4D3DAE0030F231 /* ConnectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
 		9F87E3681E4D3FAC0030F231 /* NewsEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsEventsViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +228,54 @@
 		9FB7C57B1E4AAA5900B88166 /* IHO-ASU */ = {
 			isa = PBXGroup;
 			children = (
+				9F30DE7B1E8EC79E00F40E06 /* askananthropologist.jpg */,
+				9F30DE7C1E8EC79E00F40E06 /* AskAnAnthropologistViewController.swift */,
+				9F30DE7D1E8EC79E00F40E06 /* BecomingHumanViewController.swift */,
+				9F30DE7E1E8EC79E00F40E06 /* claszen_logo_maroon.png */,
+				9F30DE7F1E8EC79E00F40E06 /* ConnectInfoViewController.swift */,
+				9F30DE801E8EC79E00F40E06 /* Contact.html */,
+				9F30DE811E8EC79E00F40E06 /* CreditDetails.html */,
+				9F30DE821E8EC79E00F40E06 /* custom.css */,
+				9F30DE831E8EC79E00F40E06 /* Events.swift */,
+				9F30DE841E8EC79E00F40E06 /* EventsDetailViewController.swift */,
+				9F30DE851E8EC79E00F40E06 /* EventsViewController.swift */,
+				9F30DE861E8EC79E00F40E06 /* FB.png */,
+				9F30DE871E8EC79E00F40E06 /* FeaturedNewsViewController.swift */,
+				9F30DE881E8EC79E00F40E06 /* GalleryTableViewController.swift */,
+				9F30DE891E8EC79E00F40E06 /* IHO_h_mg.png */,
+				9F30DE8A1E8EC79E00F40E06 /* IHOlogoforapp.jpg */,
+				9F30DE8B1E8EC79E00F40E06 /* Image.swift */,
+				9F30DE8C1E8EC79E00F40E06 /* index.js */,
+				9F30DE8D1E8EC79E00F40E06 /* instagram.png */,
+				9F30DE8E1E8EC79E00F40E06 /* jqm-icon-pack-2.0-original.css */,
+				9F30DE8F1E8EC79E00F40E06 /* jquery-1.10.2.min.js */,
+				9F30DE901E8EC79E00F40E06 /* jquery-1.11.0.min.js */,
+				9F30DE911E8EC79E00F40E06 /* jquery.mobile-1.4.2.min.css */,
+				9F30DE921E8EC79E00F40E06 /* jquery.mobile-1.4.2.min.js */,
+				9F30DE931E8EC79E00F40E06 /* Lecturer.swift */,
+				9F30DE941E8EC79E00F40E06 /* LecturerDetailViewController.swift */,
+				9F30DE951E8EC79E00F40E06 /* LecturerListViewController.swift */,
+				9F30DE961E8EC79E00F40E06 /* lucy_chin.png */,
+				9F30DE971E8EC79E00F40E06 /* Lucy_FullSkeleton_uncolored.ai */,
+				9F30DE981E8EC79E00F40E06 /* lucy_skull.png */,
+				9F30DE991E8EC79E00F40E06 /* lucy.html */,
+				9F30DE9A1E8EC79E00F40E06 /* lucy.png */,
+				9F30DE9B1E8EC79E00F40E06 /* LucyViewController.swift */,
+				9F30DE9C1E8EC79E00F40E06 /* newLogo.jpg */,
+				9F30DE9D1E8EC79E00F40E06 /* News.swift */,
+				9F30DE9E1E8EC79E00F40E06 /* NewScienceViewController.swift */,
+				9F30DE9F1E8EC79E00F40E06 /* NewsDetailViewController.swift */,
+				9F30DEA01E8EC79E00F40E06 /* NewsViewController.swift */,
+				9F30DEA11E8EC79E00F40E06 /* photoswipe.css */,
+				9F30DEA21E8EC79E00F40E06 /* rsz_iho_h_mg.png */,
+				9F30DEA31E8EC79E00F40E06 /* Science.swift */,
+				9F30DEA41E8EC79E00F40E06 /* sediments.jpg */,
+				9F30DEA51E8EC79E00F40E06 /* skull.html */,
+				9F30DEA61E8EC79E00F40E06 /* travellearnimge.jpg */,
+				9F30DEA71E8EC79E00F40E06 /* TravelViewController.swift */,
+				9F30DEA81E8EC79E00F40E06 /* twitter.png */,
+				9F30DEA91E8EC79E00F40E06 /* vimeo.png */,
+				9F30DEAA1E8EC79E00F40E06 /* youtube.png */,
 				230EE90C1E4E149800B4F9F9 /* Info.plist */,
 				230EE8FE1E4E147100B4F9F9 /* About.html */,
 				230EE8FF1E4E147100B4F9F9 /* AboutViewController.swift */,
@@ -280,15 +424,44 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F30DEBA1E8EC79E00F40E06 /* IHOlogoforapp.jpg in Resources */,
+				9F30DED11E8EC79E00F40E06 /* photoswipe.css in Resources */,
+				9F30DEC91E8EC79E00F40E06 /* lucy.html in Resources */,
+				9F30DEBF1E8EC79E00F40E06 /* jquery-1.10.2.min.js in Resources */,
+				9F30DEB11E8EC79E00F40E06 /* CreditDetails.html in Resources */,
 				230EE90B1E4E147100B4F9F9 /* search-icon-64.png in Resources */,
 				9F87E3651E4D35560030F231 /* asu_logo.jpg in Resources */,
+				9F30DED61E8EC79E00F40E06 /* travellearnimge.jpg in Resources */,
+				9F30DEAE1E8EC79E00F40E06 /* claszen_logo_maroon.png in Resources */,
+				9F30DEB01E8EC79E00F40E06 /* Contact.html in Resources */,
+				9F30DEB61E8EC79E00F40E06 /* FB.png in Resources */,
 				230EE90D1E4E149800B4F9F9 /* Info.plist in Resources */,
+				9F30DEB21E8EC79E00F40E06 /* custom.css in Resources */,
+				9F30DEC61E8EC79E00F40E06 /* lucy_chin.png in Resources */,
+				9F30DEBC1E8EC79E00F40E06 /* index.js in Resources */,
+				9F30DEC71E8EC79E00F40E06 /* Lucy_FullSkeleton_uncolored.ai in Resources */,
+				9F30DEC81E8EC79E00F40E06 /* lucy_skull.png in Resources */,
+				9F30DEC11E8EC79E00F40E06 /* jquery.mobile-1.4.2.min.css in Resources */,
+				9F30DEBE1E8EC79E00F40E06 /* jqm-icon-pack-2.0-original.css in Resources */,
+				9F30DEC21E8EC79E00F40E06 /* jquery.mobile-1.4.2.min.js in Resources */,
+				9F30DED91E8EC79E00F40E06 /* vimeo.png in Resources */,
+				9F30DEAB1E8EC79E00F40E06 /* askananthropologist.jpg in Resources */,
+				9F30DEBD1E8EC79E00F40E06 /* instagram.png in Resources */,
+				9F30DEDA1E8EC79E00F40E06 /* youtube.png in Resources */,
+				9F30DEB91E8EC79E00F40E06 /* IHO_h_mg.png in Resources */,
 				230EE9051E4E147100B4F9F9 /* About.html in Resources */,
 				230EE9071E4E147100B4F9F9 /* ASU IHO vertical.jpg in Resources */,
 				9FB7C58A1E4AAA5900B88166 /* LaunchScreen.storyboard in Resources */,
 				9FB7C5871E4AAA5900B88166 /* Assets.xcassets in Resources */,
 				230EE90A1E4E147100B4F9F9 /* invest.png in Resources */,
+				9F30DED41E8EC79E00F40E06 /* sediments.jpg in Resources */,
+				9F30DED51E8EC79E00F40E06 /* skull.html in Resources */,
+				9F30DED21E8EC79E00F40E06 /* rsz_iho_h_mg.png in Resources */,
 				9FB7C5821E4AAA5900B88166 /* Main.storyboard in Resources */,
+				9F30DECA1E8EC79E00F40E06 /* lucy.png in Resources */,
+				9F30DED81E8EC79E00F40E06 /* twitter.png in Resources */,
+				9F30DEC01E8EC79E00F40E06 /* jquery-1.11.0.min.js in Resources */,
+				9F30DECC1E8EC79E00F40E06 /* newLogo.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,16 +486,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F30DECB1E8EC79E00F40E06 /* LucyViewController.swift in Sources */,
+				9F30DEAD1E8EC79E00F40E06 /* BecomingHumanViewController.swift in Sources */,
 				9F87E3691E4D3FAC0030F231 /* NewsEventsViewController.swift in Sources */,
+				9F30DED71E8EC79E00F40E06 /* TravelViewController.swift in Sources */,
 				9F87E36D1E4D41610030F231 /* GalleryViewController.swift in Sources */,
 				230EE9091E4E147100B4F9F9 /* DonationWebController.swift in Sources */,
+				9F30DEB31E8EC79E00F40E06 /* Events.swift in Sources */,
+				9F30DECF1E8EC79E00F40E06 /* NewsDetailViewController.swift in Sources */,
+				9F30DECE1E8EC79E00F40E06 /* NewScienceViewController.swift in Sources */,
 				9FB7C57F1E4AAA5900B88166 /* ViewController.swift in Sources */,
+				9F30DEB81E8EC79E00F40E06 /* GalleryTableViewController.swift in Sources */,
 				9FB7C57D1E4AAA5900B88166 /* AppDelegate.swift in Sources */,
 				9FB7C5851E4AAA5900B88166 /* IHO_ASU.xcdatamodeld in Sources */,
 				9F87E3671E4D3DAE0030F231 /* ConnectViewController.swift in Sources */,
+				9F30DEB51E8EC79E00F40E06 /* EventsViewController.swift in Sources */,
 				230EE9081E4E147100B4F9F9 /* DonationController.swift in Sources */,
+				9F30DED01E8EC79E00F40E06 /* NewsViewController.swift in Sources */,
+				9F30DEAF1E8EC79E00F40E06 /* ConnectInfoViewController.swift in Sources */,
+				9F30DEC41E8EC79E00F40E06 /* LecturerDetailViewController.swift in Sources */,
+				9F30DED31E8EC79E00F40E06 /* Science.swift in Sources */,
+				9F30DEBB1E8EC79E00F40E06 /* Image.swift in Sources */,
+				9F30DEB71E8EC79E00F40E06 /* FeaturedNewsViewController.swift in Sources */,
+				9F30DEAC1E8EC79E00F40E06 /* AskAnAnthropologistViewController.swift in Sources */,
+				9F30DECD1E8EC79E00F40E06 /* News.swift in Sources */,
+				9F30DEB41E8EC79E00F40E06 /* EventsDetailViewController.swift in Sources */,
+				9F30DEC51E8EC79E00F40E06 /* LecturerListViewController.swift in Sources */,
 				230EE9061E4E147100B4F9F9 /* AboutViewController.swift in Sources */,
 				9F87E36B1E4D40740030F231 /* FieldViewController.swift in Sources */,
+				9F30DEC31E8EC79E00F40E06 /* Lecturer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

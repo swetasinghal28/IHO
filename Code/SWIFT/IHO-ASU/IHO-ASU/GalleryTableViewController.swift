@@ -8,8 +8,15 @@
 
 import UIKit
 
-class GalleryTableViewController: UITableViewController {
+class GalleryTableViewCell: UITableViewCell {
     
+    
+    @IBOutlet weak var imageview: UIImageView!
+
+    @IBOutlet weak var textlabel: UITextView!
+}
+
+class GalleryTableViewController: UITableViewController {
     @IBOutlet var galleryTableView: UITableView!
     var urlString:String = ""
     //var news: [News]? = []
@@ -150,7 +157,6 @@ class GalleryTableViewController: UITableViewController {
         let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         self.toolbarItems = [flexible,toolbarTitle]
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setToolbarHidden(false, animated: false)
@@ -192,37 +198,37 @@ class GalleryTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = galleryTableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath)
+        var cell = galleryTableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath)as! GalleryTableViewCell
         
         // Configure the cell...
-      /*  if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: "imageCell");
-        }
+        /*  if cell == nil {
+         cell = UITableViewCell(style: .default, reuseIdentifier: "imageCell");
+         }
+         
+         let title = self.names[(indexPath.row)]
+         let imageObject = imageList[title]! as Image
+         
+         if (imageObject.image != nil)
+         {
+         //base64 string to NSData
+         let decodedData = NSData(base64Encoded: imageObject.image, options: NSData.Base64DecodingOptions(rawValue: 0))
+         
+         
+         
+         //var ImgItem: image? =  UIImage(data: decodedData! as Data)
+         //[cell setBackgroundColor:[UIColor colorWithRed:5 green:56 blue:104 alpha:1.0 ]];
+         var caption: UITextView? = (cell.viewWithTag(102) as? UITextView)
+         caption?.text = imageObject.title
+         var image: UIImageView? = (cell.viewWithTag(101) as? UIImageView)
+         image?.image = UIImage(data: decodedData! as Data)
+         image?.contentMode = .scaleAspectFit
+         
+         }
+         
+         */
         
-        let title = self.names[(indexPath.row)]
-        let imageObject = imageList[title]! as Image
         
-        if (imageObject.image != nil)
-        {
-            //base64 string to NSData
-            let decodedData = NSData(base64Encoded: imageObject.image, options: NSData.Base64DecodingOptions(rawValue: 0))
-            
-        
-        
-        //var ImgItem: image? =  UIImage(data: decodedData! as Data)
-        //[cell setBackgroundColor:[UIColor colorWithRed:5 green:56 blue:104 alpha:1.0 ]];
-        var caption: UITextView? = (cell.viewWithTag(102) as? UITextView)
-        caption?.text = imageObject.title
-        var image: UIImageView? = (cell.viewWithTag(101) as? UIImageView)
-        image?.image = UIImage(data: decodedData! as Data)
-        image?.contentMode = .scaleAspectFit
-            
-        }
- 
- */
-       
-        
-        cell.textLabel?.text = self.names[indexPath.row]
+        cell.textlabel?.text = self.names[indexPath.row]
         
         let title = self.names[(indexPath.row)]
         let imageObject = imageList[title]! as Image
@@ -233,25 +239,30 @@ class GalleryTableViewController: UITableViewController {
             let decodedData = NSData(base64Encoded: imageObject.image, options: NSData.Base64DecodingOptions(rawValue: 0))
             
             //NSData to UIImage
-            cell.imageView?.image = UIImage(data: decodedData! as Data)
-            cell.imageView?.contentMode = .scaleAspectFit
+            cell.imageview?.image = UIImage(data: decodedData! as Data)
+            cell.imageview?.contentMode = .scaleAspectFit
         }
         
         //cell.textLabel?.text = imageObject.title
         
-        var caption: UITextView? = (cell.viewWithTag(102) as? UITextView)
-        caption?.text = imageObject.title
-
- 
- 
+        //        var caption: UITextView? = (cell.viewWithTag(102) as? UITextView)
+        //        caption?.text = imageObject.title
         
-      
         
-       
+        
+        
+        
+        
+        
         
         return cell
     }
     
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 484.0;//Choose your custom row height
+    }
     
     /*
      // Override to support conditional editing of the table view.
@@ -298,6 +309,6 @@ class GalleryTableViewController: UITableViewController {
      }
      */
     
-   
-    }
     
+}
+
