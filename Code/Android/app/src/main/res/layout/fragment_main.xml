@@ -152,15 +152,19 @@
         </LinearLayout>
         </ScrollView>
 
-    <ImageButton
-        android:layout_width="wrap_content"
+    <Button
         android:id="@+id/creditsButton"
-        android:background="@drawable/credits"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:background="#003366"
+        android:text="@string/credits"
+        android:textColor="@android:color/background_light"
+        android:textSize="14dp"
         android:onClick="onClick"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_height="25dp" />
+        android:layout_alignParentLeft="true" />
+
 
 
 </RelativeLayout>
