@@ -139,7 +139,7 @@
             android:background="@drawable/shape"
             android:textColor="@android:color/background_light"
             android:textStyle="bold"
-            android:text="Register For This Event"
+            android:text="Click to read more"
             android:onClick="onClick"/>
     </LinearLayout>
     </ScrollView>
