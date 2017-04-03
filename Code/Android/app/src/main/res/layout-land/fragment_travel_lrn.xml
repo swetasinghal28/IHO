@@ -57,7 +57,7 @@
                     android:text="                                                                                                                 "
                     android:maxLength="104"
                     android:background="@android:color/white"/>
-<EditText
+<TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/editText"
@@ -65,7 +65,8 @@
     android:layout_below="@+id/imageView"
     android:background="@android:color/white"
     android:paddingLeft="12dp"
-    android:paddingRight="12dp" />
+    android:paddingRight="12dp"
+    android:textSize="16dp" />
 
                 <TextView
                     android:id="@+id/textspace3"

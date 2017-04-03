@@ -78,7 +78,7 @@
                 android:layout_height="60dp"
                 android:background="@drawable/shape"
                 android:textColor="@android:color/background_light"
-                android:text="  Travel And Learn                                   >"
+                android:text="  Travel + Learn                                       >"
                 android:onClick="onClick"
                 android:visibility="visible"
                 android:layout_below="@+id/linearLayout"
