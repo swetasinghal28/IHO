@@ -41,8 +41,10 @@ public class EditGallery extends JFrame {
 	private JTextField tfTitle;
 	private JTextArea taDescription;
 	private JTextField tfLink;
+	private JTextField tfOrder;
 	private JLabel lblReadMore;
 	private JScrollPane scrollPane;
+	
 	private GalleryModel gallery;
 	private JButton btnSubmit;
 	private JButton browseButton;
@@ -67,6 +69,7 @@ public class EditGallery extends JFrame {
 		setResizable(false);
 		setPreferredSize(new Dimension(Constants.WIDTH,Constants.HEIGHT));
 		tfTitle = new JTextField("", 20);
+		tfOrder = new JTextField("Order",10);
 	
 		browseButton = new JButton("Browse");
 		imageFileButton = new JTextField("",20);
@@ -78,6 +81,7 @@ public class EditGallery extends JFrame {
 		panel.add(tfTitle, "span,pushx,growx, wrap");
 		panel.add(browseButton, "wrap");
 		panel.add(imageFileButton, "wrap");
+		panel.add(tfOrder, "wrap");
 		
 		panel.add(btnSubmit);
 		
@@ -135,11 +139,12 @@ public class EditGallery extends JFrame {
 			 	}catch(IOException e1){
 			 		System.out.println(e1.getMessage());
 			 	}
+			    int ord = Integer.parseInt(tfOrder.getText());
 				
-				GalleryModel newGallery = new GalleryModel(tfTitle.getText(), encodedImage);
+				GalleryModel newGallery = new GalleryModel(tfTitle.getText(), encodedImage,ord);
 			    
 				
-				System.out.println("BYTE_________"+imageInByte.toString());
+				
 				
 				galleryDelegate.addGallery(newGallery);
 				if (gallery != null){
