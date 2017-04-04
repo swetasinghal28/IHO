@@ -41,6 +41,7 @@ public class EditNewsFrame extends JFrame {
 	private JTextField tfTitle;
 	private JTextArea taDescription;
 	private JTextField tfLink;
+	private JTextField tfDate;
 	private JLabel lblReadMore;
 	private JScrollPane scrollPane;
 	private News news;
@@ -69,10 +70,12 @@ public class EditNewsFrame extends JFrame {
 		setPreferredSize(new Dimension(Constants.WIDTH,Constants.HEIGHT));
 		tfTitle = new JTextField();
 		taDescription = new JTextArea("",20,20);
+		tfDate = new JTextField("Date",20);
 		lblReadMore = new JLabel("Read More: ");
 		browseButton = new JButton("Browse");
 		imageFileButton = new JTextField("",20);
 		tfLink = new JTextField("http://");
+		
 		
 		scrollPane = new JScrollPane(taDescription);
 		btnSubmit = new JButton("Submit");
@@ -83,6 +86,7 @@ public class EditNewsFrame extends JFrame {
 		panel.add(tfTitle, "span,pushx,growx, wrap");
 		panel.add(lblReadMore);
 		panel.add(tfLink, "wrap");
+		panel.add(tfDate,"wrap");
 		
 		panel.add(scrollPane,"span,push,grow, wrap");	
 		panel.add(browseButton, "wrap");
@@ -100,6 +104,7 @@ public class EditNewsFrame extends JFrame {
 		tfTitle.setText(news.getTitle());
 		taDescription.setText(news.getDesc());
 		tfLink.setText(news.getLink());
+		tfDate.setText(news.getDate());
 		//imageFileButton.setText(news.getDate());
 	}
  	
@@ -130,11 +135,13 @@ public class EditNewsFrame extends JFrame {
            	}catch(IOException e1){
 		 		System.out.println(e1.getMessage());
 			 	}
-     			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-				Date date = new Date();
-				System.out.println(dateFormat.format(date)); 
+//     			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+//				Date date = new Date();
+//				System.out.println(dateFormat.format(date)); 
+			   System.out.println("DATE-----" + tfDate.getText());
+			   
 				
-				News newNews = new News(tfTitle.getText(), taDescription.getText(),tfLink.getText(), date.toString(), encodedImage);
+				News newNews = new News(tfTitle.getText(), taDescription.getText(),tfLink.getText(), tfDate.getText(), encodedImage);
 				// delete old news
 			//	System.out.println("BYTE_STRING_________"+imageInByte.toString());
 				

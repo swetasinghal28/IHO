@@ -21,16 +21,20 @@ import javax.swing.event.ListSelectionListener;
 import org.json.JSONObject;
 
 import edu.asu.msse.gnayak2.delegates.EventsDelegate;
+import edu.asu.msse.gnayak2.delegates.FeaturedDelegate;
 import edu.asu.msse.gnayak2.delegates.NewsDelegate;
 import edu.asu.msse.gnayak2.library.EventsLibrary;
+
+import edu.asu.msse.gnayak2.library.FeaturedNewsLibrary;
 import edu.asu.msse.gnayak2.library.NewsLibrary;
 import edu.asu.msse.gnayak2.models.Event;
 import edu.asu.msse.gnayak2.models.Identifier;
+import edu.asu.msse.gnayak2.models.FeaturedNews;
 import edu.asu.msse.gnayak2.models.News;
 import edu.asu.msse.gnayak2.networking.HTTPConnectionHelper;
 import net.miginfocom.swing.MigLayout;
 
-public class NewsAndEvents extends JFrame implements NewsDelegate, EventsDelegate {
+public class NewsAndEvents extends JFrame implements NewsDelegate, EventsDelegate, FeaturedDelegate {
 		
 //	HashMap<String, News> map = new HashMap<String, News>();
 //	ArrayList<String> newsArray = new ArrayList<String>();
@@ -40,14 +44,25 @@ public class NewsAndEvents extends JFrame implements NewsDelegate, EventsDelegat
 	private JPanel newsPanel;
 	private JPanel eventsPanel;
 	private JPanel travelPanel;
+	private JPanel featuredPanel;
 	private JButton newsBackButton;
 	private JButton travelBackButton;
 	private JButton eventsBackButton;
+	private JButton featuredBackButton;
 	private JButton newsButton;
-	
+	private JButton featuredButton;
 	private JButton eventsButton;
 	private JButton travelButton;
 	private CardLayout cardLayout;
+	
+	private JButton viewFeaturedButton;
+	private JButton deleteFeaturedButton;
+	private FeaturedNews selectedFNews;
+	private JList<FeaturedNews> featureList;
+	private DefaultListModel<FeaturedNews>  featureModel;
+	private JButton btnAddFNews;
+	private FeaturedNewsLibrary featuredLibrary;
+	FeaturedDelegate featuredDelegate;
 	
 	private JButton viewNewsButton;
 	private JButton deleteNewsButton;
@@ -83,6 +98,7 @@ public class NewsAndEvents extends JFrame implements NewsDelegate, EventsDelegat
 	public NewsAndEvents() {
 		newsDelegate = this;
 		eventsDelegate = this;
+		featuredDelegate = this;
 		setResizable(false);
 		setPreferredSize(new Dimension(Constants.WIDTH,Constants.HEIGHT));
 		
@@ -94,12 +110,14 @@ public class NewsAndEvents extends JFrame implements NewsDelegate, EventsDelegat
 		initializeNews();
 		initializeEvents();
 		initializeTravel();
+		initializeFeaturedNews();
 		
 		// add panels to container panels and give them id'scomp
 		containerPanel.add(mainPanel, "1");
 		containerPanel.add(newsPanel, "2");
 		containerPanel.add(eventsPanel, "3");
 		containerPanel.add(travelPanel, "4");
+		containerPanel.add(featuredPanel,"5");
 		
 		//default show
 		cardLayout.show(containerPanel, "1");
@@ -121,14 +139,18 @@ public class NewsAndEvents extends JFrame implements NewsDelegate, EventsDelegat
 		eventsPanel = new JPanel();
 		travelPanel = new JPanel();
 		newsPanel = new JPanel();
+		featuredPanel = new JPanel();
 
 		eventsButton = new JButton("Events");
 		newsButton = new JButton("News");
 		travelButton = new JButton("Travel");
+		featuredButton = new JButton("Featured News");
+		
 		
 		mainPanel.add(newsButton);
 		mainPanel.add(eventsButton);
-		mainPanel.add(travelButton);		
+		mainPanel.add(travelButton);	
+		mainPanel.add(featuredButton);
 	}
 	
 	// intitalize news
@@ -206,7 +228,80 @@ public class NewsAndEvents extends JFrame implements NewsDelegate, EventsDelegat
 			}
 		});
 	}
-	
+	public void initializeFeaturedNews() {
+		featuredBackButton = new JButton("Back");
+		viewFeaturedButton = new JButton("View");
+		deleteFeaturedButton = new JButton("Delete");
+		
+		btnAddFNews = new JButton("Add");
+		
+
+		featuredPanel.setLayout(new MigLayout());
+		featuredPanel.add(featuredBackButton);
+		featuredPanel.add(viewFeaturedButton);
+		featuredPanel.add(deleteFeaturedButton);
+		
+		featuredPanel.add(btnAddFNews, "wrap");
+		featureList =  new JList<>();
+		featuredPanel.add(new JScrollPane(featureList),"span,push,grow, wrap");
+		
+		featureModel = new DefaultListModel<>();
+		featureList.setModel(featureModel);
+		featuredLibrary = FeaturedNewsLibrary.getInstance();
+		Set<String> featureIDs = featuredLibrary.getKeySet();
+		
+		for(String id: featureIDs) {
+			featureModel.addElement(featuredLibrary.getNews(id));
+		}
+		
+		featuredBackButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cardLayout.show(containerPanel, "1");
+			}
+		});
+		
+       
+		featureList.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				selectedFNews = featureList.getSelectedValue();
+				//System.out.println(selectedNews.getDesc());
+			}
+		});
+		
+		viewFeaturedButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (selectedFNews != null) {
+					EditFeaturedNewsFrame editFrame = new EditFeaturedNewsFrame(selectedFNews, featuredDelegate);
+					editFrame.setVisible(true);
+				}
+			}
+		});
+		
+		deleteFeaturedButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (selectedFNews != null) {
+					HTTPConnectionHelper helper = new HTTPConnectionHelper();
+					try {
+						helper.delete("featureobjects/" + selectedFNews.getId());
+						helper.delete("featureid/" + selectedFNews.getId());
+						featuredLibrary.deleteNews(selectedFNews.getId());
+						featureModel.removeElement(selectedFNews);
+						selectedFNews = null;
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			}
+		});
+	}
 	public void initializeEvents() {
 		eventsBackButton = new JButton("Back");
 		viewEventsButton = new JButton("View");
@@ -309,7 +404,16 @@ public class NewsAndEvents extends JFrame implements NewsDelegate, EventsDelegat
 				newsFrame.setVisible(true);
 			}
 		});
+       
+		btnAddFNews.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				EditFeaturedNewsFrame newsFrame = new EditFeaturedNewsFrame(featuredDelegate);
+				newsFrame.setVisible(true);
+			}
+		});
 
+		
 		btnAddEvent.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -348,6 +452,13 @@ public class NewsAndEvents extends JFrame implements NewsDelegate, EventsDelegat
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				cardLayout.show(containerPanel, "4");
+			}
+		});
+		featuredButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cardLayout.show(containerPanel, "5");
 			}
 		});
 	}	
@@ -407,5 +518,37 @@ public class NewsAndEvents extends JFrame implements NewsDelegate, EventsDelegat
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}	
+	}
+
+	@Override
+	public void addNews(FeaturedNews news) {
+		// TODO Auto-generated method stub
+		HTTPConnectionHelper helper = new HTTPConnectionHelper();
+		try {
+			helper.post("featureobjects", new JSONObject(news));
+			helper.post("featureid", new JSONObject(new Identifier(news.getId())));
+			featureModel.addElement(news);
+			featuredLibrary.getInstance().addToLibrary(news);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void deleteNews(FeaturedNews news) {
+		// TODO Auto-generated method stub
+		HTTPConnectionHelper helper = new HTTPConnectionHelper();
+		try {
+			helper.post("featureobjects", new JSONObject(news));
+			helper.post("featureid", new JSONObject(new Identifier(news.getId())));
+			featureModel.addElement(news);
+			featuredLibrary.getInstance().addToLibrary(news);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }
