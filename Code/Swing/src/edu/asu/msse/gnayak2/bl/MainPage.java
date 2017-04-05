@@ -1,6 +1,5 @@
 package edu.asu.msse.gnayak2.bl;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
@@ -131,7 +130,7 @@ public class MainPage extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		setActionsForButtons();
-		setPicture();
+//		setPicture();
 	}
 
 	public void setPicture() {
