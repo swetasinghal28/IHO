@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape"
-                android:text="Choose a Lecturer                                                                                                                  >   "
+                android:text="Choose a Lecturer                                                                                                                      >"
                 android:textColor="@android:color/background_light"
                 android:onClick="onClick"
                 android:textSize="20dp" />
@@ -83,41 +83,59 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape"
+                android:text="Who is Lucy?                                                                                                                              >"
                 android:textColor="@android:color/background_light"
-                android:text="Who is Lucy?                                                                                                                                          >"
                 android:onClick="onClick"
-                android:visibility="visible"
-                android:layout_below="@+id/linearLayout"
-                android:layout_alignParentLeft="true"
                 android:textSize="20dp" />
 
-            <TextView
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="\nSTUDENT BLOG NOTES"/>
+
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="\n"
                 android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:text="Follow ASU anthropology students at research and field school sites in Africa and beyond!"/>
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:clickable="false" />
 
-            <Button
-                android:id="@+id/fn4"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/activity_horizontal_margin"
                 android:background="@drawable/shape"
-                android:textColor="@android:color/background_light"
-                android:text="Visit Now                                                                                                                                                             >"
+                android:id="@+id/studentBlogLayout"
                 android:onClick="onClick"
-                android:visibility="visible"
-                android:layout_below="@+id/linearLayout"
-                android:layout_alignParentLeft="true"
-                android:textSize="20dp" />
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:text="Blog—Notes from the Field                                                                                                      >"
+                    android:id="@+id/blogTextView"
+                    android:textSize="20dp"
+                    android:textColor="@android:color/background_light"
+                    android:paddingLeft="20dp"
+                    android:onClick="onClick"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:id="@+id/fn4"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@android:color/transparent"
+                    android:textColor="@android:color/background_light"
+                    android:text="Follow IHO faculty and students at research and field sites around the globe! Visit Now!"
+                    android:onClick="onClick"
+                    android:visibility="visible"
+                    android:layout_below="@+id/linearLayout"
+                    android:layout_alignParentLeft="true"
+                    android:textSize="16dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="34dp"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
 
         </LinearLayout>
 

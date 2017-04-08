@@ -106,7 +106,7 @@
                 <TextView
                     android:layout_width="384dp"
                     android:layout_height="30dp"
-                    android:text="Blog—Notes from the Field                  >"
+                    android:text="Blog—Notes from the Field                   >"
                     android:id="@+id/blogTextView"
                     android:textSize="20dp"
                     android:textColor="@android:color/background_light"
