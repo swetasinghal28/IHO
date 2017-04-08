@@ -39,7 +39,7 @@
     </TableRow>
     <TextView
         android:layout_width="565dp"
-        android:layout_height="15dp"
+        android:layout_height="50dp"
         android:id="@+id/textView2"
         android:layout_below="@+id/customGalleryBackButton"
         android:background="@android:color/background_dark"

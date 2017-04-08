@@ -36,8 +36,8 @@
     </TableRow>
     <TextView
         android:layout_width="384dp"
-        android:layout_height="15dp"
+        android:layout_height="50dp"
         android:id="@+id/textView2"
         android:background="@android:color/background_dark"
-        />
+        android:textSize="18dp" />
     </TableLayout>
