@@ -21,8 +21,8 @@ import javax.swing.JTextField;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import edu.asu.msse.gnayak2.delegates.NewsDelegate;
-import edu.asu.msse.gnayak2.models.News;
+import edu.asu.msse.gnayak2.delegates.FeaturedDelegate;
+import edu.asu.msse.gnayak2.models.FeaturedNews;
 import edu.asu.msse.gnayak2.networking.HTTPConnectionHelper;
 import net.miginfocom.swing.MigLayout;
 import java.awt.image.BufferedImage;
@@ -35,21 +35,20 @@ import java.text.SimpleDateFormat;
 
 import javax.imageio.ImageIO;
 
-public class EditNewsFrame extends JFrame {
+public class EditFeaturedNewsFrame extends JFrame {
 
 	private JPanel panel;
 	private JTextField tfTitle;
 	private JTextArea taDescription;
 	private JTextField tfLink;
-	private JTextField tfDate;
 	private JLabel lblReadMore;
 	private JScrollPane scrollPane;
-	private News news;
+	private FeaturedNews fnews;
 	private JButton btnSubmit;
 	private JButton browseButton;
 	private JTextField imageFileButton;
 	private JButton addButton;
-	NewsDelegate newsDelegate;
+	FeaturedDelegate featuredDelegate;
 	String filename;
 	String encodedImage;
 	
@@ -58,11 +57,11 @@ public class EditNewsFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public EditNewsFrame(News item, NewsDelegate newsDelegate) {
-		news = item;
-		this.newsDelegate = newsDelegate;
+	public EditFeaturedNewsFrame(FeaturedNews item, FeaturedDelegate featuredDelegate) {
+		fnews = item;
+		this.featuredDelegate = featuredDelegate;
 		setUpFrame();
-		populateFileds(news);
+		populateFileds(fnews);
 	}
 	
 	public void setUpFrame() {
@@ -70,12 +69,10 @@ public class EditNewsFrame extends JFrame {
 		setPreferredSize(new Dimension(Constants.WIDTH,Constants.HEIGHT));
 		tfTitle = new JTextField();
 		taDescription = new JTextArea("",20,20);
-		tfDate = new JTextField("Date",20);
 		lblReadMore = new JLabel("Read More: ");
 		browseButton = new JButton("Browse");
 		imageFileButton = new JTextField("",20);
 		tfLink = new JTextField("http://");
-		
 		
 		scrollPane = new JScrollPane(taDescription);
 		btnSubmit = new JButton("Submit");
@@ -86,7 +83,6 @@ public class EditNewsFrame extends JFrame {
 		panel.add(tfTitle, "span,pushx,growx, wrap");
 		panel.add(lblReadMore);
 		panel.add(tfLink, "wrap");
-		panel.add(tfDate,"wrap");
 		
 		panel.add(scrollPane,"span,push,grow, wrap");	
 		panel.add(browseButton, "wrap");
@@ -100,16 +96,15 @@ public class EditNewsFrame extends JFrame {
 		setActionListenerForButton();
 	}
 	
-	public void populateFileds(News news) {
-		tfTitle.setText(news.getTitle());
-		taDescription.setText(news.getDesc());
-		tfLink.setText(news.getLink());
-		tfDate.setText(news.getDate());
+	public void populateFileds(FeaturedNews fnews) {
+		tfTitle.setText(fnews.getTitle());
+		taDescription.setText(fnews.getDesc());
+		tfLink.setText(fnews.getLink());
 		//imageFileButton.setText(news.getDate());
 	}
  	
-	public EditNewsFrame(NewsDelegate newsdelegate) {
-		this.newsDelegate = newsdelegate;
+	public EditFeaturedNewsFrame(FeaturedDelegate featureDelegate) {
+		this.featuredDelegate = featureDelegate;
 		setUpFrame();
 	}
 	
@@ -135,20 +130,18 @@ public class EditNewsFrame extends JFrame {
            	}catch(IOException e1){
 		 		System.out.println(e1.getMessage());
 			 	}
-//     			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-//				Date date = new Date();
-//				System.out.println(dateFormat.format(date)); 
-			   System.out.println("DATE-----" + tfDate.getText());
-			   
+     			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+				Date date = new Date();
+				System.out.println(dateFormat.format(date)); 
 				
-				News newNews = new News(tfTitle.getText(), taDescription.getText(),tfLink.getText(), tfDate.getText(), encodedImage);
+				FeaturedNews newNews = new FeaturedNews(tfTitle.getText(), taDescription.getText(),tfLink.getText(), date.toString(), encodedImage);
 				// delete old news
 			//	System.out.println("BYTE_STRING_________"+imageInByte.toString());
 				
 				
-				newsDelegate.addNews(newNews);
-				if (news != null){
-					newsDelegate.deleteNews(news);
+				featuredDelegate.addNews(newNews);
+				if (fnews != null){
+					featuredDelegate.deleteNews(fnews);
 				}
 				dispose();
 			}

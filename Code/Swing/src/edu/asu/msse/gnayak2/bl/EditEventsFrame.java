@@ -81,7 +81,8 @@ public class EditEventsFrame extends JFrame {
 		tfTitle.setText(event.getTitle());
 		taDescription.setText(event.getDesc());
 		//tfPlace.setText(event.getPlace());
-		tfLocation.setText(event.getLocation());
+		
+		tfLocation.setText(event.getPlace());
 		tfRegURL.setText(event.getRegURL());
 		tfDate.setText(event.getDate());
 	}

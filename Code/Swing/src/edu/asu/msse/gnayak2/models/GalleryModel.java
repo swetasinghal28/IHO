@@ -14,11 +14,12 @@ public class GalleryModel {
 	String id;
 	String title;
 	String image;
-
-	public GalleryModel(String title, String image) {
+    int order;
+	public GalleryModel(String title, String image, int order) {
 		id = UUID.randomUUID().toString().replace("-", "");
 		this.title = title;
 		this.image = image;
+		this.order = order;
 		
 		
 	}
@@ -27,6 +28,7 @@ public class GalleryModel {
 		id = object.getString("id");
 	    title = object.getString("title");	
        image = object.getString("image");
+      // order = object.getInt("order");
 	}
 
 	public String getId() {
@@ -35,6 +37,14 @@ public class GalleryModel {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+	
+	public int getOrder() {
+		return order;
+	}
+
+	public void setOrder(int order) {
+		this.order = order;
 	}
 	
 	public String getTitle() {

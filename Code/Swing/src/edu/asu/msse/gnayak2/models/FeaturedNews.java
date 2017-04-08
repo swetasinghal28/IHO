@@ -9,7 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
-public class News {
+public class FeaturedNews {
 	String id;
 	String title;
 	String desc;
@@ -18,7 +18,7 @@ public class News {
 	String image;
 
 
-	public News(String newsTitle, String description, String linkMore, String date, String image) {
+	public FeaturedNews(String newsTitle, String description, String linkMore, String date, String image) {
 		id = UUID.randomUUID().toString().replace("-", "");
 		title = newsTitle;
 		desc = description;
@@ -29,13 +29,13 @@ public class News {
 		
 	}
 	
-	public News(JSONObject object) {
+	public FeaturedNews(JSONObject object) {
 		id = object.getString("id");
 		title = object.getString("title");
 		desc = object.getString("desc");
 		link = object.getString("link");
       date = object.getString("date");
-       //image = object.getString("image");
+       image = object.getString("image");
       
 	}
 
