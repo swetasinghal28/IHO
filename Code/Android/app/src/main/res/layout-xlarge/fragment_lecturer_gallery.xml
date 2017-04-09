@@ -7,16 +7,24 @@
         <ImageButton
             android:layout_width="384dp"
             android:layout_height="60dp"
-            android:id="@+id/customLecturerBackbutton"
+            android:id="@+id/customLecturerGalleryBackbutton"
             android:background="@drawable/header_lecturergallery"
             android:onClick="onClick"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:id="@+id/textView"
+        android:layout_below="@+id/customLecturerGalleryBackbutton"
+        android:background="@android:color/background_dark"
+        />
     <ListView
         android:id="@android:id/list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/customLecturerBackbutton">
+        android:layout_below="@+id/textView"
+        android:background="@android:color/background_dark">
     </ListView>
 </RelativeLayout>

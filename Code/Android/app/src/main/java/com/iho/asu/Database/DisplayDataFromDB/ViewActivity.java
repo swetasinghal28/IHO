@@ -16,6 +16,8 @@ import com.iho.asu.Pages.FieldNotes;
 import com.iho.asu.Pages.NewsEvents;
 import com.iho.asu.R;
 
+import static com.iho.asu.IHOConstants.LECTURER_GALLERY_KEY;
+
 
 public class ViewActivity extends Activity implements View.OnClickListener {
     private String link ="";
@@ -76,7 +78,10 @@ public class ViewActivity extends Activity implements View.OnClickListener {
                 startActivity(intent);
                 break;
             case R.id.viewGallery:
-                LecturerGalleryFragment gFragment = new LecturerGalleryFragment(email);
+                LecturerGalleryFragment gFragment = new LecturerGalleryFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString(LECTURER_GALLERY_KEY, email);
+                gFragment.setArguments(bundle);
                 ft.replace(R.id.per_view, gFragment);
                 ft.commit();
                 break;
