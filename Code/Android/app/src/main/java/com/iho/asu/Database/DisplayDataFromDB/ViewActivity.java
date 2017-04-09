@@ -57,6 +57,11 @@ public class ViewActivity extends Activity implements View.OnClickListener {
                 ft.replace(R.id.per_view, newsFragment);
                 ft.commit();
                 break;
+            case R.id.customFNewsBackbutton:
+                FeaturedNewsFragment featuredNewsFragment = new FeaturedNewsFragment();
+                ft.replace(R.id.per_view, featuredNewsFragment);
+                ft.commit();
+                break;
             case R.id.eventsLink:
             case R.id.newsLink:
             case R.id.lectureLink:
@@ -113,6 +118,9 @@ public class ViewActivity extends Activity implements View.OnClickListener {
             email = i.getStringExtra(Columns.KEY_LECTURER_EMAIL.getColumnName());
         } else if(type.equalsIgnoreCase("News")){
             returnFragment = new PerNewsViewFragment();
+            link = i.getStringExtra(Columns.KEY_NEWS_LINK.getColumnName());
+        } else if(type.equalsIgnoreCase("FeaturedNews")){
+            returnFragment = new PerFeaturedNewsViewFragment();
             link = i.getStringExtra(Columns.KEY_NEWS_LINK.getColumnName());
         } else if(type.equalsIgnoreCase("Events")){
             returnFragment = new PerEventsViewFragment();

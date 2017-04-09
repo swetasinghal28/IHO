@@ -6,7 +6,7 @@
     <ImageButton
         android:layout_width="384dp"
         android:layout_height="60dp"
-        android:id="@+id/customNewsBackbutton"
+        android:id="@+id/customFNewsBackbutton"
         android:background="@drawable/header_featured"
         android:onClick="onClick"
         android:layout_alignParentRight="true"
@@ -16,7 +16,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@+id/customNewsBackbutton"
+        android:layout_below="@+id/customFNewsBackbutton"
         android:id="@+id/scrollView2"
         android:background="@android:color/background_light">
     <LinearLayout

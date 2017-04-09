@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.iho.asu.Database.DisplayDataFromDB.EventsFragment;
+import com.iho.asu.Database.DisplayDataFromDB.FeaturedNewsFragment;
 import com.iho.asu.Database.DisplayDataFromDB.GalleryFragment;
 import com.iho.asu.Database.DisplayDataFromDB.LecturerFragment;
 import com.iho.asu.Database.DisplayDataFromDB.NewsFragment;
@@ -247,7 +248,7 @@ public class MainActivity extends Activity implements OnClickListener{
                 break;
             case R.id.ne4:
                 fragmentTransaction.remove(fragment);
-                fragment = new NewsFragment();
+                fragment = new FeaturedNewsFragment();
                 fragmentTransaction.replace(R.id.main_layout, fragment);
                 fragmentTransaction.commit();
                 break;
