@@ -50,6 +50,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="\n"
+                android:id="@+id/textView5"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:clickable="false" />
+
+            <Button
+                android:id="@+id/ne4"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/shape"
+                android:text="  Featured News                                       >"
+                android:textColor="@android:color/background_light"
+                android:textSize="20dp"
+                android:onClick="onClick" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="\n"
                 android:id="@+id/textView4"
                 android:textStyle="bold"
                 android:textSize="20dp" />

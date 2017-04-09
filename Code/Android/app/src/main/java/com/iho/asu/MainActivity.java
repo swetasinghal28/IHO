@@ -245,6 +245,12 @@ public class MainActivity extends Activity implements OnClickListener{
                 fragmentTransaction.replace(R.id.main_layout, fragment);
                 fragmentTransaction.commit();
                 break;
+            case R.id.ne4:
+                fragmentTransaction.remove(fragment);
+                fragment = new NewsFragment();
+                fragmentTransaction.replace(R.id.main_layout, fragment);
+                fragmentTransaction.commit();
+                break;
             case R.id.ne2:
                 fragmentTransaction.remove(fragment);
                 fragment = new EventsFragment();
