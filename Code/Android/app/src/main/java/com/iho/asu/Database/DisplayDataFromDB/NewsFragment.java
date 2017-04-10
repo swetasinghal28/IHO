@@ -24,6 +24,7 @@ import com.iho.asu.Comparators.NewsComparator;
 import com.iho.asu.Database.Columns;
 import com.iho.asu.Database.Tables.News;
 import com.iho.asu.JSONCache;
+import com.iho.asu.JSONResourceReader;
 import com.iho.asu.R;
 
 import org.json.JSONArray;
@@ -71,7 +72,11 @@ public class NewsFragment extends ListFragment {
         Context context = v.getContext();
         path = context.getFilesDir();
         file = new File(path, "news.json");
-
+        try {
+            Files.write("".getBytes(), file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Log.i(TAG, "fetching NewsContents...");
         if (JSONCache.newsItems.size() == 0) {
             //Cache Empty, Fetch  News Objects
@@ -315,8 +320,14 @@ public class NewsFragment extends ListFragment {
             JSONCache.newsTitle.clear();
             newsItems.clear();
             newsTitle.clear();
+            String contents = null;
 
-            String contents = Files.toString(file, Charset.forName("UTF-8"));
+            contents = Files.toString(file, Charset.forName("UTF-8"));
+            if ("".equals(contents)) {
+                Log.i(TAG,"File storage empty, fetching from resources...");
+                JSONResourceReader jsonResourceReader = new JSONResourceReader(getResources(), R.raw.newsobjects);
+                contents = jsonResourceReader.jsonString;
+            }
 
             Gson gson = new Gson();
             News[] newsArray = gson.fromJson(contents, News[].class);
