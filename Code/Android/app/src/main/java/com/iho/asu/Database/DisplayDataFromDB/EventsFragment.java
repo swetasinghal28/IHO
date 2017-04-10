@@ -18,11 +18,10 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.google.gson.Gson;
 import com.iho.asu.AppController;
 import com.iho.asu.Comparators.EventsComparator;
-import com.iho.asu.Containers.NewsContainer;
+
 import com.iho.asu.Database.Columns;
 import com.iho.asu.Database.DataBaseHelper;
 import com.iho.asu.Database.Tables.Events;
-import com.iho.asu.Database.Tables.News;
 import com.iho.asu.JSONResourceReader;
 import com.iho.asu.R;
 
@@ -105,13 +104,13 @@ public class EventsFragment extends ListFragment {
         String str = resourceReader.jsonString;
 
         Gson gson = new Gson();
-        NewsContainer newsContainer = gson.fromJson(str, NewsContainer.class);
 
-        ArrayList<News> newsList = newsContainer.getNewsList();
+
+        /*ArrayList<News> newsList = newsContainer.getNewsList();
 
         for (News news: newsList) {
             //newsTitle.add(news.getTitle());
-        }
+        }*/
 
         //ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, newsTitle);
         //this.setListAdapter(adapter);

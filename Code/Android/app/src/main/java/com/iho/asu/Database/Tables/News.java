@@ -1,16 +1,35 @@
 package com.iho.asu.Database.Tables;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 /**
  * Created by Barathi on 7/4/2014.
  */
 public class News {
+    @Expose
     private String id;
+
+    @Expose
     private String title;
+
+    @Expose
+    @SerializedName("desc")
     private String text;
-    private byte[] image;
+
+    @Expose
+    @SerializedName("link")
     private String newsLink;
+
+    @Expose
+    private String image;
+
+    @Expose
+    private String date;
+
+    private byte[] img;
     private Date creationDate;
 
     public String getId() {
@@ -37,12 +56,12 @@ public class News {
         this.text = text;
     }
 
-    public byte[] getImage() {
-        return image;
+    public byte[] getImg() {
+        return img;
     }
 
-    public void setImage(byte[] image) {
-        this.image = image;
+    public void setImg(byte[] image) {
+        this.img = image;
     }
 
     public String getNewsLink() {
@@ -64,7 +83,22 @@ public class News {
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder("");
-        return sb.append(title).append(" ").toString();
+        return sb.append(title).append(" ").append(text).append(" ").append(newsLink).toString();
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 }

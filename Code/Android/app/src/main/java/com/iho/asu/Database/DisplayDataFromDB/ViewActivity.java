@@ -39,80 +39,85 @@ public class ViewActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Uri uri = Uri.parse(link);
-        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-        Intent i= new Intent(this,MainActivity.class );
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        switch (v.getId()) {
-            case R.id.customLecturerGalleryBackbutton:
-                PerLecturerViewFragment fragment = new PerLecturerViewFragment();
-                ft.replace(R.id.per_view, fragment);
-                ft.commit();
-                break;
-            case R.id.customLecturerBackbutton:
-                LecturerFragment lecturerFragment = new LecturerFragment();
-                ft.replace(R.id.per_view,lecturerFragment);
-                ft.commit();
-                break;
-            case R.id.customNewsBackbutton:
-                NewsFragment newsFragment = new NewsFragment();
-                ft.replace(R.id.per_view, newsFragment);
-                ft.commit();
-                break;
-            case R.id.customFNewsBackbutton:
-                FeaturedNewsFragment featuredNewsFragment = new FeaturedNewsFragment();
-                ft.replace(R.id.per_view, featuredNewsFragment);
-                ft.commit();
-                break;
-            case R.id.eventsLink:
-            case R.id.newsLink:
-            case R.id.lectureLink:
-            case R.id.scienceLink:
-            case R.id.travelLink:
-                Log.i("V_TravelLink: ", link);
-                startActivity(intent);
-                break;
-            case R.id.registerEvent:
-                uri = Uri.parse(eventLink);
-                intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-                break;
-            case R.id.viewGallery:
-                LecturerGalleryFragment gFragment = new LecturerGalleryFragment();
-                Bundle bundle = new Bundle();
-                bundle.putString(LECTURER_GALLERY_KEY, email);
-                gFragment.setArguments(bundle);
-                ft.replace(R.id.per_view, gFragment);
-                ft.commit();
-                break;
-            case R.id.customEventsBackbutton:
-                EventsFragment eFragment = new EventsFragment();
-                ft.replace(R.id.per_view, eFragment);
-                ft.commit();
-                break;
-            case R.id.customScienceBackbutton:
-                ScienceFragment sFragment = new ScienceFragment();
-                ft.replace(R.id.per_view, sFragment);
-                ft.commit();
-                break;
-            case R.id.customTravelBackbutton:
-                TravelFragment tFragment = new TravelFragment();
-                ft.replace(R.id.per_view, tFragment);
-                ft.commit();
-                break;
-            case R.id.emailButton:
-                Intent emailI = new Intent(Intent.ACTION_SENDTO,Uri.fromParts("mailto",email,null));
-                startActivity(Intent.createChooser(emailI, "Choose an Email Client:"));
-                break;
-            case R.id.customFNBackbutton:
-                MainActivity.fragment = new FieldNotes();
-                startActivity(i);
-                break;
-            case R.id.customNEBackButton:
-                MainActivity.fragment = new NewsEvents();
-                startActivity(i);
-                break;
+        try {
+            Uri uri = Uri.parse(link);
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            Intent i= new Intent(this,MainActivity.class );
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            switch (v.getId()) {
+                case R.id.customLecturerGalleryBackbutton:
+                    PerLecturerViewFragment fragment = new PerLecturerViewFragment();
+                    ft.replace(R.id.per_view, fragment);
+                    ft.commit();
+                    break;
+                case R.id.customLecturerBackbutton:
+                    LecturerFragment lecturerFragment = new LecturerFragment();
+                    ft.replace(R.id.per_view,lecturerFragment);
+                    ft.commit();
+                    break;
+                case R.id.customNewsBackbutton:
+                    NewsFragment newsFragment = new NewsFragment();
+                    ft.replace(R.id.per_view, newsFragment);
+                    ft.commit();
+                    break;
+                case R.id.customFNewsBackbutton:
+                    FeaturedNewsFragment featuredNewsFragment = new FeaturedNewsFragment();
+                    ft.replace(R.id.per_view, featuredNewsFragment);
+                    ft.commit();
+                    break;
+                case R.id.eventsLink:
+                case R.id.newsLink:
+                case R.id.lectureLink:
+                case R.id.scienceLink:
+                case R.id.travelLink:
+                    Log.i("V_TravelLink: ", link);
+                    startActivity(intent);
+                    break;
+                case R.id.registerEvent:
+                    uri = Uri.parse(eventLink);
+                    intent = new Intent(Intent.ACTION_VIEW, uri);
+                    startActivity(intent);
+                    break;
+                case R.id.viewGallery:
+                    LecturerGalleryFragment gFragment = new LecturerGalleryFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString(LECTURER_GALLERY_KEY, email);
+                    gFragment.setArguments(bundle);
+                    ft.replace(R.id.per_view, gFragment);
+                    ft.commit();
+                    break;
+                case R.id.customEventsBackbutton:
+                    EventsFragment eFragment = new EventsFragment();
+                    ft.replace(R.id.per_view, eFragment);
+                    ft.commit();
+                    break;
+                case R.id.customScienceBackbutton:
+                    ScienceFragment sFragment = new ScienceFragment();
+                    ft.replace(R.id.per_view, sFragment);
+                    ft.commit();
+                    break;
+                case R.id.customTravelBackbutton:
+                    TravelFragment tFragment = new TravelFragment();
+                    ft.replace(R.id.per_view, tFragment);
+                    ft.commit();
+                    break;
+                case R.id.emailButton:
+                    Intent emailI = new Intent(Intent.ACTION_SENDTO,Uri.fromParts("mailto",email,null));
+                    startActivity(Intent.createChooser(emailI, "Choose an Email Client:"));
+                    break;
+                case R.id.customFNBackbutton:
+                    MainActivity.fragment = new FieldNotes();
+                    startActivity(i);
+                    break;
+                case R.id.customNEBackButton:
+                    MainActivity.fragment = new NewsEvents();
+                    startActivity(i);
+                    break;
+            }
+        } catch (Exception e) {
+            Log.e("ViewActivity", "onClick: Error=" + e.getMessage());
         }
+
     }
 
     private Fragment getTheTypeOfFragment(String type, Intent i){

@@ -21,7 +21,6 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.google.gson.Gson;
 import com.iho.asu.AppController;
 import com.iho.asu.Comparators.NewsComparator;
-import com.iho.asu.Containers.NewsContainer;
 import com.iho.asu.Database.Columns;
 import com.iho.asu.Database.DataBaseHelper;
 import com.iho.asu.Database.Tables.News;
@@ -39,7 +38,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.iho.asu.IHOConstants.*;
+import static com.iho.asu.IHOConstants.FEATURED_NEWS_URL;
+import static com.iho.asu.IHOConstants.NEWS_DATE;
+import static com.iho.asu.IHOConstants.NEWS_DESC;
+import static com.iho.asu.IHOConstants.NEWS_ID;
+import static com.iho.asu.IHOConstants.NEWS_IMAGE;
+import static com.iho.asu.IHOConstants.NEWS_LINK;
+import static com.iho.asu.IHOConstants.NEWS_TITLE;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class FeaturedNewsFragment extends ListFragment {
@@ -82,7 +87,7 @@ public class FeaturedNewsFragment extends ListFragment {
         String name = newsTitle.get(position);
         News news = newsItems.get(name);
         i.putExtra(Columns.KEY_NEWS_TITLE.getColumnName(), name);
-        i.putExtra(Columns.KEY_NEWS_IMAGE.getColumnName(),news.getImage());
+        i.putExtra(Columns.KEY_NEWS_IMAGE.getColumnName(),news.getImg());
         i.putExtra(Columns.KEY_NEWS_LINK.getColumnName(),news.getNewsLink());
         i.putExtra(Columns.KEY_NEWS_TEXT.getColumnName(),news.getText());
         i.putExtra("ViewNeeded","FeaturedNews");
@@ -116,9 +121,9 @@ public class FeaturedNewsFragment extends ListFragment {
         String str = resourceReader.jsonString;
 
         Gson gson = new Gson();
-        NewsContainer newsContainer = gson.fromJson(str, NewsContainer.class);
 
-        ArrayList<News> newsList = newsContainer.getNewsList();
+
+        /*ArrayList<News> newsList = newsContainer.getNewsList();
 
         for (News news: newsList) {
             newsTitle.add(news.getTitle());
@@ -126,7 +131,7 @@ public class FeaturedNewsFragment extends ListFragment {
 
         ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, newsTitle);
         this.setListAdapter(adapter);
-        adapter.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();*/
     }
 
     private void parseJSONResult(JSONArray jsonArray) {
@@ -169,7 +174,7 @@ public class FeaturedNewsFragment extends ListFragment {
                     n.setId(id);
                     n.setTitle(title);
                     n.setText(newsDesc);
-                    n.setImage(Base64.decode(image, Base64.DEFAULT));
+                    n.setImg(Base64.decode(image, Base64.DEFAULT));
                     n.setNewsLink(newsLink);
                     n.setCreationDate(new Date(dateStr));
 
@@ -228,7 +233,7 @@ public class FeaturedNewsFragment extends ListFragment {
         //n.setId(cursor.getLong(0));
         n.setTitle(title);
         n.setText(cursor.getString(2));
-        n.setImage(cursor.getBlob(3));
+        n.setImg(cursor.getBlob(3));
         n.setNewsLink(cursor.getString(4));
         newsTitle.add(title);
         newsItems.put(title, n);
