@@ -39,7 +39,6 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 
 import static com.iho.asu.IHOConstants.NEWS_DATE;
 import static com.iho.asu.IHOConstants.NEWS_DESC;
@@ -58,6 +57,7 @@ public class NewsFragment extends ListFragment {
     private boolean isContentChanged = false;
     private ArrayList<String> newsTitle = new ArrayList<String>();
     protected HashMap<String,News> newsItems = new HashMap<String, News>();
+    private ArrayList<String> newsIds = new ArrayList<String>();
 
     private File path = null;
     private File file = null;
@@ -134,8 +134,10 @@ public class NewsFragment extends ListFragment {
             Log.i(TAG, "parseJSONResult");
             JSONCache.newsItems.clear();
             JSONCache.newsTitle.clear();
+            JSONCache.newsIds.clear();
             newsItems.clear();
             newsTitle.clear();
+            newsIds.clear();
             String id = null, title = null, newsDesc = null, newsLink = null, image = null, dateStr = null;
 
 
@@ -185,15 +187,17 @@ public class NewsFragment extends ListFragment {
             Collections.sort(newsList, Collections.<News>reverseOrder(new NewsComparator()));
             for (News news: newsList) {
                 newsTitle.add(news.getTitle());
+                newsIds.add(news.getId());
             }
 
             ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, newsTitle);
             this.setListAdapter(adapter);
             adapter.notifyDataSetChanged();
 
-            Log.i(TAG, "Updating local cache...");
+            Log.i(TAG, "Updating news local cache...");
             JSONCache.newsItems = (HashMap<String, News>) newsItems.clone();
             JSONCache.newsTitle = (ArrayList<String>) newsTitle.clone();
+            JSONCache.newsIds = (ArrayList<String>) newsIds.clone();
 
         } catch (JSONException e) {
 
@@ -249,7 +253,7 @@ public class NewsFragment extends ListFragment {
                 newsIDs.add(id);
             }
 
-            Set<String> oldListIds = JSONCache.newsItems.keySet();
+            ArrayList<String> oldListIds = (ArrayList<String>) JSONCache.newsIds.clone();
             if (oldListIds.size() == 0) {
                 Log.i(TAG, "oldListIds.size() :" + oldListIds.size());
                 isContentChanged = true;
@@ -318,8 +322,10 @@ public class NewsFragment extends ListFragment {
 
             JSONCache.newsItems.clear();
             JSONCache.newsTitle.clear();
+            JSONCache.newsIds.clear();
             newsItems.clear();
             newsTitle.clear();
+            newsIds.clear();
             String contents = null;
 
             contents = Files.toString(file, Charset.forName("UTF-8"));
@@ -343,15 +349,17 @@ public class NewsFragment extends ListFragment {
             Collections.sort(newsList, Collections.<News>reverseOrder(new NewsComparator()));
             for (News news: newsList) {
                 newsTitle.add(news.getTitle());
+                newsIds.add(news.getId());
             }
 
             ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, newsTitle);
             this.setListAdapter(adapter);
             adapter.notifyDataSetChanged();
 
-            Log.i(TAG, "Updating local cache...");
+            Log.i(TAG, "Updating news local cache...");
             JSONCache.newsItems = (HashMap<String, News>) newsItems.clone();
             JSONCache.newsTitle = (ArrayList<String>) newsTitle.clone();
+            JSONCache.newsIds = (ArrayList<String>) newsIds.clone();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -359,44 +367,5 @@ public class NewsFragment extends ListFragment {
             Log.e(TAG, e.getMessage());
         }
     }
-
-    /*private void getDummyImageAndLink() {
-        Log.i(TAG, "getDummyImageAndLink");
-        String[] columns = Columns.getNewsColumnNames();
-        Cursor newsCursor = database.query(TABLE_NAME, columns, null, null, null, null, Columns.KEY_NEWS_ID.getColumnName()+" DESC");
-        newsCursor.moveToFirst();
-        while (!newsCursor.isAfterLast()) {
-            Log.i(TAG, "dummyimage_cursor_loop");
-            dummyImage = newsCursor.getBlob(3);
-            dummyLink = newsCursor.getString(4);
-            //cursorToNews(newsCursor);
-            newsCursor.moveToNext();
-            break;
-        }
-        newsCursor.close();
-    }
-    //Extracting elements from the database
-    private void getNewsItems() {
-        String[] columns = Columns.getNewsColumnNames();
-        Cursor newsCursor = database.query(TABLE_NAME, columns, null, null, null, null, Columns.KEY_NEWS_ID.getColumnName()+" DESC");
-        newsCursor.moveToFirst();
-        while (!newsCursor.isAfterLast()) {
-            cursorToNews(newsCursor);
-            newsCursor.moveToNext();
-        }
-        newsCursor.close();
-    }
-
-    private void cursorToNews(Cursor cursor) {
-        News n = new News();
-        String title = cursor.getString(1);
-        //n.setId(cursor.getLong(0));
-        n.setTitle(title);
-        n.setText(cursor.getString(2));
-        n.setImage(cursor.getBlob(3));
-        n.setNewsLink(cursor.getString(4));
-        newsTitle.add(title);
-        newsItems.put(title, n);
-    }*/
 
 }

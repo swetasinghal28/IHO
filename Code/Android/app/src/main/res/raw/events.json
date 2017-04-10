@@ -1,0 +1,20 @@
+[
+  {
+    "date": "Sunday, April 30 2017, 5:30 PM",
+    "location": "http://maps.google.com/?q=Arizona State University, Tempe",
+    "id": "0eeb512323f9468cbc079376264ce291",
+    "place": "Arizona State University, Tempe",
+    "title": "IHO Inaugration ",
+    "regURL": "https://iho.asu.edu/",
+    "desc": "Event 1"
+  },
+  {
+    "date": "Tuesday, February 27, 2018, 4:00 PM",
+    "location": "http://maps.google.com/?q=Arizona State University, Tempe",
+    "id": "c2dab8e5420d411ba534580e069c8024",
+    "place": "Arizona State University, Tempe",
+    "title": "IHO App launch",
+    "regURL": "https://iho.asu.edu",
+    "desc": "A research center of the College of Liberal Arts and Sciences, IHO pursues an integrative strategy for research and discovery central to its over 30-year-old founding mission, bridging social, earth, and life science approaches to the most important questions concerning the course, causes, and timing of events in the human career over deep time. IHO fosters public awareness of human origins and its relevance to contemporary society through innovative outreach programs that create timely,accurate information for both education and lay communities."
+  }
+]

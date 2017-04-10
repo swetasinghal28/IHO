@@ -6,10 +6,15 @@ package com.iho.asu;
 
 public class IHOConstants {
     public static final String BASE_URL = "http://107.170.239.62:3000/";
+
     public static final String NEWS_URL = "http://107.170.239.62:3000/newsobjects";
     public static final String NEWS_IDS = "http://107.170.239.62:3000/newsid";
+
     public static final String FEATURED_NEWS_URL = "http://107.170.239.62:3000/featureobjects";
+
     public static final String EVENTS_URL = "http://107.170.239.62:3000/eventobjects";
+    public static final String EVENTS_IDS = "http://107.170.239.62:3000/eventid";
+
     public static final String LECTURER_URL = "http://107.170.239.62:3000/lectureobjects";
     public static final String LECTURER_GALLERY_URL = "http://107.170.239.62:3000/lectureobjects/galleryobjects/";
     public static final String LECTURER_GALLERY_KEY = "email";

@@ -1,9 +1,8 @@
 package com.iho.asu.Database.DisplayDataFromDB;
 
 import android.app.ListFragment;
+import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,13 +14,13 @@ import android.widget.ListView;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.google.common.io.Files;
 import com.google.gson.Gson;
 import com.iho.asu.AppController;
 import com.iho.asu.Comparators.EventsComparator;
-
 import com.iho.asu.Database.Columns;
-import com.iho.asu.Database.DataBaseHelper;
 import com.iho.asu.Database.Tables.Events;
+import com.iho.asu.JSONCache;
 import com.iho.asu.JSONResourceReader;
 import com.iho.asu.R;
 
@@ -29,13 +28,16 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import static com.iho.asu.IHOConstants.EVENTS_IDS;
 import static com.iho.asu.IHOConstants.EVENTS_URL;
 import static com.iho.asu.IHOConstants.EVENT_DESC;
 import static com.iho.asu.IHOConstants.EVENT_ID;
@@ -47,37 +49,61 @@ import static com.iho.asu.IHOConstants.EVENT_WHERE;
 
 public class EventsFragment extends ListFragment {
 
-    private static final String DB_NAME = "asuIHO.db";
 
-    //A good practice is to define database field names as constants
-    private static final String TABLE_NAME = "Events";
     private static final String TAG = "Events";
 
-    private SQLiteDatabase database;
     private ArrayList<String> eventsTitle = new ArrayList<String>();
-    protected Map<String,Events> eventsItems = new HashMap<String, Events>();
+    protected HashMap<String,Events> eventsItems = new HashMap<String, Events>();
+    private ArrayList<String> eventsIds = new ArrayList<String>();
+    private boolean isContentChanged = false;
+    private File path = null;
+    private File file = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(
                 R.layout.fragment_events, container, false);
-        DataBaseHelper dbOpenHelper = new DataBaseHelper(this.getActivity(), DB_NAME);
-        database = dbOpenHelper.openDataBase();
-        eventsItems.clear();
-        eventsTitle.clear();
-        //getEventsItems();
-        getEventsJson();
-        //CustomList2 adapter = new
-          //      CustomList2(this.getActivity(), eventsTitle);
-        /*ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, eventsTitle);
-        this.setListAdapter(adapter);
-        adapter.notifyDataSetChanged();*/
+
+        Context context = v.getContext();
+        path = context.getFilesDir();
+        file = new File(path, "events.json");
+        try {
+            Files.write("".getBytes(), file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Log.i(TAG, "fetching EventContents...");
+        if (JSONCache.eventsItems.size() == 0) {
+            //Cache Empty, Fetch  Events Objects
+            Log.i(TAG,"Cache Empty, Fetch  Event Objects...");
+            getEventsObjectJson();
+        } else {
+            //Cache not empty, checking if contents are modified
+            Log.i(TAG,"Cache not empty, checking if contents are modified...");
+            getEventIdsJSON();
+        }
+
         return v;
     }
 
-    private void getEventsJson() {
-        Log.i(TAG, "getEventsJson");
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id){
+        Intent i= new Intent(this.getActivity(),ViewActivity.class );
+        String name = eventsTitle.get(position);
+        Events events = eventsItems.get(name);
+        i.putExtra(Columns.KEY_EVENT_TITLE.getColumnName(), name);
+        i.putExtra(Columns.KEY_EVENT_WHEN.getColumnName(),events.getWhen());
+        i.putExtra(Columns.KEY_EVENT_MAP.getColumnName(),events.getLocation_link());
+        i.putExtra(Columns.KEY_EVENT_WHERE.getColumnName(),events.getWhere());
+        i.putExtra(Columns.KEY_EVENT_DESC.getColumnName(),events.getDescription());
+        i.putExtra(Columns.KEY_EVENT_REG.getColumnName(),events.getReg());
+        i.putExtra("ViewNeeded","Events");
+        startActivity(i);
+    }
+
+    private void getEventsObjectJson() {
+        Log.i(TAG, "getEventsObjectJson");
 
         JsonArrayRequest request = new JsonArrayRequest(EVENTS_URL.toString(),
                 new Response.Listener<JSONArray>() {
@@ -93,34 +119,24 @@ public class EventsFragment extends ListFragment {
                     public void onErrorResponse(VolleyError error) {
                         Log.e(TAG, "onErrorResponse: Error= " + error);
                         Log.e(TAG, "onErrorResponse: Error= " + error.getMessage());
-                        //fetchJSONRaw();
+                        fetchJSONRaw();
                     }
                 });
         AppController.getInstance().addToRequestQueue(request);
     }
 
-    private void fetchJSONRaw(){
-        JSONResourceReader resourceReader = new JSONResourceReader(getResources(), R.raw.newsobjects);
-        String str = resourceReader.jsonString;
-
-        Gson gson = new Gson();
-
-
-        /*ArrayList<News> newsList = newsContainer.getNewsList();
-
-        for (News news: newsList) {
-            //newsTitle.add(news.getTitle());
-        }*/
-
-        //ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, newsTitle);
-        //this.setListAdapter(adapter);
-        //adapter.notifyDataSetChanged();
-    }
-
     private void parseJSONResult(JSONArray jsonArray) {
         try {
 
+            Files.write(jsonArray.toString().getBytes(), file);
+
             Log.i(TAG, "parseJSONResult");
+            JSONCache.eventsItems.clear();
+            JSONCache.eventsTitle.clear();
+            JSONCache.eventsIds.clear();
+            eventsItems.clear();
+            eventsTitle.clear();
+            eventsIds.clear();
             String id = null, when = null, where = null, desc = null, title = null, locLink = null, reg = null;
 
 
@@ -177,65 +193,186 @@ public class EventsFragment extends ListFragment {
             Collections.sort(eventList, new EventsComparator());
             for (Events event: eventList) {
                 eventsTitle.add(event.getTitle());
+                eventsIds.add(event.getId());
             }
 
             ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, eventsTitle);
             this.setListAdapter(adapter);
             adapter.notifyDataSetChanged();
 
+            Log.i(TAG, "Updating event local cache...");
+            JSONCache.eventsItems = (HashMap<String, Events>) eventsItems.clone();
+            JSONCache.eventsTitle = (ArrayList<String>) eventsTitle.clone();
+            JSONCache.eventsIds = (ArrayList<String>) eventsIds.clone();
+
 
         } catch (JSONException e) {
 
             e.printStackTrace();
             Log.e(TAG, "parseJSONResult: Error=" + e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.e(TAG, "parseJSONResult: Error=" + e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e(TAG, "parseJSONResult: Error=" + e.getMessage());
         }
     }
 
-    @Override
-    public void onListItemClick(ListView l, View v, int position, long id){
-        Intent i= new Intent(this.getActivity(),ViewActivity.class );
-        String name = eventsTitle.get(position);
-        Events events = eventsItems.get(name);
-        i.putExtra(Columns.KEY_EVENT_TITLE.getColumnName(), name);
-        i.putExtra(Columns.KEY_EVENT_WHEN.getColumnName(),events.getWhen());
-        i.putExtra(Columns.KEY_EVENT_MAP.getColumnName(),events.getLocation_link());
-        i.putExtra(Columns.KEY_EVENT_WHERE.getColumnName(),events.getWhere());
-        i.putExtra(Columns.KEY_EVENT_DESC.getColumnName(),events.getDescription());
-        i.putExtra(Columns.KEY_EVENT_REG.getColumnName(),events.getReg());
-        i.putExtra("ViewNeeded","Events");
-        startActivity(i);
+    private void getEventIdsJSON() {
+        Log.i(TAG, "getEventIdsJSON");
+
+        JsonArrayRequest request = new JsonArrayRequest(EVENTS_IDS.toString(),
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray result) {
+
+                        Log.i(TAG, "onResponse: Result = " + result.toString());
+                        parseJSONIDResult(result);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e(TAG, "onErrorResponse: Error= " + error);
+                        Log.e(TAG, "onErrorResponse: Error= " + error.getMessage());
+                        getJSONCache();
+                    }
+                });
+        AppController.getInstance().addToRequestQueue(request);
     }
 
-    //Extracting elements from the database
-    private void getEventsItems() {
-        String[] columns = Columns.getEventColumnNames();
-        Cursor eventsCursor = database.query(TABLE_NAME, columns, null, null, null, null, Columns.KEY_EVENT_ID.getColumnName());
-        eventsCursor.moveToFirst();
-        while (!eventsCursor.isAfterLast()) {
-            cursorToEvents(eventsCursor);
-            eventsCursor.moveToNext();
+    private void parseJSONIDResult(JSONArray jsonArray) {
+        try {
+
+            Log.i(TAG, "parseJSONIDResult");
+
+            String id = null;
+
+            List<String> eventIDs = new ArrayList<String>();
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject events = jsonArray.getJSONObject(i);
+
+                if (!events.isNull(EVENT_ID)) {
+                    id = events.getString(EVENT_ID);
+                }
+
+                eventIDs.add(id);
+            }
+
+            ArrayList<String> oldListIds = (ArrayList<String>) JSONCache.eventsIds.clone();
+            if (oldListIds.size() == 0) {
+                Log.i(TAG, "event oldListIds.size() :" + oldListIds.size());
+                isContentChanged = true;
+            } else if (oldListIds.size() != eventIDs.size()) {
+                Log.i(TAG, "event oldListIds.size() :" + oldListIds.size());
+                Log.i(TAG, "eventIDs.size() :" + eventIDs.size());
+                isContentChanged = true;
+            } else {
+                for (String i: eventIDs) {
+                    if (!oldListIds.contains(i)) {
+                        isContentChanged = true;
+                        break;
+                    }
+                }
+            }
+            if (isContentChanged) {
+                Log.i(TAG, "Content Changed on server, fetching from server...");
+                getEventsObjectJson();
+            } else {
+                Log.i(TAG, "Content not Changed on server, fetching from local cache...");
+                getJSONCache();
+            }
+
+        } catch (JSONException e) {
+
+            isContentChanged = false;
+            getJSONCache();
+            e.printStackTrace();
+            Log.e(TAG, "parseJSONResult: Error=" + e.getMessage());
+
+        } catch (Exception e) {
+
+            isContentChanged = false;
+            getJSONCache();
+            e.printStackTrace();
+            Log.e(TAG, "parseJSONResult: Error=" + e.getMessage());
         }
-        String temp = "Friday, February 15, 2018, 5:30 PM";
-        Log.i(TAG, new Date(temp).toString());
-        String temp2 = "Tuesday, Apr 27, 2018, 4:00 PM";
-        Log.i(TAG, new Date(temp2).toString());
-        eventsCursor.close();
+
     }
 
-    private void cursorToEvents(Cursor cursor) {
-        Events n = new Events();
-        String title = cursor.getString(4);
-        //n.setId(cursor.getLong(0));
-        n.setTitle(title);
-        n.setWhen(cursor.getString(1));
-        n.setLocation_link(cursor.getString(2));
-        n.setWhere(cursor.getString(3));
-        n.setDescription(cursor.getString(5));
-        n.setReg(cursor.getString(6));
+    public void getJSONCache() {
+        try {
+            Log.i(TAG, "getJSONCache");
+            eventsItems.clear();
+            eventsTitle.clear();
 
-        //Log.i(TAG, n.toString() + " " + n.getLocation_link() + "    " + n.getReg());
+            eventsItems = (HashMap<String, Events>) JSONCache.eventsItems.clone();
+            List<Events> eventList = new ArrayList<>(JSONCache.eventsItems.values());
+            Collections.sort(eventList, new EventsComparator());
+            for (Events event: eventList) {
+                eventsTitle.add(event.getTitle());
+            }
 
-        eventsTitle.add(title);
-        eventsItems.put(title, n);
+            ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, eventsTitle);
+            this.setListAdapter(adapter);
+            adapter.notifyDataSetChanged();
+
+        } catch (Exception e) {
+            Log.e(TAG, "parseJSONResult: Error=" + e.getMessage());
+        }
+
     }
+
+    private void fetchJSONRaw(){
+        try {
+            Log.i(TAG, "fetching JSON from filestorage");
+
+            JSONCache.eventsItems.clear();
+            JSONCache.eventsTitle.clear();
+            JSONCache.eventsIds.clear();
+            eventsItems.clear();
+            eventsTitle.clear();
+            eventsIds.clear();
+            String contents = null;
+
+            contents = Files.toString(file, Charset.forName("UTF-8"));
+            if ("".equals(contents)) {
+                Log.i(TAG,"File storage empty, fetching from resources...");
+                JSONResourceReader jsonResourceReader = new JSONResourceReader(getResources(), R.raw.events);
+                contents = jsonResourceReader.jsonString;
+            }
+
+            Gson gson = new Gson();
+            Events[] eventsArray = gson.fromJson(contents, Events[].class);
+            List<Events> eventsList = new ArrayList<>();
+            for (Events event: eventsArray) {
+                event.setDate(new Date(event.getWhen()));
+                Log.i(TAG,event.toString());
+                eventsList.add(event);
+                eventsItems.put(event.getTitle(),event);
+            }
+
+            Collections.sort(eventsList, new EventsComparator());
+            for (Events event: eventsList) {
+                eventsTitle.add(event.getTitle());
+                eventsIds.add(event.getId());
+            }
+
+            ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, eventsTitle);
+            this.setListAdapter(adapter);
+            adapter.notifyDataSetChanged();
+
+            Log.i(TAG, "Updating event local cache...");
+            JSONCache.eventsItems = (HashMap<String, Events>) eventsItems.clone();
+            JSONCache.eventsTitle = (ArrayList<String>) eventsTitle.clone();
+            JSONCache.eventsIds = (ArrayList<String>) eventsIds.clone();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage());
+        }
+    }
+
 }

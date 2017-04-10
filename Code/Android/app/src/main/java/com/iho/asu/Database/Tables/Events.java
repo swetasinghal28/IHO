@@ -1,19 +1,41 @@
 package com.iho.asu.Database.Tables;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 /**
  * Created by Barathi on 7/4/2014.
  */
 public class Events {
+    @Expose
     private String id;
+
+    @Expose
+    @SerializedName("date")
     private String when;
+
+    @Expose
+    @SerializedName("place")
     private String where;
+
+    @Expose
+    @SerializedName("desc")
     private String description;
+
+    @Expose
     private String title;
+
+    @Expose
+    @SerializedName("location")
     private String location_link;
+
+    @Expose
+    @SerializedName("regURL")
     private String reg;
-    private Date date;
+
+    private Date eventDate;
 
     public String getReg() {
         return reg;
@@ -78,10 +100,10 @@ public class Events {
     }
 
     public Date getDate() {
-        return date;
+        return eventDate;
     }
 
     public void setDate(Date date) {
-        this.date = date;
+        this.eventDate = date;
     }
 }
