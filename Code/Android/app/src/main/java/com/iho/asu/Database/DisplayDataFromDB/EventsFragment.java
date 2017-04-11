@@ -68,12 +68,8 @@ public class EventsFragment extends ListFragment {
         Context context = v.getContext();
         path = context.getFilesDir();
         file = new File(path, "events.json");
-        try {
-            Files.write("".getBytes(), file);
-        } catch (IOException e) {
-            Log.e(TAG, "onCreateView: Error=" + e.getMessage());
-        }
-        Log.i(TAG, "fetching EventContents...");
+
+        Log.i(TAG, "fetching Contents...");
         if (JSONCache.eventsItems.size() == 0) {
             //Cache Empty, Fetch  Events Objects
             Log.i(TAG,"Cache Empty, Fetch  Event Objects...");
@@ -213,13 +209,13 @@ public class EventsFragment extends ListFragment {
 
         } catch (JSONException e) {
 
-            e.printStackTrace();
+
             Log.e(TAG, "parseJSONResult: Error=" + e.getMessage());
         } catch (IOException e) {
-            e.printStackTrace();
+
             Log.e(TAG, "parseJSONResult: Error=" + e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+
             Log.e(TAG, "parseJSONResult: Error=" + e.getMessage());
         }
     }
@@ -227,7 +223,7 @@ public class EventsFragment extends ListFragment {
     private void getEventIdsJSON() {
         Log.i(TAG, "getEventIdsJSON");
 
-        JsonArrayRequest request = new JsonArrayRequest(EVENTS_IDS.toString(),
+        JsonArrayRequest request = new JsonArrayRequest(EVENTS_IDS,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray result) {
@@ -293,14 +289,14 @@ public class EventsFragment extends ListFragment {
 
             isContentChanged = false;
             getJSONCache();
-            e.printStackTrace();
+
             Log.e(TAG, "parseJSONIDResult: Error=" + e.getMessage());
 
         } catch (Exception e) {
 
             isContentChanged = false;
             getJSONCache();
-            e.printStackTrace();
+
             Log.e(TAG, "parseJSONIDResult: Error=" + e.getMessage());
         }
 
@@ -331,7 +327,6 @@ public class EventsFragment extends ListFragment {
 
     private void fetchJSONRaw(){
         try {
-            Log.i(TAG, "fetching JSON from filestorage");
 
             JSONCache.eventsItems.clear();
             JSONCache.eventsTitle.clear();
@@ -341,11 +336,13 @@ public class EventsFragment extends ListFragment {
             eventsIds.clear();
             String contents = null;
 
-            contents = Files.toString(file, Charset.forName("UTF-8"));
-            if ("".equals(contents)) {
+            if (file.length() == 0) {
                 Log.i(TAG,"File storage empty, fetching from resources...");
                 JSONResourceReader jsonResourceReader = new JSONResourceReader(getResources(), R.raw.events);
                 contents = jsonResourceReader.jsonString;
+            } else {
+                Log.i(TAG, "fetching JSON from filestorage");
+                contents = Files.toString(file, Charset.forName("UTF-8"));
             }
 
             Gson gson = new Gson();

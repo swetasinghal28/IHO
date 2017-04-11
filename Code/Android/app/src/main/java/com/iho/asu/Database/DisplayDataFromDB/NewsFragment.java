@@ -72,13 +72,8 @@ public class NewsFragment extends ListFragment {
         Context context = v.getContext();
         path = context.getFilesDir();
         file = new File(path, "news.json");
-        try {
-            Files.write("".getBytes(), file);
-        } catch (IOException e) {
-            e.printStackTrace();
-            Log.e(TAG, "onCreateView: Error=" + e.getMessage());
-        }
-        Log.i(TAG, "fetching NewsContents...");
+
+        Log.i(TAG, "fetching Contents...");
         if (JSONCache.newsItems.size() == 0) {
             //Cache Empty, Fetch  News Objects
             Log.i(TAG,"Cache Empty, Fetch  News Objects...");
@@ -207,13 +202,13 @@ public class NewsFragment extends ListFragment {
             JSONCache.newsIds = (ArrayList<String>) newsIds.clone();
 
         } catch (JSONException e) {
-            e.printStackTrace();
+
             Log.e(TAG, "parseJSONResult: Error=" + e.getMessage());
         } catch (IOException e) {
-            e.printStackTrace();
+
             Log.e(TAG, "parseJSONResult: Error=" + e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+
             Log.e(TAG, "parseJSONResult: Error=" + e.getMessage());
         }
     }
@@ -287,14 +282,14 @@ public class NewsFragment extends ListFragment {
 
             isContentChanged = false;
             getJSONCache();
-            e.printStackTrace();
+
             Log.e(TAG, "parseJSONIDResult: Error=" + e.getMessage());
 
         } catch (Exception e) {
 
             isContentChanged = false;
             getJSONCache();
-            e.printStackTrace();
+
             Log.e(TAG, "parseJSONIDResult: Error=" + e.getMessage());
         }
 
@@ -324,7 +319,6 @@ public class NewsFragment extends ListFragment {
 
     private void fetchJSONRaw(){
         try {
-            Log.i(TAG, "fetching JSON from filestorage");
 
             JSONCache.newsItems.clear();
             JSONCache.newsTitle.clear();
@@ -334,11 +328,13 @@ public class NewsFragment extends ListFragment {
             newsIds.clear();
             String contents = null;
 
-            contents = Files.toString(file, Charset.forName("UTF-8"));
-            if ("".equals(contents)) {
+            if (file.length() == 0) {
                 Log.i(TAG,"File storage empty, fetching from resources...");
                 JSONResourceReader jsonResourceReader = new JSONResourceReader(getResources(), R.raw.newsobjects);
                 contents = jsonResourceReader.jsonString;
+            } else {
+                Log.i(TAG, "fetching JSON from filestorage");
+                contents = Files.toString(file, Charset.forName("UTF-8"));
             }
 
             Gson gson = new Gson();
