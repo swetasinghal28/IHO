@@ -71,7 +71,7 @@ public class EventsFragment extends ListFragment {
         try {
             Files.write("".getBytes(), file);
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e(TAG, "onCreateView: Error=" + e.getMessage());
         }
         Log.i(TAG, "fetching EventContents...");
         if (JSONCache.eventsItems.size() == 0) {
@@ -89,17 +89,22 @@ public class EventsFragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id){
-        Intent i= new Intent(this.getActivity(),ViewActivity.class );
-        String name = eventsTitle.get(position);
-        Events events = eventsItems.get(name);
-        i.putExtra(Columns.KEY_EVENT_TITLE.getColumnName(), name);
-        i.putExtra(Columns.KEY_EVENT_WHEN.getColumnName(),events.getWhen());
-        i.putExtra(Columns.KEY_EVENT_MAP.getColumnName(),events.getLocation_link());
-        i.putExtra(Columns.KEY_EVENT_WHERE.getColumnName(),events.getWhere());
-        i.putExtra(Columns.KEY_EVENT_DESC.getColumnName(),events.getDescription());
-        i.putExtra(Columns.KEY_EVENT_REG.getColumnName(),events.getReg());
-        i.putExtra("ViewNeeded","Events");
-        startActivity(i);
+        try {
+            Intent i= new Intent(this.getActivity(),ViewActivity.class );
+            String name = eventsTitle.get(position);
+            Events events = eventsItems.get(name);
+            i.putExtra(Columns.KEY_EVENT_TITLE.getColumnName(), name);
+            i.putExtra(Columns.KEY_EVENT_WHEN.getColumnName(),events.getWhen());
+            i.putExtra(Columns.KEY_EVENT_MAP.getColumnName(),events.getLocation_link());
+            i.putExtra(Columns.KEY_EVENT_WHERE.getColumnName(),events.getWhere());
+            i.putExtra(Columns.KEY_EVENT_DESC.getColumnName(),events.getDescription());
+            i.putExtra(Columns.KEY_EVENT_REG.getColumnName(),events.getReg());
+            i.putExtra("ViewNeeded","Events");
+            startActivity(i);
+        } catch (Exception e) {
+            Log.e(TAG, "onListItemClick: Error=" + e.getMessage());
+        }
+
     }
 
     private void getEventsObjectJson() {
@@ -200,7 +205,7 @@ public class EventsFragment extends ListFragment {
             this.setListAdapter(adapter);
             adapter.notifyDataSetChanged();
 
-            Log.i(TAG, "Updating event local cache...");
+            Log.i(TAG, "Updating local cache...");
             JSONCache.eventsItems = (HashMap<String, Events>) eventsItems.clone();
             JSONCache.eventsTitle = (ArrayList<String>) eventsTitle.clone();
             JSONCache.eventsIds = (ArrayList<String>) eventsIds.clone();
@@ -262,11 +267,11 @@ public class EventsFragment extends ListFragment {
 
             ArrayList<String> oldListIds = (ArrayList<String>) JSONCache.eventsIds.clone();
             if (oldListIds.size() == 0) {
-                Log.i(TAG, "event oldListIds.size() :" + oldListIds.size());
+                Log.i(TAG, "Local IdList is empty");
                 isContentChanged = true;
             } else if (oldListIds.size() != eventIDs.size()) {
-                Log.i(TAG, "event oldListIds.size() :" + oldListIds.size());
-                Log.i(TAG, "eventIDs.size() :" + eventIDs.size());
+                Log.i(TAG, "Local IdList Size: " + oldListIds.size());
+                Log.i(TAG, "Server IdList Size: " + eventIDs.size());
                 isContentChanged = true;
             } else {
                 for (String i: eventIDs) {
@@ -289,14 +294,14 @@ public class EventsFragment extends ListFragment {
             isContentChanged = false;
             getJSONCache();
             e.printStackTrace();
-            Log.e(TAG, "parseJSONResult: Error=" + e.getMessage());
+            Log.e(TAG, "parseJSONIDResult: Error=" + e.getMessage());
 
         } catch (Exception e) {
 
             isContentChanged = false;
             getJSONCache();
             e.printStackTrace();
-            Log.e(TAG, "parseJSONResult: Error=" + e.getMessage());
+            Log.e(TAG, "parseJSONIDResult: Error=" + e.getMessage());
         }
 
     }
@@ -319,7 +324,7 @@ public class EventsFragment extends ListFragment {
             adapter.notifyDataSetChanged();
 
         } catch (Exception e) {
-            Log.e(TAG, "parseJSONResult: Error=" + e.getMessage());
+            Log.e(TAG, "getJSONCache: Error=" + e.getMessage());
         }
 
     }
@@ -363,7 +368,7 @@ public class EventsFragment extends ListFragment {
             this.setListAdapter(adapter);
             adapter.notifyDataSetChanged();
 
-            Log.i(TAG, "Updating event local cache...");
+            Log.i(TAG, "Updating local cache...");
             JSONCache.eventsItems = (HashMap<String, Events>) eventsItems.clone();
             JSONCache.eventsTitle = (ArrayList<String>) eventsTitle.clone();
             JSONCache.eventsIds = (ArrayList<String>) eventsIds.clone();
@@ -371,7 +376,7 @@ public class EventsFragment extends ListFragment {
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {
-            Log.e(TAG, e.getMessage());
+            Log.e(TAG, "fetchJSONRaw: Error= " + e.getMessage());
         }
     }
 

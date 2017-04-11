@@ -76,6 +76,7 @@ public class NewsFragment extends ListFragment {
             Files.write("".getBytes(), file);
         } catch (IOException e) {
             e.printStackTrace();
+            Log.e(TAG, "onCreateView: Error=" + e.getMessage());
         }
         Log.i(TAG, "fetching NewsContents...");
         if (JSONCache.newsItems.size() == 0) {
@@ -93,15 +94,21 @@ public class NewsFragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id){
-        Intent i= new Intent(this.getActivity(),ViewActivity.class );
-        String name = newsTitle.get(position);
-        News news = newsItems.get(name);
-        i.putExtra(Columns.KEY_NEWS_TITLE.getColumnName(), name);
-        i.putExtra(Columns.KEY_NEWS_IMAGE.getColumnName(),news.getImg());
-        i.putExtra(Columns.KEY_NEWS_LINK.getColumnName(),news.getNewsLink());
-        i.putExtra(Columns.KEY_NEWS_TEXT.getColumnName(),news.getText());
-        i.putExtra("ViewNeeded","News");
-        startActivity(i);
+        try {
+            Intent i= new Intent(this.getActivity(),ViewActivity.class );
+            String name = newsTitle.get(position);
+            News news = newsItems.get(name);
+            i.putExtra(Columns.KEY_NEWS_TITLE.getColumnName(), name);
+            i.putExtra(Columns.KEY_NEWS_IMAGE.getColumnName(),news.getImg());
+            i.putExtra(Columns.KEY_NEWS_LINK.getColumnName(),news.getNewsLink());
+            i.putExtra(Columns.KEY_NEWS_TEXT.getColumnName(),news.getText());
+            i.putExtra("ViewNeeded","News");
+            startActivity(i);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e(TAG, "onListItemClick: Error=" + e.getMessage());
+        }
+
     }
 
     private void getNewsObjectJson() {
@@ -194,13 +201,12 @@ public class NewsFragment extends ListFragment {
             this.setListAdapter(adapter);
             adapter.notifyDataSetChanged();
 
-            Log.i(TAG, "Updating news local cache...");
+            Log.i(TAG, "Updating local cache...");
             JSONCache.newsItems = (HashMap<String, News>) newsItems.clone();
             JSONCache.newsTitle = (ArrayList<String>) newsTitle.clone();
             JSONCache.newsIds = (ArrayList<String>) newsIds.clone();
 
         } catch (JSONException e) {
-
             e.printStackTrace();
             Log.e(TAG, "parseJSONResult: Error=" + e.getMessage());
         } catch (IOException e) {
@@ -255,11 +261,11 @@ public class NewsFragment extends ListFragment {
 
             ArrayList<String> oldListIds = (ArrayList<String>) JSONCache.newsIds.clone();
             if (oldListIds.size() == 0) {
-                Log.i(TAG, "oldListIds.size() :" + oldListIds.size());
+                Log.i(TAG, "Local IdList is empty");
                 isContentChanged = true;
             } else if (oldListIds.size() != newsIDs.size()) {
-                Log.i(TAG, "oldListIds.size() :" + oldListIds.size());
-                Log.i(TAG, "newsIDs.size() :" + newsIDs.size());
+                Log.i(TAG, "Local IdList Size: " + oldListIds.size());
+                Log.i(TAG, "Server IdList Size: " + newsIDs.size());
                 isContentChanged = true;
             } else {
                 for (String i: newsIDs) {
@@ -282,14 +288,14 @@ public class NewsFragment extends ListFragment {
             isContentChanged = false;
             getJSONCache();
             e.printStackTrace();
-            Log.e(TAG, "parseJSONResult: Error=" + e.getMessage());
+            Log.e(TAG, "parseJSONIDResult: Error=" + e.getMessage());
 
         } catch (Exception e) {
 
             isContentChanged = false;
             getJSONCache();
             e.printStackTrace();
-            Log.e(TAG, "parseJSONResult: Error=" + e.getMessage());
+            Log.e(TAG, "parseJSONIDResult: Error=" + e.getMessage());
         }
 
     }
@@ -311,7 +317,7 @@ public class NewsFragment extends ListFragment {
             this.setListAdapter(adapter);
             adapter.notifyDataSetChanged();
         } catch (Exception e) {
-            Log.e(TAG, "parseJSONResult: Error=" + e.getMessage());
+            Log.e(TAG, "getJSONCache: Error=" + e.getMessage());
         }
 
     }
@@ -356,7 +362,7 @@ public class NewsFragment extends ListFragment {
             this.setListAdapter(adapter);
             adapter.notifyDataSetChanged();
 
-            Log.i(TAG, "Updating news local cache...");
+            Log.i(TAG, "Updating local cache...");
             JSONCache.newsItems = (HashMap<String, News>) newsItems.clone();
             JSONCache.newsTitle = (ArrayList<String>) newsTitle.clone();
             JSONCache.newsIds = (ArrayList<String>) newsIds.clone();
@@ -364,7 +370,7 @@ public class NewsFragment extends ListFragment {
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {
-            Log.e(TAG, e.getMessage());
+            Log.e(TAG, "fetchJSONRaw: Error= " + e.getMessage());
         }
     }
 
