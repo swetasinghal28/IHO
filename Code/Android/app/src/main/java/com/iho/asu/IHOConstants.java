@@ -11,6 +11,7 @@ public class IHOConstants {
     public static final String NEWS_IDS = "http://107.170.239.62:3000/newsid";
 
     public static final String FEATURED_NEWS_URL = "http://107.170.239.62:3000/featureobjects";
+    public static final String FEATURED_NEWS_IDS = "http://107.170.239.62:3000/featureid";
 
     public static final String EVENTS_URL = "http://107.170.239.62:3000/eventobjects";
     public static final String EVENTS_IDS = "http://107.170.239.62:3000/eventid";
@@ -18,8 +19,10 @@ public class IHOConstants {
     public static final String LECTURER_URL = "http://107.170.239.62:3000/lectureobjects";
     public static final String LECTURER_GALLERY_URL = "http://107.170.239.62:3000/lectureobjects/galleryobjects/";
     public static final String LECTURER_GALLERY_KEY = "email";
+
     public static final String SCIENCE_URL = "http://107.170.239.62:3000/newscienceobjects";
     public static final String SCIENCE_IDS = "http://107.170.239.62:3000/newscienceid";
+
     public static final String GALLERY_URL = "http://107.170.239.62:3000/galleryobjects";
     public static final String TRAVEL_URL = "https://iho.asu.edu/outreach/travel";
 

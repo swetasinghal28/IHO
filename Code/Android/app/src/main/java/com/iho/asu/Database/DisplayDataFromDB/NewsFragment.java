@@ -66,23 +66,29 @@ public class NewsFragment extends ListFragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView");
-        View v = inflater.inflate(
-                R.layout.fragment_news, container, false);
+        View v = null;
+        try {
+            v = inflater.inflate(
+                    R.layout.fragment_news, container, false);
 
-        Context context = v.getContext();
-        path = context.getFilesDir();
-        file = new File(path, "news.json");
+            Context context = v.getContext();
+            path = context.getFilesDir();
+            file = new File(path, "news.json");
 
-        Log.i(TAG, "fetching Contents...");
-        if (JSONCache.newsItems.size() == 0) {
-            //Cache Empty, Fetch  News Objects
-            Log.i(TAG,"Cache Empty, Fetch  News Objects...");
-            getNewsObjectJson();
-        } else {
-            //Cache not empty, checking if contents are modified
-            Log.i(TAG,"Cache not empty, checking if contents are modified...");
-            getNewsIdsJSON();
+            Log.i(TAG, "fetching Contents...");
+            if (JSONCache.newsItems.size() == 0) {
+                //Cache Empty, Fetch  News Objects
+                Log.i(TAG,"Cache Empty, Fetch  News Objects...");
+                getNewsObjectJson();
+            } else {
+                //Cache not empty, checking if contents are modified
+                Log.i(TAG,"Cache not empty, checking if contents are modified...");
+                getNewsIdsJSON();
+            }
+        } catch (Exception e) {
+
         }
+
 
         return v;
     }
@@ -100,7 +106,7 @@ public class NewsFragment extends ListFragment {
             i.putExtra("ViewNeeded","News");
             startActivity(i);
         } catch (Exception e) {
-            e.printStackTrace();
+
             Log.e(TAG, "onListItemClick: Error=" + e.getMessage());
         }
 
@@ -131,6 +137,7 @@ public class NewsFragment extends ListFragment {
 
     private void parseJSONResult(JSONArray jsonArray) {
         try {
+            Log.i(TAG, "writing JSONArray to file storage");
             Files.write(jsonArray.toString().getBytes(), file);
 
             Log.i(TAG, "parseJSONResult");

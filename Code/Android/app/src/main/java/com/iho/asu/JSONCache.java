@@ -17,6 +17,11 @@ public class JSONCache {
     public static HashMap<String,News> newsItems = new HashMap<String, News>();
     public static ArrayList<String> newsIds = new ArrayList<String>();
 
+    //featured news cache
+    public static ArrayList<String> fNewsTitle = new ArrayList<String>();
+    public static HashMap<String,News> fNewsItems = new HashMap<String, News>();
+    public static ArrayList<String> fNewsIds = new ArrayList<String>();
+
     //events cache
     public static ArrayList<String> eventsTitle = new ArrayList<String>();
     public static HashMap<String,Events> eventsItems = new HashMap<String, Events>();
