@@ -2,22 +2,22 @@ package com.iho.asu.Database.DisplayDataFromDB;
 
 import android.app.ListFragment;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.iho.asu.AppController;
-import com.iho.asu.Database.Columns;
-import com.iho.asu.Database.DataBaseHelper;
 import com.iho.asu.Database.Tables.Science;
 import com.iho.asu.R;
 
@@ -37,47 +37,48 @@ import static com.iho.asu.IHOConstants.SCIENCE_URL;
 
 public class ScienceFragment extends ListFragment {
 
-    private static final String DB_NAME = "asuIHO.db";
-
-    //A good practice is to define database field names as constants
-    private static final String TABLE_NAME = "Science";
     private static final String TAG = "Science";
 
-    private SQLiteDatabase database;
     int i = 0;
     private Map<String,String> scienceDetailedTitle = new HashMap<String, String>();
     private ArrayList<String> scienceTitle = new ArrayList<String>();
-    protected Map<String,Science> scienceItems;
+    protected Map<String,Science> scienceItems = new HashMap<String, Science>();
 
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(
                 R.layout.fragment_science, container, false);
-        DataBaseHelper dbOpenHelper = new DataBaseHelper(this.getActivity(), DB_NAME);
-        database = dbOpenHelper.openDataBase();
-        scienceItems = new HashMap<String, Science>();
-        scienceItems.clear();
-        //getScienceItems();
+
+
         getScienceJson();
-        //ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, scienceDetailedTitle.keySet().toArray(new String[0]));
-        //CustomList2 adapter = new
-                //CustomList2(this.getActivity(), new ArrayList(scienceDetailedTitle.keySet()));
-        //this.setListAdapter(adapter);
-        //adapter.notifyDataSetChanged();
+
+        View layout = inflater.inflate(
+                R.layout.custom_toast, (ViewGroup) v.findViewById(R.id.toast_layout_root));
+
+
+        TextView text = (TextView) layout.findViewById(R.id.text);
+        text.setText("Click on item to read more!");
+
+        Toast toast = new Toast(v.getContext());
+        toast.setGravity((Gravity.AXIS_PULL_AFTER)<<Gravity.AXIS_Y_SHIFT,0,100);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+
+        for (int i = 1; i<=2; i++) {toast.show();}
+
         return v;
     }
 
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id){
-        Intent i= new Intent(this.getActivity(),ViewActivity.class );
+
         String title = scienceTitle.get(position);
         Science science = scienceItems.get(title);
-        i.putExtra(Columns.KEY_SCIENCE_TITLE.getColumnName(), title);
-        i.putExtra(Columns.KEY_SCIENCE_LINK.getColumnName(),science.getLink());
-        i.putExtra("ViewNeeded","Science");
-        startActivity(i);
+        Uri uri = Uri.parse(science.getLink());
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
     }
 
     private void getScienceJson() {
@@ -103,23 +104,7 @@ public class ScienceFragment extends ListFragment {
         AppController.getInstance().addToRequestQueue(request);
     }
 
-    private void fetchJSONRaw(){
-        /*JSONResourceReader resourceReader = new JSONResourceReader(getResources(), R.raw.newsobjects);
-        String str = resourceReader.jsonString;
 
-        Gson gson = new Gson();
-        NewsContainer newsContainer = gson.fromJson(str, NewsContainer.class);
-
-        ArrayList<News> newsList = newsContainer.getNewsList();
-
-        for (News news: newsList) {
-            //newsTitle.add(news.getTitle());
-        }
-
-        ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, newsTitle);
-        this.setListAdapter(adapter);
-        adapter.notifyDataSetChanged();*/
-    }
 
     private void parseJSONResult(JSONArray jsonArray) {
         try {
@@ -167,25 +152,5 @@ public class ScienceFragment extends ListFragment {
         }
     }
 
-    //Extracting elements from the database
-    private void getScienceItems() {
-        String[] columns = Columns.getScienceColumnNames();
-        Cursor scienceCursor = database.query(TABLE_NAME, columns, null, null, null, null, Columns.KEY_SCIENCE_ID.getColumnName()+" DESC");
-        scienceCursor.moveToFirst();
-        while (!scienceCursor.isAfterLast()) {
-            cursorToScience(scienceCursor);
-            scienceCursor.moveToNext();
-        }
-        scienceCursor.close();
-    }
 
-    private void cursorToScience(Cursor cursor) {
-        Science n = new Science();
-        String title = cursor.getString(1);
-        //n.setId(cursor.getLong(0));
-        n.setTitle(title);
-        n.setLink(cursor.getString(2));
-        scienceItems.put(title, n);
-        scienceDetailedTitle.put(title,title);
-    }
 }

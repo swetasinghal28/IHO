@@ -227,6 +227,7 @@ public class MainActivity extends Activity implements OnClickListener{
                 fragment = new ScienceFragment();
                 fragmentTransaction.replace(R.id.main_layout, fragment);
                 fragmentTransaction.commit();
+
                 break;
             case R.id.fn3:
                 fragment = new Lucy();

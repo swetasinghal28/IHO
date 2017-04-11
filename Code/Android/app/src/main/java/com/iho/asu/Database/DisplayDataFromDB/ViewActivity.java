@@ -70,7 +70,7 @@ public class ViewActivity extends Activity implements View.OnClickListener {
                 case R.id.lectureLink:
                 case R.id.scienceLink:
                 case R.id.travelLink:
-                    Log.i("V_TravelLink: ", link);
+                    Log.i("Link: ", link);
                     startActivity(intent);
                     break;
                 case R.id.registerEvent:
@@ -121,28 +121,33 @@ public class ViewActivity extends Activity implements View.OnClickListener {
     }
 
     private Fragment getTheTypeOfFragment(String type, Intent i){
-        Fragment returnFragment = new Fragment();
-        if(type.equalsIgnoreCase("Lecturer")){
-            returnFragment = new PerLecturerViewFragment();
-            link = i.getStringExtra(Columns.KEY_LECTURER_LINK.getColumnName());
-            email = i.getStringExtra(Columns.KEY_LECTURER_EMAIL.getColumnName());
-        } else if(type.equalsIgnoreCase("News")){
-            returnFragment = new PerNewsViewFragment();
-            link = i.getStringExtra(Columns.KEY_NEWS_LINK.getColumnName());
-        } else if(type.equalsIgnoreCase("FeaturedNews")){
-            returnFragment = new PerFeaturedNewsViewFragment();
-            link = i.getStringExtra(Columns.KEY_NEWS_LINK.getColumnName());
-        } else if(type.equalsIgnoreCase("Events")){
-            returnFragment = new PerEventsViewFragment();
-            link = i.getStringExtra(Columns.KEY_EVENT_MAP.getColumnName());
-            eventLink = i.getStringExtra(Columns.KEY_EVENT_REG.getColumnName());
-        } else if(type.equalsIgnoreCase("Science")){
-            returnFragment = new PerScienceViewFragment();
-            link = i.getStringExtra(Columns.KEY_SCIENCE_LINK.getColumnName());
-        }else if(type.equalsIgnoreCase("Travel")){
-            returnFragment = new PerTravelViewFragment();
-            link = i.getStringExtra(Columns.KEY_TRAVEL_LINK.getColumnName());
+        Fragment returnFragment = null;
+        try {
+            returnFragment = new Fragment();
+            if(type.equalsIgnoreCase("Lecturer")){
+                returnFragment = new PerLecturerViewFragment();
+                link = i.getStringExtra(Columns.KEY_LECTURER_LINK.getColumnName());
+                email = i.getStringExtra(Columns.KEY_LECTURER_EMAIL.getColumnName());
+            } else if(type.equalsIgnoreCase("News")){
+                returnFragment = new PerNewsViewFragment();
+                link = i.getStringExtra(Columns.KEY_NEWS_LINK.getColumnName());
+            } else if(type.equalsIgnoreCase("FeaturedNews")){
+                returnFragment = new PerFeaturedNewsViewFragment();
+                link = i.getStringExtra(Columns.KEY_NEWS_LINK.getColumnName());
+            } else if(type.equalsIgnoreCase("Events")){
+                returnFragment = new PerEventsViewFragment();
+                link = i.getStringExtra(Columns.KEY_EVENT_MAP.getColumnName());
+                eventLink = i.getStringExtra(Columns.KEY_EVENT_REG.getColumnName());
+            } else if(type.equalsIgnoreCase("Science")){
+                link = i.getStringExtra(Columns.KEY_SCIENCE_LINK.getColumnName());
+            }else if(type.equalsIgnoreCase("Travel")){
+                returnFragment = new PerTravelViewFragment();
+                link = i.getStringExtra(Columns.KEY_TRAVEL_LINK.getColumnName());
+            }
+        } catch (Exception e) {
+            Log.e("ViewActivity", "Exception: " + e.getMessage());
         }
+
         return returnFragment;
     }
 
