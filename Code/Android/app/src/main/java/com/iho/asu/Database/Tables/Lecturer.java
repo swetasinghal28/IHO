@@ -4,12 +4,15 @@ package com.iho.asu.Database.Tables;
  * Created by Barathi on 7/4/2014.
  */
 public class Lecturer {
+
     private String id;
     private String name;
     private String title;
     private String bio;
     private String link;
-    private byte[] image;
+    private byte[] img;
+
+    private String image;
     private String email;
     private Integer order;
 
@@ -61,12 +64,12 @@ public class Lecturer {
         this.link = link;
     }
 
-    public byte[] getImage() {
-        return image;
+    public byte[] getImg() {
+        return img;
     }
 
-    public void setImage(byte[] image) {
-        this.image = image;
+    public void setImg(byte[] image) {
+        this.img = image;
     }
 
     @Override
@@ -80,5 +83,13 @@ public class Lecturer {
 
     public void setOrder(Integer order) {
         this.order = order;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

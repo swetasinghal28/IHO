@@ -105,7 +105,7 @@ public class EventsFragment extends ListFragment {
 
     private void getEventsObjectJson() {
         Log.i(TAG, "getEventsObjectJson");
-
+        isContentChanged = false;
         JsonArrayRequest request = new JsonArrayRequest(EVENTS_URL.toString(),
                 new Response.Listener<JSONArray>() {
                     @Override

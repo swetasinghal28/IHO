@@ -1,6 +1,7 @@
 package com.iho.asu;
 
 import com.iho.asu.Database.Tables.Events;
+import com.iho.asu.Database.Tables.Lecturer;
 import com.iho.asu.Database.Tables.News;
 import com.iho.asu.Database.Tables.Science;
 
@@ -32,4 +33,9 @@ public class JSONCache {
     public static ArrayList<String> scienceTitle = new ArrayList<String>();
     public static HashMap<String,Science> scienceItems = new HashMap<String, Science>();
     public static ArrayList<String> scienceIds = new ArrayList<String>();
+
+    //lecturer cache
+    public static ArrayList<String> lecturerNames = new ArrayList<String>();
+    public static HashMap<String,Lecturer> lecturers = new HashMap<String, Lecturer>();
+    public static ArrayList<String> lecturerIds = new ArrayList<String>();
 }

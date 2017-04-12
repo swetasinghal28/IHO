@@ -113,7 +113,7 @@ public class FeaturedNewsFragment extends ListFragment {
 
     private void getNewsObjectJson() {
         Log.i(TAG, "getNewsObjectJson");
-
+        isContentChanged = false;
         JsonArrayRequest request = new JsonArrayRequest(FEATURED_NEWS_URL,
                 new Response.Listener<JSONArray>() {
                     @Override

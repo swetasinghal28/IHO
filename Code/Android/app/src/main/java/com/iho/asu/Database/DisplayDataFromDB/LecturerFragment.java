@@ -1,9 +1,8 @@
 package com.iho.asu.Database.DisplayDataFromDB;
 
 import android.app.ListFragment;
+import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
@@ -16,26 +15,32 @@ import android.widget.ListView;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.google.common.io.Files;
+import com.google.gson.Gson;
 import com.iho.asu.AppController;
 import com.iho.asu.Comparators.LecturerComparator;
 import com.iho.asu.Database.Columns;
-import com.iho.asu.Database.DataBaseHelper;
 import com.iho.asu.Database.Tables.Lecturer;
+import com.iho.asu.JSONCache;
+import com.iho.asu.JSONResourceReader;
 import com.iho.asu.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static com.iho.asu.IHOConstants.LECTURER_BIO;
 import static com.iho.asu.IHOConstants.LECTURER_EMAIL;
 import static com.iho.asu.IHOConstants.LECTURER_ID;
+import static com.iho.asu.IHOConstants.LECTURER_IDS;
 import static com.iho.asu.IHOConstants.LECTURER_IMAGE;
 import static com.iho.asu.IHOConstants.LECTURER_LINK;
 import static com.iho.asu.IHOConstants.LECTURER_NAME;
@@ -46,53 +51,65 @@ import static com.iho.asu.IHOConstants.LECTURER_URL;
 
 public class LecturerFragment extends ListFragment {
 
-    private static final String DB_NAME = "asuIHO.db";
 
-    //A good practice is to define database field names as constants
-    private static final String TABLE_NAME = "Lecturer";
     private static final String TAG = "Lecturer";
 
-    private SQLiteDatabase database;
     private ArrayList<String> lecturerNames = new ArrayList<String>();
-    protected Map<String,Lecturer> lecturers = new HashMap<String, Lecturer>();
+    protected HashMap<String,Lecturer> lecturers = new HashMap<String, Lecturer>();
+    private ArrayList<String> lecturerIds = new ArrayList<String>();
+    private boolean isContentChanged = false;
+    private File path = null;
+    private File file = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        Log.d(TAG, "onCreateView");
         View v = inflater.inflate(
                 R.layout.fragment_lecturer, container, false);
-        DataBaseHelper dbOpenHelper = new DataBaseHelper(this.getActivity(), DB_NAME);
-        database = dbOpenHelper.openDataBase();
-        lecturerNames.clear();
-        lecturers.clear();
-        //getLecturers();
-        getLecturesJson();
-        //ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, lecturerNames);
-        //this.setListAdapter(adapter);
-        //adapter.notifyDataSetChanged();
+
+        Context context = v.getContext();
+        path = context.getFilesDir();
+        file = new File(path, "lecturer.json");
+
+        Log.i(TAG, "fetching Contents...");
+        if (JSONCache.lecturers.size() == 0) {
+            //Cache Empty, Fetch  News Objects
+            Log.i(TAG,"Cache Empty, Fetch  Lecturer Objects...");
+            getLecturesJson();
+        } else {
+            //Cache not empty, checking if contents are modified
+            Log.i(TAG,"Cache not empty, checking if contents are modified...");
+            getLecturerIdsJSON();
+        }
+
         return v;
     }
 
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id){
-        Intent i= new Intent(this.getActivity(),ViewActivity.class );
-        String name = lecturerNames.get(position);
-        Lecturer lecturer = lecturers.get(name);
-        i.putExtra(Columns.KEY_LECTURER_NAME.getColumnName(), name);
-        i.putExtra(Columns.KEY_LECTURER_IMAGE.getColumnName(),lecturer.getImage());
-        i.putExtra(Columns.KEY_LECTURER_BIO.getColumnName(),lecturer.getBio());
-        i.putExtra(Columns.KEY_LECTURER_EMAIL.getColumnName(),lecturer.getEmail());
-        i.putExtra(Columns.KEY_LECTURE_TITLE.getColumnName(),lecturer.getTitle());
-        i.putExtra(Columns.KEY_LECTURER_LINK.getColumnName(),lecturer.getLink());
-        i.putExtra("ViewNeeded","Lecturer");
-        startActivity(i);
+        try {
+            Intent i= new Intent(this.getActivity(),ViewActivity.class );
+            String name = lecturerNames.get(position);
+            Lecturer lecturer = lecturers.get(name);
+            i.putExtra(Columns.KEY_LECTURER_NAME.getColumnName(), name);
+            i.putExtra(Columns.KEY_LECTURER_BIO.getColumnName(),lecturer.getBio());
+            i.putExtra(Columns.KEY_LECTURER_IMAGE.getColumnName(),lecturer.getImg());
+            i.putExtra(Columns.KEY_LECTURER_EMAIL.getColumnName(),lecturer.getEmail());
+            i.putExtra(Columns.KEY_LECTURE_TITLE.getColumnName(),lecturer.getTitle());
+            i.putExtra(Columns.KEY_LECTURER_LINK.getColumnName(),lecturer.getLink());
+            i.putExtra("ViewNeeded","Lecturer");
+            startActivity(i);
+        } catch (Exception e) {
+            Log.e(TAG, "onListItemClick: Error=" + e.getMessage());
+        }
     }
 
     private void getLecturesJson() {
         Log.i(TAG, "getLecturesJson");
-
-        JsonArrayRequest request = new JsonArrayRequest(LECTURER_URL.toString(),
+        isContentChanged = false;
+        JsonArrayRequest request = new JsonArrayRequest(LECTURER_URL,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray result) {
@@ -106,35 +123,25 @@ public class LecturerFragment extends ListFragment {
                     public void onErrorResponse(VolleyError error) {
                         Log.e(TAG, "onErrorResponse: Error= " + error);
                         Log.e(TAG, "onErrorResponse: Error= " + error.getMessage());
-                        //fetchJSONRaw();
+                        fetchJSONRaw();
                     }
                 });
         AppController.getInstance().addToRequestQueue(request);
     }
-    private void fetchJSONRaw(){
-        /*JSONResourceReader resourceReader = new JSONResourceReader(getResources(), R.raw.newsobjects);
-        String str = resourceReader.jsonString;
-
-        Gson gson = new Gson();
-        NewsContainer newsContainer = gson.fromJson(str, NewsContainer.class);
-
-        ArrayList<News> newsList = newsContainer.getNewsList();
-
-        for (News news: newsList) {
-            newsTitle.add(news.getTitle());
-        }
-
-        ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, newsTitle);
-        this.setListAdapter(adapter);
-        adapter.notifyDataSetChanged();*/
-    }
 
     private void parseJSONResult(JSONArray jsonArray) {
         try {
+            Log.i(TAG, "writing JSONArray to file storage");
+            Files.write(jsonArray.toString().getBytes(), file);
 
             Log.i(TAG, "parseJSONResult");
             String id = null, title = null, name = null, bio = null, link = null, image = null, email = null, order = null;
-
+            JSONCache.lecturers.clear();
+            JSONCache.lecturerIds.clear();
+            JSONCache.lecturerNames.clear();
+            lecturers.clear();
+            lecturerIds.clear();
+            lecturerNames.clear();
 
             List<Lecturer> lectList = new ArrayList<Lecturer>();
             for (int i = 0; i < jsonArray.length(); i++) {
@@ -177,7 +184,7 @@ public class LecturerFragment extends ListFragment {
                 l.setId(id);
                 l.setTitle(title);
                 l.setBio(bio);
-                l.setImage(Base64.decode(image, Base64.DEFAULT));
+                l.setImg(Base64.decode(image, Base64.DEFAULT));
                 l.setLink(link);
                 l.setEmail(email);
                 l.setName(name);
@@ -192,42 +199,187 @@ public class LecturerFragment extends ListFragment {
             Collections.sort(lectList, new LecturerComparator());
             for (Lecturer lect: lectList) {
                 lecturerNames.add(lect.getName());
+                lecturerIds.add(lect.getId());
             }
 
             ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, lecturerNames);
             this.setListAdapter(adapter);
             adapter.notifyDataSetChanged();
 
+            Log.i(TAG, "Updating local cache...");
+            JSONCache.lecturers = (HashMap<String, Lecturer>) lecturers.clone();
+            JSONCache.lecturerIds = (ArrayList<String>) lecturerIds.clone();
+            JSONCache.lecturerNames = (ArrayList<String>) lecturerNames.clone();
+
+
 
         } catch (JSONException e) {
 
-            e.printStackTrace();
+
+            Log.e(TAG, "parseJSONResult: Error=" + e.getMessage());
+        } catch (IOException e) {
+
+            Log.e(TAG, "parseJSONResult: Error=" + e.getMessage());
+        } catch (Exception e) {
+
             Log.e(TAG, "parseJSONResult: Error=" + e.getMessage());
         }
     }
-    //Extracting elements from the database
-    private void getLecturers() {
-        String[] columns = Columns.getLecturerColumnNames();
-        Cursor lecCursor = database.query(TABLE_NAME, columns, null, null, null, null, Columns.KEY_LECTURER_ID.getColumnName());
-        lecCursor.moveToFirst();
-        while (!lecCursor.isAfterLast()) {
-            cursorToLecturer(lecCursor);
-            lecCursor.moveToNext();
-        }
-        lecCursor.close();
+    private void getLecturerIdsJSON() {
+        Log.i(TAG, "getLecturerIdsJSON");
+
+        JsonArrayRequest request = new JsonArrayRequest(LECTURER_IDS,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray result) {
+
+                        Log.i(TAG, "onResponse: Result = " + result.toString());
+                        parseJSONIDResult(result);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e(TAG, "onErrorResponse: Error= " + error);
+                        Log.e(TAG, "onErrorResponse: Error= " + error.getMessage());
+                        getJSONCache();
+                    }
+                });
+        AppController.getInstance().addToRequestQueue(request);
     }
 
-    private void cursorToLecturer(Cursor cursor) {
-        Lecturer l = new Lecturer();
-        String name = cursor.getString(1);
-        //l.setId(cursor.getLong(0));
-        l.setName(name);
-        l.setImage(cursor.getBlob(2));
-        l.setBio(cursor.getString(3));
-        l.setEmail(cursor.getString(4));
-        l.setLink(cursor.getString(5));
-        l.setTitle(cursor.getString(6));
-        lecturerNames.add(name);
-        lecturers.put(name,l);
+    private void parseJSONIDResult(JSONArray jsonArray) {
+        try {
+
+            Log.i(TAG, "parseJSONIDResult");
+
+            String id = null;
+
+            List<String> lecturerIDs = new ArrayList<String>();
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject ids = jsonArray.getJSONObject(i);
+
+                if (!ids.isNull(LECTURER_ID)) {
+                    id = ids.getString(LECTURER_ID);
+                }
+
+                lecturerIDs.add(id);
+            }
+
+            ArrayList<String> oldListIds = (ArrayList<String>) JSONCache.lecturerIds.clone();
+            if (oldListIds.size() == 0) {
+                Log.i(TAG, "Local IdList is empty");
+                isContentChanged = true;
+            } else if (oldListIds.size() != lecturerIDs.size()) {
+                Log.i(TAG, "Local IdList Size: " + oldListIds.size());
+                Log.i(TAG, "Server IdList Size: " + lecturerIDs.size());
+                isContentChanged = true;
+            } else {
+                for (String i: lecturerIDs) {
+                    if (!oldListIds.contains(i)) {
+                        isContentChanged = true;
+                        break;
+                    }
+                }
+            }
+            if (isContentChanged) {
+                Log.i(TAG, "Content Changed on server, fetching from server...");
+                getLecturesJson();
+            } else {
+                Log.i(TAG, "Content not Changed on server, fetching from local cache...");
+                getJSONCache();
+            }
+
+        } catch (JSONException e) {
+
+            isContentChanged = false;
+            getJSONCache();
+
+            Log.e(TAG, "parseJSONIDResult: Error=" + e.getMessage());
+
+        } catch (Exception e) {
+
+            isContentChanged = false;
+            getJSONCache();
+
+            Log.e(TAG, "parseJSONIDResult: Error=" + e.getMessage());
+        }
+
     }
+
+    public void getJSONCache() {
+        try {
+            Log.i(TAG, "getJSONCache");
+            lecturers.clear();
+            lecturerNames.clear();
+
+            lecturers = (HashMap<String, Lecturer>) JSONCache.lecturers.clone();
+            List<Lecturer> lecturerList = new ArrayList<>(JSONCache.lecturers.values());
+            Collections.sort(lecturerList, Collections.<Lecturer>reverseOrder(new LecturerComparator()));
+            for (Lecturer lecturer: lecturerList) {
+                lecturerNames.add(lecturer.getName());
+            }
+
+            ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, lecturerNames);
+            this.setListAdapter(adapter);
+            adapter.notifyDataSetChanged();
+        } catch (Exception e) {
+            Log.e(TAG, "getJSONCache: Error=" + e.getMessage());
+        }
+
+    }
+
+    private void fetchJSONRaw(){
+        try {
+
+            JSONCache.lecturers.clear();
+            JSONCache.lecturerNames.clear();
+            JSONCache.lecturerIds.clear();
+            lecturers.clear();
+            lecturerNames.clear();
+            lecturerIds.clear();
+            String contents = null;
+
+            if (file.length() == 0) {
+                Log.i(TAG,"File storage empty, fetching from resources...");
+                JSONResourceReader jsonResourceReader = new JSONResourceReader(getResources(), R.raw.lecturer);
+                contents = jsonResourceReader.jsonString;
+            } else {
+                Log.i(TAG, "fetching JSON from filestorage");
+                contents = Files.toString(file, Charset.forName("UTF-8"));
+            }
+
+            Gson gson = new Gson();
+            Lecturer[] lecturerArray = gson.fromJson(contents, Lecturer[].class);
+            List<Lecturer> lecturerList = new ArrayList<>();
+            for (Lecturer lecturer: lecturerArray) {
+                lecturer.setImg(Base64.decode(lecturer.getImage(), Base64.DEFAULT));
+                Log.i(TAG,lecturer.toString());
+
+                lecturerList.add(lecturer);
+                lecturers.put(lecturer.getName(),lecturer);
+            }
+
+            Collections.sort(lecturerList, Collections.<Lecturer>reverseOrder(new LecturerComparator()));
+            for (Lecturer lecturer: lecturerList) {
+                lecturerNames.add(lecturer.getName());
+                lecturerIds.add(lecturer.getId());
+            }
+
+            ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, lecturerNames);
+            this.setListAdapter(adapter);
+            adapter.notifyDataSetChanged();
+
+            Log.i(TAG, "Updating local cache...");
+            JSONCache.lecturers = (HashMap<String, Lecturer>) lecturers.clone();
+            JSONCache.lecturerNames = (ArrayList<String>) lecturerNames.clone();
+            JSONCache.lecturerIds = (ArrayList<String>) lecturerIds.clone();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            Log.e(TAG, "fetchJSONRaw: Error= " + e.getMessage());
+        }
+    }
+
 }
