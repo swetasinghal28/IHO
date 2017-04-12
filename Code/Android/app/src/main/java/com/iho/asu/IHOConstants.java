@@ -26,6 +26,8 @@ public class IHOConstants {
     public static final String SCIENCE_IDS = "http://107.170.239.62:3000/newscienceid";
 
     public static final String GALLERY_URL = "http://107.170.239.62:3000/galleryobjects";
+    public static final String GALLERY_IDS = "http://107.170.239.62:3000/galleryid";
+
     public static final String TRAVEL_URL = "https://iho.asu.edu/outreach/travel";
 
 

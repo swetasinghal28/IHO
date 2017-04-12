@@ -1,9 +1,7 @@
 package com.iho.asu.Database.DisplayDataFromDB;
 
 import android.app.ListFragment;
-import android.content.res.Configuration;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
@@ -14,12 +12,13 @@ import android.view.ViewGroup;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.google.common.io.Files;
 import com.google.gson.Gson;
 import com.iho.asu.AppController;
 import com.iho.asu.Comparators.ImageComparator;
 import com.iho.asu.Database.CustomList;
-import com.iho.asu.Database.DataBaseHelper;
 import com.iho.asu.Database.Tables.Gallery;
+import com.iho.asu.JSONCache;
 import com.iho.asu.JSONResourceReader;
 import com.iho.asu.R;
 
@@ -27,10 +26,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
+import static com.iho.asu.IHOConstants.GALLERY_IDS;
 import static com.iho.asu.IHOConstants.GALLERY_URL;
 import static com.iho.asu.IHOConstants.IMAGE;
 import static com.iho.asu.IHOConstants.IMAGE_ID;
@@ -38,12 +42,15 @@ import static com.iho.asu.IHOConstants.IMAGE_ORDER;
 import static com.iho.asu.IHOConstants.IMAGE_TITLE;
 
 public class GalleryFragment extends ListFragment {
-    private static final String DB_NAME = "asuIHO.db";
-    private static final String TABLE_NAME = "Gallery";
+
     private static final String TAG = "Gallery";
-    private SQLiteDatabase database;
-    private ArrayList<String> galleryTitle = new ArrayList<String>();
-    private ArrayList<byte[]> galleryItems = new ArrayList<byte[]>();
+
+
+    private ArrayList<String> galleryIds = new ArrayList<String>();
+    private boolean isContentChanged = false;
+    private File path = null;
+    private File file = null;
+    private HashMap<String, Gallery> galleryMap = new HashMap<String, Gallery>();
 
 
     @Override
@@ -51,20 +58,26 @@ public class GalleryFragment extends ListFragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(
                 R.layout.gallery, container, false);
-        DataBaseHelper dbOpenHelper = new DataBaseHelper(this.getActivity(), DB_NAME);
-        database = dbOpenHelper.openDataBase();
-        galleryItems.clear();
-        galleryTitle.clear();
-        //getGalleryItems();
-        getGalleryJson();
-        /*CustomList adapter = new
-                CustomList(this.getActivity(), galleryTitle, galleryItems);
-        this.setListAdapter(adapter);
-        adapter.notifyDataSetChanged();*/
+
+        Context context = v.getContext();
+        path = context.getFilesDir();
+        file = new File(path, "gallery.json");
+
+        Log.i(TAG, "fetching Contents...");
+        if (JSONCache.galleryIds.size() == 0) {
+            //Cache Empty, Fetch  News Objects
+            Log.i(TAG,"Cache Empty, Fetch  News Objects...");
+            getGalleryJson();
+        } else {
+            //Cache not empty, checking if contents are modified
+            Log.i(TAG,"Cache not empty, checking if contents are modified...");
+            getGalleryIdsJSON();
+        }
+
         return v;
     }
 
-    @Override
+   /* @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         Log.i(TAG, " onConfigurationChanged");
@@ -85,12 +98,12 @@ public class GalleryFragment extends ListFragment {
             this.setListAdapter(adapter);
             adapter.notifyDataSetChanged();
         }
-    }
+    }*/
 
     private void getGalleryJson() {
         Log.i(TAG, "getGalleryJson");
-
-        JsonArrayRequest request = new JsonArrayRequest(GALLERY_URL.toString(),
+        isContentChanged = false;
+        JsonArrayRequest request = new JsonArrayRequest(GALLERY_URL,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray result) {
@@ -104,38 +117,26 @@ public class GalleryFragment extends ListFragment {
                     public void onErrorResponse(VolleyError error) {
                         Log.e(TAG, "onErrorResponse: Error= " + error);
                         Log.e(TAG, "onErrorResponse: Error= " + error.getMessage());
-                        //fetchJSONRaw();
+                        fetchJSONRaw();
                     }
                 });
         AppController.getInstance().addToRequestQueue(request);
     }
 
-    private void fetchJSONRaw(){
-        JSONResourceReader resourceReader = new JSONResourceReader(getResources(), R.raw.newsobjects);
-        String str = resourceReader.jsonString;
-
-        Gson gson = new Gson();
-
-
-       /* ArrayList<News> newsList = newsContainer.getNewsList();
-
-        for (News news: newsList) {
-            //newsTitle.add(news.getTitle());
-        }*/
-
-        //ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, newsTitle);
-        //this.setListAdapter(adapter);
-        //adapter.notifyDataSetChanged();
-    }
-
     private void parseJSONResult(JSONArray jsonArray) {
         try {
+            Log.i(TAG, "writing JSONArray to file storage");
+            Files.write(jsonArray.toString().getBytes(), file);
 
             Log.i(TAG, "parseJSONResult");
             String id = null, image = null, title = null, order = null;
+            JSONCache.galleryMap.clear();
+            JSONCache.galleryIds.clear();
+
+            galleryIds.clear();
+            galleryMap.clear();
 
 
-            List<Gallery> gallery = new ArrayList<Gallery>();
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject obj = jsonArray.getJSONObject(i);
 
@@ -158,20 +159,25 @@ public class GalleryFragment extends ListFragment {
                 Gallery img = new Gallery();
                 img.setId(id);
                 img.setImageCaption(title);
-                img.setImage(Base64.decode(image, Base64.DEFAULT));
+                img.setImg(Base64.decode(image, Base64.DEFAULT));
                 img.setOrder(Integer.parseInt(order));
 
                 //Log.i(TAG, i + ": " + img.toString());
-
-                gallery.add(img);
+                galleryMap.put(img.getId(), img);
 
             }
 
+            List<Gallery> gallery = new ArrayList<Gallery>(galleryMap.values());
             Collections.sort(gallery, new ImageComparator());
+
+            ArrayList<String> galleryTitle = new ArrayList<String>();
+            ArrayList<byte[]> galleryItems = new ArrayList<byte[]>();
+
             for(Gallery img: gallery) {
                 Log.i(TAG, img.toString());
-                galleryItems.add(img.getImage());
+                galleryItems.add(img.getImg());
                 galleryTitle.add(img.getImageCaption());
+                galleryIds.add(img.getId());
             }
 
             CustomList adapter = new
@@ -179,27 +185,188 @@ public class GalleryFragment extends ListFragment {
             this.setListAdapter(adapter);
             adapter.notifyDataSetChanged();
 
+            Log.i(TAG, "Updating local cache...");
+
+            JSONCache.galleryIds = (ArrayList<String>) galleryIds.clone();
+            JSONCache.galleryMap = (HashMap<String, Gallery>) galleryMap.clone();
+
 
         } catch (JSONException e) {
 
-            e.printStackTrace();
+            Log.e(TAG, "parseJSONResult: Error=" + e.getMessage());
+        } catch (IOException e) {
+
+            Log.e(TAG, "parseJSONResult: Error=" + e.getMessage());
+        } catch (Exception e) {
+
             Log.e(TAG, "parseJSONResult: Error=" + e.getMessage());
         }
     }
 
-    private void getGalleryItems() {
-        Cursor galleryCursor = database.rawQuery("select * from "+TABLE_NAME+" where LectEmail is null", null);
-        galleryCursor.moveToFirst();
-        while (!galleryCursor.isAfterLast()) {
-            cursorToGallery(galleryCursor);
-            galleryCursor.moveToNext();
-        }
-        galleryCursor.close();
+    private void getGalleryIdsJSON() {
+        Log.i(TAG, "getNewsIdsJSON");
+
+        JsonArrayRequest request = new JsonArrayRequest(GALLERY_IDS.toString(),
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray result) {
+
+                        Log.i(TAG, "onResponse: Result = " + result.toString());
+                        parseJSONIDResult(result);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e(TAG, "onErrorResponse: Error= " + error);
+                        Log.e(TAG, "onErrorResponse: Error= " + error.getMessage());
+                        getJSONCache();
+                    }
+                });
+        AppController.getInstance().addToRequestQueue(request);
     }
 
-    private void cursorToGallery(Cursor cursor) {
-        if(!cursor.isNull( 2 ))galleryTitle.add(cursor.getString(2));
-        if(!cursor.isNull( 1 ))galleryItems.add(cursor.getBlob(1));
+    private void parseJSONIDResult(JSONArray jsonArray) {
+        try {
+
+            Log.i(TAG, "parseJSONIDResult");
+
+            String id = null;
+
+            List<String> galleryIDs = new ArrayList<String>();
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject img = jsonArray.getJSONObject(i);
+
+                if (!img.isNull(IMAGE_ID)) {
+                    id = img.getString(IMAGE_ID);
+                }
+
+                galleryIDs.add(id);
+            }
+
+            ArrayList<String> oldListIds = (ArrayList<String>) JSONCache.galleryIds.clone();
+            if (oldListIds.size() == 0) {
+                Log.i(TAG, "Local IdList is empty");
+                isContentChanged = true;
+            } else if (oldListIds.size() != galleryIDs.size()) {
+                Log.i(TAG, "Local IdList Size: " + oldListIds.size());
+                Log.i(TAG, "Server IdList Size: " + galleryIDs.size());
+                isContentChanged = true;
+            } else {
+                for (String i: galleryIDs) {
+                    if (!oldListIds.contains(i)) {
+                        isContentChanged = true;
+                        break;
+                    }
+                }
+            }
+            if (isContentChanged) {
+                Log.i(TAG, "Content Changed on server, fetching from server...");
+                getGalleryJson();
+            } else {
+                Log.i(TAG, "Content not Changed on server, fetching from local cache...");
+                getJSONCache();
+            }
+
+        } catch (JSONException e) {
+
+            isContentChanged = false;
+            getJSONCache();
+
+            Log.e(TAG, "parseJSONIDResult: Error=" + e.getMessage());
+
+        } catch (Exception e) {
+
+            isContentChanged = false;
+            getJSONCache();
+
+            Log.e(TAG, "parseJSONIDResult: Error=" + e.getMessage());
+        }
+
+    }
+
+    public void getJSONCache() {
+        try {
+            Log.i(TAG, "getJSONCache");
+            galleryMap.clear();
+
+            ArrayList<String> galleryTitle = new ArrayList<String>();
+            ArrayList<byte[]> galleryItems = new ArrayList<byte[]>();
+
+            galleryMap = (HashMap<String, Gallery>) JSONCache.galleryMap.clone();
+            List<Gallery> imageList = new ArrayList<Gallery> (galleryMap.values());
+            Collections.sort(imageList,  new ImageComparator());
+            for (Gallery img: imageList) {
+                galleryTitle.add(img.getImageCaption());
+                galleryItems.add(img.getImg());
+            }
+
+            CustomList adapter = new
+                    CustomList(this.getActivity(), galleryTitle, galleryItems);
+            this.setListAdapter(adapter);
+            adapter.notifyDataSetChanged();
+
+        } catch (Exception e) {
+            Log.e(TAG, "getJSONCache: Error=" + e.getMessage());
+        }
+
+    }
+
+    private void fetchJSONRaw(){
+        try {
+
+            JSONCache.galleryMap.clear();
+            JSONCache.galleryIds.clear();
+            galleryMap.clear();
+
+            ArrayList<String> galleryTitle = new ArrayList<String>();
+            ArrayList<byte[]> galleryItems = new ArrayList<byte[]>();
+
+            String contents = null;
+
+            if (file.length() == 0) {
+                Log.i(TAG,"File storage empty, fetching from resources...");
+                JSONResourceReader jsonResourceReader = new JSONResourceReader(getResources(), R.raw.gallery);
+                contents = jsonResourceReader.jsonString;
+            } else {
+                Log.i(TAG, "fetching JSON from filestorage");
+                contents = Files.toString(file, Charset.forName("UTF-8"));
+            }
+
+            Gson gson = new Gson();
+            Gallery[] imgArray = gson.fromJson(contents, Gallery[].class);
+
+
+            for (Gallery img: imgArray) {
+                img.setImg(Base64.decode(img.getImage(), Base64.DEFAULT));
+
+                Log.i(TAG,img.toString());
+
+                galleryMap.put(img.getId(),img);
+                galleryIds.add(img.getId());
+            }
+
+            List<Gallery> imgList = new ArrayList<Gallery> (galleryMap.values());
+            Collections.sort(imgList,  new ImageComparator());
+            for (Gallery gallery: imgList) {
+                galleryTitle.add(gallery.getImageCaption());
+                galleryItems.add(gallery.getImg());
+            }
+
+            CustomList adapter = new
+                    CustomList(this.getActivity(), galleryTitle, galleryItems);
+            this.setListAdapter(adapter);
+            adapter.notifyDataSetChanged();
+
+            Log.i(TAG, "Updating local cache...");
+            JSONCache.galleryMap = (HashMap<String, Gallery>) galleryMap.clone();
+            JSONCache.galleryIds = (ArrayList<String>) galleryIds.clone();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            Log.e(TAG, "fetchJSONRaw: Error= " + e.getMessage());
+        }
     }
 
 }

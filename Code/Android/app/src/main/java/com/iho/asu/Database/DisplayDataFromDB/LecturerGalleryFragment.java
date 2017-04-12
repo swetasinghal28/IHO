@@ -127,7 +127,7 @@ public class LecturerGalleryFragment extends ListFragment {
                 Gallery img = new Gallery();
                 img.setId(id);
                 img.setImageCaption(title);
-                img.setImage(Base64.decode(image, Base64.DEFAULT));
+                img.setImg(Base64.decode(image, Base64.DEFAULT));
                 img.setOrder(Integer.parseInt(order));
 
                 //Log.i(TAG, i + ": " + img.toString());
@@ -139,7 +139,7 @@ public class LecturerGalleryFragment extends ListFragment {
             Collections.sort(gallery, new ImageComparator());
             for(Gallery img: gallery) {
                 Log.i(TAG, img.toString());
-                galleryItems.add(img.getImage());
+                galleryItems.add(img.getImg());
                 galleryTitle.add(img.getImageCaption());
             }
 

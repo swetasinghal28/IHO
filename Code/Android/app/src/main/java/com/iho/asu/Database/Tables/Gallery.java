@@ -1,14 +1,17 @@
 package com.iho.asu.Database.Tables;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by Barathi on 7/4/2014.
  */
 public class Gallery {
     private String id;
-    private byte[] image;
-    private String imageCaption;
+    private byte[] img;
+    @SerializedName("title")   private String imageCaption;
     private String lectEmail;
     private Integer order;
+    private String image;
 
     public void setImageCaption(String imageCaption) {
         this.imageCaption = imageCaption;
@@ -34,18 +37,18 @@ public class Gallery {
         this.id = id;
     }
 
-    public byte[] getImage() {
-        return image;
+    public byte[] getImg() {
+        return img;
     }
 
-    public void setImage(byte[] image) {
-        this.image = image;
+    public void setImg (byte[] img) {
+        this.img = img;
     }
 
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder("");
-        return sb.append(order.toString()).append(imageCaption).append(" ").toString();
+        return sb.append(order.toString()).append(" ").append(imageCaption).toString();
     }
 
     public Integer getOrder() {
@@ -54,5 +57,14 @@ public class Gallery {
 
     public void setOrder(Integer order) {
         this.order = order;
+    }
+
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
