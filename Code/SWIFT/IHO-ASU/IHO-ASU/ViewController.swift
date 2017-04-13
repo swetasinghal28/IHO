@@ -9,7 +9,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak var creditsB: UIButton!
 
     @IBOutlet weak var skullLogo: UIWebView!
    
@@ -84,7 +83,7 @@ class ViewController: UIViewController {
         creditsButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         creditsButton.tag = 1
         self.view.addSubview(creditsButton)
-        creditsB = creditsButton
+        //creditsB = creditsButton
         
         let toolbarButton = UIBarButtonItem(customView: creditsButton)
         let toolbarTitle = UIBarButtonItem(customView: label)
