@@ -7,7 +7,7 @@
 
     <ImageButton
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="80dp"
         android:id="@+id/customConnectBackButton"
         android:background="@drawable/header_aaa"
         android:onClick="onClick"
@@ -32,16 +32,15 @@
             android:background="@android:color/white"/>
 
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:background="@android:color/white">
+            android:background="@android:color/white"
+            android:gravity="center_vertical">
 
             <ImageView
-                android:layout_width="351dp"
-                android:layout_height="145dp"
+                android:layout_width="match_parent"
+                android:layout_height="325dp"
                 android:id="@+id/imageView"
-                android:layout_centerHorizontal="true"
                 android:background="@drawable/anthropologist"
                 />
         </RelativeLayout>
@@ -49,14 +48,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView2"
-            android:textSize="10dp"
+            android:textSize="30dp"
             android:layout_gravity="center_horizontal"
             android:background="@android:color/white"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/askananthropologist"
-            android:textSize="16dp"
+            android:textSize="30dp"
             android:autoLink="web"
             android:linksClickable="true"
             android:layout_gravity="left"
@@ -69,14 +68,15 @@
             android:layout_gravity="center_horizontal" />
         <Button
             android:id="@+id/visitAskAnAnthropologist"
-            android:layout_width="334dp"
-            android:layout_height="wrap_content"
+            android:layout_width="374dp"
+            android:layout_height="70dp"
             android:layout_weight="0.00"
             android:background="@drawable/shape"
             android:text="Visit AskAnAnthropologist"
             android:textColor="@android:color/background_light"
             android:textStyle="bold"
             android:onClick="onClick"
+            android:textSize="26dp"
             android:layout_gravity="center_horizontal"/>
 
     </LinearLayout>
