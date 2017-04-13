@@ -42,6 +42,7 @@ public class EditLecturesFrame extends JFrame {
 	LecturesDelegate lectureDelegate;
 	String filename;
 	String encodedImage;
+	int flag =0;
 	
 	byte[] imageInByte;
 	
@@ -98,6 +99,9 @@ public class EditLecturesFrame extends JFrame {
 		tfLink.setText(lecture.getLink());
 		tfDesc.setText(lecture.getTitle());
 		tfEmail.setText(lecture.getEmail());
+		imageFileButton.setText(lecture.getImage());
+		String order_value = Integer.toString(lecture.getOrder());
+		tfOrder.setText(order_value);
 	}
  	
 	public EditLecturesFrame(LecturesDelegate lecturedelegate) {
@@ -110,8 +114,10 @@ public class EditLecturesFrame extends JFrame {
 		btnSubmit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if(flag==1)
+				{
 				 try{
-
+                      
 					 	BufferedImage originalImage =
 					                               ImageIO.read(new File(filename));
 			      	 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -123,14 +129,26 @@ public class EditLecturesFrame extends JFrame {
 			            encodedImage = Base64.getEncoder().encodeToString(imageInByte);
 					 	System.out.println("BYTE ARRAY_________"+imageInByte);
 					 	baos.close();
+                       
+                        
 			           	}catch(IOException e1){
 					 		System.out.println(e1.getMessage());
 						 	}
+				}
 				 
-				 int ord = Integer.parseInt(tfOrder.getText());
+				 if(flag==1){
+					 int ord = Integer.parseInt(tfOrder.getText());
 				Lecture newLecture = new Lecture(tfName.getText(), taDescription.getText(),tfLink.getText(),tfDesc.getText(),encodedImage,tfEmail.getText(),ord);
-				// delete old lecture
 				lectureDelegate.addLecture(newLecture);
+				 }
+				
+				 else {
+					 int ord = Integer.parseInt(tfOrder.getText());
+					 Lecture newLecture = new Lecture(tfName.getText(), taDescription.getText(),tfLink.getText(),tfDesc.getText(),imageFileButton.getText(),tfEmail.getText(),ord);
+					 lectureDelegate.addLecture(newLecture);
+				 }
+				// delete old lecture
+				
 				if (lecture != null){
 					lectureDelegate.deleteLecture(lecture);
 				}
@@ -146,6 +164,7 @@ public class EditLecturesFrame extends JFrame {
 					    chooser.showOpenDialog(null);
 					    File f = chooser.getSelectedFile();
 					    filename = f.getAbsolutePath();
+					    flag =1; 
 					    imageFileButton.setText(filename);
 					    
 
