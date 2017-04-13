@@ -13,64 +13,43 @@ class NewsViewController: UITableViewController {
    
     @IBOutlet var newsTableView: UITableView!
     var urlString:String = ""
-    //var news: [News]? = []
     var newsList:[String : News] = [String : News]()
     var names:[String]=[String]()
-//    var NumberOfRows = 0
-//    var newsList = [NSManagedObject]()
-//    var appDel:AppDelegate?
-//    var mContext:NSManagedObjectContext?
-
-
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    var newsId:[String]=[String]()
+    var reachability: Reachability = Reachability();
+    let dispatch_group = DispatchGroup()
+    
+    
+    
+    func loadNewsList(){
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        print("Loading from Internet")
         
-        self.navigationItem.title = "News"
+        let url = URL(string:"http://107.170.239.62:3000/newsobjects" )
         
-        // getting URL string from Info.plist
-//        if let infoPlist = Bundle.main.infoDictionary {
-//            self.urlString = ((infoPlist["ServerURLString"]) as?  String!)!
-//            NSLog("The default urlString from info.plist is \(self.urlString)")
-//        } else {
-//            NSLog("error getting urlString from info.plist")
-//        }
-        
-       let url = URL(string:"http://107.170.239.62:3000/newsobjects" )
-        
-        let task = URLSession.shared.dataTask(with: url!){ (data, response, error) in
+        var task = URLSession.shared.dataTask(with: url!){ (data, response, error) in
             if error != nil
             {
                 print("ERROR",error ?? "There is an error")
             }
             else
             {
+                print("Loading news Objects")
+                
                 if let content = data
                 {
                     //self.news = [News]()
                     do{
                         //Array
-                    let myJSON = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
+                        let myJSON = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
                         
-                       // let myJSON = try JSONSerialization.jsonObject(with: data!,options:.mutableContainers) as? [String:AnyObject]
+                        // let myJSON = try JSONSerialization.jsonObject(with: data!,options:.mutableContainers) as? [String:AnyObject]
                         
-                        print("myJSON", myJSON)
-                        
-//                        for dict2 in myJSON {
-//                            let id = dict2["id"]
-//                            let title = dict2["title"]
-//                            let desc = dict2["desc"]
-//                            println(id)
-//                            println(main)
-//                            println(description)
-//                        }
-                        
+                        //print("myJSON", myJSON)
                         
                         
                         if let newsFromJSON = myJSON as? [[String: AnyObject]]{
-                            print("newsFromJSON", newsFromJSON)
+                            //print("newsFromJSON", newsFromJSON)
                             for news in newsFromJSON{
                                 let newsObject = News()
                                 if let title = news["title"] as? String,let desc = news["desc"] as? String,let id = news["id"] as? String,let image = news["image"] as? String, let link = news["link"] as? String{
@@ -81,7 +60,7 @@ class NewsViewController: UITableViewController {
                                     newsObject.link = link
                                     self.names.append(newsObject.title)
                                     //print(title)
-                                
+                                    
                                 }
                                 //self.news?.append(newsObject)
                                 self.newsList[newsObject.title] = newsObject
@@ -89,59 +68,71 @@ class NewsViewController: UITableViewController {
                         }
                         
                         //print (self.news)
-                        //self.tableView.reloadData()
+                        mainInstance.newsList = self.newsList;
+                        mainInstance.names = self.names;
                         self.newsTableView.reloadData()
-
-                        
                     }
                     catch let error{
                         print(error)
                     }
                 }
             }
-            
-            
         }
         task.resume()
-        
-        
-//        self.names.removeAll()
-//        if let infoPlist = Bundle.main.infoDictionary {
-//            self.urlString = ((infoPlist["ServerURLString"]) as?  String!)!
-//            NSLog("The default urlString from info.plist is \(self.urlString)")
-//        } else {
-//            NSLog("error getting urlString from info.plist")
-//        }
-//        // These vars are used to access the Movie and Genre entities
-//        appDel = (UIApplication.shared.delegate as! AppDelegate)
-//        mContext = appDel!.managedObjectContext
-//        let selectRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "title")
-//        do{
-//            let results = try mContext!.fetch(selectRequest)
-//            newsList = results as! [NSManagedObject]
-//            NSLog("Trying to see NewsList\(newsList)")
-//        } catch let error as NSError{
-//            NSLog("Error selecting all movies: \(error)")
-//        }
-//        if newsList.count > 0 {
-//            for news in newsList{
-//                if(news.value(forKey: "title") != nil){
-//                    let title:String = (news.value(forKey: "title") as? String)!
-//                    self.names.append(title)
-//                }
-//            }
-//        }
-        //self.tableview.reloadData()
-        
-        
-        
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        
+    }
+    
+    func loadNewsId(){
+        let urlId = URL(string:"http://107.170.239.62:3000/newsid" )
+      
+        dispatch_group.enter()
+        var taskUrlId = URLSession.shared.dataTask(with: urlId!){ (data, response, error) in
+            if error != nil
+            {
+                print("ERROR",error ?? "There is an error")
+            }
+            else
+            {
+                print("Inside Load News Id function")
+                
+                self.newsId = [];
+                
+                if let content = data
+                {
+                    do{
+                        //Array
+                        let myJSON = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
+                        
+                        if let newsFromJSON = myJSON as? [[String: AnyObject]]{
+                            for news in newsFromJSON{
+                                if let newsId = news["id"] as? String{
+                                    self.newsId.append(newsId)
+                                }
+                            }
+                        }
+                        print("News Id: ", self.newsId)
+                    }
+                    catch let error{
+                        print(error)
+                    }
+                }
+            self.dispatch_group.leave()
+            }
+        }
+        taskUrlId.resume()
+    }
+
+
+
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        
+        self.navigationItem.title = "News"
         
         //toolbar
         let label = UILabel(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(350), height: CGFloat(21)))
@@ -152,6 +143,140 @@ class NewsViewController: UITableViewController {
         let toolbarTitle = UIBarButtonItem(customView: label)
         let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         self.toolbarItems = [flexible,toolbarTitle]
+        
+
+        let flag = reachability.connectedToNetwork();
+        if flag
+        {
+            
+            print("Yes internet connection")
+            
+            if (!mainInstance.newsList.isEmpty && !mainInstance.names.isEmpty){
+                
+                print("Calling news Id from internet")
+                loadNewsId();
+                dispatch_group.wait()
+                print("Completed loading news Id from Internet")
+                
+                print("Cache news Id",mainInstance.newsId)
+                print("Internet news Id",self.newsId)
+                
+                if(mainInstance.newsId == self.newsId){
+                
+                    print("News List unchanged")
+                
+                self.newsList = mainInstance.newsList;
+                
+                self.names = mainInstance.names;
+                
+                self.newsTableView.reloadData();
+                }
+                else{
+                    
+                    print("News List updated")
+                    mainInstance.clearNewsCache()
+                    loadNewsList();
+                    loadNewsId();
+                    dispatch_group.wait()
+                    mainInstance.newsId = self.newsId
+                
+                }
+                
+            }else{
+                
+                print("Loading from Internet")
+                
+                mainInstance.clearNewsCache()
+                loadNewsList();
+                loadNewsId();
+                dispatch_group.wait()
+                mainInstance.newsId = self.newsId
+                
+            }
+            
+            print("News Id from cache: ", mainInstance.newsId)
+            
+        }else{
+            
+            print("No internet connection")
+            print("Cache value : ", mainInstance.names)
+            
+            if (!mainInstance.newsList.isEmpty && !mainInstance.names.isEmpty){
+                
+                print("Loading from Cache")
+                
+                self.newsList = mainInstance.newsList;
+                
+                self.names = mainInstance.names;
+                
+                self.newsTableView.reloadData();
+                
+            }else{
+                
+                print("Loading from Local")
+                
+                do {
+                    
+                    if let file = Bundle.main.url(forResource: "news", withExtension: "json") {
+                        
+                        let data = try Data(contentsOf: file)
+                        
+                        //let json = try JSONSerialization.jsonObject(with: data, options: [])
+                        
+                        
+                        
+                        let myJSON = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
+                        
+                        //print("myJSON", myJSON)
+                        if let newsFromJSON = myJSON as? [[String: AnyObject]]{
+                            
+                            //print("newsFromJSON", newsFromJSON)
+                            
+                            for news in newsFromJSON{
+                                
+                                let newsObject = News()
+                                
+                                if let title = news["title"] as? String,let desc = news["desc"] as? String,let id = news["id"] as? String,let image = news["image"] as? String, let link = news["link"] as? String{
+                                    
+                                    newsObject.id = id
+                                    
+                                    newsObject.title = title
+                                    
+                                    newsObject.desc = desc
+                                    
+                                    newsObject.image = image
+                                    
+                                    newsObject.link = link
+                                    
+                                    self.names.append(newsObject.title)
+                                    
+                                    //print(title)
+                                }
+                                //self.news?.append(newsObject)
+                                self.newsList[newsObject.title] = newsObject
+                            }
+                            
+                        } else {
+                            
+                            print("JSON is invalid")
+                            
+                        }
+                        
+                    } else {
+                        print("no file")
+                    }
+                    mainInstance.newsList = self.newsList;
+                    mainInstance.names = self.names;
+                    self.newsTableView.reloadData()
+                    
+                } catch {
+                  print(error.localizedDescription)
+                }
+            }
+        }
+        self.newsTableView.reloadData()
+        //print("Cache value while exiting: ", mainInstance.names)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -182,18 +307,6 @@ class NewsViewController: UITableViewController {
         return self.names.count
     }
     
-//    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCellWithIdentifier("News Cell", forIndexPath: indexPath)
-//        
-//        cell.textLabel?.text = self.names[indexPath.row]
-//        //cell.detailTextLabel?.text = "Testing huhhahhahah"
-//        return cell
-//    }
-   
-    
-  
-
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = newsTableView.dequeueReusableCell(withIdentifier: "News Cell", for: indexPath)
         
@@ -206,51 +319,6 @@ class NewsViewController: UITableViewController {
         return cell
     }
  
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         NSLog("seque identifier is \(segue.identifier)")
