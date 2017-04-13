@@ -1,5 +1,6 @@
 package edu.asu.msse.gnayak2.bl;
 
+import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,22 +11,43 @@ import java.io.IOException;
 import java.util.Base64;
 
 import javax.imageio.ImageIO;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import edu.asu.msse.gnayak2.delegates.GalleryDelegate;
 import edu.asu.msse.gnayak2.delegates.LecturesDelegate;
+import edu.asu.msse.gnayak2.library.GalleryLibrary;
+import edu.asu.msse.gnayak2.models.GalleryModel;
 import edu.asu.msse.gnayak2.models.Lecture;
 import net.miginfocom.swing.MigLayout;
 
 public class EditLecturesFrame extends JFrame {
 
-	private JPanel panel;
+	private JPanel containerPanel;
+	private JPanel mainPanel;
+	private JPanel galleryPanel;
+	private JButton galleryBackButton;
+	
+	private CardLayout cardLayout;
+	
+	private JButton viewGalleryButton;
+	private JButton deleteGalleryButton;
+	private GalleryModel selectedImage;
+	private JList<GalleryModel> imageList;
+	private DefaultListModel<GalleryModel>  galleryModel;
+	private JButton btnAddGallery;
+	private GalleryLibrary galleryLibrary;
+	GalleryDelegate galleryDelegate;
+	
+	
 	private JTextField tfName;
 	private JTextArea taDescription;
 	private JTextField tfLink;
@@ -45,6 +67,7 @@ public class EditLecturesFrame extends JFrame {
 	int flag =0;
 	
 	byte[] imageInByte;
+	private JButton galleryButton;
 	
 	/**
 	 * Create the frame.
@@ -57,8 +80,32 @@ public class EditLecturesFrame extends JFrame {
 	}
 	
 	public void setUpFrame() {
+		/**
+		 * gallery delegate not set
+		 */
+		
 		setResizable(false);
 		setPreferredSize(new Dimension(Constants.WIDTH,Constants.HEIGHT));
+		containerPanel = new JPanel();
+		cardLayout = new CardLayout();
+		containerPanel.setLayout(cardLayout);
+		
+		initializeMainPanel();
+		initializeGallery();
+		
+		containerPanel.add(mainPanel, "1");
+		containerPanel.add(galleryPanel, "2");
+		
+		cardLayout.show(containerPanel, "1");
+		
+		add(containerPanel);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		pack();
+		setVisible(true);
+		
+	}
+	
+	public void initializeMainPanel() {
 		tfName = new JTextField();
 		taDescription = new JTextArea("",20,20);
 		lblReadMore = new JLabel("Read More: ");
@@ -70,27 +117,28 @@ public class EditLecturesFrame extends JFrame {
 		tfOrder = new JTextField("Order",20);
 		scrollPane = new JScrollPane(taDescription);
 		btnSubmit = new JButton("Submit");
+		galleryButton = new JButton("Gallery");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		panel = new JPanel();
-		panel.setLayout(new MigLayout());
-		panel.add(tfName
+		mainPanel = new JPanel();
+		mainPanel.setLayout(new MigLayout());
+		mainPanel.add(tfName
 				, "span,pushx,growx, wrap");
-		panel.add(lblReadMore);
-		panel.add(tfLink, "wrap");
-		panel.add(tfDesc, "wrap");
-		panel.add(tfEmail, "wrap");
-		panel.add(tfOrder,"wrap");
-		panel.add(scrollPane,"span,push,grow, wrap");	
-		panel.add(browseButton, "wrap");
-		panel.add(imageFileButton, "wrap");
-		panel.add(btnSubmit);
-
-		add(panel);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		pack();
-		setVisible(true);
+		mainPanel.add(lblReadMore);
+		mainPanel.add(tfLink, "wrap");
+		mainPanel.add(tfDesc, "wrap");
+		mainPanel.add(tfEmail, "wrap");
+		mainPanel.add(tfOrder,"wrap");
+		mainPanel.add(scrollPane,"span,push,grow, wrap");	
+		mainPanel.add(browseButton, "wrap");
+		mainPanel.add(imageFileButton, "wrap");
+		mainPanel.add(btnSubmit);
+		mainPanel.add(galleryButton);
 		setActionListenerForButton();
+	}
+	
+	public void initializeGallery() {
+		galleryPanel = new JPanel();
 	}
 	
 	public void populateFileds(Lecture lecture) {
@@ -110,6 +158,15 @@ public class EditLecturesFrame extends JFrame {
 	}
 	
 	public void setActionListenerForButton() {
+		
+		galleryButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cardLayout.show(containerPanel, "2");
+			}
+		});
+		
 		// delete old lecture
 		btnSubmit.addActionListener(new ActionListener() {
 			@Override
@@ -167,6 +224,16 @@ public class EditLecturesFrame extends JFrame {
 					    flag =1; 
 					    imageFileButton.setText(filename);
 					    
+
+					
+				}
+			});
+		 galleryButton.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					 // send the name to gallery frame and use it
 
 					
 				}

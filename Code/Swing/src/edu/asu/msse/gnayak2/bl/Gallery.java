@@ -114,13 +114,8 @@ public class Gallery extends JFrame implements GalleryDelegate {
 	public void initializeMainPanel() {
 		mainPanel = new JPanel();
 		galleryPanel = new JPanel();
-		
-
 		galleryButton = new JButton("Gallery");
-		
-		
-		mainPanel.add(galleryButton);
-			
+		mainPanel.add(galleryButton);			
 	}
 	
 	// intitalize news
