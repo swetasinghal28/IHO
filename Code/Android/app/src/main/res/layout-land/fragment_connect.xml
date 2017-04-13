@@ -110,8 +110,8 @@
             android:weightSum="1">
 
             <ImageButton
-            android:layout_width="125dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
             android:id="@+id/fbButton"
             android:background="@drawable/fb"
             android:onClick="onClick"
@@ -121,8 +121,8 @@
                 android:layout_height="wrap_content"
                 android:text="             "/>
         <ImageButton
-            android:layout_width="125dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
             android:id="@+id/twButton"
             android:background="@drawable/twitter"
             android:onClick="onClick"
@@ -133,8 +133,8 @@
                 android:text="             "/>
 
             <ImageButton
-            android:layout_width="125dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
             android:id="@+id/instaButton"
             android:background="@drawable/insta"
             android:onClick="onClick"
