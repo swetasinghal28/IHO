@@ -27,33 +27,59 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:paddingTop="@dimen/activity_horizontal_margin">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal" >
-
-
-            <Button
-                android:id="@+id/galleryBtn"
+            <RelativeLayout
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:background="@android:color/black"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="500dp"
+                    android:layout_height="428dp"
+                    android:id="@+id/imageView"
+                    android:background="@drawable/gallery"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/textspace"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/shape"
-                android:text="Image Gallery                                                                                >"
-                android:textColor="@android:color/background_light"
-                android:textStyle="bold"
-                android:onClick="onClick" />
+                android:textSize="15dp"
+                android:textAlignment="center"
+                android:maxLines="2"
+                android:text="                                                                                                                 "
+                android:maxLength="104"
+                android:background="@android:color/white"/>
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" >
+                <Button
+                    android:id="@+id/galleryBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape"
+                    android:text="View Image Gallery"
+                    android:textColor="@android:color/background_light"
+                    android:textStyle="bold"
+                    android:onClick="onClick" />
+
+
 
         </LinearLayout>
-
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/textspace4"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="\nYoutube+Vimeo"
-                android:id="@+id/textView"
-                android:textColor="@android:color/background_dark"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:paddingLeft="@dimen/activity_horizontal_margin" />
+                android:textSize="30dp"/>
+
+
 
             <TextView
                 android:layout_width="match_parent"
@@ -61,7 +87,16 @@
                 android:text="Visit our YouTube and Vimeo pages below!"
                 android:textColor="@android:color/background_dark"
                 android:textSize="16dp"
+                android:textStyle="bold"
                 android:paddingLeft="@dimen/activity_horizontal_margin" />
+
+            <TextView
+                android:id="@+id/textspace1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textAlignment="center"
+                />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -85,46 +120,19 @@
                     android:background="@drawable/youtube"
                     android:onClick="onClick" />
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/textspace3"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="                      " />
+                    android:textSize="15dp"
+                    />
                 <ImageButton
                     android:layout_width="210dp"
-                    android:layout_height="155dp"
+                    android:layout_height="130dp"
                     android:id="@+id/vimeoBtn"
                     android:background="@drawable/vimeo"
                     android:onClick="onClick" />
 
             </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="\nErich Fisher on National Geographic"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:paddingLeft="@dimen/activity_horizontal_margin" />
-
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Watch Erich Fisher as featured on National Geographic News!\n"
-                android:textSize="16dp"
-                android:id="@+id/textView3"
-                android:paddingLeft="@dimen/activity_horizontal_margin" />
-
-            <Button
-                android:id="@+id/watchNow"
-                android:layout_width="480dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/shape"
-                android:text="Watch Now"
-                android:textColor="@android:color/background_light"
-                android:textStyle="bold"
-                android:onClick="onClick"
-                android:layout_gravity="center"/>
 
         </LinearLayout>
     </ScrollView>
