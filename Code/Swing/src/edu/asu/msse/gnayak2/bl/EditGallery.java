@@ -129,10 +129,11 @@ public class EditGallery extends JFrame {
 				
 				GalleryModel newGallery = new GalleryModel(tfTitle.getText(), encodedImage,ord);
 			    
-				galleryDelegate.addGallery(newGallery);
 				if (gallery != null){
 					galleryDelegate.deleteGallery(gallery);
 				}
+				galleryDelegate.addGallery(newGallery);
+				
 				dispose();
 			}
 		});

@@ -41,7 +41,7 @@ import edu.asu.msse.gnayak2.models.Lecture;
 import edu.asu.msse.gnayak2.networking.HTTPConnectionHelper;
 import net.miginfocom.swing.MigLayout;
 
-public class EditLecturesFrame extends JFrame {
+public class EditLecturesFrame extends JFrame implements GalleryDelegate {
 
 	private JPanel containerPanel;
 	private JPanel mainPanel;
@@ -96,9 +96,7 @@ public class EditLecturesFrame extends JFrame {
 	}
 	
 	public void setUpFrame() {
-		/**
-		 * gallery delegate not set
-		 */
+		galleryDelegate = this;
 		
 		setResizable(false);
 		setPreferredSize(new Dimension(Constants.WIDTH,Constants.HEIGHT));
@@ -195,13 +193,18 @@ public class EditLecturesFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (selectedImage != null) {
-					/**
-					 * might have to change here
-					 * also might have to change code for edit gallery
-					 */
-//					EditGallery editFrame = new EditGallery(selectedImage, galleryDelegate);
-//					editFrame.setVisible(true);
+					EditGallery editFrame = new EditGallery(selectedImage, galleryDelegate);
+					editFrame.setVisible(true);
 				}
+			}
+		});
+		
+		btnAddGallery.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				EditGallery galleryFrame = new EditGallery(galleryDelegate);
+				galleryFrame.setVisible(true);
 			}
 		});
 		
@@ -210,29 +213,34 @@ public class EditLecturesFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (selectedImage != null) {
-					HTTPConnectionHelper helper = new HTTPConnectionHelper();
-					try {
-						/*
-						 * Assumption that lecture library is already there and lecture object is 
-						 * not null because lectureGalleryLibrary already has lecture id
-						 */
-						
-						// delete from library
-						lecturesGalleryLibrary.deleteGallery(selectedImage.getId());
-						galleryModel.removeElement(selectedImage);
-						selectedImage = null;
-						// make a put request of the entire library
-						JSONObject lectureGalleryLibraryJson = convertLibraryToJSONOjbect();
-						helper.put(lecture.getEmail(), lectureGalleryLibraryJson);
-						
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+					lecturesGalleryLibrary.deleteGallery(selectedImage.getId());
+					galleryModel.removeElement(selectedImage);
+					selectedImage = null;
+					putLibraryToServer();
 				}
 			}
 		});
 
+	}
+	
+	public void putLibraryToServer() {
+		HTTPConnectionHelper helper = new HTTPConnectionHelper();
+		try {
+			/*
+			 * Assumption that lecture library is already there and lecture object is 
+			 * not null because lectureGalleryLibrary already has lecture id
+			 */
+			
+			// delete from library
+			
+			// make a put request of the entire library
+			JSONObject lectureGalleryLibraryJson = convertLibraryToJSONOjbect();
+			helper.put(lecture.getEmail(), lectureGalleryLibraryJson);
+			
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 	
 	public JSONObject convertLibraryToJSONOjbect() {
@@ -403,6 +411,24 @@ public class EditLecturesFrame extends JFrame {
 			}     	
 
 	    }
+	}
+	@Override
+	public void addGallery(GalleryModel gallery) {
+		galleryModel.addElement(gallery);
+		lecturesGalleryLibrary.addToLibrary(gallery);
+		putLibraryToServer();
+	}
+
+	// This method is only for delegate add or edit. Delete is handled separately. 
+	// Since we are making a put request, we delete only from library but make a put 
+	// request to server only in above add method.
+	@Override
+	public void deleteGallery(GalleryModel gallery) {
+		if (selectedImage != null) {
+			lecturesGalleryLibrary.deleteGallery(selectedImage.getId());
+			galleryModel.removeElement(selectedImage);
+			selectedImage = null;
+		}
 	} 
 
 }
