@@ -15,6 +15,7 @@ class DonationController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden=false
 
         // Do any additional setup after loading the view.
     }
@@ -29,6 +30,8 @@ class DonationController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.isHidden=false;
         self.navigationController?.navigationBar.barTintColor = UIColor(red: CGFloat((3 / 255.0)), green: CGFloat((36 / 255.0)), blue: CGFloat((83 / 255.0)), alpha: CGFloat(1))
         
         self.navigationController?.navigationBar.tintColor = UIColor.white

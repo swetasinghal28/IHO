@@ -6,7 +6,7 @@
     android:id="@+id/news_layout"
     android:background="@android:color/white">
     <ImageButton
-        android:layout_width="384dp"
+        android:layout_width="match_parent"
         android:layout_height="80dp"
         android:id="@+id/customBackButton"
         android:background="@drawable/header_nws_events"

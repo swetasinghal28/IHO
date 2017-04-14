@@ -4,8 +4,8 @@
     android:layout_height="match_parent"
     android:background="@android:color/white">
     <ImageButton
-        android:layout_width="384dp"
-        android:layout_height="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
         android:id="@+id/customBackButton"
         android:background="@drawable/header_credits"
         android:onClick="onClick"
@@ -29,20 +29,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Institute of Human Origins \nArizona State University"
                     android:textStyle="bold"
-                    android:textSize="24dp" />
+                    android:textSize="26dp" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/creditInfo"
                     android:layout_gravity="center"
-                    android:textAlignment="textStart"
-                    android:textSize="20dp" />
+
+                    android:textSize="24dp" />
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_gravity="center_horizontal" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -55,6 +61,10 @@
                     android:layout_gravity="center"
                     android:background="@drawable/line" />
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_gravity="center_horizontal" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -62,17 +72,68 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="ASU Team"
+                    android:text="ASU Team—Version 2"
                     android:textStyle="bold"
+                    android:textSize="26dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/asuTeamInfo2"
+                    android:layout_gravity="center"
+
                     android:textSize="24dp" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ASU Team—Version 1"
+                    android:textStyle="bold"
+                    android:textSize="26dp" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/asuTeamInfo"
                     android:layout_gravity="center"
-                    android:textAlignment="textStart"
-                    android:textSize="20dp" />
+
+                    android:textSize="24dp" />
             </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mobile App Team"
+                    android:textStyle="bold"
+                    android:textSize="26dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mobileAppTeam"
+                    android:layout_gravity="center"
+
+                    android:textSize="24dp" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_gravity="center_horizontal" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -85,6 +146,10 @@
                     android:layout_gravity="center"
                     android:background="@drawable/line" />
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_gravity="center_horizontal" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -94,16 +159,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:textAlignment="textStart"
+
                     android:text="@string/creditsLucy"
-                    android:textSize="20dp" />
+                    android:textSize="26dp"
+                    android:textStyle="bold|italic" />
             </LinearLayout>
         </LinearLayout>
-        </ScrollView>
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/imageView5"
-        android:background="@drawable/footer"
-        android:layout_below="@+id/scrollView2" />
+    </ScrollView>
+
 </RelativeLayout>

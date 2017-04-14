@@ -397,7 +397,8 @@
 				TargetAttributes = {
 					9FB7C5781E4AAA5900B88166 = {
 						CreatedOnToolsVersion = 8.2.1;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = XE6XA4DH2N;
+						ProvisioningStyle = Manual;
 					};
 					9FB7C58F1E4AAA5A00B88166 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -682,10 +683,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = XE6XA4DH2N;
 				INFOPLIST_FILE = "IHO-ASU/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.asu.msse.ssing134.IHO-ASU";
+				PRODUCT_BUNDLE_IDENTIFIER = com.arpit.asu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3f738284-bf18-4448-90c7-9c3c8d42bb14";
+				PROVISIONING_PROFILE_SPECIFIER = DevArpitProject;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -694,10 +698,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "IHO-ASU/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.asu.msse.ssing134.IHO-ASU";
+				PRODUCT_BUNDLE_IDENTIFIER = com.arpit.asu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

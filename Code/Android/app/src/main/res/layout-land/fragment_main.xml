@@ -4,22 +4,16 @@
     android:layout_height="fill_parent"
     android:id="@+id/main_fragment"
     android:background="@android:color/white">
-    <ImageButton
-        android:layout_width="384dp"
-        android:layout_height="70dp"
-        android:id="@+id/button"
-        android:background="@drawable/ihologo"
-        android:onClick="onClick"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true" />
+
     <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@+id/button"
+
         android:background="@android:color/background_light"
         android:fillViewport="false">
+
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -27,6 +21,16 @@
             android:layout_alignRight="@+id/button"
             android:layout_alignParentLeft="true"
             android:padding="@dimen/activity_horizontal_margin">
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:id="@+id/button"
+                android:background="@drawable/ihologo"
+                android:onClick="onClick"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -139,6 +143,7 @@
                     android:textStyle="bold"
                     android:onClick="onClick" />
             </LinearLayout>
+
             <WebView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -146,6 +151,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="111dp"
+                android:background="@android:color/background_light"
                 android:layout_gravity="center_vertical" />
 
         </LinearLayout>
@@ -162,6 +168,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true" />
+
 
 
 

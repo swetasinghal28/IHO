@@ -6,7 +6,7 @@
     android:background="@android:color/white">
 
     <ImageButton
-        android:layout_width="384dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
         android:id="@+id/customConnectBackButton"
         android:background="@drawable/header_bh"
@@ -28,6 +28,13 @@
             android:layout_height="wrap_content"
             android:text="@string/becomingHuman"
             android:textSize="16dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView1"
+            android:textSize="5dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@android:color/white"/>
         <Button
             android:id="@+id/visitBecomingHumanBtn"
             android:layout_width="334dp"
@@ -41,11 +48,5 @@
             android:layout_gravity="center_horizontal"/>
 
     </LinearLayout>
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/footer"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true" />
+
 </RelativeLayout>

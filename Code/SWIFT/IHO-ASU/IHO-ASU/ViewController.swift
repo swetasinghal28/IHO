@@ -22,7 +22,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 //        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 //        self.toolbarItems = [flexible,toolbarTitle]
         
@@ -37,20 +36,23 @@ class ViewController: UIViewController {
         field.layer.cornerRadius = 15
         
         // ASU LOGO at navigation bar
+        self.navigationController?.navigationBar.frame.size.height=50;
         var imageView: UIImageView?
         var ipad: Bool = (UIDevice.current.userInterfaceIdiom == .pad)
         //var htmlpath: String? = nil
-        if !ipad {
-            imageView = UIImageView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(self.navigationController!.navigationBar.frame.size.width / 1.6), height: CGFloat(self.navigationController!.navigationBar.frame.size.height / 1)))
-        }
-        else {
-            imageView = UIImageView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(self.navigationController!.navigationBar.frame.size.width / 2.5), height: CGFloat(self.navigationController!.navigationBar.frame.size.height / 1.5)))
-        }
-        
-        imageView?.image = UIImage(named: "newLogo.jpg")
-        var logoView = UIView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat((imageView?.frame.size.width)!), height: CGFloat((imageView?.frame.size.height)!)))
-        logoView.addSubview(imageView!)
-        self.navigationItem.titleView = logoView
+//        if !ipad {
+//            //imageView = UIImageView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(self.navigationController!.navigationBar.frame.size.width / 1), height: CGFloat(self.navigationController!.navigationBar.frame.size.height-10)))
+//            imageView=UIImageView(frame: (self.navigationController?.navigationBar.bounds)!);
+//        }
+//        else {
+//            imageView = UIImageView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(self.navigationController!.navigationBar.frame.size.width / 2.5), height: CGFloat(self.navigationController!.navigationBar.frame.size.height / 1.5)))
+//        }
+//        
+//        imageView?.image = UIImage(named: "newLogo.jpg")
+//        imageView?.contentMode=UIViewContentMode.scaleAspectFit;
+//        var logoView = UIView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat((imageView?.frame.size.width)!), height: CGFloat((imageView?.frame.size.height)!)))
+//        logoView.addSubview(imageView!)
+//        self.navigationItem.titleView = logoView
         
         
 //        //tab bar
@@ -62,7 +64,7 @@ class ViewController: UIViewController {
         htmlpath = Bundle.main.path(forResource: "skull", ofType: "html")
         var html = try? String(contentsOfFile: htmlpath!, encoding: String.Encoding.utf8)
         var baseURL = URL(fileURLWithPath: "\(Bundle.main.bundlePath)")
-        skullLogo.scalesPageToFit = false
+       // skullLogo.scalesPageToFit = false
         self.skullLogo.loadHTMLString(html!, baseURL: baseURL)
         skullLogo.scrollView.isScrollEnabled = false
         
@@ -106,6 +108,7 @@ class ViewController: UIViewController {
         //self.navigationController?.navigationBar.frame.size.height = 500
         self.navigationController?.navigationBar.barTintColor = UIColor(red: CGFloat((255.0 / 255.0)), green: CGFloat((255.0 / 255.0)), blue: CGFloat((255.0 / 255.0)), alpha: CGFloat(1))
         self.navigationController?.setToolbarHidden(false, animated: false)
+        self.navigationController?.navigationBar.isHidden=true
     }
     
     override func viewWillDisappear(_ animated: Bool) {

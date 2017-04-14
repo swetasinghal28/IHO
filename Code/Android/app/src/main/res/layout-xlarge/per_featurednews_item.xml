@@ -5,8 +5,8 @@
     android:id="@+id/per_news"
     android:background="@android:color/white">
     <ImageButton
-        android:layout_width="384dp"
-        android:layout_height="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
         android:id="@+id/customFNewsBackbutton"
         android:background="@drawable/header_featured"
         android:onClick="onClick"
@@ -57,7 +57,8 @@
         android:textColor="@android:color/background_light"
         android:textStyle="bold"
         android:text="Click here to read more"
-        android:onClick="onClick"/>
+        android:onClick="onClick"
+        android:textSize="22dp"/>
     </LinearLayout>
     </ScrollView>
 </RelativeLayout>

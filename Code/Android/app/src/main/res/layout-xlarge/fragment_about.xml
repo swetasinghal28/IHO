@@ -5,8 +5,8 @@
     android:background="@android:color/white">
 
     <ImageButton
-        android:layout_width="384dp"
-        android:layout_height="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
         android:id="@+id/customBackButton"
         android:background="@drawable/header_about"
         android:onClick="onClick"
@@ -14,98 +14,102 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true" />
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="171dp"
+        android:id="@+id/imageView"
+        android:layout_gravity="center_horizontal|top"
+        android:background="@drawable/about"
+        android:layout_below="@+id/customBackButton"/>
+
     <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@+id/customBackButton"
         android:id="@+id/scrollView2"
-        android:background="@android:color/background_light">
+        android:background="@android:color/background_light"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/imageView">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="@dimen/activity_horizontal_margin">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="92dp"
-                    android:id="@+id/imageView"
-                    android:layout_gravity="center_horizontal|top"
-                    android:background="@drawable/about" />
-            </LinearLayout>
             <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textAlignment="center"
-                    android:textSize="16dp"
-                    android:id="@+id/highlightText" />
+                android:layout_height="wrap_content"
+                android:text="@string/aboutInfo"
+                android:id="@+id/aboutInfoView"
+                android:textSize="24dp"
+                android:linksClickable="true"
+                android:layout_gravity="left" />
+           </LinearLayout>
 
-            </LinearLayout>
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="15dp"
+                android:layout_gravity="center_horizontal" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/imageView2"
-                    android:layout_gravity="center"
-                    android:background="@drawable/line" />
-            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <TextView
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="10dp">
+
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Location"
-                    android:textStyle="bold"
-                    android:textSize="24dp" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/locationInfo"
-                    android:layout_gravity="center"
-                    android:textAlignment="textStart"
-                    android:textSize="20dp" />
+                    android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/mapItBtn"
-                    android:layout_width="120dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/shape"
-                    android:text="Map It"
-                    android:textColor="@android:color/background_light"
-                    android:textStyle="bold"
-                    android:onClick="onClick"
-                    android:layout_gravity="center_horizontal"/>
+                    <LinearLayout
+                        android:layout_width="400dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="5dp"
+                            android:layout_gravity="center_horizontal" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Location"
+                            android:textStyle="bold"
+                            android:textSize="30dp" />
+                        <TextView
+                            android:layout_width="280dp"
+                            android:layout_height="10dp"
+                            android:layout_gravity="center_horizontal" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/locationInfo"
+                            android:layout_gravity="left"
+                            android:textSize="26dp" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/mapItBtn"
+                        android:layout_width="80dp"
+                        android:layout_height="140dp"
+                        android:background="@drawable/location"
+                        android:onClick="onClick"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/imageView3"
-                    android:layout_gravity="center"
-                    android:background="@drawable/line" />
-            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -115,27 +119,19 @@
                     android:layout_height="wrap_content"
                     android:text="Contact"
                     android:textStyle="bold"
-                    android:textSize="24dp" />
+                    android:textSize="30dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_gravity="center_horizontal" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/contactInfo"
                     android:layout_gravity="center"
-                    android:textAlignment="textStart"
-                    android:textSize="20dp" />
+                    android:textSize="24dp" />
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/imageView4"
-                    android:layout_gravity="center"
-                    android:background="@drawable/line" />
-            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -143,18 +139,25 @@
                 android:id="@+id/layout">
                 <TextView
                     android:layout_width="match_parent"
+                    android:layout_height="12dp"
+                    android:layout_gravity="center_horizontal" />
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Mailing address"
                     android:textStyle="bold"
-                    android:textSize="24dp" />
-
+                    android:textSize="30dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_gravity="center_horizontal" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/mailInfo"
                     android:layout_gravity="center"
-                    android:textAlignment="textStart"
-                    android:textSize="20dp" />
+
+                    android:textSize="24dp" />
             </LinearLayout>
         </LinearLayout>
 

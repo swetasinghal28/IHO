@@ -2,151 +2,153 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@android:color/white">
+    android:background="@android:color/white"
+    android:orientation="vertical">
 
     <ImageButton
-        android:layout_width="384dp"
-        android:layout_height="60dp"
         android:id="@+id/customBackButton"
-        android:background="@drawable/header_connect"
-        android:onClick="onClick"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true" />
+        android:background="@drawable/header_connect"
+        android:onClick="onClick" />
 
-    <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/scrollView2"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_below="@+id/customBackButton"
-        android:id="@+id/scrollView2"
         android:background="@android:color/background_light">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingTop="@dimen/activity_horizontal_margin">
-
-        <Button
-            android:id="@+id/connect1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape"
-            android:text="Institute of Human Origins                                                                                  >"
-            android:textColor="@android:color/background_light"
-            android:textStyle="bold"
-            android:onClick="onClick"
-            android:textSize="20dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView"
-            android:layout_gravity="center_horizontal" />
-
-        <Button
-            android:id="@+id/connect4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape"
-            android:text="Ask An Anthropologist                                                                                         >"
-            android:textColor="@android:color/background_light"
-            android:textStyle="bold"
-            android:onClick="onClick"
-            android:textSize="20dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView4"
-            android:layout_gravity="center_horizontal" />
-
-        <Button
-            android:id="@+id/connect2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape"
-            android:textColor="@android:color/background_light"
-            android:textStyle="bold"
-            android:text="Becoming Human                                                                                                  >"
-            android:onClick="onClick"
-            android:visibility="visible"
-            android:textSize="20dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView2"
-            android:layout_gravity="center_horizontal" />
-
-        <Button
-            android:id="@+id/connect3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape"
-            android:textColor="@android:color/background_light"
-            android:textStyle="bold"
-            android:text="Sign Up for E-News                                                                                                >"
-            android:onClick="onClick"
-            android:visibility="visible"
-            android:textSize="20dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView3"
-            android:layout_gravity="center_horizontal" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Like us on Facebook, follow us on Twitter and Instagram! "
-            android:textSize="24dp"
-            android:paddingLeft="20dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:visibility="visible"
-            android:padding="@dimen/activity_horizontal_margin"
-            android:weightSum="1">
-        <ImageButton
-            android:layout_width="170dp"
-            android:layout_height="220dp"
-            android:id="@+id/fbButton"
-            android:background="@drawable/fb"
-            android:onClick="onClick"
-            android:layout_weight="0.33"/>
+            android:orientation="vertical"
+            android:paddingTop="@dimen/activity_horizontal_margin">
+
+            <Button
+                android:id="@+id/connect1"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/shape"
+                android:onClick="onClick"
+                android:text="Institute of Human Origins                                                                                 >"
+                android:textColor="@android:color/background_light"
+                android:textSize="22dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal" />
+
+            <Button
+                android:id="@+id/connect4"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/shape"
+                android:onClick="onClick"
+                android:text="Ask An Anthropologist                                                                                        >"
+                android:textColor="@android:color/background_light"
+                android:textSize="22dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal" />
+
+            <Button
+                android:id="@+id/connect2"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/shape"
+                android:onClick="onClick"
+                android:text="Becoming Human                                                                                                 >"
+                android:textColor="@android:color/background_light"
+                android:textSize="22dp"
+                android:textStyle="bold"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal" />
+
+            <Button
+                android:id="@+id/connect3"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/shape"
+                android:onClick="onClick"
+                android:text="Sign Up for E-News                                                                                              >"
+                android:textColor="@android:color/background_light"
+                android:textSize="22dp"
+                android:textStyle="bold"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_gravity="center_horizontal" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="         "/>
+                android:paddingLeft="20dp"
+                android:text="Like us on Facebook, follow us on Twitter and Instagram! "
+                android:textSize="28dp" />
 
-            <ImageButton
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/twButton"
-                android:background="@drawable/twitter"
-                android:onClick="onClick"
-                android:layout_weight="0.33" />
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:visibility="visible"
+                android:weightSum="1">
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content" />
+                <ImageButton
+                    android:id="@+id/fbButton"
+                    android:layout_width="125dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/fb"
+                    android:onClick="onClick" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="         "/>
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content" />
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/instaButton"
-                android:background="@drawable/insta"
-                android:onClick="onClick"
-                android:layout_weight="0.33" />
+
+                <ImageButton
+                    android:id="@+id/twButton"
+                    android:layout_width="125dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/twitter"
+                    android:onClick="onClick" />
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content" />
+
+
+                <ImageButton
+                    android:id="@+id/instaButton"
+                    android:layout_width="125dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/insta"
+                    android:onClick="onClick" />
+            </LinearLayout>
+
         </LinearLayout>
-
-    </LinearLayout>
 
     </ScrollView>
 
