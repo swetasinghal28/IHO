@@ -1,32 +1,36 @@
 package edu.asu.msse.gnayak2.bl;
 
 import java.awt.CardLayout;
+import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.util.Base64;
 import java.util.Set;
 
+import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
+import javax.swing.ListCellRenderer;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.json.JSONObject;
 
 import edu.asu.msse.gnayak2.delegates.GalleryDelegate;
-import edu.asu.msse.gnayak2.delegates.NewsDelegate;
 import edu.asu.msse.gnayak2.library.GalleryLibrary;
-import edu.asu.msse.gnayak2.library.NewsLibrary;
 import edu.asu.msse.gnayak2.models.GalleryModel;
 import edu.asu.msse.gnayak2.models.Identifier;
-import edu.asu.msse.gnayak2.models.News;
 import edu.asu.msse.gnayak2.networking.HTTPConnectionHelper;
 import net.miginfocom.swing.MigLayout;
 
@@ -77,6 +81,7 @@ public class Gallery extends JFrame implements GalleryDelegate {
 	
 		setResizable(false);
 		setPreferredSize(new Dimension(Constants.WIDTH,Constants.HEIGHT));
+//	    setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		
 		containerPanel = new JPanel();
 		cardLayout = new CardLayout();
@@ -109,13 +114,8 @@ public class Gallery extends JFrame implements GalleryDelegate {
 	public void initializeMainPanel() {
 		mainPanel = new JPanel();
 		galleryPanel = new JPanel();
-		
-
 		galleryButton = new JButton("Gallery");
-		
-		
-		mainPanel.add(galleryButton);
-			
+		mainPanel.add(galleryButton);			
 	}
 	
 	// intitalize news
@@ -146,7 +146,7 @@ public class Gallery extends JFrame implements GalleryDelegate {
 		for(String id: galleryid) {
 			galleryModel.addElement(galleryLibrary.getGallery(id));
 		}
-		
+		imageList.setCellRenderer(new ImageListRenderer());
 		galleryBackButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -262,6 +262,61 @@ public class Gallery extends JFrame implements GalleryDelegate {
 		}
 		
 	}
+	
+	public class ImageListRenderer extends JLabel implements ListCellRenderer<GalleryModel> {
+		 
+	    public ImageListRenderer() {
+	        setOpaque(true);
+	    }
+	 
+	    @Override
+	    public Component getListCellRendererComponent(JList<? extends GalleryModel> list, GalleryModel galleryModel, int index,
+	            boolean isSelected, boolean cellHasFocus) {
+	    	
+	        String code = galleryModel.getTitle();
+	        BufferedImage bufferedImage = convertStringToImage(galleryModel.getImage());
+	        ImageIcon imageIcon = null;
+	        if (bufferedImage != null) {
+	        	 imageIcon = new ImageIcon(bufferedImage);
+	        	 imageIcon = new ImageIcon(bufferedImage);
+	        	 Image oldImage = imageIcon.getImage(); // transform it 
+	        	 Image newImage = oldImage.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+	        	 imageIcon = new ImageIcon(newImage); 
+	        }
+	        
+	        setIcon(imageIcon);
+	        setPreferredSize(new Dimension(180,100));
+	        setText(code);
+	        setToolTipText(code);
+
+	        if (isSelected) {
+	            setBackground(list.getSelectionBackground());
+	            setForeground(list.getSelectionForeground());
+	        } else {
+	            setBackground(list.getBackground());
+	            setForeground(list.getForeground());
+	        }
+	 
+	        return this;
+	    }
+	    
+	    private BufferedImage convertStringToImage(String base64String) {
+	    	BufferedImage image = null;
+	    	byte[] imageByte;
+	    	imageByte = Base64.getDecoder().decode(base64String);
+	    	ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+	    	try {
+				image = ImageIO.read(bis);
+				bis.close();
+				return image;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return null;
+			}     	
+
+	    }
+	} 
 
 
 

@@ -43,6 +43,9 @@ public class EditNewsFrame extends JFrame {
 	private JTextField tfLink;
 	private JTextField tfDate;
 	private JLabel lblReadMore;
+	private JLabel lblTitle;
+	private JLabel lblDate;
+
 	private JScrollPane scrollPane;
 	private News news;
 	private JButton btnSubmit;
@@ -70,11 +73,14 @@ public class EditNewsFrame extends JFrame {
 		setPreferredSize(new Dimension(Constants.WIDTH,Constants.HEIGHT));
 		tfTitle = new JTextField();
 		taDescription = new JTextArea("",20,20);
-		tfDate = new JTextField("Date",20);
-		lblReadMore = new JLabel("Read More: ");
+		tfDate = new JTextField("",20);
+		lblReadMore = new JLabel("Link");
+		lblTitle = new JLabel("Title");
+		lblDate = new JLabel("Date");
+	
 		browseButton = new JButton("Browse");
-		imageFileButton = new JTextField("",20);
-		tfLink = new JTextField("http://");
+		imageFileButton = new JTextField("",80);
+		tfLink = new JTextField("",80);
 		
 		
 		scrollPane = new JScrollPane(taDescription);
@@ -83,11 +89,13 @@ public class EditNewsFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		panel = new JPanel();
 		panel.setLayout(new MigLayout());
+		panel.add(lblTitle, "wrap");
 		panel.add(tfTitle, "span,pushx,growx, wrap");
-		panel.add(lblReadMore);
+		panel.add(lblReadMore, "wrap");
 		panel.add(tfLink, "wrap");
+		panel.add(lblDate, "wrap");
 		panel.add(tfDate,"wrap");
-		
+	
 		panel.add(scrollPane,"span,push,grow, wrap");	
 		panel.add(browseButton, "wrap");
 		panel.add(imageFileButton, "wrap");
