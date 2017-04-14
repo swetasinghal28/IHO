@@ -64,6 +64,10 @@ public class EditLecturesFrame extends JFrame implements GalleryDelegate {
 	private JTextArea taDescription;
 	private JTextField tfLink;
 	private JLabel lblReadMore;
+	private JLabel lblTitle;
+	private JLabel lblName;
+	private JLabel lblOrder;
+	private JLabel lblEmail;
 	private JTextField tfDesc;
 	private JTextField tfEmail;
 	private JTextField tfOrder;
@@ -123,6 +127,10 @@ public class EditLecturesFrame extends JFrame implements GalleryDelegate {
 		tfName = new JTextField();
 		taDescription = new JTextArea("",20,20);
 		lblReadMore = new JLabel("Read More: ");
+		lblEmail = new JLabel("Email");
+		lblName = new JLabel("Name");
+		lblOrder = new JLabel("Order");
+		lblTitle = new JLabel("Title");
 		tfLink = new JTextField("http://");
 		browseButton = new JButton("Browse");
 		imageFileButton = new JTextField("",20);
@@ -136,18 +144,28 @@ public class EditLecturesFrame extends JFrame implements GalleryDelegate {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainPanel = new JPanel();
 		mainPanel.setLayout(new MigLayout());
+
+		mainPanel.add(lblName,"wrap");
+
 		mainPanel.add(tfName
 				, "span,pushx,growx, wrap");
 		mainPanel.add(lblReadMore);
 		mainPanel.add(tfLink, "wrap");
+
+		mainPanel.add(lblTitle,"wrap");
 		mainPanel.add(tfDesc, "wrap");
+		mainPanel.add(lblEmail,"wrap");
 		mainPanel.add(tfEmail, "wrap");
+		mainPanel.add(lblOrder,"wrap");
+
 		mainPanel.add(tfOrder,"wrap");
 		mainPanel.add(scrollPane,"span,push,grow, wrap");	
 		mainPanel.add(browseButton, "wrap");
 		mainPanel.add(imageFileButton, "wrap");
+
+		mainPanel.add(galleryButton,"wrap");
 		mainPanel.add(btnSubmit);
-		mainPanel.add(galleryButton);
+
 		setActionListenerForButton();
 	}
 	
@@ -462,4 +480,6 @@ public class EditLecturesFrame extends JFrame implements GalleryDelegate {
 		}
 	} 
 
+
 }
+

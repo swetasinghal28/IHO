@@ -28,7 +28,7 @@ public class GalleryModel {
 		id = object.getString("id");
 	    title = object.getString("title");	
        image = object.getString("image");
-      // order = object.getInt("order");
+      order = object.getInt("order");
 	}
 
 	public String getId() {

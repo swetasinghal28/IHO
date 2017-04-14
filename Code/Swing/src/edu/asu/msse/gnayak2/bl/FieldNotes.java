@@ -189,6 +189,7 @@ public class FieldNotes extends JFrame implements LecturesDelegate, NewSciencesD
 						helper.delete("lectureid/" + selectedLecture.getId());
 						helper.delete("lectureimages/" + selectedLecture.getEmail());
 						lectureLibrary.deleteLecture(selectedLecture.getId());
+						
 						lectureModel.removeElement(selectedLecture);
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block

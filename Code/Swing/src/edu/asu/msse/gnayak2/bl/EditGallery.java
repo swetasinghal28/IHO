@@ -43,6 +43,8 @@ public class EditGallery extends JFrame {
 	private JTextField tfLink;
 	private JTextField tfOrder;
 	private JLabel lblReadMore;
+	private JLabel lblOrder;
+	private JLabel lblTitle;
 	private JScrollPane scrollPane;
 	
 	private GalleryModel gallery;
@@ -54,7 +56,7 @@ public class EditGallery extends JFrame {
 	String filename, encodedImage;
 	byte[] imageInByte;
 	byte[] decoded;
-	
+	int flag = 0;
 	/**
 	 * Create the frame.
 	 */
@@ -74,22 +76,26 @@ public class EditGallery extends JFrame {
 	public void setUpFrame() {
 		setResizable(false);
 		setPreferredSize(new Dimension(Constants.WIDTH,Constants.HEIGHT));
+		
 		tfTitle = new JTextField("", 20);
-		tfOrder = new JTextField("Order",10);
+		tfOrder = new JTextField("",10);
 	
 		browseButton = new JButton("Browse");
-		imageFileButton = new JTextField("",20);
+		imageFileButton = new JTextField("",25);
 //		scrollPane = new JScrollPane(taDescription);
 		btnSubmit = new JButton("Submit");
+		lblOrder = new JLabel("Order");
 		
 		panel = new JPanel();
 		panel.add(new JLabel("Image Caption"));
 		panel.add(tfTitle, "span,pushx,growx, wrap");
 		panel.add(browseButton, "wrap");
 		panel.add(imageFileButton, "wrap");
-		panel.add(tfOrder, "wrap");
+		panel.add(lblOrder);
+		panel.add(tfOrder);
 		
-		panel.add(btnSubmit);
+		panel.add(btnSubmit,"wrap");
+		
 		
 		add(panel);
 		pack();
@@ -99,6 +105,11 @@ public class EditGallery extends JFrame {
 	
 	public void populateFileds(GalleryModel gallery) {
 		tfTitle.setText(gallery.getTitle());
+
+		String order = Integer.toString(gallery.getOrder());
+		tfOrder.setText(order);
+		imageFileButton.setText(gallery.getImage());
+
 	}
 	
 	public void setActionListenerForButton() {
@@ -106,7 +117,8 @@ public class EditGallery extends JFrame {
 		btnSubmit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+            if(flag==1)
+            {
 			    try{
 
 			 	BufferedImage originalImage =
@@ -123,15 +135,27 @@ public class EditGallery extends JFrame {
 			 	}catch(IOException e1){
 			 		System.out.println(e1.getMessage());
 			 	}
+			}
+            if(flag == 1){
 			    int ord = Integer.parseInt(tfOrder.getText());
 				
 				GalleryModel newGallery = new GalleryModel(tfTitle.getText(), encodedImage,ord);
-			    
+
+				galleryDelegate.addGallery(newGallery);
+            }
+            else{
+                int ord = Integer.parseInt(tfOrder.getText());
+				
+				GalleryModel newGallery = new GalleryModel(tfTitle.getText(), imageFileButton.getText(),ord);
+				galleryDelegate.addGallery(newGallery);
+            }
+
 				if (gallery != null){
 					galleryDelegate.deleteGallery(gallery);
 					gallery = null;
 				}
-				galleryDelegate.addGallery(newGallery);
+
+
 				
 				dispose();
 			}
@@ -148,12 +172,13 @@ public class EditGallery extends JFrame {
 					    if(f!=null)
 					    {
 					    filename = f.getAbsolutePath();
+					   
 					    imageFileButton.setText(filename);
 					    }
+					    flag=1;
 
 					
 				}
 			});
 	}
 }
-
