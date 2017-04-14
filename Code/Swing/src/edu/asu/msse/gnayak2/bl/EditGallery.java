@@ -100,8 +100,6 @@ public class EditGallery extends JFrame {
 	public void populateFileds(GalleryModel gallery) {
 		tfTitle.setText(gallery.getTitle());
 	}
- 	
-
 	
 	public void setActionListenerForButton() {
 		// delete old news
@@ -131,6 +129,7 @@ public class EditGallery extends JFrame {
 			    
 				if (gallery != null){
 					galleryDelegate.deleteGallery(gallery);
+					gallery = null;
 				}
 				galleryDelegate.addGallery(newGallery);
 				

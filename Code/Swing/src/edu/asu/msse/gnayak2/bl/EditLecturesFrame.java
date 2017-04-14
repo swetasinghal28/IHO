@@ -22,6 +22,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -235,7 +236,27 @@ public class EditLecturesFrame extends JFrame implements GalleryDelegate {
 			
 			// make a put request of the entire library
 			JSONObject lectureGalleryLibraryJson = convertLibraryToJSONOjbect();
-			helper.put(lecture.getEmail(), lectureGalleryLibraryJson);
+			helper.put(lecturesGalleryLibrary.getLectureId(), lectureGalleryLibraryJson);
+			
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+	
+	public void postLibraryToServer() {
+		HTTPConnectionHelper helper = new HTTPConnectionHelper();
+		try {
+			/*
+			 * Assumption that lecture library is already there and lecture object is 
+			 * not null because lectureGalleryLibrary already has lecture id
+			 */
+			
+			// delete from library
+			
+			// make a put request of the entire library
+			JSONObject lectureGalleryLibraryJson = convertLibraryToJSONOjbect();
+			helper.post("lectureimages", lectureGalleryLibraryJson);
 			
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
@@ -260,7 +281,7 @@ public class EditLecturesFrame extends JFrame implements GalleryDelegate {
 	public void initializeGalleryData() {
 		if (lecture != null) {
 			if (lecturesGalleryLibrary == null) {
-				lecturesGalleryLibrary = new LecturesGalleryLibrary(lecture.getEmail());
+				lecturesGalleryLibrary = new LecturesGalleryLibrary(lecture.getEmail(), false);
 			} 
 			Set<String> galleryid = lecturesGalleryLibrary.getKeySet();
 			galleryModel.clear();
@@ -269,8 +290,13 @@ public class EditLecturesFrame extends JFrame implements GalleryDelegate {
 				galleryModel.addElement(lecturesGalleryLibrary.getGallery(id));
 			}
 		} else {
-			// create a post request for empty library
-			// and continue further
+			if(tfEmail.getText().equals("")){
+				 JOptionPane.showMessageDialog(new JFrame(), "Please enter a valid email id", "Dialog",
+					        JOptionPane.ERROR_MESSAGE);
+			} else {
+				lecturesGalleryLibrary = new LecturesGalleryLibrary(tfEmail.getText(), true);
+				postLibraryToServer();
+			}
 		}
 	}
 	
@@ -337,6 +363,11 @@ public class EditLecturesFrame extends JFrame implements GalleryDelegate {
 				
 				if (lecture != null){
 					lectureDelegate.deleteLecture(lecture);
+				}
+				if (lecture == null && lecturesGalleryLibrary == null) {
+					lecturesGalleryLibrary = new LecturesGalleryLibrary(tfEmail.getText(), true);
+					postLibraryToServer();
+					
 				}
 				dispose();
 			}
