@@ -63,6 +63,10 @@
 		9F30DED81E8EC79E00F40E06 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DEA81E8EC79E00F40E06 /* twitter.png */; };
 		9F30DED91E8EC79E00F40E06 /* vimeo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DEA91E8EC79E00F40E06 /* vimeo.png */; };
 		9F30DEDA1E8EC79E00F40E06 /* youtube.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DEAA1E8EC79E00F40E06 /* youtube.png */; };
+		9F36EA511EA01D380041582B /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F36EA4D1EA01D380041582B /* Cache.swift */; };
+		9F36EA521EA01D380041582B /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F36EA4E1EA01D380041582B /* CreditsViewController.swift */; };
+		9F36EA531EA01D380041582B /* news.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F36EA4F1EA01D380041582B /* news.json */; };
+		9F36EA541EA01D380041582B /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F36EA501EA01D380041582B /* Reachability.swift */; };
 		9F87E3651E4D35560030F231 /* asu_logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9F87E3641E4D35560030F231 /* asu_logo.jpg */; };
 		9F87E3671E4D3DAE0030F231 /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F87E3661E4D3DAE0030F231 /* ConnectViewController.swift */; };
 		9F87E3691E4D3FAC0030F231 /* NewsEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F87E3681E4D3FAC0030F231 /* NewsEventsViewController.swift */; };
@@ -152,6 +156,10 @@
 		9F30DEA81E8EC79E00F40E06 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter.png; sourceTree = "<group>"; };
 		9F30DEA91E8EC79E00F40E06 /* vimeo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vimeo.png; sourceTree = "<group>"; };
 		9F30DEAA1E8EC79E00F40E06 /* youtube.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = youtube.png; sourceTree = "<group>"; };
+		9F36EA4D1EA01D380041582B /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		9F36EA4E1EA01D380041582B /* CreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
+		9F36EA4F1EA01D380041582B /* news.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = news.json; sourceTree = "<group>"; };
+		9F36EA501EA01D380041582B /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		9F87E3641E4D35560030F231 /* asu_logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = asu_logo.jpg; sourceTree = "<group>"; };
 		9F87E3661E4D3DAE0030F231 /* ConnectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
 		9F87E3681E4D3FAC0030F231 /* NewsEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsEventsViewController.swift; sourceTree = "<group>"; };
@@ -228,6 +236,10 @@
 		9FB7C57B1E4AAA5900B88166 /* IHO-ASU */ = {
 			isa = PBXGroup;
 			children = (
+				9F36EA4D1EA01D380041582B /* Cache.swift */,
+				9F36EA4E1EA01D380041582B /* CreditsViewController.swift */,
+				9F36EA4F1EA01D380041582B /* news.json */,
+				9F36EA501EA01D380041582B /* Reachability.swift */,
 				9F30DE7B1E8EC79E00F40E06 /* askananthropologist.jpg */,
 				9F30DE7C1E8EC79E00F40E06 /* AskAnAnthropologistViewController.swift */,
 				9F30DE7D1E8EC79E00F40E06 /* BecomingHumanViewController.swift */,
@@ -451,6 +463,7 @@
 				9F30DEB91E8EC79E00F40E06 /* IHO_h_mg.png in Resources */,
 				230EE9051E4E147100B4F9F9 /* About.html in Resources */,
 				230EE9071E4E147100B4F9F9 /* ASU IHO vertical.jpg in Resources */,
+				9F36EA531EA01D380041582B /* news.json in Resources */,
 				9FB7C58A1E4AAA5900B88166 /* LaunchScreen.storyboard in Resources */,
 				9FB7C5871E4AAA5900B88166 /* Assets.xcassets in Resources */,
 				230EE90A1E4E147100B4F9F9 /* invest.png in Resources */,
@@ -502,6 +515,7 @@
 				9F87E3671E4D3DAE0030F231 /* ConnectViewController.swift in Sources */,
 				9F30DEB51E8EC79E00F40E06 /* EventsViewController.swift in Sources */,
 				230EE9081E4E147100B4F9F9 /* DonationController.swift in Sources */,
+				9F36EA511EA01D380041582B /* Cache.swift in Sources */,
 				9F30DED01E8EC79E00F40E06 /* NewsViewController.swift in Sources */,
 				9F30DEAF1E8EC79E00F40E06 /* ConnectInfoViewController.swift in Sources */,
 				9F30DEC41E8EC79E00F40E06 /* LecturerDetailViewController.swift in Sources */,
@@ -514,6 +528,8 @@
 				9F30DEC51E8EC79E00F40E06 /* LecturerListViewController.swift in Sources */,
 				230EE9061E4E147100B4F9F9 /* AboutViewController.swift in Sources */,
 				9F87E36B1E4D40740030F231 /* FieldViewController.swift in Sources */,
+				9F36EA521EA01D380041582B /* CreditsViewController.swift in Sources */,
+				9F36EA541EA01D380041582B /* Reachability.swift in Sources */,
 				9F30DEC31E8EC79E00F40E06 /* Lecturer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

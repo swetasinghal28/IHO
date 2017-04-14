@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 //        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 //        self.toolbarItems = [flexible,toolbarTitle]
         
@@ -72,13 +73,37 @@ class ViewController: UIViewController {
         label.center = CGPoint(x: view.frame.midX, y: view.frame.height)
         label.textAlignment = NSTextAlignment.center
         label.textColor = UIColor.white
+        
+        
+        let creditsButton = UIButton(frame: CGRect(x: CGFloat(-200), y: CGFloat(0), width: CGFloat(60), height: CGFloat(21)))
+        //let btn: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 50))
+        creditsButton.backgroundColor = UIColor(red: CGFloat((0 / 255.0)), green: CGFloat((51 / 255.0)), blue: CGFloat((102 / 255.0)), alpha: CGFloat(1))
+        creditsButton.setTitle("Credits", for: .normal)
+        //creditsButton.titleColor(for: <#T##UIControlState#>)
+        creditsButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        creditsButton.tag = 1
+        self.view.addSubview(creditsButton)
+        //creditsB = creditsButton
+        
+        let toolbarButton = UIBarButtonItem(customView: creditsButton)
         let toolbarTitle = UIBarButtonItem(customView: label)
         let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        self.toolbarItems = [flexible,toolbarTitle]
+        self.toolbarItems = [flexible,toolbarTitle,toolbarButton]
+    }
+    
+    
+    func buttonAction(sender: UIButton!) {
+        var btnsendtag: UIButton = sender
+        if btnsendtag.tag == 1 {
+            //do anything here
+            print("Credits button pressed")
+            self.performSegue(withIdentifier: "CreditsSeque", sender: self)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        //self.navigationController?.navigationBar.frame.size.height = 500
         self.navigationController?.navigationBar.barTintColor = UIColor(red: CGFloat((255.0 / 255.0)), green: CGFloat((255.0 / 255.0)), blue: CGFloat((255.0 / 255.0)), alpha: CGFloat(1))
         self.navigationController?.setToolbarHidden(false, animated: false)
     }
