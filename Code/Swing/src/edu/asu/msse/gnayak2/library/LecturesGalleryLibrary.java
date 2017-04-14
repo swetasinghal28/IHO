@@ -13,6 +13,14 @@ public class LecturesGalleryLibrary {
 	private HashMap<String, GalleryModel> galleryMap;
 	private String lectureId; 
 	
+	public String getLectureId() {
+		return lectureId;
+	}
+
+	public void setLectureId(String lectureId) {
+		this.lectureId = lectureId;
+	}
+
 	public LecturesGalleryLibrary(String lectureId) {
 		this.lectureId = lectureId;
 		galleryMap = new HashMap<String, GalleryModel>();

@@ -65,6 +65,12 @@ public class EditGallery extends JFrame {
      	populateFileds(gallery);
 	}
 	
+	public EditGallery(GalleryDelegate galleryDelegate) {
+	    this.galleryDelegate = galleryDelegate;
+	    
+		setUpFrame();
+	}
+	
 	public void setUpFrame() {
 		setResizable(false);
 		setPreferredSize(new Dimension(Constants.WIDTH,Constants.HEIGHT));
@@ -93,29 +99,9 @@ public class EditGallery extends JFrame {
 	
 	public void populateFileds(GalleryModel gallery) {
 		tfTitle.setText(gallery.getTitle());
-//imageFileButton.setText(gallery.getImage());
-//	 decoded = Base64.getDecoder().decode(gallery.getImage());
-//	 InputStream in = new ByteArrayInputStream(imageInByte);
-//	 BufferedImage bImageFromConvert;
-//		try {
-//			 bImageFromConvert = ImageIO.read(in);
-//		    ImageIcon image = new ImageIcon(bImageFromConvert);
-//			JLabel label = new JLabel("", image, JLabel.CENTER);
-//				
-//			panel.add( label,"wrap");
-//		    
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
 	}
  	
-	public EditGallery(GalleryDelegate galleryDelegate) {
-	    this.galleryDelegate = galleryDelegate;
-	    
-		setUpFrame();
-	}
+
 	
 	public void setActionListenerForButton() {
 		// delete old news

@@ -30,6 +30,9 @@ import javax.swing.ListCellRenderer;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import edu.asu.msse.gnayak2.delegates.GalleryDelegate;
 import edu.asu.msse.gnayak2.delegates.LecturesDelegate;
 import edu.asu.msse.gnayak2.library.LecturesGalleryLibrary;
@@ -209,11 +212,19 @@ public class EditLecturesFrame extends JFrame {
 				if (selectedImage != null) {
 					HTTPConnectionHelper helper = new HTTPConnectionHelper();
 					try {
-						helper.delete("galleryobjects/" + selectedImage.getId());
-						helper.delete("galleryid/" + selectedImage.getId());
+						/*
+						 * Assumption that lecture library is already there and lecture object is 
+						 * not null because lectureGalleryLibrary already has lecture id
+						 */
+						
+						// delete from library
 						lecturesGalleryLibrary.deleteGallery(selectedImage.getId());
 						galleryModel.removeElement(selectedImage);
 						selectedImage = null;
+						// make a put request of the entire library
+						JSONObject lectureGalleryLibraryJson = convertLibraryToJSONOjbect();
+						helper.put(lecture.getEmail(), lectureGalleryLibraryJson);
+						
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -222,6 +233,20 @@ public class EditLecturesFrame extends JFrame {
 			}
 		});
 
+	}
+	
+	public JSONObject convertLibraryToJSONOjbect() {
+		JSONObject resultObject = new JSONObject();
+		resultObject.put("id", lecturesGalleryLibrary.getLectureId());
+		JSONArray jsonArray = new JSONArray();
+		
+		Set<String> galleryid = lecturesGalleryLibrary.getKeySet();		
+		for(String id: galleryid) {
+			jsonArray.put(new JSONObject(lecturesGalleryLibrary.getGallery(id)));
+		}
+		resultObject.put("imagesarray", jsonArray);
+		
+		return resultObject;
 	}
 	
 	public void initializeGalleryData() {
@@ -237,7 +262,7 @@ public class EditLecturesFrame extends JFrame {
 			}
 		} else {
 			// create a post request for empty library
-			// and continue futhe
+			// and continue further
 		}
 	}
 	
@@ -320,16 +345,6 @@ public class EditLecturesFrame extends JFrame {
 					    flag =1; 
 					    imageFileButton.setText(filename);
 					    
-
-					
-				}
-			});
-		 galleryButton.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
-					 // send the name to gallery frame and use it
 
 					
 				}
