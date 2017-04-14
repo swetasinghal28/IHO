@@ -178,11 +178,6 @@ public class MainActivity extends Activity implements OnClickListener{
                 fragmentTransaction.replace(R.id.main_layout, fragment);
                 fragmentTransaction.commit();
                 break;
-            case R.id.watchNow:
-                uri = Uri.parse("http://video.nationalgeographic.com/video/news/112811-prehistoric-caves-ngtoday");
-                intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-                break;
             case R.id.website:
                 uri = Uri.parse("https://iho.asu.edu/");
                 intent = new Intent(Intent.ACTION_VIEW, uri);
