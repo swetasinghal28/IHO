@@ -70,7 +70,7 @@ class ViewController: UIViewController {
         
         
         //toolbar
-        let label = UILabel(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(350), height: CGFloat(21)))
+        let label = UILabel(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(200), height: CGFloat(21)))
         label.text = "ASU IHO 2017"
         label.center = CGPoint(x: view.frame.midX, y: view.frame.height)
         label.textAlignment = NSTextAlignment.center
@@ -79,7 +79,9 @@ class ViewController: UIViewController {
         
         let creditsButton = UIButton(frame: CGRect(x: CGFloat(-200), y: CGFloat(0), width: CGFloat(60), height: CGFloat(21)))
         //let btn: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 50))
-        creditsButton.backgroundColor = UIColor(red: CGFloat((0 / 255.0)), green: CGFloat((51 / 255.0)), blue: CGFloat((102 / 255.0)), alpha: CGFloat(1))
+        creditsButton.backgroundColor = nil
+            
+            UIColor(red: CGFloat((0 / 255.0)), green: CGFloat((51 / 255.0)), blue: CGFloat((102 / 255.0)), alpha: CGFloat(1))
         creditsButton.setTitle("Credits", for: .normal)
         //creditsButton.titleColor(for: <#T##UIControlState#>)
         creditsButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
