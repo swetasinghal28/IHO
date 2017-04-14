@@ -2020,39 +2020,6 @@ If you would like to send donation by check, please make your donation payable t
             <point key="canvasLocation" x="4866" y="-1237"/>
         </scene>
         <!--Credits View Controller-->
-        <scene sceneID="u26-cW-5em">
-            <objects>
-                <viewController id="yDz-8i-NeG" customClass="CreditsViewController" customModule="IHO_ASU" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Zwi-TA-uWq"/>
-                        <viewControllerLayoutGuide type="bottom" id="tJ8-hh-RqW"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="7aU-9L-sGG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zwi-hA-KFA">
-                                <rect key="frame" x="0.0" y="44" width="375" height="579"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </webView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Zwi-hA-KFA" firstAttribute="top" secondItem="Zwi-TA-uWq" secondAttribute="bottom" id="9B1-kP-rC5"/>
-                            <constraint firstAttribute="trailing" secondItem="Zwi-hA-KFA" secondAttribute="trailing" id="BuW-aS-uIS"/>
-                            <constraint firstItem="Zwi-hA-KFA" firstAttribute="leading" secondItem="7aU-9L-sGG" secondAttribute="leading" id="D13-PR-86R"/>
-                            <constraint firstItem="tJ8-hh-RqW" firstAttribute="top" secondItem="Zwi-hA-KFA" secondAttribute="bottom" id="Xvu-s8-HPm"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="creditsView" destination="Zwi-hA-KFA" id="9ed-YK-mrl"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="26f-8I-lBj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-36" y="910"/>
-        </scene>
-        <!--Credits View Controller-->
         <scene sceneID="H0f-KS-6e1">
             <objects>
                 <viewController id="QOq-nB-mxO" customClass="CreditsViewController" customModule="IHO_ASU" customModuleProvider="target" sceneMemberID="viewController">
@@ -2085,7 +2052,7 @@ If you would like to send donation by check, please make your donation payable t
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3y0-op-ZQE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-730" y="910"/>
+            <point key="canvasLocation" x="-113" y="910"/>
         </scene>
     </scenes>
     <resources>
