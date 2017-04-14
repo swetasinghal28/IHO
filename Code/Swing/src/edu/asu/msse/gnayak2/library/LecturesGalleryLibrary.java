@@ -21,27 +21,30 @@ public class LecturesGalleryLibrary {
 		this.lectureId = lectureId;
 	}
 
-	public LecturesGalleryLibrary(String lectureId) {
+	public LecturesGalleryLibrary(String lectureId, boolean isNew) {
 		this.lectureId = lectureId;
 		galleryMap = new HashMap<String, GalleryModel>();
-		HTTPConnectionHelper helper = new HTTPConnectionHelper();
-		String response = "";
-		try {
-			response = helper.sendGet("lectureimages/"+lectureId);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println(response);
-		JSONObject jsonObject = new JSONObject(response);
-		JSONArray json = jsonObject.getJSONArray("imagesarray");
-		
-		for (int i=0;i<json.length();i++) {
-			GalleryModel gallery = new GalleryModel((JSONObject)json.get(i));
-			galleryMap.put(gallery.getId(), gallery);
-		}
-		System.out.println("Successful");
+		if (!isNew) {
+			HTTPConnectionHelper helper = new HTTPConnectionHelper();
+			String response = "";
+			try {
+				response = helper.sendGet("lectureimages/"+lectureId);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println(response);
+			JSONObject jsonObject = new JSONObject(response);
+			JSONArray json = jsonObject.getJSONArray("imagesarray");
+			
+			for (int i=0;i<json.length();i++) {
+				GalleryModel gallery = new GalleryModel((JSONObject)json.get(i));
+				galleryMap.put(gallery.getId(), gallery);
+			}
+			System.out.println("Successful");
+		} 
 	}
+	
 	
 	public GalleryModel getGallery(String id) {
 		return galleryMap.get(id);

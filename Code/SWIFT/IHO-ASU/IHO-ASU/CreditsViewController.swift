@@ -22,6 +22,18 @@ class CreditsViewController: UIViewController {
         self.navigationItem.title = "Credits"
         creditsView.loadRequest(URLRequest(url: URL(fileURLWithPath: Bundle.main.path(forResource: "CreditDetails", ofType: "html")!)))
         
+        
+        //toolbar
+        let label = UILabel(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(350), height: CGFloat(21)))
+        label.text = "ASU IHO 2017"
+        label.center = CGPoint(x: view.frame.midX, y: view.frame.height)
+        label.textAlignment = NSTextAlignment.center
+        label.textColor = UIColor.white
+        let toolbarTitle = UIBarButtonItem(customView: label)
+        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        self.toolbarItems = [flexible,toolbarTitle]
+
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -30,6 +42,8 @@ class CreditsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.isHidden=false;
         self.navigationController?.navigationBar.barTintColor = UIColor(red: CGFloat((3 / 255.0)), green: CGFloat((36 / 255.0)), blue: CGFloat((83 / 255.0)), alpha: CGFloat(1))
         
         self.navigationController?.navigationBar.tintColor = UIColor.white

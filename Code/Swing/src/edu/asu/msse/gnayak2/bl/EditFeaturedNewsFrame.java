@@ -42,6 +42,7 @@ public class EditFeaturedNewsFrame extends JFrame {
 	private JTextArea taDescription;
 	private JTextField tfLink;
 	private JLabel lblReadMore;
+	private JLabel lblTitle;
 	private JScrollPane scrollPane;
 	private FeaturedNews fnews;
 	private JButton btnSubmit;
@@ -69,10 +70,11 @@ public class EditFeaturedNewsFrame extends JFrame {
 		setPreferredSize(new Dimension(Constants.WIDTH,Constants.HEIGHT));
 		tfTitle = new JTextField();
 		taDescription = new JTextArea("",20,20);
-		lblReadMore = new JLabel("Read More: ");
+		lblReadMore = new JLabel("Link");
+		lblTitle = new JLabel("Title");
 		browseButton = new JButton("Browse");
 		imageFileButton = new JTextField("",20);
-		tfLink = new JTextField("http://");
+		tfLink = new JTextField("",80);
 		
 		scrollPane = new JScrollPane(taDescription);
 		btnSubmit = new JButton("Submit");
@@ -80,8 +82,9 @@ public class EditFeaturedNewsFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		panel = new JPanel();
 		panel.setLayout(new MigLayout());
+		panel.add(lblTitle,"wrap");
 		panel.add(tfTitle, "span,pushx,growx, wrap");
-		panel.add(lblReadMore);
+		panel.add(lblReadMore,"wrap");
 		panel.add(tfLink, "wrap");
 		
 		panel.add(scrollPane,"span,push,grow, wrap");	

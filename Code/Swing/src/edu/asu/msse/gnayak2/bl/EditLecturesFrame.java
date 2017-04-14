@@ -22,6 +22,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -63,6 +64,10 @@ public class EditLecturesFrame extends JFrame implements GalleryDelegate {
 	private JTextArea taDescription;
 	private JTextField tfLink;
 	private JLabel lblReadMore;
+	private JLabel lblTitle;
+	private JLabel lblName;
+	private JLabel lblOrder;
+	private JLabel lblEmail;
 	private JTextField tfDesc;
 	private JTextField tfEmail;
 	private JTextField tfOrder;
@@ -122,6 +127,10 @@ public class EditLecturesFrame extends JFrame implements GalleryDelegate {
 		tfName = new JTextField();
 		taDescription = new JTextArea("",20,20);
 		lblReadMore = new JLabel("Read More: ");
+		lblEmail = new JLabel("Email");
+		lblName = new JLabel("Name");
+		lblOrder = new JLabel("Order");
+		lblTitle = new JLabel("Title");
 		tfLink = new JTextField("http://");
 		browseButton = new JButton("Browse");
 		imageFileButton = new JTextField("",20);
@@ -135,18 +144,28 @@ public class EditLecturesFrame extends JFrame implements GalleryDelegate {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainPanel = new JPanel();
 		mainPanel.setLayout(new MigLayout());
+
+		mainPanel.add(lblName,"wrap");
+
 		mainPanel.add(tfName
 				, "span,pushx,growx, wrap");
 		mainPanel.add(lblReadMore);
 		mainPanel.add(tfLink, "wrap");
+
+		mainPanel.add(lblTitle,"wrap");
 		mainPanel.add(tfDesc, "wrap");
+		mainPanel.add(lblEmail,"wrap");
 		mainPanel.add(tfEmail, "wrap");
+		mainPanel.add(lblOrder,"wrap");
+
 		mainPanel.add(tfOrder,"wrap");
 		mainPanel.add(scrollPane,"span,push,grow, wrap");	
 		mainPanel.add(browseButton, "wrap");
 		mainPanel.add(imageFileButton, "wrap");
+
+		mainPanel.add(galleryButton,"wrap");
 		mainPanel.add(btnSubmit);
-		mainPanel.add(galleryButton);
+
 		setActionListenerForButton();
 	}
 	
@@ -235,7 +254,27 @@ public class EditLecturesFrame extends JFrame implements GalleryDelegate {
 			
 			// make a put request of the entire library
 			JSONObject lectureGalleryLibraryJson = convertLibraryToJSONOjbect();
-			helper.put(lecture.getEmail(), lectureGalleryLibraryJson);
+			helper.put(lecturesGalleryLibrary.getLectureId(), lectureGalleryLibraryJson);
+			
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+	
+	public void postLibraryToServer() {
+		HTTPConnectionHelper helper = new HTTPConnectionHelper();
+		try {
+			/*
+			 * Assumption that lecture library is already there and lecture object is 
+			 * not null because lectureGalleryLibrary already has lecture id
+			 */
+			
+			// delete from library
+			
+			// make a put request of the entire library
+			JSONObject lectureGalleryLibraryJson = convertLibraryToJSONOjbect();
+			helper.post("lectureimages", lectureGalleryLibraryJson);
 			
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
@@ -260,7 +299,7 @@ public class EditLecturesFrame extends JFrame implements GalleryDelegate {
 	public void initializeGalleryData() {
 		if (lecture != null) {
 			if (lecturesGalleryLibrary == null) {
-				lecturesGalleryLibrary = new LecturesGalleryLibrary(lecture.getEmail());
+				lecturesGalleryLibrary = new LecturesGalleryLibrary(lecture.getEmail(), false);
 			} 
 			Set<String> galleryid = lecturesGalleryLibrary.getKeySet();
 			galleryModel.clear();
@@ -269,8 +308,13 @@ public class EditLecturesFrame extends JFrame implements GalleryDelegate {
 				galleryModel.addElement(lecturesGalleryLibrary.getGallery(id));
 			}
 		} else {
-			// create a post request for empty library
-			// and continue further
+			if(tfEmail.getText().equals("")){
+				 JOptionPane.showMessageDialog(new JFrame(), "Please enter a valid email id", "Dialog",
+					        JOptionPane.ERROR_MESSAGE);
+			} else {
+				lecturesGalleryLibrary = new LecturesGalleryLibrary(tfEmail.getText(), true);
+				postLibraryToServer();
+			}
 		}
 	}
 	
@@ -337,6 +381,11 @@ public class EditLecturesFrame extends JFrame implements GalleryDelegate {
 				
 				if (lecture != null){
 					lectureDelegate.deleteLecture(lecture);
+				}
+				if (lecture == null && lecturesGalleryLibrary == null) {
+					lecturesGalleryLibrary = new LecturesGalleryLibrary(tfEmail.getText(), true);
+					postLibraryToServer();
+					
 				}
 				dispose();
 			}
@@ -431,4 +480,6 @@ public class EditLecturesFrame extends JFrame implements GalleryDelegate {
 		}
 	} 
 
+
 }
+

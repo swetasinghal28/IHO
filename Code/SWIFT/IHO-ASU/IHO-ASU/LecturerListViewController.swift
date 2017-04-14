@@ -79,12 +79,12 @@ class LecturerListViewController: UITableViewController {
                                     lecturerObject.link = link
                                     lecturerObject.name = name
                                     lecturerObject.email = email
-                                    self.names.append(lecturerObject.title)
+                                    self.names.append(lecturerObject.name)
                                     //print(title)
                                     
                                 }
                                 //self.news?.append(newsObject)
-                                self.lecturerList[lecturerObject.title] = lecturerObject
+                                self.lecturerList[lecturerObject.name] = lecturerObject
                             }
                         }
                         
@@ -117,6 +117,8 @@ class LecturerListViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.isHidden=false;
         self.navigationController?.setToolbarHidden(false, animated: false)
     }
     
