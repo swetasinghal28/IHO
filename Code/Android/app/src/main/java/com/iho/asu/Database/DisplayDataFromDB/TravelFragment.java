@@ -2,7 +2,6 @@ package com.iho.asu.Database.DisplayDataFromDB;
 
 import android.app.ListFragment;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.iho.asu.Database.Columns;
 import com.iho.asu.Database.Tables.Travel;
 import com.iho.asu.R;
 
@@ -38,13 +36,11 @@ public class TravelFragment extends ListFragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(
                 R.layout.fragment_travel_lrn, container, false);
-       // DataBaseHelper dbOpenHelper = new DataBaseHelper(this.getActivity(), DB_NAME);
-        //database = dbOpenHelper.openDataBase();
+
         travelItems.clear();
         travelTitle.clear();
         getTravelItem();
-        //CustomList2 adapter = new
-                //CustomList2(this.getActivity(), travelTitle);
+
         ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), R.layout.simplelist , travelTitle);
         this.setListAdapter(adapter);
         adapter.notifyDataSetChanged();
@@ -68,28 +64,6 @@ public class TravelFragment extends ListFragment {
         n.setId(1);
         n.setText(text);
         n.setLink(TRAVEL_URL);
-        travelTitle.add(text);
-        travelItems.put(text, n);
-    }
-
-    //Extracting elements from the database
-    private void getTravelItems() {
-        String[] columns = Columns.getTravelColumnNames();
-        Cursor travelCursor = database.query(TABLE_NAME, columns, null, null, null, null, Columns.KEY_TRAVEL_ID.getColumnName());
-        travelCursor.moveToFirst();
-        while (!travelCursor.isAfterLast()) {
-            cursorToTravel(travelCursor);
-            travelCursor.moveToNext();
-        }
-        travelCursor.close();
-    }
-
-    private void cursorToTravel(Cursor cursor) {
-        Travel n = new Travel();
-        String text = cursor.getString(1);
-        n.setId(cursor.getLong(0));
-        n.setText(text);
-        n.setLink(cursor.getString(2));
         travelTitle.add(text);
         travelItems.put(text, n);
     }

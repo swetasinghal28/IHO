@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:textIsSelectable="false"
             android:textSize="10dp" />
-        <TextView
+        <Button
             android:layout_height="wrap_content"
             android:text="IHO Location Page"
             android:id="@+id/linkToLocation"
@@ -69,11 +69,8 @@
             android:onClick="onClick"
             android:textColor="@android:color/white"
             android:background="@drawable/shape"
-            android:paddingLeft="10dp"
             android:layout_width="175dp"
-            android:textSize="18dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp" />
+            android:textSize="18dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -105,7 +102,7 @@
             android:textIsSelectable="false"
             android:textSize="10dp" />
 
-        <TextView
+        <Button
             android:layout_height="wrap_content"
             android:text="IHO Contact Page"
             android:id="@+id/linkToContact"
@@ -113,11 +110,9 @@
             android:onClick="onClick"
             android:textColor="@android:color/white"
             android:background="@drawable/shape"
-            android:paddingLeft="10dp"
             android:layout_width="175dp"
             android:textSize="18dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp" />
+            />
 
 
     </LinearLayout>

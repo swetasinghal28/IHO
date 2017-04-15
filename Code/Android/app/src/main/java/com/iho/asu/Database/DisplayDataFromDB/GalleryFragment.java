@@ -5,9 +5,12 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -62,6 +65,18 @@ public class GalleryFragment extends ListFragment {
         Context context = v.getContext();
         path = context.getFilesDir();
         file = new File(path, "gallery.json");
+        View layout = inflater.inflate(
+                R.layout.custom_toast, (ViewGroup) v.findViewById(R.id.toast_layout_root));
+
+
+        TextView text = (TextView) layout.findViewById(R.id.text);
+        text.setText("Loading...Please Wait!");
+
+        Toast toast = new Toast(v.getContext());
+        toast.setGravity((Gravity.AXIS_PULL_AFTER) << Gravity.AXIS_Y_SHIFT, 0, 100);
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(layout);
+        toast.show();
 
         Log.i(TAG, "fetching Contents...");
         if (JSONCache.galleryIds.size() == 0) {
@@ -204,7 +219,7 @@ public class GalleryFragment extends ListFragment {
     }
 
     private void getGalleryIdsJSON() {
-        Log.i(TAG, "getNewsIdsJSON");
+        Log.i(TAG, "getGalleryIdsJSON");
 
         JsonArrayRequest request = new JsonArrayRequest(GALLERY_IDS.toString(),
                 new Response.Listener<JSONArray>() {
