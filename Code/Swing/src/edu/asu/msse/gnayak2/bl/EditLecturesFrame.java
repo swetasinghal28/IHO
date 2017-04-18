@@ -131,12 +131,12 @@ public class EditLecturesFrame extends JFrame implements GalleryDelegate {
 		lblName = new JLabel("Name");
 		lblOrder = new JLabel("Order");
 		lblTitle = new JLabel("Title");
-		tfLink = new JTextField("http://");
+		tfLink = new JTextField("http://",20);
 		browseButton = new JButton("Browse");
 		imageFileButton = new JTextField("",20);
-		tfDesc = new JTextField("Title",20);
-		tfEmail = new JTextField("Email",20);
-		tfOrder = new JTextField("Order",20);
+		tfDesc = new JTextField("",20);
+		tfEmail = new JTextField("",20);
+		tfOrder = new JTextField("",20);
 		scrollPane = new JScrollPane(taDescription);
 		btnSubmit = new JButton("Submit");
 		galleryButton = new JButton("Gallery");
@@ -149,7 +149,7 @@ public class EditLecturesFrame extends JFrame implements GalleryDelegate {
 
 		mainPanel.add(tfName
 				, "span,pushx,growx, wrap");
-		mainPanel.add(lblReadMore);
+		mainPanel.add(lblReadMore, "wrap");
 		mainPanel.add(tfLink, "wrap");
 
 		mainPanel.add(lblTitle,"wrap");
