@@ -140,6 +140,26 @@ class LecturerDetailViewController: UITableViewController, MFMailComposeViewCont
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        NSLog("seque identifier is \(segue.identifier)")
+        if segue.identifier == "LecturerGallery" {
+            let viewController:LecturerGalleryViewController = segue.destination as! LecturerGalleryViewController
+            //let indexPath = self.tableView.indexPathForSelectedRow!
+            
+            //let moviedata = self.tableView.indexPathForSelectedRow
+            
+            // let aMovie = movieLib.movies[movieLib.names[indexPath.row]]! as MovieDescription
+            //let title = self.names[(indexPath.row)]
+            
+            
+            //print( "Trying to print selected news object ", newsList[title]?.desc ?? "No value" , title)
+            
+            
+            viewController.lecEmail  = self.newsEmail!
+        }
+    }
+
+    
     // MARK: - Table view data source
     
     //    override func numberOfSections(in tableView: UITableView) -> Int {
