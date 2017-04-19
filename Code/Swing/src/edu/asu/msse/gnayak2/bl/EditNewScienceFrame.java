@@ -24,6 +24,7 @@ public class EditNewScienceFrame extends JFrame {
 	private JTextField tfLink;
 	private JLabel lblReadMore;
 	private JLabel lblTitle;
+	private JLabel lblDesc;
 	private JScrollPane scrollPane;
 	private NewScience newScience;
 	private JButton btnSubmit;
@@ -45,21 +46,23 @@ public class EditNewScienceFrame extends JFrame {
 		setPreferredSize(new Dimension(Constants.WIDTH,Constants.HEIGHT));
 		lblTitle = new JLabel("Title");
 		tfTitle = new JTextField();
-		taDescription = new JTextArea("",20,20);
+		lblDesc = new JLabel("Description");
+		taDescription = new JTextArea("",120,120);
 		lblReadMore = new JLabel("Read More: ");
-		tfLink = new JTextField("",80);
+		tfLink = new JTextField("",120);
 		scrollPane = new JScrollPane(taDescription);
 		btnSubmit = new JButton("Submit");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		panel = new JPanel();
 		panel.setLayout(new MigLayout());
-		panel.add(lblTitle,"wrap");
-		panel.add(tfTitle, "span,pushx,growx, wrap");
-		panel.add(lblReadMore,"wrap");
+		panel.add(lblTitle);
+		panel.add(tfTitle, " wrap");
+		panel.add(lblReadMore);
 		panel.add(tfLink, "wrap");
-		panel.add(scrollPane,"span,push,grow, wrap");	
-		panel.add(btnSubmit);
+		panel.add(lblDesc);
+		panel.add(scrollPane,"wrap");	
+		panel.add(btnSubmit,"wrap");
 
 		add(panel);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
