@@ -1,19 +1,22 @@
 package edu.asu.msse.gnayak2.bl;
 
 import java.awt.Dimension;
-
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -34,7 +37,8 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import javax.imageio.ImageIO;
-
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 public class EditGallery extends JFrame {
 
 	private JPanel panel;
@@ -57,6 +61,8 @@ public class EditGallery extends JFrame {
 	byte[] imageInByte;
 	byte[] decoded;
 	int flag = 0;
+	private Pattern pattern;
+	private Matcher matcher;
 	/**
 	 * Create the frame.
 	 */
@@ -104,13 +110,64 @@ public class EditGallery extends JFrame {
 	}
 	
 	public void populateFileds(GalleryModel gallery) {
+		
 		tfTitle.setText(gallery.getTitle());
 
 		String order = Integer.toString(gallery.getOrder());
 		tfOrder.setText(order);
 		imageFileButton.setText(gallery.getImage());
 
+		BufferedImage bufferedImage = convertStringToImage(gallery.getImage());
+		ImageIcon imageIcon = null;
+		 
+        if (bufferedImage != null) { 
+        	 imageIcon = new ImageIcon(bufferedImage);
+        	 Image oldImage = imageIcon.getImage(); // transform it 
+        	 Image newImage = oldImage.getScaledInstance(300, 250,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        	 imageIcon = new ImageIcon(newImage); 
+        	 JLabel imageLabel = new JLabel(imageIcon);
+        	 panel.add(imageLabel);
+        	 
+        }
+        
+        
+        setPreferredSize(new Dimension(180,100));
+
+
 	}
+	public boolean validate(final String order){
+		 String ORDER_PATTERN =
+				 "^\\d+$";
+		  pattern = Pattern.compile(ORDER_PATTERN);
+ matcher = pattern.matcher(order);
+
+ if(matcher.matches()){
+ System.out.println("Matches");
+	 matcher.reset();
+
+	 return true;
+ }else{
+	  JOptionPane.showMessageDialog(tfOrder, "Please enter an integer value for order");   
+	  return false;
+ }
+}
+	
+	private BufferedImage convertStringToImage(String base64String) {
+    	BufferedImage image = null;
+    	byte[] imageByte;
+    	imageByte = Base64.getDecoder().decode(base64String);
+    	ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+    	try {
+			image = ImageIO.read(bis);
+			bis.close();
+			return image;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}     	
+
+    }
 	
 	public void setActionListenerForButton() {
 		// delete old news
@@ -136,6 +193,9 @@ public class EditGallery extends JFrame {
 			 		System.out.println(e1.getMessage());
 			 	}
 			}
+            boolean isValid = validate(tfOrder.getText());
+            if(isValid)
+            {
             if(flag == 1){
 			    int ord = Integer.parseInt(tfOrder.getText());
 				
@@ -159,6 +219,7 @@ public class EditGallery extends JFrame {
 				
 				dispose();
 			}
+			}
 		});
 		
 		 browseButton.addActionListener(new ActionListener() {
@@ -166,6 +227,7 @@ public class EditGallery extends JFrame {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
+					
 					  JFileChooser chooser = new JFileChooser();
 					    chooser.showOpenDialog(null);
 					    File f = chooser.getSelectedFile();
