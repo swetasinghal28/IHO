@@ -78,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape"
                 android:onClick="onClick"
-                android:text="Learn More About This Lecture"
+                android:text="Learn More About This Scientist"
                 android:textColor="@android:color/background_light"
                 android:textSize="22dp"
                 android:textStyle="bold" />

@@ -19,7 +19,7 @@ public class IHOConstants {
     public static final String LECTURER_URL = "http://107.170.239.62:3000/lectureobjects";
     public static final String LECTURER_IDS = "http://107.170.239.62:3000/lectureid";
 
-    public static final String LECTURER_GALLERY_URL = "http://107.170.239.62:3000/lectureobjects/galleryobjects/";
+    public static final String LECTURER_GALLERY_URL = "http://107.170.239.62:3000/lectureimages/";
     public static final String LECTURER_GALLERY_KEY = "email";
 
     public static final String SCIENCE_URL = "http://107.170.239.62:3000/newscienceobjects";
