@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -41,11 +43,11 @@
                                         <rect key="frame" x="0.0" y="70" width="375" height="228"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iub-Iv-PFS" id="tJh-G9-jWf">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="227"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="228"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dqU-S5-A3p">
-                                                    <rect key="frame" x="35" y="0.0" width="304" height="212"/>
+                                                    <rect key="frame" x="35" y="8" width="304" height="212"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -72,11 +74,11 @@
                                         <rect key="frame" x="0.0" y="398" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RWd-Bg-LOz" id="1Kf-YI-E1c">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxg-Ip-EFg">
-                                                    <rect key="frame" x="78" y="10" width="165" height="30"/>
+                                                    <rect key="frame" x="105" y="10" width="165" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.0039215686274509803" green="0.17571765184402466" blue="0.35848188400268555" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="16"/>
@@ -225,7 +227,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8J-jm-4N0">
-                                                    <rect key="frame" x="15" y="0.0" width="77" height="32"/>
+                                                    <rect key="frame" x="15" y="6" width="77" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="17"/>
@@ -839,7 +841,7 @@
                                         <rect key="frame" x="0.0" y="355" width="375" height="177"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0dO-uP-Rkp" id="ss5-3b-ogb">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="176"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="177"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Like us on Facebook, follow us on Twitter &amp; Instagram" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="289" translatesAutoresizingMaskIntoConstraints="NO" id="oW7-8t-dPD">
@@ -975,7 +977,7 @@
                                         <rect key="frame" x="0.0" y="35" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="601-vW-35B" id="CaF-mW-xXc">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="id0-bO-xwh">
@@ -1002,11 +1004,11 @@
                                         <rect key="frame" x="0.0" y="116" width="375" height="152"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cVH-w5-4w2" id="6nO-nB-b13">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="151"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="152"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XT7-XU-Uv6">
-                                                    <rect key="frame" x="13" y="113" width="162" height="30"/>
+                                                    <rect key="frame" x="13" y="113" width="158" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.0037125688977539539" green="0.17571765184402466" blue="0.35848188400268555" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
@@ -1018,7 +1020,7 @@
                                                     </connections>
                                                 </button>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8Hz-I7-98c">
-                                                    <rect key="frame" x="13" y="30" width="295" height="75"/>
+                                                    <rect key="frame" x="13" y="30" width="362" height="75"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
@@ -1042,11 +1044,11 @@
                                         <rect key="frame" x="0.0" y="304" width="375" height="152"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AYA-bI-V5j" id="otA-ze-xI9">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="151"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="152"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dz4-xM-4bh">
-                                                    <rect key="frame" x="13" y="113" width="162" height="30"/>
+                                                    <rect key="frame" x="13" y="113" width="158" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.0037125688980000002" green="0.17571765180000001" blue="0.35848188399999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
@@ -1058,7 +1060,7 @@
                                                     </connections>
                                                 </button>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ryM-ID-Yho">
-                                                    <rect key="frame" x="13" y="30" width="295" height="75"/>
+                                                    <rect key="frame" x="13" y="30" width="354" height="75"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
@@ -1132,10 +1134,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ASU IHO vertical.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="vUK-fG-bUh">
-                                <rect key="frame" x="29" y="75" width="317" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <webView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rbl-gf-gPn">
                                 <rect key="frame" x="0.0" y="153" width="375" height="318"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1153,7 +1151,7 @@
                                             <rect key="frame" x="16" y="22" width="185" height="53"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <attributedString key="attributedText">
-                                                <fragment content="480-727-6580                         ih0@asu.edu">
+                                                <fragment content="480-727-6580                         iho@asu.edu">
                                                     <attributes>
                                                         <font key="NSFont" size="12" name=".AppleSystemUIFont"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -1261,6 +1259,10 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
+                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="joint ASU-IHO rgb.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="vUK-fG-bUh">
+                                <rect key="frame" x="8" y="62" width="367" height="78"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1463,48 +1465,71 @@ If you would like to send donation by check, please make your donation payable t
                         <sections>
                             <tableViewSection id="Dcp-dX-MQl">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="125" id="BlM-rH-b08">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="125"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="112" id="BlM-rH-b08">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BlM-rH-b08" id="f9S-nA-8Tm">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="124"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="111"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ywr-IN-nNC" userLabel="When Detail">
-                                                    <rect key="frame" x="15" y="8" width="339" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73o-qt-W0N" userLabel="When Detail">
+                                                    <rect key="frame" x="28" y="37" width="339" height="62"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="62" id="42c-HG-Hyf"/>
+                                                        <constraint firstAttribute="width" secondItem="73o-qt-W0N" secondAttribute="height" multiplier="339:62" id="Tc3-NV-M8m"/>
+                                                        <constraint firstAttribute="width" constant="339" id="peT-dt-iLa"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73o-qt-W0N" userLabel="When Detail">
-                                                    <rect key="frame" x="15" y="10" width="339" height="62"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ywr-IN-nNC" userLabel="When Detail">
+                                                    <rect key="frame" x="28" y="17" width="339" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Ywr-IN-nNC" secondAttribute="height" multiplier="113:7" id="AC4-uz-vch"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="73o-qt-W0N" secondAttribute="bottom" constant="4" id="15w-cV-RtE"/>
+                                                <constraint firstItem="73o-qt-W0N" firstAttribute="trailing" secondItem="f9S-nA-8Tm" secondAttribute="trailingMargin" id="58x-du-63Y"/>
+                                                <constraint firstItem="73o-qt-W0N" firstAttribute="leading" secondItem="f9S-nA-8Tm" secondAttribute="leadingMargin" constant="20" id="D3O-ZW-jFa"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Ywr-IN-nNC" secondAttribute="bottom" constant="65" id="Eu2-9x-Jv0"/>
+                                                <constraint firstItem="Ywr-IN-nNC" firstAttribute="top" secondItem="f9S-nA-8Tm" secondAttribute="topMargin" constant="9" id="J5G-EF-Aht"/>
+                                                <constraint firstItem="73o-qt-W0N" firstAttribute="top" secondItem="f9S-nA-8Tm" secondAttribute="topMargin" constant="29" id="Z9w-68-PvR"/>
+                                                <constraint firstItem="Ywr-IN-nNC" firstAttribute="trailing" secondItem="f9S-nA-8Tm" secondAttribute="trailingMargin" id="Zg2-X1-Cq7"/>
+                                                <constraint firstItem="Ywr-IN-nNC" firstAttribute="leading" secondItem="f9S-nA-8Tm" secondAttribute="leadingMargin" constant="20" id="rrW-k5-gIR"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="160" id="jes-Ba-oaY">
-                                        <rect key="frame" x="0.0" y="125" width="375" height="160"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="144" id="jes-Ba-oaY">
+                                        <rect key="frame" x="0.0" y="112" width="375" height="144"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jes-Ba-oaY" id="cyG-Ms-Xew">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="159"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="143"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qB2-6Z-S7m">
-                                                    <rect key="frame" x="19" y="8" width="194" height="54"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qB2-6Z-S7m">
+                                                    <rect key="frame" x="30" y="8" width="317" height="54"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="qB2-6Z-S7m" secondAttribute="height" multiplier="317:54" id="1vk-hI-I5A"/>
+                                                        <constraint firstAttribute="height" constant="54" id="FBB-Ko-wQe"/>
+                                                        <constraint firstAttribute="width" constant="317" id="biG-yh-woM"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wN8-cT-J5w">
-                                                    <rect key="frame" x="131" y="121" width="112" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wN8-cT-J5w">
+                                                    <rect key="frame" x="131" y="94" width="112" height="30"/>
                                                     <color key="backgroundColor" red="0.0039215686269999999" green="0.17571765180000001" blue="0.35848188399999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="112" id="4EY-d9-eIr"/>
+                                                        <constraint firstAttribute="height" constant="30" id="XUE-Pf-xXz"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="16"/>
                                                     <state key="normal" title="Map It">
                                                         <color key="titleShadowColor" red="0.66659259800000004" green="0.66670930390000005" blue="0.66658520700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1514,28 +1539,45 @@ If you would like to send donation by check, please make your donation payable t
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="wN8-cT-J5w" firstAttribute="leading" secondItem="cyG-Ms-Xew" secondAttribute="leadingMargin" constant="123" id="57n-El-bKa"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="wN8-cT-J5w" secondAttribute="bottom" constant="11" id="FnX-tu-hf1"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="wN8-cT-J5w" secondAttribute="trailing" constant="124" id="GyA-3V-Wn5"/>
+                                                <constraint firstItem="qB2-6Z-S7m" firstAttribute="top" secondItem="cyG-Ms-Xew" secondAttribute="topMargin" id="JDj-oD-uRZ"/>
+                                                <constraint firstItem="qB2-6Z-S7m" firstAttribute="leading" secondItem="cyG-Ms-Xew" secondAttribute="leadingMargin" constant="22" id="SUi-79-7s0"/>
+                                                <constraint firstItem="wN8-cT-J5w" firstAttribute="top" secondItem="qB2-6Z-S7m" secondAttribute="bottom" constant="32" id="YxO-Wb-k2i"/>
+                                                <constraint firstItem="wN8-cT-J5w" firstAttribute="top" secondItem="qB2-6Z-S7m" secondAttribute="bottom" constant="32" id="cpw-8a-Cvp"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="qB2-6Z-S7m" secondAttribute="trailing" constant="20" id="ylP-xZ-p1g"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="301" id="2Vh-JR-jMb">
-                                        <rect key="frame" x="0.0" y="285" width="375" height="301"/>
+                                        <rect key="frame" x="0.0" y="256" width="375" height="301"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Vh-JR-jMb" id="r6d-oz-prq">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="301"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dek-ni-rmC">
-                                                    <rect key="frame" x="8" y="8" width="304" height="172"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dek-ni-rmC">
+                                                    <rect key="frame" x="23" y="8" width="344" height="111"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="111" id="HuY-5M-DEE"/>
+                                                        <constraint firstAttribute="width" secondItem="Dek-ni-rmC" secondAttribute="height" multiplier="344:111" id="IWx-IH-Z87"/>
+                                                        <constraint firstAttribute="width" constant="344" id="VeH-ip-AeV"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n7K-12-uat">
-                                                    <rect key="frame" x="85" y="232" width="204" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n7K-12-uat">
+                                                    <rect key="frame" x="85" y="165" width="204" height="30"/>
                                                     <color key="backgroundColor" red="0.0039215686269999999" green="0.17571765180000001" blue="0.35848188399999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="204" id="54i-xE-mQv"/>
+                                                        <constraint firstAttribute="height" constant="30" id="Od7-9y-Kgm"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="16"/>
-                                                    <state key="normal" title="Register for this Event">
+                                                    <state key="normal" title="Click here for more info">
                                                         <color key="titleShadowColor" red="0.66659259800000004" green="0.66670930390000005" blue="0.66658520700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
@@ -1543,6 +1585,15 @@ If you would like to send donation by check, please make your donation payable t
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="n7K-12-uat" firstAttribute="top" secondItem="Dek-ni-rmC" secondAttribute="bottom" constant="46" id="Bds-CS-Ohi"/>
+                                                <constraint firstItem="n7K-12-uat" firstAttribute="leading" secondItem="r6d-oz-prq" secondAttribute="leadingMargin" constant="77" id="KkO-CM-mXv"/>
+                                                <constraint firstItem="Dek-ni-rmC" firstAttribute="top" secondItem="r6d-oz-prq" secondAttribute="topMargin" id="YUq-aE-ZcR"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="n7K-12-uat" secondAttribute="bottom" constant="98" id="fU5-cp-bGG"/>
+                                                <constraint firstItem="Dek-ni-rmC" firstAttribute="trailing" secondItem="r6d-oz-prq" secondAttribute="trailingMargin" id="mKa-uw-eAh"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="n7K-12-uat" secondAttribute="trailing" constant="78" id="uKo-W9-GVh"/>
+                                                <constraint firstItem="n7K-12-uat" firstAttribute="top" secondItem="Dek-ni-rmC" secondAttribute="bottom" constant="46" id="zhk-9M-zdt"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -1598,7 +1649,7 @@ If you would like to send donation by check, please make your donation payable t
                                         <rect key="frame" x="0.0" y="70" width="375" height="228"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xgs-zL-8vX" id="WOa-69-Ggn">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="227"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="228"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q98-TT-SO5">
@@ -1629,11 +1680,11 @@ If you would like to send donation by check, please make your donation payable t
                                         <rect key="frame" x="0.0" y="398" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gBX-Sy-6AC" id="ZtF-lV-rMY">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lOw-PB-fCC">
-                                                    <rect key="frame" x="105" y="9" width="165" height="30"/>
+                                                    <rect key="frame" x="105" y="8" width="165" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.0039215686269999999" green="0.17571765180000001" blue="0.35848188399999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="16"/>
@@ -1699,7 +1750,7 @@ If you would like to send donation by check, please make your donation payable t
                                         <rect key="frame" x="0.0" y="70" width="375" height="228"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lWX-Bc-lZh" id="wnP-8l-fWE">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="227"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="228"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="travellearnimge.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="4I8-pT-zmC">
@@ -1730,7 +1781,7 @@ If you would like to send donation by check, please make your donation payable t
                                         <rect key="frame" x="0.0" y="598" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YP0-XV-oLw" id="0tG-t0-J4s">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVb-rG-NwC">
@@ -1844,7 +1895,7 @@ If you would like to send donation by check, please make your donation payable t
                                         <rect key="frame" x="0.0" y="70" width="375" height="228"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dJh-5w-6XU" id="cXt-0b-5vY">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="227"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="228"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="28T-Ve-xdJ">
@@ -1858,7 +1909,7 @@ If you would like to send donation by check, please make your donation payable t
                                         <rect key="frame" x="0.0" y="298" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gui-yX-Ded" id="J4t-zF-17N">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHb-PZ-Wc0">
@@ -1882,7 +1933,7 @@ If you would like to send donation by check, please make your donation payable t
                                         <rect key="frame" x="0.0" y="498" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Ei-N1-2GD" id="ceN-ev-lL2">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5hh-Yt-xMD">
@@ -2056,11 +2107,11 @@ If you would like to send donation by check, please make your donation payable t
         </scene>
     </scenes>
     <resources>
-        <image name="ASU IHO vertical.jpg" width="712" height="132"/>
         <image name="FB.png" width="480" height="480"/>
         <image name="askananthropologist.jpg" width="600" height="248"/>
         <image name="instagram.png" width="1000" height="1000"/>
         <image name="invest.png" width="145" height="36"/>
+        <image name="joint ASU-IHO rgb.jpg" width="648" height="140"/>
         <image name="newLogo.jpg" width="384" height="96"/>
         <image name="search-icon-64.png" width="64" height="64"/>
         <image name="travellearnimge.jpg" width="400" height="414"/>
