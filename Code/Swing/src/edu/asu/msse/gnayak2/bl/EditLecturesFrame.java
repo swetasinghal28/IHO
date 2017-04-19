@@ -42,6 +42,8 @@ import edu.asu.msse.gnayak2.models.GalleryModel;
 import edu.asu.msse.gnayak2.models.Lecture;
 import edu.asu.msse.gnayak2.networking.HTTPConnectionHelper;
 import net.miginfocom.swing.MigLayout;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class EditLecturesFrame extends JFrame implements GalleryDelegate {
 
@@ -87,6 +89,9 @@ public class EditLecturesFrame extends JFrame implements GalleryDelegate {
 	
 	byte[] imageInByte;
 	private JButton galleryButton;
+	
+	private Pattern pattern;
+	private Matcher matcher;
 	
 	/**
 	 * Create the frame.
@@ -368,6 +373,24 @@ public class EditLecturesFrame extends JFrame implements GalleryDelegate {
 
     }
 	
+	public boolean validate(final String order){
+		 String ORDER_PATTERN =
+				 "^\\d+$";
+		  pattern = Pattern.compile(ORDER_PATTERN);
+  matcher = pattern.matcher(order);
+
+  if(matcher.matches()){
+  System.out.println("Matches");
+	 matcher.reset();
+
+	 return true;
+  }else{
+	  JOptionPane.showMessageDialog(tfOrder, "Please enter an integer value for order");   
+	  return false;
+  }
+}
+	
+	
 	public void setActionListenerForButton() {
 		
 		galleryButton.addActionListener(new ActionListener() {
@@ -404,7 +427,9 @@ public class EditLecturesFrame extends JFrame implements GalleryDelegate {
 					 		System.out.println(e1.getMessage());
 						 	}
 				}
-				 
+				 boolean validate = validate(tfOrder.getText());
+				 if(validate)
+				 {
 				 if(flag==1){
 					 int ord = Integer.parseInt(tfOrder.getText());
 					 Lecture newLecture = new Lecture(tfName.getText(), taDescription.getText(),tfLink.getText(),tfDesc.getText(),encodedImage,tfEmail.getText(),ord);
@@ -427,6 +452,7 @@ public class EditLecturesFrame extends JFrame implements GalleryDelegate {
 					
 				}
 				dispose();
+				 }
 			}
 		});
 		 browseButton.addActionListener(new ActionListener() {

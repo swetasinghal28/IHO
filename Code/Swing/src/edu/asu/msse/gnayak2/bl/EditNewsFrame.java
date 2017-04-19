@@ -246,11 +246,13 @@ public class EditNewsFrame extends JFrame {
 					  JFileChooser chooser = new JFileChooser();
 					    chooser.showOpenDialog(null);
 					    File f = chooser.getSelectedFile();
+					    if(f!=null){
 					    filename = f.getAbsolutePath();
 					    imageFileButton.setText(filename);
-					    flag=1;
+					    
 
-					
+					    }
+					    flag=1;
 				}
 			});
 	}
