@@ -18,7 +18,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-
+import javax.swing.JOptionPane;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -47,7 +49,7 @@ public class EditNewsFrame extends JFrame {
 	private JLabel lblReadMore;
 	private JLabel lblTitle;
 	private JLabel lblDate;
-
+    private JLabel lbldesc;
 	private JScrollPane scrollPane;
 	private News news;
 	private JButton btnSubmit;
@@ -55,8 +57,12 @@ public class EditNewsFrame extends JFrame {
 	private JTextField imageFileButton;
 	private JButton addButton;
 	NewsDelegate newsDelegate;
+	News newNews;
 	String filename;
 	String encodedImage;
+	
+	private Pattern pattern;
+	private Matcher matcher;
 	
 	byte[] imageInByte;
 	int flag = 0;
@@ -73,16 +79,16 @@ public class EditNewsFrame extends JFrame {
 	public void setUpFrame() {
 		setResizable(false);
 		setPreferredSize(new Dimension(Constants.WIDTH,Constants.HEIGHT));
-		tfTitle = new JTextField();
-		taDescription = new JTextArea("",20,20);
-		tfDate = new JTextField("",20);
+		tfTitle = new JTextField("",180);
+		taDescription = new JTextArea("",180,180);
+		tfDate = new JTextField("",180);
 		lblReadMore = new JLabel("Link");
 		lblTitle = new JLabel("Title");
 		lblDate = new JLabel("Date");
-	
+	    lbldesc = new JLabel("Description");
 		browseButton = new JButton("Browse");
-		imageFileButton = new JTextField("",80);
-		tfLink = new JTextField("",80);
+		imageFileButton = new JTextField("",180);
+		tfLink = new JTextField("",180);
 		
 		
 		scrollPane = new JScrollPane(taDescription);
@@ -91,17 +97,17 @@ public class EditNewsFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		panel = new JPanel();
 		panel.setLayout(new MigLayout());
-		panel.add(lblTitle, "wrap");
-		panel.add(tfTitle, "span,pushx,growx, wrap");
-		panel.add(lblReadMore, "wrap");
+		panel.add(lblTitle);
+		panel.add(tfTitle, "span,pushx,growx,wrap");
+		panel.add(lblReadMore);
 		panel.add(tfLink, "wrap");
-		panel.add(lblDate, "wrap");
+		panel.add(lblDate);
 		panel.add(tfDate,"wrap");
-	
-		panel.add(scrollPane,"span,push,grow, wrap");	
-		panel.add(browseButton, "wrap");
+	    panel.add(lbldesc);
+		panel.add(scrollPane,"wrap");	
+		panel.add(browseButton);
 		panel.add(imageFileButton, "wrap");
-		panel.add(btnSubmit);
+		panel.add(btnSubmit,"wrap");
 
 		add(panel);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -122,7 +128,7 @@ public class EditNewsFrame extends JFrame {
         if (bufferedImage != null) { 
         	 imageIcon = new ImageIcon(bufferedImage);
         	 Image oldImage = imageIcon.getImage(); // transform it 
-        	 Image newImage = oldImage.getScaledInstance(180, 180,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        	 Image newImage = oldImage.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         	 imageIcon = new ImageIcon(newImage); 
         	 JLabel imageLabel = new JLabel(imageIcon);
         	 panel.add(imageLabel);
@@ -154,6 +160,24 @@ public class EditNewsFrame extends JFrame {
 		setUpFrame();
 	}
 	
+	public boolean validate(final String date){
+		 String DATE_PATTERN =
+		          "(0?[1-9]|1[012])/(0?[1-9]|[12][0-9]|3[01])/((19|20)\\d\\d)";
+		  pattern = Pattern.compile(DATE_PATTERN);
+   matcher = pattern.matcher(date);
+
+   if(matcher.matches()){
+   System.out.println("Matches");
+	 matcher.reset();
+
+	 return true;
+   }else{
+	  JOptionPane.showMessageDialog(tfDate, "Date format is invalid");   
+	  return false;
+   }
+ }
+	
+	
 	public void setActionListenerForButton() {
 		// delete old news
 		btnSubmit.addActionListener(new ActionListener() {
@@ -171,31 +195,46 @@ public class EditNewsFrame extends JFrame {
 	
 
             encodedImage = Base64.getEncoder().encodeToString(imageInByte);
-		 	System.out.println("BYTE ARRAY_________"+imageInByte);
+		 	System.out.println("BYTE ARRAY"+imageInByte);
 		 	baos.close();
            	}catch(IOException e1){
 		 		System.out.println(e1.getMessage());
 			 	}
             }
+            
+            boolean isValidDate = validate(tfDate.getText());
+//            if(!isValidDate)
+//            	System.out.println("Invalid");
+//            else 
+//            	System.out.println("Valid");
 //     			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 //				Date date = new Date();
 //				System.out.println(dateFormat.format(date)); 
-            if(flag == 1) {
+            if(isValidDate)
+            {   if(flag == 1) {
+        	   
 			   System.out.println("DATE-----" + tfDate.getText());
 			   
-				
-				News newNews = new News(tfTitle.getText(), taDescription.getText(),tfLink.getText(), tfDate.getText(), encodedImage);
-				newsDelegate.addNews(newNews);
-            }
+			   System.out.println(tfTitle.getText()); 
+				 newNews = new News(tfTitle.getText(), taDescription.getText(),tfLink.getText(), tfDate.getText(), encodedImage);
+        	   }
+            
             else {
-            	   System.out.println("DATE-----" + tfDate.getText());
-   				News newNews = new News(tfTitle.getText(), taDescription.getText(),tfLink.getText(), tfDate.getText(), imageFileButton.getText());
-   				newsDelegate.addNews(newNews);
+            	 
+ 			   System.out.println(taDescription.getText()); 
+            	   System.out.println("DATE" + tfDate.getText());
+            	   
+   				 newNews = new News(tfTitle.getText(), taDescription.getText(),tfLink.getText(), tfDate.getText(), imageFileButton.getText());
+   				
             }
+           
+            newsDelegate.addNews(newNews);
 				if (news != null){
 					newsDelegate.deleteNews(news);
 				}
 				dispose();
+			}
+				
 			}
 		});
 		
