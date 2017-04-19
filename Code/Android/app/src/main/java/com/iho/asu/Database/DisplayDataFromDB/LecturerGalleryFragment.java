@@ -52,13 +52,13 @@ public class LecturerGalleryFragment extends ListFragment {
         View v = inflater.inflate(
                 R.layout.fragment_lecturer_gallery, container, false);
         DataBaseHelper dbOpenHelper = new DataBaseHelper(this.getActivity(), DB_NAME);
-        //database = dbOpenHelper.openDataBase();
-        //getGalleryItems();
-        getGalleryItemsJson();
-        /*CustomList adapter = new
+        database = dbOpenHelper.openDataBase();
+        getGalleryItems();
+        //getGalleryItemsJson();
+        CustomList adapter = new
                 CustomList(this.getActivity(), galleryTitle, galleryItems);
         this.setListAdapter(adapter);
-        adapter.notifyDataSetChanged();*/
+        adapter.notifyDataSetChanged();
         return v;
     }
 
