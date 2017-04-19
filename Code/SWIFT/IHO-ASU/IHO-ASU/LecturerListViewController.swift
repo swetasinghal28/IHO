@@ -26,7 +26,7 @@ class LecturerListViewController: UITableViewController {
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
-        self.navigationItem.title = "Lecturers"
+        self.navigationItem.title = "Scientists"
         
         // getting URL string from Info.plist
         //        if let infoPlist = Bundle.main.infoDictionary {
