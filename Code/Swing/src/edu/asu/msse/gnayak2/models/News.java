@@ -35,7 +35,7 @@ public class News {
 		desc = object.getString("desc");
 		link = object.getString("link");
       date = object.getString("date");
-       //image = object.getString("image");
+       image = object.getString("image");
       
 	}
 
