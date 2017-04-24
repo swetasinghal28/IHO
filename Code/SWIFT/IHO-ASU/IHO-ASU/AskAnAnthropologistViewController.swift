@@ -8,9 +8,10 @@
 
 import UIKit
 
-class AskAnAnthropologistViewController: UIViewController, UITextViewDelegate {
+class AskAnAnthropologistViewController: UIViewController, UITextViewDelegate, UIWebViewDelegate {
     @IBOutlet weak var askButton: UIButton!
     
+    @IBOutlet weak var anthro: UIWebView!
     
     @IBAction func visitAnthropologist(_ sender: Any) {
         
@@ -31,8 +32,12 @@ class AskAnAnthropologistViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
+        anthro.scrollView.isScrollEnabled = false
+        self.anthro.delegate = self
+        anthro.loadRequest(URLRequest(url: URL(fileURLWithPath: Bundle.main.path(forResource: "askAnthro", ofType: "html")!)))
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         self.navigationItem.title = "Ask An Anthropologist"
         
         askButton.layer.cornerRadius = 15
@@ -47,6 +52,17 @@ class AskAnAnthropologistViewController: UIViewController, UITextViewDelegate {
         let toolbarTitle = UIBarButtonItem(customView: label)
         let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         self.toolbarItems = [flexible,toolbarTitle]
+    }
+    
+    @objc(webView:shouldStartLoadWithRequest:navigationType:) func webView(_ anthro: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        
+        if navigationType == UIWebViewNavigationType.linkClicked {
+            UIApplication.shared.openURL(request.url!)
+            return false
+        }
+        
+        return true
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
