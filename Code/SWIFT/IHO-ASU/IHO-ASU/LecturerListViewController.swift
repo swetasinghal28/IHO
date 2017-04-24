@@ -14,10 +14,7 @@ class LecturerListViewController: UITableViewController {
     var urlString:String = ""
     var lecturerList:[String : Lecturer] = [String : Lecturer]()
     var names:[String]=[String]()
-    //    var NumberOfRows = 0
-    //    var newsList = [NSManagedObject]()
-    //    var appDel:AppDelegate?
-    //    var mContext:NSManagedObjectContext?
+    var reachability: Reachability = Reachability();
     
     
     
@@ -28,81 +25,101 @@ class LecturerListViewController: UITableViewController {
         
         self.navigationItem.title = "Scientists"
         
-        // getting URL string from Info.plist
-        //        if let infoPlist = Bundle.main.infoDictionary {
-        //            self.urlString = ((infoPlist["ServerURLString"]) as?  String!)!
-        //            NSLog("The default urlString from info.plist is \(self.urlString)")
-        //        } else {
-        //            NSLog("error getting urlString from info.plist")
-        //        }
-        
-        let url = URL(string:"http://107.170.239.62:3000/lectureobjects" )
-        
-        let task = URLSession.shared.dataTask(with: url!){ (data, response, error) in
-            if error != nil
-            {
-                print("ERROR",error ?? "There is an error")
-            }
-            else
-            {
-                if let content = data
+        let flag = reachability.connectedToNetwork();
+        if flag{
+            print("Yes internet connection")
+            let url = URL(string:"http://107.170.239.62:3000/lectureobjects" )
+            
+            let task = URLSession.shared.dataTask(with: url!){ (data, response, error) in
+                if error != nil
                 {
-                    //self.news = [News]()
-                    do{
-                        //Array
-                        let myJSON = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
-                        
-                        // let myJSON = try JSONSerialization.jsonObject(with: data!,options:.mutableContainers) as? [String:AnyObject]
-                        
-                        print("myJSON", myJSON)
-                        
-                        //                        for dict2 in myJSON {
-                        //                            let id = dict2["id"]
-                        //                            let title = dict2["title"]
-                        //                            let desc = dict2["desc"]
-                        //                            println(id)
-                        //                            println(main)
-                        //                            println(description)
-                        //                        }
-                        
-                        
-                        
-                        if let lecturerFromJSON = myJSON as? [[String: AnyObject]]{
-                            print("lecturerFromJSON", lecturerFromJSON)
-                            for lecturer in lecturerFromJSON{
-                                let lecturerObject = Lecturer()
-                                if let title = lecturer["title"] as? String,let bio = lecturer["bio"] as? String,let id = lecturer["id"] as? String,let image = lecturer["image"] as? String, let link = lecturer["link"] as? String, let name = lecturer["name"] as? String, let email = lecturer["email"] as? String{
-                                    lecturerObject.id = id
-                                    lecturerObject.title = title
-                                    lecturerObject.bio = bio
-                                    lecturerObject.image = image
-                                    lecturerObject.link = link
-                                    lecturerObject.name = name
-                                    lecturerObject.email = email
-                                    self.names.append(lecturerObject.name)
-                                    //print(title)
-                                    
+                    print("ERROR",error ?? "There is an error")
+                }
+                else
+                {
+                    if let content = data
+                    {
+                        //self.news = [News]()
+                        do{
+                            //Array
+                            let myJSON = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
+                            
+                            print("myJSON", myJSON)
+                            
+                            
+                            if let lecturerFromJSON = myJSON as? [[String: AnyObject]]{
+                                print("lecturerFromJSON", lecturerFromJSON)
+                                for lecturer in lecturerFromJSON{
+                                    let lecturerObject = Lecturer()
+                                    if let title = lecturer["title"] as? String,let bio = lecturer["bio"] as? String,let id = lecturer["id"] as? String,let image = lecturer["image"] as? String, let link = lecturer["link"] as? String, let name = lecturer["name"] as? String, let email = lecturer["email"] as? String{
+                                        lecturerObject.id = id
+                                        lecturerObject.title = title
+                                        lecturerObject.bio = bio
+                                        lecturerObject.image = image
+                                        lecturerObject.link = link
+                                        lecturerObject.name = name
+                                        lecturerObject.email = email
+                                        self.names.append(lecturerObject.name)
+                                    }
+                                    self.lecturerList[lecturerObject.name] = lecturerObject
                                 }
-                                //self.news?.append(newsObject)
-                                self.lecturerList[lecturerObject.name] = lecturerObject
                             }
+                            
+                            self.lecturerTableView.reloadData()
                         }
-                        
-                        //print (self.news)
-                        //self.tableView.reloadData()
-                        self.lecturerTableView.reloadData()
-                        
-                        
-                    }
-                    catch let error{
-                        print(error)
+                        catch let error{
+                            print(error)
+                        }
                     }
                 }
+                
+                
             }
-            
+            task.resume()
             
         }
-        task.resume()
+        else{
+            print("No internet connection")
+            
+            print("Loading from Local")
+            
+            do{
+                if let file = Bundle.main.url(forResource: "lecturer", withExtension: "json") {
+                    let data = try Data(contentsOf: file)
+                    
+                    //Array
+                    let myJSON = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
+                    
+                    print("myJSON", myJSON)
+                    
+                    
+                    if let lecturerFromJSON = myJSON as? [[String: AnyObject]]{
+                        print("lecturerFromJSON", lecturerFromJSON)
+                        for lecturer in lecturerFromJSON{
+                            let lecturerObject = Lecturer()
+                            if let title = lecturer["title"] as? String,let bio = lecturer["bio"] as? String,let id = lecturer["id"] as? String,let image = lecturer["image"] as? String, let link = lecturer["link"] as? String, let name = lecturer["name"] as? String, let email = lecturer["email"] as? String{
+                                lecturerObject.id = id
+                                lecturerObject.title = title
+                                lecturerObject.bio = bio
+                                lecturerObject.image = image
+                                lecturerObject.link = link
+                                lecturerObject.name = name
+                                lecturerObject.email = email
+                                self.names.append(lecturerObject.name)
+                            }
+                            self.lecturerList[lecturerObject.name] = lecturerObject
+                        }
+                    }
+                }else{
+                    print("no file")}
+                self.lecturerTableView.reloadData()
+                
+            }
+                
+            catch{
+                print(error.localizedDescription)
+            }
+        }
         
         //toolbar
         let label = UILabel(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(350), height: CGFloat(21)))
