@@ -15,7 +15,7 @@
         <scene sceneID="VFy-aD-P3R">
             <objects>
                 <tableViewController id="elF-n8-LV0" customClass="NewsDetailViewController" customModule="IHO_ASU" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="X81-dd-2VP">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="X81-dd-2VP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -46,11 +46,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="228"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dqU-S5-A3p">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dqU-S5-A3p">
                                                     <rect key="frame" x="35" y="8" width="304" height="212"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="212" id="8FN-8y-cAC"/>
+                                                        <constraint firstAttribute="width" constant="304" id="EFo-Ig-ZB6"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="dqU-S5-A3p" firstAttribute="leading" secondItem="tJh-G9-jWf" secondAttribute="leadingMargin" constant="27" id="KcV-qc-cgG"/>
+                                                <constraint firstItem="dqU-S5-A3p" firstAttribute="bottom" secondItem="tJh-G9-jWf" secondAttribute="bottomMargin" id="ji5-GV-LRb"/>
+                                                <constraint firstItem="dqU-S5-A3p" firstAttribute="top" secondItem="tJh-G9-jWf" secondAttribute="topMargin" id="o0k-aR-YVa"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="dqU-S5-A3p" secondAttribute="trailing" constant="28" id="wpU-Dk-ocN"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="eb9-z3-RHH" rowHeight="100" style="IBUITableViewCellStyleDefault" id="XfM-YK-fCA">
@@ -77,10 +86,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxg-Ip-EFg">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxg-Ip-EFg">
                                                     <rect key="frame" x="105" y="10" width="165" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.0039215686274509803" green="0.17571765184402466" blue="0.35848188400268555" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="165" id="oww-mS-rwi"/>
+                                                        <constraint firstAttribute="height" constant="30" id="zMv-JA-puB"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="16"/>
                                                     <state key="normal" title="Click to read more">
                                                         <color key="titleShadowColor" red="0.66659259800000004" green="0.66670930390000005" blue="0.66658520700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -90,6 +102,12 @@
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="gxg-Ip-EFg" firstAttribute="top" secondItem="1Kf-YI-E1c" secondAttribute="topMargin" constant="2" id="1BF-AX-Qtf"/>
+                                                <constraint firstItem="gxg-Ip-EFg" firstAttribute="leading" secondItem="1Kf-YI-E1c" secondAttribute="leadingMargin" constant="97" id="2U8-UI-njg"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="gxg-Ip-EFg" secondAttribute="trailing" constant="97" id="5dd-Ll-7iC"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="gxg-Ip-EFg" secondAttribute="bottom" constant="2" id="ZHa-y1-HPG"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -1518,7 +1536,7 @@ If you would like to send donation by check, please make your donation payable t
         <scene sceneID="izq-Km-83H">
             <objects>
                 <tableViewController id="nEI-v9-bXF" customClass="EventsDetailViewController" customModule="IHO_ASU" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="53x-hl-ST5">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="53x-hl-ST5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1618,12 +1636,12 @@ If you would like to send donation by check, please make your donation payable t
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="301"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dek-ni-rmC">
-                                                    <rect key="frame" x="23" y="8" width="344" height="111"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dek-ni-rmC">
+                                                    <rect key="frame" x="23" y="8" width="340" height="111"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="111" id="HuY-5M-DEE"/>
-                                                        <constraint firstAttribute="width" secondItem="Dek-ni-rmC" secondAttribute="height" multiplier="344:111" id="IWx-IH-Z87"/>
-                                                        <constraint firstAttribute="width" constant="344" id="VeH-ip-AeV"/>
+                                                        <constraint firstAttribute="width" secondItem="Dek-ni-rmC" secondAttribute="height" multiplier="344:111" constant="-4" id="IWx-IH-Z87"/>
+                                                        <constraint firstAttribute="width" constant="340" id="VeH-ip-AeV"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
                                                     <nil key="textColor"/>
@@ -1646,11 +1664,12 @@ If you would like to send donation by check, please make your donation payable t
                                                 </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="Dek-ni-rmC" firstAttribute="leading" secondItem="r6d-oz-prq" secondAttribute="leadingMargin" constant="15" id="A7u-Wj-xlF"/>
                                                 <constraint firstItem="n7K-12-uat" firstAttribute="top" secondItem="Dek-ni-rmC" secondAttribute="bottom" constant="46" id="Bds-CS-Ohi"/>
                                                 <constraint firstItem="n7K-12-uat" firstAttribute="leading" secondItem="r6d-oz-prq" secondAttribute="leadingMargin" constant="77" id="KkO-CM-mXv"/>
                                                 <constraint firstItem="Dek-ni-rmC" firstAttribute="top" secondItem="r6d-oz-prq" secondAttribute="topMargin" id="YUq-aE-ZcR"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="n7K-12-uat" secondAttribute="bottom" constant="98" id="fU5-cp-bGG"/>
-                                                <constraint firstItem="Dek-ni-rmC" firstAttribute="trailing" secondItem="r6d-oz-prq" secondAttribute="trailingMargin" id="mKa-uw-eAh"/>
+                                                <constraint firstItem="Dek-ni-rmC" firstAttribute="trailing" secondItem="r6d-oz-prq" secondAttribute="trailingMargin" constant="-4" id="mKa-uw-eAh"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="n7K-12-uat" secondAttribute="trailing" constant="78" id="uKo-W9-GVh"/>
                                                 <constraint firstItem="n7K-12-uat" firstAttribute="top" secondItem="Dek-ni-rmC" secondAttribute="bottom" constant="46" id="zhk-9M-zdt"/>
                                             </constraints>
@@ -1712,11 +1731,20 @@ If you would like to send donation by check, please make your donation payable t
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="228"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q98-TT-SO5">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q98-TT-SO5">
                                                     <rect key="frame" x="35" y="0.0" width="304" height="212"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="212" id="hv8-bu-Pye"/>
+                                                        <constraint firstAttribute="width" constant="304" id="vPh-k0-7yg"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Q98-TT-SO5" secondAttribute="trailing" constant="36" id="1eu-Fw-eZQ"/>
+                                                <constraint firstItem="Q98-TT-SO5" firstAttribute="top" secondItem="WOa-69-Ggn" secondAttribute="top" id="VMs-Dp-BVL"/>
+                                                <constraint firstItem="Q98-TT-SO5" firstAttribute="leading" secondItem="WOa-69-Ggn" secondAttribute="leading" constant="35" id="h9N-7c-Th7"/>
+                                                <constraint firstAttribute="bottom" secondItem="Q98-TT-SO5" secondAttribute="bottom" constant="16" id="i46-20-3AU"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="N7e-vt-6oz" rowHeight="100" style="IBUITableViewCellStyleDefault" id="6Bg-cW-iGw">
@@ -1743,10 +1771,13 @@ If you would like to send donation by check, please make your donation payable t
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lOw-PB-fCC">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lOw-PB-fCC">
                                                     <rect key="frame" x="105" y="8" width="165" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.0039215686269999999" green="0.17571765180000001" blue="0.35848188399999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="iXu-ow-UuT"/>
+                                                        <constraint firstAttribute="width" constant="165" id="oN6-Gg-AUg"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="16"/>
                                                     <state key="normal" title="Click to read more">
                                                         <color key="titleShadowColor" red="0.66659259800000004" green="0.66670930390000005" blue="0.66658520700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1756,6 +1787,12 @@ If you would like to send donation by check, please make your donation payable t
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="lOw-PB-fCC" firstAttribute="leading" secondItem="ZtF-lV-rMY" secondAttribute="leadingMargin" constant="97" id="0CP-Ux-ahK"/>
+                                                <constraint firstItem="lOw-PB-fCC" firstAttribute="top" secondItem="ZtF-lV-rMY" secondAttribute="topMargin" id="L0P-1P-zZA"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="lOw-PB-fCC" secondAttribute="bottom" constant="4" id="ZKP-5g-9mf"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="lOw-PB-fCC" secondAttribute="trailing" constant="97" id="brJ-x1-bgg"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -1813,11 +1850,20 @@ If you would like to send donation by check, please make your donation payable t
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="228"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="travellearnimge.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="4I8-pT-zmC">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="travellearnimge.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="4I8-pT-zmC">
                                                     <rect key="frame" x="35" y="7" width="304" height="212"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="304" id="PPZ-eL-wPn"/>
+                                                        <constraint firstAttribute="height" constant="212" id="ksf-M3-yxj"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="4I8-pT-zmC" secondAttribute="bottom" constant="9" id="A85-fs-Aoz"/>
+                                                <constraint firstItem="4I8-pT-zmC" firstAttribute="leading" secondItem="wnP-8l-fWE" secondAttribute="leading" constant="35" id="J7P-Rm-R5t"/>
+                                                <constraint firstItem="4I8-pT-zmC" firstAttribute="top" secondItem="wnP-8l-fWE" secondAttribute="top" constant="7" id="Lb6-hK-Ak9"/>
+                                                <constraint firstAttribute="trailing" secondItem="4I8-pT-zmC" secondAttribute="trailing" constant="36" id="h4x-ln-Yhv"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="XHh-2B-vA4" rowHeight="300" style="IBUITableViewCellStyleDefault" id="4rW-ip-wMA">
@@ -1844,10 +1890,13 @@ If you would like to send donation by check, please make your donation payable t
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVb-rG-NwC">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVb-rG-NwC">
                                                     <rect key="frame" x="95" y="8" width="185" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.0039215686269999999" green="0.17571765180000001" blue="0.35848188399999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="185" id="NzT-fD-NfS"/>
+                                                        <constraint firstAttribute="height" constant="30" id="lAY-by-cNd"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="16"/>
                                                     <state key="normal" title="Click to read more">
                                                         <color key="titleShadowColor" red="0.66659259800000004" green="0.66670930390000005" blue="0.66658520700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1857,6 +1906,12 @@ If you would like to send donation by check, please make your donation payable t
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="rVb-rG-NwC" firstAttribute="leading" secondItem="0tG-t0-J4s" secondAttribute="leadingMargin" constant="87" id="Ibe-8T-LBz"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="rVb-rG-NwC" secondAttribute="bottom" constant="14" id="K8Y-gh-nIq"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="rVb-rG-NwC" secondAttribute="trailing" constant="87" id="bfy-49-51N"/>
+                                                <constraint firstItem="rVb-rG-NwC" firstAttribute="top" secondItem="0tG-t0-J4s" secondAttribute="topMargin" id="mOn-sB-zv9"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -1958,60 +2013,76 @@ If you would like to send donation by check, please make your donation payable t
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="228"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="28T-Ve-xdJ">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="28T-Ve-xdJ">
                                                     <rect key="frame" x="35" y="8" width="304" height="212"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="212" id="Rjy-fA-Y0Q"/>
+                                                        <constraint firstAttribute="width" constant="304" id="Z36-Ug-4br"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="28T-Ve-xdJ" firstAttribute="top" secondItem="cXt-0b-5vY" secondAttribute="topMargin" id="4RU-EN-jM2"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="28T-Ve-xdJ" secondAttribute="trailing" constant="28" id="AxH-8U-adH"/>
+                                                <constraint firstItem="28T-Ve-xdJ" firstAttribute="bottom" secondItem="cXt-0b-5vY" secondAttribute="bottomMargin" id="daE-l7-8cK"/>
+                                                <constraint firstItem="28T-Ve-xdJ" firstAttribute="leading" secondItem="cXt-0b-5vY" secondAttribute="leadingMargin" constant="27" id="v2b-WP-rwq"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="Gui-yX-Ded">
-                                        <rect key="frame" x="0.0" y="298" width="375" height="200"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="178" id="Gui-yX-Ded">
+                                        <rect key="frame" x="0.0" y="298" width="375" height="178"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gui-yX-Ded" id="J4t-zF-17N">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="177"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHb-PZ-Wc0">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="99"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="14"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Title" lineBreakMode="wordWrap" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9z-Oc-ELT">
-                                                    <rect key="frame" x="15" y="66" width="345" height="87"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="wordWrap" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9z-Oc-ELT">
+                                                    <rect key="frame" x="15" y="66" width="345" height="67"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="67" id="4ln-ON-u9W"/>
+                                                        <constraint firstAttribute="width" constant="345" id="jJl-WR-fW0"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHb-PZ-Wc0">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="58"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="58" id="Fwa-zp-6bK"/>
+                                                        <constraint firstAttribute="width" constant="345" id="R3d-zV-ym7"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="YHb-PZ-Wc0" secondAttribute="trailing" constant="15" id="1iD-By-VP2"/>
+                                                <constraint firstItem="w9z-Oc-ELT" firstAttribute="top" secondItem="YHb-PZ-Wc0" secondAttribute="bottom" constant="8" id="6nf-bi-i67"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="w9z-Oc-ELT" secondAttribute="trailing" constant="7" id="DaO-Do-aCW"/>
+                                                <constraint firstItem="w9z-Oc-ELT" firstAttribute="top" secondItem="YHb-PZ-Wc0" secondAttribute="bottom" constant="8" id="Vo7-CE-m51"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="w9z-Oc-ELT" secondAttribute="bottom" constant="36" id="agX-ee-bQE"/>
+                                                <constraint firstItem="w9z-Oc-ELT" firstAttribute="leading" secondItem="J4t-zF-17N" secondAttribute="leadingMargin" constant="7" id="fu3-oH-G6t"/>
+                                                <constraint firstItem="YHb-PZ-Wc0" firstAttribute="top" secondItem="J4t-zF-17N" secondAttribute="top" id="pB4-X5-IOP"/>
+                                                <constraint firstItem="YHb-PZ-Wc0" firstAttribute="leading" secondItem="J4t-zF-17N" secondAttribute="leading" constant="15" id="ypV-Wf-qXH"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="5Ei-N1-2GD">
-                                        <rect key="frame" x="0.0" y="498" width="375" height="200"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="222" id="5Ei-N1-2GD">
+                                        <rect key="frame" x="0.0" y="476" width="375" height="222"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Ei-N1-2GD" id="ceN-ev-lL2">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="221"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5hh-Yt-xMD">
-                                                    <rect key="frame" x="67" y="8" width="240" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NX2-YT-Gvm">
+                                                    <rect key="frame" x="98" y="44" width="164" height="30"/>
                                                     <color key="backgroundColor" red="0.0039215686269999999" green="0.17571765180000001" blue="0.35848188399999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="16"/>
-                                                    <state key="normal" title="Learn more about this lecturer">
-                                                        <color key="titleShadowColor" red="0.66659259800000004" green="0.66670930390000005" blue="0.66658520700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="linkReadMore:" destination="rWH-Fv-tLx" eventType="touchUpInside" id="w8S-Fr-sfm"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NX2-YT-Gvm">
-                                                    <rect key="frame" x="105" y="46" width="164" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="0.0039215686269999999" green="0.17571765180000001" blue="0.35848188399999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="DlT-hO-6c0"/>
+                                                        <constraint firstAttribute="width" constant="164" id="FVC-GS-AgW"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="16"/>
                                                     <state key="normal" title="Ask a question">
                                                         <color key="titleShadowColor" red="0.66659259800000004" green="0.66670930390000005" blue="0.66658520700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2020,10 +2091,15 @@ If you would like to send donation by check, please make your donation payable t
                                                         <action selector="lEmail:" destination="rWH-Fv-tLx" eventType="touchUpInside" id="6Su-9f-GXZ"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Jl-be-reC">
-                                                    <rect key="frame" x="105" y="84" width="164" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Jl-be-reC">
+                                                    <rect key="frame" x="98" y="0.0" width="164" height="30"/>
                                                     <color key="backgroundColor" red="0.0039215686269999999" green="0.17571765180000001" blue="0.35848188399999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="0Ya-zr-I1d"/>
+                                                        <constraint firstAttribute="width" constant="164" id="CbW-1N-WQd"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="164" id="bJ8-Vr-rRq"/>
+                                                        <constraint firstAttribute="height" constant="30" id="gKU-M5-l4I"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="16"/>
                                                     <state key="normal" title="View Gallery">
                                                         <color key="titleShadowColor" red="0.66659259800000004" green="0.66670930390000005" blue="0.66658520700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2033,7 +2109,33 @@ If you would like to send donation by check, please make your donation payable t
                                                         <segue destination="Gii-Qf-P16" kind="show" identifier="LecturerGallery" id="hkT-Su-wSa"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5hh-Yt-xMD">
+                                                    <rect key="frame" x="67" y="89" width="240" height="30"/>
+                                                    <color key="backgroundColor" red="0.0039215686269999999" green="0.17571765180000001" blue="0.35848188399999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="240" id="RhW-mq-Ze2"/>
+                                                        <constraint firstAttribute="height" constant="30" id="VxB-mW-cpv"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="16"/>
+                                                    <state key="normal" title="Learn more about this lecturer">
+                                                        <color key="titleShadowColor" red="0.66659259800000004" green="0.66670930390000005" blue="0.66658520700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="linkReadMore:" destination="rWH-Fv-tLx" eventType="touchUpInside" id="w8S-Fr-sfm"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="5hh-Yt-xMD" firstAttribute="top" secondItem="NX2-YT-Gvm" secondAttribute="bottom" constant="15" id="0nX-qO-nug"/>
+                                                <constraint firstItem="8Jl-be-reC" firstAttribute="leading" secondItem="ceN-ev-lL2" secondAttribute="leading" constant="98" id="8RZ-Gj-ADU"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="5hh-Yt-xMD" secondAttribute="bottom" constant="94" id="RX1-xS-vRd"/>
+                                                <constraint firstItem="NX2-YT-Gvm" firstAttribute="top" secondItem="8Jl-be-reC" secondAttribute="bottom" constant="14" id="UfF-q0-N7O"/>
+                                                <constraint firstItem="8Jl-be-reC" firstAttribute="top" secondItem="ceN-ev-lL2" secondAttribute="top" id="Wfv-CX-Q5C"/>
+                                                <constraint firstItem="NX2-YT-Gvm" firstAttribute="leading" secondItem="8Jl-be-reC" secondAttribute="leading" id="Zh6-Xc-gx6"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="5hh-Yt-xMD" secondAttribute="trailing" constant="60" id="dSL-nb-qVm"/>
+                                                <constraint firstItem="5hh-Yt-xMD" firstAttribute="leading" secondItem="ceN-ev-lL2" secondAttribute="leadingMargin" constant="59" id="df2-5G-muE"/>
+                                                <constraint firstAttribute="trailing" secondItem="8Jl-be-reC" secondAttribute="trailing" constant="113" id="tp8-Zf-nNr"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -2071,15 +2173,20 @@ If you would like to send donation by check, please make your donation payable t
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kG4-oq-6OV">
+                            <webView opaque="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="kG4-oq-6OV">
                                 <rect key="frame" x="20" y="44" width="335" height="579"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="579" id="GPH-zE-ijx"/>
+                                    <constraint firstAttribute="width" constant="335" id="fU0-jL-fY5"/>
+                                </constraints>
                                 <dataDetectorType key="dataDetectorTypes"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Fio-ym-zUO" firstAttribute="top" secondItem="kG4-oq-6OV" secondAttribute="bottom" id="UCK-K1-3ih"/>
                             <constraint firstItem="kG4-oq-6OV" firstAttribute="leading" secondItem="ng3-bq-QH2" secondAttribute="leading" constant="20" id="ZN2-2v-ouL"/>
                             <constraint firstAttribute="trailing" secondItem="kG4-oq-6OV" secondAttribute="trailing" constant="20" id="az0-bP-zda"/>
                             <constraint firstItem="kG4-oq-6OV" firstAttribute="top" secondItem="xOg-TZ-XNv" secondAttribute="bottom" id="r7F-kN-DWj"/>
