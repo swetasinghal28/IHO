@@ -12,6 +12,7 @@ class NewsEventsViewController: UITableViewController {
     
     var newsList:[String : News] = [String : News]()
     var names:[String]=[String]()
+    var reachability: Reachability = Reachability();
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,68 +32,122 @@ class NewsEventsViewController: UITableViewController {
         self.toolbarItems = [flexible,toolbarTitle]
         
         //Featured News
-        let url = URL(string:"http://107.170.239.62:3000/featureobjects" )
-        
-        let task = URLSession.shared.dataTask(with: url!){ (data, response, error) in
-            if error != nil
-            {
-                print("ERROR",error ?? "There is an error")
-            }
-            else
-            {
-                if let content = data
+        let flag = reachability.connectedToNetwork();
+        if flag{
+            
+            print("Yes internet connection")
+            
+            
+            let url = URL(string:"http://107.170.239.62:3000/featureobjects" )
+            
+            let task = URLSession.shared.dataTask(with: url!){ (data, response, error) in
+                if error != nil
                 {
-                    //self.news = [News]()
-                    do{
-                        //Array
-                        let myJSON = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
-                        
-                        // let myJSON = try JSONSerialization.jsonObject(with: data!,options:.mutableContainers) as? [String:AnyObject]
-                        
-                        print("myJSON", myJSON)
-                        
-                        //                        for dict2 in myJSON {
-                        //                            let id = dict2["id"]
-                        //                            let title = dict2["title"]
-                        //                            let desc = dict2["desc"]
-                        //                            println(id)
-                        //                            println(main)
-                        //                            println(description)
-                        //                        }
-                        
-                        
-                        
-                        if let newsFromJSON = myJSON as? [[String: AnyObject]]{
-                            print("newsFromJSON", newsFromJSON)
-                            for news in newsFromJSON{
-                                let newsObject = News()
-                                if let title = news["title"] as? String,let desc = news["desc"] as? String,let id = news["id"] as? String,let image = news["image"] as? String, let link = news["link"] as? String{
-                                    newsObject.id = id
-                                    newsObject.title = title
-                                    newsObject.desc = desc
-                                    newsObject.image = image
-                                    newsObject.link = link
-                                    self.names.append(newsObject.title)
-                                    //print(title)
-                                    
+                    print("ERROR",error ?? "There is an error")
+                }
+                else
+                {
+                    if let content = data
+                    {
+                        do{
+                            //Array
+                            let myJSON = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
+                            
+                            print("myJSON", myJSON)
+                            
+                            if let newsFromJSON = myJSON as? [[String: AnyObject]]{
+                                print("newsFromJSON", newsFromJSON)
+                                for news in newsFromJSON{
+                                    let newsObject = News()
+                                    if let title = news["title"] as? String,let desc = news["desc"] as? String,let id = news["id"] as? String,let image = news["image"] as? String, let link = news["link"] as? String{
+                                        newsObject.id = id
+                                        newsObject.title = title
+                                        newsObject.desc = desc
+                                        newsObject.image = image
+                                        newsObject.link = link
+                                        self.names.append(newsObject.title)
+                                        
+                                    }
+                                    self.newsList[newsObject.title] = newsObject
                                 }
-                                //self.news?.append(newsObject)
-                                self.newsList[newsObject.title] = newsObject
                             }
+                            
+                            
+                            
                         }
-                        
-                        
-                        
-                    }
-                    catch let error{
-                        print(error)
+                        catch let error{
+                            print(error)
+                        }
                     }
                 }
+                
+                
+            }
+            task.resume()
+            
+            
+            
+        }else{
+            
+            print("No internet connection")
+            
+            print("Loading from Local")
+            
+            do {
+                
+                if let file = Bundle.main.url(forResource: "featuredNews", withExtension: "json") {
+                    
+                    let data = try Data(contentsOf: file)
+                    
+                    //let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    
+                    
+                    
+                    let myJSON = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
+                    
+                    //print("myJSON", myJSON)
+                    if let newsFromJSON = myJSON as? [[String: AnyObject]]{
+                        
+                        //print("newsFromJSON", newsFromJSON)
+                        
+                        for news in newsFromJSON{
+                            
+                            let newsObject = News()
+                            
+                            if let title = news["title"] as? String,let desc = news["desc"] as? String,let id = news["id"] as? String,let image = news["image"] as? String, let link = news["link"] as? String{
+                                
+                                newsObject.id = id
+                                
+                                newsObject.title = title
+                                
+                                newsObject.desc = desc
+                                
+                                newsObject.image = image
+                                
+                                newsObject.link = link
+                                
+                                self.names.append(newsObject.title)
+                                
+                                //print(title)
+                            }
+                            self.newsList[newsObject.title] = newsObject
+                        }
+                        
+                    } else {
+                        
+                        print("JSON is invalid")
+                        
+                    }
+                    
+                } else {
+                    print("no file")
+                }
+                
+            } catch {
+                print(error.localizedDescription)
             }
             
-            
         }
-        task.resume()
         
         
     }
@@ -118,75 +173,7 @@ class NewsEventsViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    // MARK: - Table view data source
-    
-    //    override func numberOfSections(in tableView: UITableView) -> Int {
-    //        // #warning Incomplete implementation, return the number of sections
-    //        return 3
-    //    }
-    //
-    //    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    //        // #warning Incomplete implementation, return the number of rows
-    //        return 0
-    //    }
-    
-    
-    
-    /*
-     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-     
-     // Configure the cell...
-     
-     return cell
-     }
-     */
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+  
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         NSLog("seque identifier is \(segue.identifier)")

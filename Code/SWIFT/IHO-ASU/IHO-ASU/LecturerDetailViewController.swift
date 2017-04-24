@@ -26,13 +26,16 @@ class LecturerDetailViewController: UITableViewController, MFMailComposeViewCont
     }
     @IBAction func lEmail(_ sender: Any) {
         
+        
+        
+        
         if MFMailComposeViewController.canSendMail() {
             print("Can send mail \n \n")
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
             mail.setToRecipients([newsEmail!])
             mail.setSubject("Ask a question")
-            mail.setMessageBody("<p>Enter your question here</p>", isHTML: true)
+            mail.setMessageBody("<p>Enter your question here</p>" ,isHTML: true)
             
             present(mail, animated: true)
         } else {
