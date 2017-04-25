@@ -13,14 +13,10 @@ class EventsViewController: UITableViewController {
     
     @IBOutlet var eventsTableView: UITableView!
     var urlString:String = ""
-    //var news: [News]? = []
     var eventsList:[String : Events] = [String : Events]()
     var names:[String]=[String]()
-    //    var NumberOfRows = 0
-    //    var newsList = [NSManagedObject]()
-    //    var appDel:AppDelegate?
-    //    var mContext:NSManagedObjectContext?
-    
+    var reachability: Reachability = Reachability();
+    let df = DateFormatter()
     
     
     override func viewDidLoad() {
@@ -29,46 +25,83 @@ class EventsViewController: UITableViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
         self.navigationItem.title = "Events"
+        df.dateFormat = "MM-dd-yyyy"
         
-        // getting URL string from Info.plist
-        //        if let infoPlist = Bundle.main.infoDictionary {
-        //            self.urlString = ((infoPlist["ServerURLString"]) as?  String!)!
-        //            NSLog("The default urlString from info.plist is \(self.urlString)")
-        //        } else {
-        //            NSLog("error getting urlString from info.plist")
-        //        }
-        
-        let url = URL(string:"http://107.170.239.62:3000/eventobjects" )
-        
-        let task = URLSession.shared.dataTask(with: url!){ (data, response, error) in
-            if error != nil
-            {
-                print("ERROR",error ?? "There is an error")
-            }
-            else
-            {
-                if let content = data
+        let flag = reachability.connectedToNetwork();
+        if flag{
+            
+            print("Yes internet connection")
+            
+            let url = URL(string:"http://107.170.239.62:3000/eventobjects" )
+            
+            let task = URLSession.shared.dataTask(with: url!){ (data, response, error) in
+                if error != nil
                 {
-                    //self.news = [News]()
-                    do{
-                        //Array
-                        let myJSON = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
+                    print("ERROR",error ?? "There is an error")
+                }
+                else
+                {
+                    if let content = data
+                    {
+                        //self.news = [News]()
+                        do{
+                            //Array
+                            let myJSON = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
+                            
+                            print("myJSON", myJSON)
+                            
+                            if let eventsFromJSON = myJSON as? [[String: AnyObject]]{
+                                print("eventsFromJSON", eventsFromJSON)
+                                for event in eventsFromJSON{
+                                    let eventsObject = Events()
+                                    if let title = event["title"] as? String,let desc = event["desc"] as? String,let id = event["id"] as? String,let date = event["date"] as? String, let place = event["place"] as? String, let location = event["location"] as? String, let regURL = event["regURL"] as? String{
+                                        eventsObject.id = id
+                                        eventsObject.title = title
+                                        eventsObject.desc = desc
+                                        eventsObject.place = place
+                                        eventsObject.eventDateString = date
+                                        eventsObject.regURL = regURL
+                                        eventsObject.location = location
+                                        self.names.append(eventsObject.title)
+                                        
+                                    }
+                                    self.eventsList[eventsObject.title] = eventsObject
+                                }
+                            }
+                            
+                            self.eventsTableView.reloadData()
+                            
+                            
+                        }
+                        catch let error{
+                            print(error)
+                        }
+                    }
+                }
+                
+                
+            }
+            task.resume()
+
+        }else{
+            
+            print("No internet connection")
+                
+                print("Loading from Local")
+                
+                do {
+                    
+                    if let file = Bundle.main.url(forResource: "events", withExtension: "json") {
                         
-                        // let myJSON = try JSONSerialization.jsonObject(with: data!,options:.mutableContainers) as? [String:AnyObject]
+                        let data = try Data(contentsOf: file)
                         
-                        print("myJSON", myJSON)
-                        
-                        //                        for dict2 in myJSON {
-                        //                            let id = dict2["id"]
-                        //                            let title = dict2["title"]
-                        //                            let desc = dict2["desc"]
-                        //                            println(id)
-                        //                            println(main)
-                        //                            println(description)
-                        //                        }
+                        //let json = try JSONSerialization.jsonObject(with: data, options: [])
                         
                         
                         
+                        let myJSON = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
+                        
+                        //print("myJSON", myJSON)
                         if let eventsFromJSON = myJSON as? [[String: AnyObject]]{
                             print("eventsFromJSON", eventsFromJSON)
                             for event in eventsFromJSON{
@@ -79,70 +112,33 @@ class EventsViewController: UITableViewController {
                                     eventsObject.desc = desc
                                     eventsObject.place = place
                                     eventsObject.regURL = regURL
-                                    eventsObject.date = date
+                                    eventsObject.eventDateString = date
                                     eventsObject.location = location
                                     self.names.append(eventsObject.title)
-                                    //print(title)
                                     
                                 }
-                                //self.news?.append(newsObject)
                                 self.eventsList[eventsObject.title] = eventsObject
                             }
                         }
                         
-                        //print (self.news)
-                        //self.tableView.reloadData()
-                        self.eventsTableView.reloadData()
+                         else {
+                            
+                            print("JSON is invalid")
+                            
+                        }
                         
-                        
+                    } else {
+                        print("no file")
                     }
-                    catch let error{
-                        print(error)
-                    }
+                    self.eventsTableView.reloadData()
+                    
+                } catch {
+                    print(error.localizedDescription)
                 }
-            }
-            
             
         }
-        task.resume()
         
         
-        //        self.names.removeAll()
-        //        if let infoPlist = Bundle.main.infoDictionary {
-        //            self.urlString = ((infoPlist["ServerURLString"]) as?  String!)!
-        //            NSLog("The default urlString from info.plist is \(self.urlString)")
-        //        } else {
-        //            NSLog("error getting urlString from info.plist")
-        //        }
-        //        // These vars are used to access the Movie and Genre entities
-        //        appDel = (UIApplication.shared.delegate as! AppDelegate)
-        //        mContext = appDel!.managedObjectContext
-        //        let selectRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "title")
-        //        do{
-        //            let results = try mContext!.fetch(selectRequest)
-        //            newsList = results as! [NSManagedObject]
-        //            NSLog("Trying to see NewsList\(newsList)")
-        //        } catch let error as NSError{
-        //            NSLog("Error selecting all movies: \(error)")
-        //        }
-        //        if newsList.count > 0 {
-        //            for news in newsList{
-        //                if(news.value(forKey: "title") != nil){
-        //                    let title:String = (news.value(forKey: "title") as? String)!
-        //                    self.names.append(title)
-        //                }
-        //            }
-        //        }
-        //self.tableview.reloadData()
-        
-        
-        
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         
         //toolbar
@@ -181,21 +177,8 @@ class EventsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        //print("rows",self.names.count)
         return self.names.count
     }
-    
-    //    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    //        let cell = tableView.dequeueReusableCellWithIdentifier("News Cell", forIndexPath: indexPath)
-    //
-    //        cell.textLabel?.text = self.names[indexPath.row]
-    //        //cell.detailTextLabel?.text = "Testing huhhahhahah"
-    //        return cell
-    //    }
-    
-    
-    
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -209,52 +192,6 @@ class EventsViewController: UITableViewController {
         
         return cell
     }
-    
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         NSLog("seque identifier is \(segue.identifier)")
@@ -277,7 +214,7 @@ class EventsViewController: UITableViewController {
             viewController.eventPlace = eventsObjectToBeSend.place
             viewController.eventRegURL = eventsObjectToBeSend.regURL
             viewController.eventLocation = eventsObjectToBeSend.location
-            viewController.eventDate = eventsObjectToBeSend.date
+            viewController.eventDate = eventsObjectToBeSend.eventDateString
         }
     }
     

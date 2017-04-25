@@ -24,7 +24,7 @@ class LucyViewController: UIViewController {
         var baseURL = URL(fileURLWithPath: "\(Bundle.main.bundlePath)")
         self.lucyLogo.scalesPageToFit = false
         self.lucyLogo.loadHTMLString(html!, baseURL: baseURL)
-        self.lucyLogo.scrollView.isScrollEnabled = false
+        self.lucyLogo.scrollView.isScrollEnabled = true
         
         
         //toolbar

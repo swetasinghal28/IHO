@@ -18,6 +18,8 @@ class NewsViewController: UITableViewController {
     var newsId:[String]=[String]()
     var reachability: Reachability = Reachability();
     let dispatch_group = DispatchGroup()
+    let df = DateFormatter()
+    
     
     
     
@@ -52,22 +54,24 @@ class NewsViewController: UITableViewController {
                             //print("newsFromJSON", newsFromJSON)
                             for news in newsFromJSON{
                                 let newsObject = News()
-                                if let title = news["title"] as? String,let desc = news["desc"] as? String,let id = news["id"] as? String,let image = news["image"] as? String, let link = news["link"] as? String{
+                                if let title = news["title"] as? String,let desc = news["desc"] as? String,let id = news["id"] as? String,let image = news["image"] as? String, let link = news["link"] as? String, let date = news["date"] as? String{
                                     newsObject.id = id
                                     newsObject.title = title
                                     newsObject.desc = desc
                                     newsObject.image = image
                                     newsObject.link = link
+                                    newsObject.newsDate = self.df.date(from: date)!
                                     self.names.append(newsObject.title)
                                     //print(title)
                                     
                                 }
-                                //self.news?.append(newsObject)
                                 self.newsList[newsObject.title] = newsObject
                             }
                         }
                         
-                        //print (self.news)
+                        let sortedArray = self.newsList.sorted { $0.value.newsDate < $1.value.newsDate }
+                        self.names = sortedArray.map {$0.0 }
+                        
                         mainInstance.newsList = self.newsList;
                         mainInstance.names = self.names;
                         self.newsTableView.reloadData()
@@ -143,6 +147,8 @@ class NewsViewController: UITableViewController {
         let toolbarTitle = UIBarButtonItem(customView: label)
         let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         self.toolbarItems = [flexible,toolbarTitle]
+        
+        df.dateFormat = "MM-dd-yyyy"
         
 
         let flag = reachability.connectedToNetwork();
@@ -236,7 +242,7 @@ class NewsViewController: UITableViewController {
                                 
                                 let newsObject = News()
                                 
-                                if let title = news["title"] as? String,let desc = news["desc"] as? String,let id = news["id"] as? String,let image = news["image"] as? String, let link = news["link"] as? String{
+                                if let title = news["title"] as? String,let desc = news["desc"] as? String,let id = news["id"] as? String,let image = news["image"] as? String, let link = news["link"] as? String, let date = news["date"] as? String{
                                     
                                     newsObject.id = id
                                     
@@ -247,6 +253,8 @@ class NewsViewController: UITableViewController {
                                     newsObject.image = image
                                     
                                     newsObject.link = link
+                                    
+                                    newsObject.newsDate = self.df.date(from: date)!
                                     
                                     self.names.append(newsObject.title)
                                     
@@ -265,6 +273,8 @@ class NewsViewController: UITableViewController {
                     } else {
                         print("no file")
                     }
+                    let sortedArray = self.newsList.sorted { $0.value.newsDate < $1.value.newsDate }
+                    self.names = sortedArray.map {$0.0 }
                     mainInstance.newsList = self.newsList;
                     mainInstance.names = self.names;
                     self.newsTableView.reloadData()

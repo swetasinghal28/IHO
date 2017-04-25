@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AboutViewController: UIViewController {
+class AboutViewController: UIViewController , UIWebViewDelegate {
 
     @IBAction func mapIt(_ sender: Any) {
         
@@ -19,11 +19,10 @@ class AboutViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+        aboutView.scrollView.isScrollEnabled = false
+        self.aboutView.delegate = self
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-        
         self.navigationItem.title = "About"
-        
         aboutView.loadRequest(URLRequest(url: URL(fileURLWithPath: Bundle.main.path(forResource: "About", ofType: "html")!)))
         
         //toolbar
@@ -43,6 +42,17 @@ class AboutViewController: UIViewController {
       //  aboutView.loadRequest(NSURLRequest(URL : NSURL(fileURLWithpath : NSBundle.mainBundle().pathForResource("About", ofType:"html")!)!))
 
         // Do any additional setup after loading the view.
+    }
+    
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        
+        if navigationType == UIWebViewNavigationType.linkClicked {
+            UIApplication.shared.openURL(request.url!)
+            return false
+        }
+        
+        return true
+        
     }
 
     override func didReceiveMemoryWarning() {

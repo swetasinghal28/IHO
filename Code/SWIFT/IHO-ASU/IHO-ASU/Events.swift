@@ -9,22 +9,6 @@
 
 import Foundation
 
-
-//
-//  MovieDescription.swift
-//  MovieDescCoreData
-//  Created by Sweta Singhal on 4/20/16.
-//  Copyright © 2016 Sweta Singhal. All rights reserved.
-////  @author   Sweta Singhal    mailto:sweta.singhal@asu.edu.
-//  @version 4/20/16
-//
-//  Created by Sweta Singhal on 4/20/16.
-//  Copyright © 2016 Sweta Singhal.
-//  I provide the instuctor - Prof. Tim Lindquist and the University- Arizona State University with the right to build and evaluate the software package and for making further changes whatsoever is required for the purpose of determining my grade and program assessment.
-//
-
-import Foundation
-
 open class Events{
     var title: String
     var id: String
@@ -33,8 +17,10 @@ open class Events{
     var location: String
     var place: String
     var regURL: String
+    var eventDate: Date
+    var eventDateString: String
     
-    init(title: String, id: String,desc: String,date: String,location: String,place: String,regURL: String){
+    init(title: String, id: String,desc: String,date: String,location: String,place: String,regURL: String,eventDate: Date, eventDateString: String){
         self.title = title
         self.id = id
         self.desc = desc
@@ -42,6 +28,8 @@ open class Events{
         self.location = location
         self.place = place
         self.regURL = regURL
+        self.eventDate = eventDate
+        self.eventDateString = eventDateString
     }
     init() {
         self.title = "unknown"
@@ -51,6 +39,8 @@ open class Events{
         self.location = "unknown"
         self.place = "unknown"
         self.regURL = "unknown"
+        self.eventDateString = "unknown"
+        self.eventDate = Date.init()
     }
     
     init (jsonStr: String){
@@ -61,6 +51,8 @@ open class Events{
         self.location = ""
         self.place = ""
         self.regURL = ""
+        self.eventDateString = ""
+        self.eventDate = Date.init()
         if let data: Data = jsonStr.data(using: String.Encoding.utf8){
             do{
                 let dict = try JSONSerialization.jsonObject(with: data, options:.mutableContainers) as?[String:AnyObject]
@@ -71,6 +63,7 @@ open class Events{
                 self.regURL = (dict!["regURL"] as? String)!
                 self.place = (dict!["place"] as? String)!
                 self.location = (dict!["location"] as? String)!
+                self.eventDateString = (dict!["date"] as? String)!
             }catch {
                 print("unable to convert to dictionary")
             }
@@ -85,6 +78,8 @@ open class Events{
         self.regURL = dict["regURL"] as! String
         self.place = dict["place"] as! String
         self.location = dict["location"] as! String
+        self.eventDateString = dict["date"] as! String
+        self.eventDate = Date.init()
     
     }
     
