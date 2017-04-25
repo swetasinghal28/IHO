@@ -48,16 +48,20 @@ class GalleryTableViewController: UITableViewController {
                         if let imageFromJSON = myJSON as? [[String: AnyObject]]{
                             for imageO in imageFromJSON{
                                 let imageObject = Image()
-                                if let title = imageO["title"] as? String,let id = imageO["id"] as? String,let image = imageO["image"] as? String{
+                                if let title = imageO["title"] as? String,let id = imageO["id"] as? String,let image = imageO["image"] as? String,let order = imageO["order"] as? Double{
                                     imageObject.id = id
                                     imageObject.title = title
                                     imageObject.image = image
+                                    imageObject.order = order
                                     self.names.append(imageObject.title)
                                 }
                                 self.imageList[imageObject.title] = imageObject
+                                
                             }
                         }
                         
+                        let sortedArray = self.imageList.sorted { $0.value.order < $1.value.order }
+                        self.names = sortedArray.map {$0.0 }
                         mainInstance.imageList = self.imageList;
                         mainInstance.imageNames = self.names;
                         self.galleryTableView.reloadData()
@@ -209,20 +213,27 @@ class GalleryTableViewController: UITableViewController {
                         if let imageFromJSON = myJSON as? [[String: AnyObject]]{
                             for imageO in imageFromJSON{
                                 let imageObject = Image()
-                                if let title = imageO["title"] as? String,let id = imageO["id"] as? String,let image = imageO["image"] as? String{
+                                if let title = imageO["title"] as? String,let id = imageO["id"] as? String,let image = imageO["image"] as? String,let order = imageO["order"] as? Double{
                                     imageObject.id = id
                                     imageObject.title = title
                                     imageObject.image = image
+                                    imageObject.order = order
                                     self.names.append(imageObject.title)
                                 }
                                 self.imageList[imageObject.title] = imageObject
                             }
                         }
+                        let sortedArray = self.imageList.sorted { $0.value.order < $1.value.order }
+                        //print("unsorted keys and order", self.imageList.keys)
+                        //print("sortedArray keys and order",sortedArray.map {$0.0 }, sortedArray.map {$0.1.order })
+                        self.names = sortedArray.map {$0.0 }
                         
                     }
                     else{
                         print("no file")
                     }
+                    
+                    
                     mainInstance.imageList = self.imageList;
                     mainInstance.imageNames = self.names;
                     self.galleryTableView.reloadData()

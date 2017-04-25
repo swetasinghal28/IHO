@@ -15,13 +15,15 @@ open class News{
     var desc: String
     var image: String
     var link: String
+    var newsDate: Date
     
-    init(title: String, id: String,desc: String,image: String,link: String){
+    init(title: String, id: String,desc: String,image: String,link: String, date: Date){
         self.title = title
         self.id = id
         self.desc = desc
         self.image = image
         self.link = link
+        self.newsDate = date
     }
     init() {
         self.title = "unknown"
@@ -29,6 +31,7 @@ open class News{
         self.desc = "unknown"
         self.image = "unknown"
         self.link = "unknown"
+        self.newsDate = Date.init()
     }
     
     init (jsonStr: String){
@@ -37,6 +40,7 @@ open class News{
         self.desc = ""
         self.image = ""
         self.link = ""
+        self.newsDate = Date.init()
         if let data: Data = jsonStr.data(using: String.Encoding.utf8){
             do{
                 let dict = try JSONSerialization.jsonObject(with: data, options:.mutableContainers) as?[String:AnyObject]
@@ -56,7 +60,9 @@ open class News{
         self.id = dict["id"] as! String
         self.desc = dict["desc"] as! String
         self.image = dict["image"] as! String
-        self.link = dict["link"] as! String}
+        self.link = dict["link"] as! String
+        self.newsDate = Date.init()
+    }
     
     func toJsonString () ->String{
         var jsonStr = "";

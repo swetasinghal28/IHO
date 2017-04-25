@@ -16,6 +16,7 @@ class EventsViewController: UITableViewController {
     var eventsList:[String : Events] = [String : Events]()
     var names:[String]=[String]()
     var reachability: Reachability = Reachability();
+    let df = DateFormatter()
     
     
     override func viewDidLoad() {
@@ -24,6 +25,7 @@ class EventsViewController: UITableViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
         self.navigationItem.title = "Events"
+        df.dateFormat = "MM-dd-yyyy"
         
         let flag = reachability.connectedToNetwork();
         if flag{
@@ -57,8 +59,8 @@ class EventsViewController: UITableViewController {
                                         eventsObject.title = title
                                         eventsObject.desc = desc
                                         eventsObject.place = place
+                                        eventsObject.eventDateString = date
                                         eventsObject.regURL = regURL
-                                        eventsObject.date = date
                                         eventsObject.location = location
                                         self.names.append(eventsObject.title)
                                         
@@ -110,7 +112,7 @@ class EventsViewController: UITableViewController {
                                     eventsObject.desc = desc
                                     eventsObject.place = place
                                     eventsObject.regURL = regURL
-                                    eventsObject.date = date
+                                    eventsObject.eventDateString = date
                                     eventsObject.location = location
                                     self.names.append(eventsObject.title)
                                     
@@ -212,7 +214,7 @@ class EventsViewController: UITableViewController {
             viewController.eventPlace = eventsObjectToBeSend.place
             viewController.eventRegURL = eventsObjectToBeSend.regURL
             viewController.eventLocation = eventsObjectToBeSend.location
-            viewController.eventDate = eventsObjectToBeSend.date
+            viewController.eventDate = eventsObjectToBeSend.eventDateString
         }
     }
     

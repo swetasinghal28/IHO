@@ -16,8 +16,9 @@ open class Lecturer{
     var image: String
     var link: String
     var email: String
+    var lecOrder: Double
     
-    init(title: String, id: String,bio: String,image: String,link: String,name: String,email: String){
+    init(title: String, id: String,bio: String,image: String,link: String,name: String,email: String,lecOrder: Double){
         self.title = title
         self.id = id
         self.bio = bio
@@ -25,6 +26,7 @@ open class Lecturer{
         self.link = link
         self.name = name
         self.email = email
+        self.lecOrder = 0
     }
     init() {
         self.title = "unknown"
@@ -34,6 +36,7 @@ open class Lecturer{
         self.link = "unknown"
         self.name = "unknown"
         self.email = "unknown"
+        self.lecOrder = 0
     }
     
     init (jsonStr: String){
@@ -44,6 +47,7 @@ open class Lecturer{
         self.link = ""
         self.name = ""
         self.email = ""
+        self.lecOrder = 0
         if let data: Data = jsonStr.data(using: String.Encoding.utf8){
             do{
                 let dict = try JSONSerialization.jsonObject(with: data, options:.mutableContainers) as?[String:AnyObject]
@@ -68,6 +72,7 @@ open class Lecturer{
         self.link = dict["link"] as! String
     self.name = dict["name"] as! String
         self.email = dict["email"] as! String
+        self.lecOrder = dict["order"] as! Double
     }
     
     func toJsonString () ->String{

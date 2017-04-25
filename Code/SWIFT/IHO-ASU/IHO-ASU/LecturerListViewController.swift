@@ -51,7 +51,7 @@ class LecturerListViewController: UITableViewController {
                                 print("lecturerFromJSON", lecturerFromJSON)
                                 for lecturer in lecturerFromJSON{
                                     let lecturerObject = Lecturer()
-                                    if let title = lecturer["title"] as? String,let bio = lecturer["bio"] as? String,let id = lecturer["id"] as? String,let image = lecturer["image"] as? String, let link = lecturer["link"] as? String, let name = lecturer["name"] as? String, let email = lecturer["email"] as? String{
+                                    if let title = lecturer["title"] as? String,let bio = lecturer["bio"] as? String,let id = lecturer["id"] as? String,let image = lecturer["image"] as? String, let link = lecturer["link"] as? String, let name = lecturer["name"] as? String, let email = lecturer["email"] as? String, let order = lecturer["order"] as? Double{
                                         lecturerObject.id = id
                                         lecturerObject.title = title
                                         lecturerObject.bio = bio
@@ -59,12 +59,14 @@ class LecturerListViewController: UITableViewController {
                                         lecturerObject.link = link
                                         lecturerObject.name = name
                                         lecturerObject.email = email
+                                        lecturerObject.lecOrder = order
                                         self.names.append(lecturerObject.name)
                                     }
                                     self.lecturerList[lecturerObject.name] = lecturerObject
                                 }
                             }
-                            
+                            let sortedArray = self.lecturerList.sorted { $0.value.lecOrder < $1.value.lecOrder }
+                            self.names = sortedArray.map {$0.0 }
                             self.lecturerTableView.reloadData()
                         }
                         catch let error{
@@ -97,7 +99,7 @@ class LecturerListViewController: UITableViewController {
                         print("lecturerFromJSON", lecturerFromJSON)
                         for lecturer in lecturerFromJSON{
                             let lecturerObject = Lecturer()
-                            if let title = lecturer["title"] as? String,let bio = lecturer["bio"] as? String,let id = lecturer["id"] as? String,let image = lecturer["image"] as? String, let link = lecturer["link"] as? String, let name = lecturer["name"] as? String, let email = lecturer["email"] as? String{
+                            if let title = lecturer["title"] as? String,let bio = lecturer["bio"] as? String,let id = lecturer["id"] as? String,let image = lecturer["image"] as? String, let link = lecturer["link"] as? String, let name = lecturer["name"] as? String, let email = lecturer["email"] as? String, let order = lecturer["order"] as? Double{
                                 lecturerObject.id = id
                                 lecturerObject.title = title
                                 lecturerObject.bio = bio
@@ -105,13 +107,17 @@ class LecturerListViewController: UITableViewController {
                                 lecturerObject.link = link
                                 lecturerObject.name = name
                                 lecturerObject.email = email
+                                lecturerObject.lecOrder = order
                                 self.names.append(lecturerObject.name)
                             }
                             self.lecturerList[lecturerObject.name] = lecturerObject
                         }
                     }
                 }else{
-                    print("no file")}
+                    print("no file")
+                }
+                let sortedArray = self.lecturerList.sorted { $0.value.lecOrder < $1.value.lecOrder }
+                self.names = sortedArray.map {$0.0 }
                 self.lecturerTableView.reloadData()
                 
             }
