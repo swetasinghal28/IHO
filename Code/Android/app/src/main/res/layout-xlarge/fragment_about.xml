@@ -16,7 +16,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="171dp"
+        android:layout_height="164.65dp"
         android:id="@+id/imageView"
         android:layout_gravity="center_horizontal|top"
         android:background="@drawable/about"
