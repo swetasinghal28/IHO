@@ -1468,21 +1468,31 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ark-5A-YT7">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ark-5A-YT7">
                                 <rect key="frame" x="0.0" y="181" width="375" height="415"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="375" id="Tpv-mc-GiG"/>
                                     <constraint firstAttribute="height" constant="415" id="y9P-yF-dbb"/>
                                 </constraints>
-                                <string key="text">The Institute of Human Origins invites you to share in the excitement of discovery, the pursuit of new knowledge, and the public discussion of the enduring puzzle of how we “became human.” The study of how and where humans developed on Earth has never been more vibrant than today. We are seeking visionary partners to join our mission to advance the science of human origins and explore the ongoing challenges of our field and laboratory research.
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <mutableString key="content">The Institute of Human Origins invites you to share in the excitement of discovery, the pursuit of new knowledge, and the public discussion of the enduring puzzle of how we “became human.” The study of how and where humans developed on Earth has never been more vibrant than today. We are seeking visionary partners to join our mission to advance the science of human origins and explore the ongoing challenges of our field and laboratory research.
 
 An investment in IHO helps to fund student scholarships, support research in laboratories and field sites, and meet the growing needs of our researchers and students. Please help us continue the search!
 
 Please contact IHO at 480.727.6580 for more information or to talk to someone about making an annual contribution, or to target your contribution for a particular scholarship, endowment, or fund.
 
-If you would like to send donation by check, please make your donation payable to "ASU Foundation" and mail to ASU Institute of Human Origins, PO Box 874101, Tempe, AZ 85287-4101.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+If you would like to send donation by check, please make your donation payable to "ASU Foundation" and mail to ASU Institute of Human Origins, PO Box 874101, Tempe, AZ 85287-4101.</mutableString>
+                                        <attributes>
+                                            <font key="NSFont" size="14" name="ArialMT"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8KC-eS-HUc">
