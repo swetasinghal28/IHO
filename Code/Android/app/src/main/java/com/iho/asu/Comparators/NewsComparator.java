@@ -1,6 +1,6 @@
 package com.iho.asu.Comparators;
 
-import com.iho.asu.Database.Tables.News;
+import com.iho.asu.Tables.News;
 
 import java.util.Comparator;
 

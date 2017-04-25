@@ -165,7 +165,7 @@
 
     <ImageButton
         android:layout_width="match_parent"
-        android:layout_height="175dp"
+        android:layout_height="210dp"
         android:id="@+id/button"
         android:background="@drawable/ihologo"
         android:onClick="onClick"

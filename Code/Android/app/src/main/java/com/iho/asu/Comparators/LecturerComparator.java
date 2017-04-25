@@ -1,6 +1,6 @@
 package com.iho.asu.Comparators;
 
-import com.iho.asu.Database.Tables.Lecturer;
+import com.iho.asu.Tables.Lecturer;
 
 import java.util.Comparator;
 
