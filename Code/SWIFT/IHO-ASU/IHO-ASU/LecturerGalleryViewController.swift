@@ -57,9 +57,9 @@ class LecturerGalleryViewController: UITableViewController {
                             let allImages = try JSONSerialization.jsonObject(with: allImagesData, options: JSONSerialization.ReadingOptions.allowFragments) as! [String : AnyObject]
                             print("all Images", allImages)
                             
-                            //let imagesArray = try JSONSerialization.jsonObject(with: myJSON, options: JSONSerialization.ReadingOptions.allowFragments) as! [String : AnyObject]
                             if let imageFromJSON = allImages["imagesarray"] as? NSArray{
-                                print("imageFromJSON", imageFromJSON)
+                                print("imageFromJSON", imageFromJSON, imageFromJSON.count)
+                                if(imageFromJSON.count != 0){
                                 for index in 0...imageFromJSON.count-1 {
                                     
                                     let aObject = imageFromJSON[index] as! [String : AnyObject]
@@ -79,7 +79,11 @@ class LecturerGalleryViewController: UITableViewController {
                                     print("self. imageList", self.imageList)
                                 }
                             }
+                            }
                             
+                            
+                        
+                        
                             //print (self.news)
                             //self.tableView.reloadData()
                             self.galleryTableView.reloadData()
