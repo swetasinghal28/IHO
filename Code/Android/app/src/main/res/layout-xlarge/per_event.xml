@@ -4,22 +4,52 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@android:color/white">
-
-    <ImageButton
-        android:id="@+id/customEventsBackbutton"
+    <LinearLayout
+        android:id="@+id/customEventsBackbuttonll"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/header_events"
-        android:onClick="onClick" />
+        android:background="#003366"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp">
+
+        <ImageButton
+            android:id="@+id/customEventsBackbutton"
+            android:layout_width="50dp"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/arrow"
+            android:onClick="onClick" />
+
+        <LinearLayout
+
+            android:layout_width="345dp"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp">
+
+            <TextView
+                android:id="@+id/txt"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Events"
+                android:textColor="@android:color/white"
+                android:textSize="35dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/scrollView2"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@+id/customEventsBackbutton"
+        android:layout_below="@+id/customEventsBackbuttonll"
         android:background="@android:color/background_light">
 
         <LinearLayout

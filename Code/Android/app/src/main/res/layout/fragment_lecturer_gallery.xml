@@ -4,27 +4,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white">
+    <LinearLayout
+        android:id="@+id/customLecturerGalleryBackbuttonll"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#003366"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp">
+
         <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
             android:id="@+id/customLecturerGalleryBackbutton"
-            android:background="@drawable/header_lecturergallery"
-            android:onClick="onClick"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true" />
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/arrow"
+            android:onClick="onClick" />
+
+        <LinearLayout
+
+            android:layout_width="345dp"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp">
+
+            <TextView
+                android:id="@+id/txt"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Scientist Images"
+                android:textColor="@android:color/white"
+                android:textSize="20dp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="15dp"
-        android:id="@+id/textView"
-        android:layout_below="@+id/customLecturerGalleryBackbutton"
-        android:background="@android:color/background_dark"
-        />
+        android:layout_below="@+id/customLecturerGalleryBackbuttonll"
+        android:background="@android:color/background_dark" />
+
     <ListView
         android:id="@android:id/list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView"
-        android:background="@android:color/background_dark">
-    </ListView>
+        android:background="@android:color/background_dark"></ListView>
 </RelativeLayout>
