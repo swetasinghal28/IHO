@@ -81,12 +81,13 @@ class LecturerDetailViewController: UITableViewController, MFMailComposeViewCont
         gallery.layer.cornerRadius = 15
         lecEmail.layer.cornerRadius = 15
         
-        print("Inside News detail view controller")
-        print("News Title", newsTitle ?? "no value")
-        print("News Id",newsId ?? "no value")
-        print("News Bio",newsBio ?? "no value")
-        print("News Image", newsImage ?? "no value")
-        print("News Link", newsLink ?? "no value")
+        print("Inside Lec detail view controller")
+        print("Lec Title", newsTitle ?? "no value")
+        print("Lec Title", newsName ?? "no value")
+        print("Lec Id",newsId ?? "no value")
+        print("Lec Bio",newsBio ?? "no value")
+        //print("Lec Image", newsImage ?? "no value")
+        print("Lec Link", newsLink ?? "no value")
         
         nTitle.text = newsName
         nTitle.lineBreakMode = NSLineBreakMode.byWordWrapping

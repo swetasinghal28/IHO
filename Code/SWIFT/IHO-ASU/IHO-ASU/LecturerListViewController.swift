@@ -252,8 +252,8 @@ class LecturerListViewController: UITableViewController {
             
             //print( "Trying to print selected news object ", newsList[title]?.desc ?? "No value" , title)
             
-            
-            viewController.newsTitle = title
+           // print ("lec Name, lec Title", lecturerObjectToBeSend.name, lecturerObjectToBeSend.title)
+            viewController.newsTitle = lecturerObjectToBeSend.title
             viewController.newsBio = lecturerObjectToBeSend.bio
             viewController.newsId = lecturerObjectToBeSend.id
             viewController.newsImage = lecturerObjectToBeSend.image
