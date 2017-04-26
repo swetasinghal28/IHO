@@ -5,21 +5,52 @@
     android:orientation="vertical"
     android:id="@+id/science_layout"
     android:background="@android:color/white">
-    <ImageButton
+    <LinearLayout
+        android:id="@+id/customFNBackbuttonll"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:id="@+id/customFNBackbutton"
-        android:background="@drawable/header_science"
-        android:onClick="onClick"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"/>
+        android:background="#003366"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp">
+
+        <ImageButton
+            android:id="@+id/customFNBackbutton"
+            android:layout_width="50dp"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/arrow"
+            android:onClick="onClick" />
+
+        <LinearLayout
+
+            android:layout_width="345dp"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp">
+
+            <TextView
+                android:id="@+id/txt"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Science"
+                android:textColor="@android:color/white"
+                android:textSize="35dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
     <ListView
         android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Hello"
-        android:layout_below="@+id/customFNBackbutton"
+        android:layout_below="@+id/customFNBackbuttonll"
         android:dividerHeight="5dp"
         android:divider="#aaa">
     </ListView>

@@ -31,7 +31,6 @@ import com.iho.asu.Pages.Lucy;
 import com.iho.asu.Pages.MainFragment;
 import com.iho.asu.Pages.NewsEvents;
 import com.iho.asu.R;
-import com.iho.asu.Utilities.GMailSender;
 
 import static android.view.View.OnClickListener;
 
@@ -85,7 +84,6 @@ public class MainActivity extends Activity implements OnClickListener{
                 fragmentTransaction.commit();
                 break;
             case R.id.customNEBackButton:
-            case R.id.customNewsEBackbutton:
             case R.id.ne:
                 fragment = new NewsEvents();
                 fragmentTransaction.replace(R.id.main_layout, fragment);
