@@ -16,7 +16,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.iho.asu.Comparators.ImageComparator;
 import com.iho.asu.R;
-import com.iho.asu.Tables.Gallery;
+import com.iho.asu.Model.Gallery;
 import com.iho.asu.Utilities.AppController;
 import com.iho.asu.Utilities.CustomList;
 

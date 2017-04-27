@@ -1,4 +1,4 @@
-package com.iho.asu.Tables;
+package com.iho.asu.Model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

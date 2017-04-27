@@ -1,4 +1,4 @@
-package com.iho.asu.Tables;
+package com.iho.asu.Model;
 
 /**
  * Created by Barathi on 7/4/2014.

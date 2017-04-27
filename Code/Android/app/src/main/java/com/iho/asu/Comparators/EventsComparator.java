@@ -1,6 +1,6 @@
 package com.iho.asu.Comparators;
 
-import com.iho.asu.Tables.Events;
+import com.iho.asu.Model.Events;
 
 import java.util.Comparator;
 

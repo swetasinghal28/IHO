@@ -22,7 +22,7 @@ import com.google.gson.Gson;
 import com.iho.asu.Utilities.AppController;
 import com.iho.asu.Comparators.NewsComparator;
 import com.iho.asu.Constants.FragmentFieldsMapping;
-import com.iho.asu.Tables.News;
+import com.iho.asu.Model.News;
 import com.iho.asu.Utilities.JSONCache;
 import com.iho.asu.Utilities.JSONResourceReader;
 import com.iho.asu.R;

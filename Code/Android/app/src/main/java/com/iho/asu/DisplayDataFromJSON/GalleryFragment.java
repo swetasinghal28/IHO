@@ -20,7 +20,7 @@ import com.google.gson.Gson;
 import com.iho.asu.Utilities.AppController;
 import com.iho.asu.Comparators.ImageComparator;
 import com.iho.asu.Utilities.CustomList;
-import com.iho.asu.Tables.Gallery;
+import com.iho.asu.Model.Gallery;
 import com.iho.asu.Utilities.JSONCache;
 import com.iho.asu.Utilities.JSONResourceReader;
 import com.iho.asu.R;

@@ -21,7 +21,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.google.common.io.Files;
 import com.google.gson.Gson;
 import com.iho.asu.Utilities.AppController;
-import com.iho.asu.Tables.Science;
+import com.iho.asu.Model.Science;
 import com.iho.asu.Utilities.JSONCache;
 import com.iho.asu.Utilities.JSONResourceReader;
 import com.iho.asu.R;

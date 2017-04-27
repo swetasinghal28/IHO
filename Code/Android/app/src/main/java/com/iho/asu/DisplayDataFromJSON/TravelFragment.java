@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.iho.asu.Tables.Travel;
+import com.iho.asu.Model.Travel;
 import com.iho.asu.R;
 
 import java.util.ArrayList;

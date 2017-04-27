@@ -1,6 +1,6 @@
 package com.iho.asu.Comparators;
 
-import com.iho.asu.Tables.Gallery;
+import com.iho.asu.Model.Gallery;
 
 import java.util.Comparator;
 

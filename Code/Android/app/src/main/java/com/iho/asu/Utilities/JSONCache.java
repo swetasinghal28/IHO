@@ -1,10 +1,10 @@
 package com.iho.asu.Utilities;
 
-import com.iho.asu.Tables.Events;
-import com.iho.asu.Tables.Gallery;
-import com.iho.asu.Tables.Lecturer;
-import com.iho.asu.Tables.News;
-import com.iho.asu.Tables.Science;
+import com.iho.asu.Model.Events;
+import com.iho.asu.Model.Gallery;
+import com.iho.asu.Model.Lecturer;
+import com.iho.asu.Model.News;
+import com.iho.asu.Model.Science;
 
 import java.util.ArrayList;
 import java.util.HashMap;
