@@ -75,6 +75,7 @@ class EventsDetailViewController: UITableViewController {
         }
         
         if(eventPlace != nil){
+            eventPlace = eventPlace!.replacingOccurrences(of: "\\n", with: "\n")
             whereDetail.text = eventPlace
             whereDetail.lineBreakMode = NSLineBreakMode.byWordWrapping
             whereDetail.numberOfLines = 0

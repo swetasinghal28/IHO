@@ -67,6 +67,12 @@
 		9F36EA521EA01D380041582B /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F36EA4E1EA01D380041582B /* CreditsViewController.swift */; };
 		9F36EA531EA01D380041582B /* news.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F36EA4F1EA01D380041582B /* news.json */; };
 		9F36EA541EA01D380041582B /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F36EA501EA01D380041582B /* Reachability.swift */; };
+		9F84B6481EADEC51007F74CB /* featuredNews.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F84B6471EADEC51007F74CB /* featuredNews.json */; };
+		9F84B64A1EADF4D0007F74CB /* events.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F84B6491EADF4D0007F74CB /* events.json */; };
+		9F84B64C1EADFAD0007F74CB /* gallery.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F84B64B1EADFAD0007F74CB /* gallery.json */; };
+		9F84B64E1EAEA945007F74CB /* askAnthro.html in Resources */ = {isa = PBXBuildFile; fileRef = 9F84B64D1EAEA945007F74CB /* askAnthro.html */; };
+		9F84B6501EAEAB1F007F74CB /* lecturer.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F84B64F1EAEAB1F007F74CB /* lecturer.json */; };
+		9F84B6521EAF06A5007F74CB /* newscience.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F84B6511EAF06A5007F74CB /* newscience.json */; };
 		9F87E3651E4D35560030F231 /* asu_logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9F87E3641E4D35560030F231 /* asu_logo.jpg */; };
 		9F87E3671E4D3DAE0030F231 /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F87E3661E4D3DAE0030F231 /* ConnectViewController.swift */; };
 		9F87E3691E4D3FAC0030F231 /* NewsEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F87E3681E4D3FAC0030F231 /* NewsEventsViewController.swift */; };
@@ -164,6 +170,12 @@
 		9F36EA4E1EA01D380041582B /* CreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 		9F36EA4F1EA01D380041582B /* news.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = news.json; sourceTree = "<group>"; };
 		9F36EA501EA01D380041582B /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		9F84B6471EADEC51007F74CB /* featuredNews.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = featuredNews.json; sourceTree = "<group>"; };
+		9F84B6491EADF4D0007F74CB /* events.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = events.json; sourceTree = "<group>"; };
+		9F84B64B1EADFAD0007F74CB /* gallery.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gallery.json; sourceTree = "<group>"; };
+		9F84B64D1EAEA945007F74CB /* askAnthro.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = askAnthro.html; sourceTree = "<group>"; };
+		9F84B64F1EAEAB1F007F74CB /* lecturer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lecturer.json; sourceTree = "<group>"; };
+		9F84B6511EAF06A5007F74CB /* newscience.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = newscience.json; sourceTree = "<group>"; };
 		9F87E3641E4D35560030F231 /* asu_logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = asu_logo.jpg; sourceTree = "<group>"; };
 		9F87E3661E4D3DAE0030F231 /* ConnectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
 		9F87E3681E4D3FAC0030F231 /* NewsEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsEventsViewController.swift; sourceTree = "<group>"; };
@@ -244,6 +256,7 @@
 		9FB7C57B1E4AAA5900B88166 /* IHO-ASU */ = {
 			isa = PBXGroup;
 			children = (
+				9F84B64D1EAEA945007F74CB /* askAnthro.html */,
 				9FFC3B6F1EA840FF004A0597 /* ask_ananthropologist_v2.jpg */,
 				9FFC3B701EA840FF004A0597 /* ASU-IHO-About.jpg */,
 				9FFC3B711EA840FF004A0597 /* IHO_Gallery_main.jpg */,
@@ -319,6 +332,11 @@
 				9F87E36A1E4D40740030F231 /* FieldViewController.swift */,
 				9F87E36C1E4D41610030F231 /* GalleryViewController.swift */,
 				9FFC3B6D1EA7F581004A0597 /* LecturerGalleryViewController.swift */,
+				9F84B6471EADEC51007F74CB /* featuredNews.json */,
+				9F84B6491EADF4D0007F74CB /* events.json */,
+				9F84B64B1EADFAD0007F74CB /* gallery.json */,
+				9F84B64F1EAEAB1F007F74CB /* lecturer.json */,
+				9F84B6511EAF06A5007F74CB /* newscience.json */,
 			);
 			path = "IHO-ASU";
 			sourceTree = "<group>";
@@ -453,11 +471,14 @@
 				9F30DED11E8EC79E00F40E06 /* photoswipe.css in Resources */,
 				9F30DEC91E8EC79E00F40E06 /* lucy.html in Resources */,
 				9F30DEBF1E8EC79E00F40E06 /* jquery-1.10.2.min.js in Resources */,
+				9F84B6501EAEAB1F007F74CB /* lecturer.json in Resources */,
 				9F30DEB11E8EC79E00F40E06 /* CreditDetails.html in Resources */,
 				230EE90B1E4E147100B4F9F9 /* search-icon-64.png in Resources */,
 				9F87E3651E4D35560030F231 /* asu_logo.jpg in Resources */,
 				9F30DED61E8EC79E00F40E06 /* travellearnimge.jpg in Resources */,
 				9F30DEAE1E8EC79E00F40E06 /* claszen_logo_maroon.png in Resources */,
+				9F84B64C1EADFAD0007F74CB /* gallery.json in Resources */,
+				9F84B6521EAF06A5007F74CB /* newscience.json in Resources */,
 				9F30DEB01E8EC79E00F40E06 /* Contact.html in Resources */,
 				9F30DEB61E8EC79E00F40E06 /* FB.png in Resources */,
 				9FFC3B721EA840FF004A0597 /* ask_ananthropologist_v2.jpg in Resources */,
@@ -469,6 +490,7 @@
 				9F30DEC81E8EC79E00F40E06 /* lucy_skull.png in Resources */,
 				9F30DEC11E8EC79E00F40E06 /* jquery.mobile-1.4.2.min.css in Resources */,
 				9F30DEBE1E8EC79E00F40E06 /* jqm-icon-pack-2.0-original.css in Resources */,
+				9F84B64A1EADF4D0007F74CB /* events.json in Resources */,
 				9F30DEC21E8EC79E00F40E06 /* jquery.mobile-1.4.2.min.js in Resources */,
 				9F30DED91E8EC79E00F40E06 /* vimeo.png in Resources */,
 				9F30DEAB1E8EC79E00F40E06 /* askananthropologist.jpg in Resources */,
@@ -476,6 +498,7 @@
 				9F30DEDA1E8EC79E00F40E06 /* youtube.png in Resources */,
 				9F30DEB91E8EC79E00F40E06 /* IHO_h_mg.png in Resources */,
 				230EE9051E4E147100B4F9F9 /* About.html in Resources */,
+				9F84B6481EADEC51007F74CB /* featuredNews.json in Resources */,
 				230EE9071E4E147100B4F9F9 /* ASU IHO vertical.jpg in Resources */,
 				9F36EA531EA01D380041582B /* news.json in Resources */,
 				9FB7C58A1E4AAA5900B88166 /* LaunchScreen.storyboard in Resources */,
@@ -490,6 +513,7 @@
 				9F30DECA1E8EC79E00F40E06 /* lucy.png in Resources */,
 				9F30DED81E8EC79E00F40E06 /* twitter.png in Resources */,
 				9F30DEC01E8EC79E00F40E06 /* jquery-1.11.0.min.js in Resources */,
+				9F84B64E1EAEA945007F74CB /* askAnthro.html in Resources */,
 				9F30DECC1E8EC79E00F40E06 /* newLogo.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

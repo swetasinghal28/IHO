@@ -6,111 +6,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IHO-ASU/LecturerGalleryViewController.swift"
-            timestampString = "514325248.735436"
+            filePath = "IHO-ASU/NewsEventsViewController.swift"
+            timestampString = "514954715.57397"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "IHO_ASU.LecturerGalleryViewController.viewDidLoad () -&gt; ()"
-                  moduleName = "IHO-ASU"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/swetasinghal28/Desktop/April13IHO/IHO/Code/SWIFT/IHO-ASU/IHO-ASU/LecturerGalleryViewController.swift"
-                  timestampString = "514331491.557613"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "52"
-                  endingLineNumber = "52"
-                  offsetFromSymbolStart = "1220">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "IHO_ASU.LecturerGalleryViewController.(viewDidLoad () -&gt; ()).(closure #1)"
-                  moduleName = "IHO-ASU"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/swetasinghal28/Desktop/April13IHO/IHO/Code/SWIFT/IHO-ASU/IHO-ASU/LecturerGalleryViewController.swift"
-                  timestampString = "514331491.606211"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
-                  offsetFromSymbolStart = "44">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IHO-ASU/LecturerGalleryViewController.swift"
-            timestampString = "514331056.94469"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "IHO_ASU.LecturerGalleryViewController.(viewDidLoad () -&gt; ()).(closure #1)"
-                  moduleName = "IHO-ASU"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/swetasinghal28/Desktop/April13IHO/IHO/Code/SWIFT/IHO-ASU/IHO-ASU/LecturerGalleryViewController.swift"
-                  timestampString = "514331491.667803"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "70"
-                  endingLineNumber = "70"
-                  offsetFromSymbolStart = "1496">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "IHO_ASU.LecturerGalleryViewController.(viewDidLoad () -&gt; ()).(closure #1)"
-                  moduleName = "IHO-ASU"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/swetasinghal28/Desktop/April13IHO/IHO/Code/SWIFT/IHO-ASU/IHO-ASU/LecturerGalleryViewController.swift"
-                  timestampString = "514331491.670951"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "70"
-                  endingLineNumber = "70"
-                  offsetFromSymbolStart = "1768">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IHO-ASU/LecturerGalleryViewController.swift"
-            timestampString = "514331169.95217"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
