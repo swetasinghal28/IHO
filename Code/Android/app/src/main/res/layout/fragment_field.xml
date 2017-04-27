@@ -126,39 +126,42 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingTop="@dimen/activity_horizontal_margin"
+                android:paddingBottom="@dimen/activity_horizontal_margin"
                 android:background="@drawable/shape"
                 android:id="@+id/studentBlogLayout"
                 android:onClick="onClick"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:layout_alignParentLeft="true">
 
                 <TextView
-                    android:layout_width="384dp"
-                    android:layout_height="30dp"
-                    android:text="Blog—Notes from the Field                   >"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="  Blog—Notes from the Field                  >"
                     android:id="@+id/blogTextView"
                     android:textSize="20dp"
                     android:textColor="@android:color/background_light"
-                    android:paddingLeft="20dp"
+                    android:paddingLeft="30dp"
                     android:onClick="onClick"
-                    android:layout_gravity="center"/>
+                    android:layout_alignParentLeft="true"
+                    />
 
                 <TextView
                     android:id="@+id/fn4"
-                    android:layout_width="384dp"
-                    android:layout_height="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
                     android:textColor="@android:color/background_light"
-                    android:text="Follow IHO faculty and students at research and field sites around the globe! Visit Now!"
+                    android:text="  Follow IHO faculty and students at research \n  and field sites around the globe! Visit Now!"
                     android:onClick="onClick"
                     android:visibility="visible"
                     android:layout_below="@+id/linearLayout"
                     android:layout_alignParentLeft="true"
                     android:textSize="16dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="34dp"
+                    android:paddingLeft="32dp"
+                    android:paddingRight="44dp"
                     android:layout_gravity="center"/>
                 </LinearLayout>
 

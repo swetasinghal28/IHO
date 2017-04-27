@@ -315,7 +315,7 @@ public class LecturerFragment extends ListFragment {
 
             lecturers = (HashMap<String, Lecturer>) JSONCache.lecturers.clone();
             List<Lecturer> lecturerList = new ArrayList<>(JSONCache.lecturers.values());
-            Collections.sort(lecturerList, Collections.<Lecturer>reverseOrder(new LecturerComparator()));
+            Collections.sort(lecturerList, new LecturerComparator());
             for (Lecturer lecturer: lecturerList) {
                 lecturerNames.add(lecturer.getName());
             }

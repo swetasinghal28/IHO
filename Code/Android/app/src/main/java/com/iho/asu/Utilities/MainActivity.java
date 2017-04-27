@@ -169,7 +169,7 @@ public class MainActivity extends Activity implements OnClickListener{
                 Intent email = new Intent(Intent.ACTION_SEND);
                 email.setData(Uri.parse("mailto:"));
                 email.setType("text/plain");
-                email.putExtra(Intent.EXTRA_EMAIL, new String[]{ "bbaburaj@asu.edu"});
+                email.putExtra(Intent.EXTRA_EMAIL, new String[]{ "iho@asu.edu"});
                 email.putExtra(Intent.EXTRA_SUBJECT, "IHO E-News Subscription");
                 startActivity(Intent.createChooser(email, "Choose an Email Client:"));
                 break;

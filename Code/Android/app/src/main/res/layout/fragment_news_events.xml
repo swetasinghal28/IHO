@@ -73,7 +73,7 @@
                 android:layout_height="60dp"
                 android:background="@drawable/shape"
                 android:onClick="onClick"
-                android:text="  News                                                       >"
+                android:text="  News                                                        >"
                 android:textColor="@android:color/background_light"
                 android:textSize="20dp" />
 
