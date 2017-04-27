@@ -20,7 +20,6 @@ class GalleryTableViewController: UITableViewController {
     @IBOutlet var galleryTableView: UITableView!
     
     var urlString:String = ""
-    //var news: [News]? = []
     var imageList:[String : Image] = [String : Image]()
     var names:[String]=[String]()
     var imageId:[String]=[String]()
@@ -29,9 +28,7 @@ class GalleryTableViewController: UITableViewController {
     
     func loadImageList(){
         
-        print("Loading from Internet")
-        
-        let url = URL(string:"http://107.170.239.62:3000/galleryobjects" )
+                let url = URL(string:urlString + "galleryobjects" )
         
         let task = URLSession.shared.dataTask(with: url!){ (data, response, error) in
             if error != nil
@@ -80,7 +77,7 @@ class GalleryTableViewController: UITableViewController {
     
     func loadImageId(){
         
-        let urlId = URL(string:"http://107.170.239.62:3000/galleryid" )
+        let urlId = URL(string:urlString + "galleryid" )
         
         dispatch_group.enter()
         var taskUrlId = URLSession.shared.dataTask(with: urlId!){ (data, response, error) in
@@ -90,7 +87,6 @@ class GalleryTableViewController: UITableViewController {
             }
             else
             {
-                print("Inside Load News Id function")
                 
                 self.imageId = [];
                 
@@ -107,7 +103,6 @@ class GalleryTableViewController: UITableViewController {
                                 }
                             }
                         }
-                        print("Image Id: ", self.imageId)
                     }
                     catch let error{
                         print(error)
@@ -124,6 +119,14 @@ class GalleryTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
+            let dictRoot = NSDictionary(contentsOfFile: path)
+            if let dict = dictRoot {
+                urlString = dict["URL"] as! String
+            }
+        }
+        
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
@@ -144,22 +147,12 @@ class GalleryTableViewController: UITableViewController {
         if flag
         {
             
-            print("Yes internet connection")
-            
             if (!mainInstance.imageList.isEmpty && !mainInstance.imageNames.isEmpty){
                 
-                print("Calling news Id from internet")
                 loadImageId();
                 dispatch_group.wait()
-                print("Completed loading news Id from Internet")
-                
-                print("Cache news Id",mainInstance.imageId)
-                print("Internet news Id",self.imageId)
                 
                 if(mainInstance.imageId == self.imageId){
-                    
-                    print("News List unchanged")
-                    
                     self.imageList = mainInstance.imageList;
                     
                     self.names = mainInstance.imageNames;
@@ -168,7 +161,6 @@ class GalleryTableViewController: UITableViewController {
                 }
                 else{
                     
-                    print("News List updated")
                     mainInstance.clearImageCache()
                     loadImageList();
                     loadImageId();
@@ -179,7 +171,6 @@ class GalleryTableViewController: UITableViewController {
                 
             }else{
                 
-                print("Loading from Internet")
                 mainInstance.clearImageCache()
                 loadImageList();
                 loadImageId();
@@ -188,23 +179,16 @@ class GalleryTableViewController: UITableViewController {
                 
             }
             
-            print("News Id from cache: ", mainInstance.imageId)
-            
         }else{
-            
-            print("No internet connection")
-            print("Cache value : ", mainInstance.names)
             
             if (!mainInstance.imageList.isEmpty && !mainInstance.imageNames.isEmpty){
                 
-                print("Loading from Cache")
                 self.imageList = mainInstance.imageList;
                 self.names = mainInstance.imageNames;
                 self.galleryTableView.reloadData();
                 
             }else{
                 
-                print("Loading from Local")
                 do{
                     if let file = Bundle.main.url(forResource: "gallery", withExtension: "json") {
                     let data = try Data(contentsOf: file)
@@ -224,16 +208,11 @@ class GalleryTableViewController: UITableViewController {
                             }
                         }
                         let sortedArray = self.imageList.sorted { $0.value.order < $1.value.order }
-                        //print("unsorted keys and order", self.imageList.keys)
-                        //print("sortedArray keys and order",sortedArray.map {$0.0 }, sortedArray.map {$0.1.order })
                         self.names = sortedArray.map {$0.0 }
-                        
                     }
                     else{
                         print("no file")
                     }
-                    
-                    
                     mainInstance.imageList = self.imageList;
                     mainInstance.imageNames = self.names;
                     self.galleryTableView.reloadData()
@@ -271,8 +250,6 @@ class GalleryTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        //print("rows",self.names.count)
         return self.names.count
     }
     
@@ -280,7 +257,9 @@ class GalleryTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = galleryTableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath)as! GalleryTableViewCell
+        if(self.names != nil){
         cell.textlabel?.text = self.names[indexPath.row]
+        }
         
         let title = self.names[(indexPath.row)]
         let imageObject = imageList[title]! as Image
@@ -300,7 +279,7 @@ class GalleryTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 484.0;//Choose your custom row height
+        return 484.0;
     }
     
 }

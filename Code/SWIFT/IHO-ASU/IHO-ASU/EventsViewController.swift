@@ -22,6 +22,14 @@ class EventsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
+            let dictRoot = NSDictionary(contentsOfFile: path)
+            if let dict = dictRoot {
+                urlString = dict["URL"] as! String
+            }
+        }
+        
+        
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
         self.navigationItem.title = "Events"
@@ -30,9 +38,7 @@ class EventsViewController: UITableViewController {
         let flag = reachability.connectedToNetwork();
         if flag{
             
-            print("Yes internet connection")
-            
-            let url = URL(string:"http://107.170.239.62:3000/eventobjects" )
+            let url = URL(string:urlString + "eventobjects" )
             
             let task = URLSession.shared.dataTask(with: url!){ (data, response, error) in
                 if error != nil
@@ -43,15 +49,11 @@ class EventsViewController: UITableViewController {
                 {
                     if let content = data
                     {
-                        //self.news = [News]()
                         do{
                             //Array
                             let myJSON = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
                             
-                            print("myJSON", myJSON)
-                            
                             if let eventsFromJSON = myJSON as? [[String: AnyObject]]{
-                                print("eventsFromJSON", eventsFromJSON)
                                 for event in eventsFromJSON{
                                     let eventsObject = Events()
                                     if let title = event["title"] as? String,let desc = event["desc"] as? String,let id = event["id"] as? String,let date = event["date"] as? String, let place = event["place"] as? String, let location = event["location"] as? String, let regURL = event["regURL"] as? String{
@@ -70,8 +72,6 @@ class EventsViewController: UITableViewController {
                             }
                             
                             self.eventsTableView.reloadData()
-                            
-                            
                         }
                         catch let error{
                             print(error)
@@ -84,10 +84,6 @@ class EventsViewController: UITableViewController {
             task.resume()
 
         }else{
-            
-            print("No internet connection")
-                
-                print("Loading from Local")
                 
                 do {
                     
@@ -95,15 +91,10 @@ class EventsViewController: UITableViewController {
                         
                         let data = try Data(contentsOf: file)
                         
-                        //let json = try JSONSerialization.jsonObject(with: data, options: [])
-                        
-                        
                         
                         let myJSON = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
                         
-                        //print("myJSON", myJSON)
                         if let eventsFromJSON = myJSON as? [[String: AnyObject]]{
-                            print("eventsFromJSON", eventsFromJSON)
                             for event in eventsFromJSON{
                                 let eventsObject = Events()
                                 if let title = event["title"] as? String,let desc = event["desc"] as? String,let id = event["id"] as? String,let date = event["date"] as? String, let place = event["place"] as? String, let location = event["location"] as? String, let regURL = event["regURL"] as? String{
@@ -184,11 +175,9 @@ class EventsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = eventsTableView.dequeueReusableCell(withIdentifier: "Events Cell", for: indexPath)
         
-        // Configure the cell...
+        if(self.names != nil){
         cell.textLabel?.text = self.names[indexPath.row]
-        
-        
-        
+        }
         
         return cell
     }
@@ -198,16 +187,8 @@ class EventsViewController: UITableViewController {
         if segue.identifier == "EventsDetail" {
             let viewController:EventsDetailViewController = segue.destination as! EventsDetailViewController
             let indexPath = self.tableView.indexPathForSelectedRow!
-            
-            //let moviedata = self.tableView.indexPathForSelectedRow
-            
-            // let aMovie = movieLib.movies[movieLib.names[indexPath.row]]! as MovieDescription
             let title = self.names[(indexPath.row)]
             let eventsObjectToBeSend = eventsList[title]! as Events
-            
-            //print( "Trying to print selected news object ", newsList[title]?.desc ?? "No value" , title)
-            
-            
             viewController.eTitle = title
             viewController.eventDesc = eventsObjectToBeSend.desc
             viewController.eventId = eventsObjectToBeSend.id

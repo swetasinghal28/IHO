@@ -34,14 +34,6 @@ class AboutViewController: UIViewController , UIWebViewDelegate {
         let toolbarTitle = UIBarButtonItem(customView: label)
         let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         self.toolbarItems = [flexible,toolbarTitle]
-
-
-        
-       
-        
-      //  aboutView.loadRequest(NSURLRequest(URL : NSURL(fileURLWithpath : NSBundle.mainBundle().pathForResource("About", ofType:"html")!)!))
-
-        // Do any additional setup after loading the view.
     }
     
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
@@ -71,16 +63,5 @@ class AboutViewController: UIViewController , UIWebViewDelegate {
         self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         self.navigationController?.setToolbarHidden(false, animated: false)
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -35,28 +35,20 @@ class FeaturedNewsViewController: UITableViewController {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-        //
-        //        tableView.rowHeight = UITableViewAutomaticDimension
-        //        tableView.estimatedRowHeight = 40
         
         self.navigationItem.title = "Featured News"
-        
-        
         self.readMoreButton.layer.cornerRadius = 15
         
-        print("Inside News detail view controller")
-        print("News Title", self.newsTitle ?? "no value")
-        print("News Id",self.newsId ?? "no value")
-        print("News Desc",self.newsDesc ?? "no value")
-        print("News Image", self.newsImage ?? "no value")
-        print("News Link", self.newsLink ?? "no value")
-        
+        if(newsTitle != nil){
         self.nTitle.text = self.newsTitle
         self.nTitle.lineBreakMode = NSLineBreakMode.byWordWrapping
         self.nTitle.numberOfLines = 0
+        }
+        if(newsDesc != nil){
         self.nDesc.text = self.newsDesc
         self.nDesc.lineBreakMode = NSLineBreakMode.byWordWrapping
         self.nDesc.numberOfLines = 0
+        }
         
         if (self.newsImage != nil)
         {
@@ -67,8 +59,6 @@ class FeaturedNewsViewController: UITableViewController {
             self.nImage.image = UIImage(data: decodedData! as Data)
         }
         
-
-        
         //toolbar
         let label = UILabel(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(350), height: CGFloat(21)))
         label.text = "ASU IHO 2017"
@@ -78,12 +68,7 @@ class FeaturedNewsViewController: UITableViewController {
         let toolbarTitle = UIBarButtonItem(customView: label)
         let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         self.toolbarItems = [flexible,toolbarTitle]
-        
-
-        
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-   
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -99,7 +84,6 @@ class FeaturedNewsViewController: UITableViewController {
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 

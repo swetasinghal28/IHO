@@ -10,12 +10,20 @@ import UIKit
 
 class NewsEventsViewController: UITableViewController {
     
+    var urlString: String = ""
     var newsList:[String : News] = [String : News]()
     var names:[String]=[String]()
     var reachability: Reachability = Reachability();
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
+            let dictRoot = NSDictionary(contentsOfFile: path)
+            if let dict = dictRoot {
+                urlString = dict["URL"] as! String
+            }
+        }
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
@@ -35,10 +43,7 @@ class NewsEventsViewController: UITableViewController {
         let flag = reachability.connectedToNetwork();
         if flag{
             
-            print("Yes internet connection")
-            
-            
-            let url = URL(string:"http://107.170.239.62:3000/featureobjects" )
+            let url = URL(string:urlString + "featureobjects" )
             
             let task = URLSession.shared.dataTask(with: url!){ (data, response, error) in
                 if error != nil
@@ -52,11 +57,7 @@ class NewsEventsViewController: UITableViewController {
                         do{
                             //Array
                             let myJSON = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
-                            
-                            print("myJSON", myJSON)
-                            
                             if let newsFromJSON = myJSON as? [[String: AnyObject]]{
-                                print("newsFromJSON", newsFromJSON)
                                 for news in newsFromJSON{
                                     let newsObject = News()
                                     if let title = news["title"] as? String,let desc = news["desc"] as? String,let id = news["id"] as? String,let image = news["image"] as? String, let link = news["link"] as? String{
@@ -71,9 +72,6 @@ class NewsEventsViewController: UITableViewController {
                                     self.newsList[newsObject.title] = newsObject
                                 }
                             }
-                            
-                            
-                            
                         }
                         catch let error{
                             print(error)
@@ -89,27 +87,13 @@ class NewsEventsViewController: UITableViewController {
             
         }else{
             
-            print("No internet connection")
-            
-            print("Loading from Local")
-            
             do {
                 
                 if let file = Bundle.main.url(forResource: "featuredNews", withExtension: "json") {
                     
                     let data = try Data(contentsOf: file)
-                    
-                    //let json = try JSONSerialization.jsonObject(with: data, options: [])
-                    
-                    
-                    
                     let myJSON = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
-                    
-                    //print("myJSON", myJSON)
                     if let newsFromJSON = myJSON as? [[String: AnyObject]]{
-                        
-                        //print("newsFromJSON", newsFromJSON)
-                        
                         for news in newsFromJSON{
                             
                             let newsObject = News()
@@ -127,8 +111,6 @@ class NewsEventsViewController: UITableViewController {
                                 newsObject.link = link
                                 
                                 self.names.append(newsObject.title)
-                                
-                                //print(title)
                             }
                             self.newsList[newsObject.title] = newsObject
                         }
@@ -171,9 +153,8 @@ class NewsEventsViewController: UITableViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-  
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         NSLog("seque identifier is \(segue.identifier)")
@@ -181,14 +162,8 @@ class NewsEventsViewController: UITableViewController {
             let viewController:FeaturedNewsViewController = segue.destination as! FeaturedNewsViewController
             let indexPath = self.tableView.indexPathForSelectedRow!
             
-            //let moviedata = self.tableView.indexPathForSelectedRow
-            
-            // let aMovie = movieLib.movies[movieLib.names[indexPath.row]]! as MovieDescription
             let title = self.names[(indexPath.row)]
             let newsObjectToBeSend = newsList[title]! as News
-            
-            //print( "Trying to print selected news object ", newsList[title]?.desc ?? "No value" , title)
-            
             
             viewController.newsTitle = title
             viewController.newsDesc = newsObjectToBeSend.desc
