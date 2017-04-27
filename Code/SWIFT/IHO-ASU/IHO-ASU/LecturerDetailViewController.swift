@@ -77,6 +77,7 @@ class LecturerDetailViewController: UITableViewController, MFMailComposeViewCont
         nDesc.numberOfLines = 0
         }
         if(newsTitle != nil){
+        newsTitle = newsTitle!.replacingOccurrences(of: "\\n", with: "\n")
         lecTitle.text = newsTitle
         lecTitle.lineBreakMode = NSLineBreakMode.byWordWrapping
         lecTitle.numberOfLines = 0
