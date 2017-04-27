@@ -33,7 +33,7 @@ public class Lecture {
 		title = object.getString("title");
 		image = object.getString("image");
 		email = object.getString("email");
-		//order = object.getInt("order");
+		order = object.getInt("order");
 	}
 
 	public String getId() {
@@ -101,6 +101,6 @@ public class Lecture {
 	}
 	
 	public String toString() {
-		return title;
+		return name;
 	}
 }

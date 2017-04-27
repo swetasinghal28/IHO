@@ -119,7 +119,7 @@ public class FieldNotes extends JFrame implements LecturesDelegate, NewSciencesD
 		lecturePanel = new JPanel();
 
 		newSciencesButton = new JButton("NewSciences");
-		lectureButton = new JButton("Lecture");
+		lectureButton = new JButton("Scientists");
 		travelButton = new JButton("Travel");
 		
 		mainPanel.add(lectureButton);
