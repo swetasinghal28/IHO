@@ -68,11 +68,14 @@ class LecturerGalleryViewController: UITableViewController {
                                         imageObject.title = aObject["title"] as! String
                                         imageObject.id =  aObject["id"] as! String
                                         imageObject.image = aObject["image"] as! String
+                                        imageObject.order = aObject["order"] as! Double
                                         self.names.append(imageObject.title)
                                         self.imageList[imageObject.title] = imageObject
                                     }
                                 }
                             }
+                            let sortedArray = self.imageList.sorted { $0.value.order < $1.value.order }
+                            self.names = sortedArray.map {$0.0 }
                             self.galleryTableView.reloadData()
                         }
                         catch let error{
