@@ -67,15 +67,15 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="eb9-z3-RHH" rowHeight="100" style="IBUITableViewCellStyleDefault" id="XfM-YK-fCA">
-                                        <rect key="frame" x="0.0" y="298" width="375" height="100"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="eb9-z3-RHH" rowHeight="150" style="IBUITableViewCellStyleDefault" id="XfM-YK-fCA">
+                                        <rect key="frame" x="0.0" y="298" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XfM-YK-fCA" id="BQe-Js-zmR">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eb9-z3-RHH">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="99.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="149.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
                                                     <nil key="textColor"/>
@@ -85,7 +85,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="50" id="RWd-Bg-LOz">
-                                        <rect key="frame" x="0.0" y="398" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="448" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RWd-Bg-LOz" id="1Kf-YI-E1c">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
@@ -638,7 +638,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vimeo.png" translatesAutoresizingMaskIntoConstraints="NO" id="8kd-qL-yss">
                                 <rect key="frame" x="200" y="493.5" width="155" height="100"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watch our on the following channels." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ds1-vY-Ehv">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watch us on the following channels." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ds1-vY-Ehv">
                                 <rect key="frame" x="25" y="464" width="330" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
@@ -932,12 +932,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="176.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Like us on Facebook, follow us on Twitter &amp; Instagram" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="289" translatesAutoresizingMaskIntoConstraints="NO" id="oW7-8t-dPD">
-                                                    <rect key="frame" x="20" y="20" width="335" height="46.5"/>
-                                                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FB.png" translatesAutoresizingMaskIntoConstraints="NO" id="Hma-xe-y5z">
                                                     <rect key="frame" x="20" y="76.5" width="93.5" height="80"/>
                                                     <constraints>
@@ -968,16 +962,22 @@
                                                         <action selector="twitter:" destination="N6G-1H-jl2" eventType="touchUpInside" id="pkq-yo-EDk"/>
                                                     </connections>
                                                 </button>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Like us on Facebook, follow us on Twitter and Instagram!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="289" translatesAutoresizingMaskIntoConstraints="NO" id="oW7-8t-dPD">
+                                                    <rect key="frame" x="77" y="10" width="220" height="58.5"/>
+                                                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="2Vt-Gx-nVK" firstAttribute="height" secondItem="Q1J-QL-8Ps" secondAttribute="height" id="5Qu-O1-bsS"/>
                                                 <constraint firstItem="xeO-vp-cS2" firstAttribute="bottom" secondItem="Q1J-QL-8Ps" secondAttribute="bottom" id="Fuu-Pe-rrT"/>
                                                 <constraint firstItem="Q1J-QL-8Ps" firstAttribute="top" secondItem="Hma-xe-y5z" secondAttribute="top" id="LgM-NC-DYU"/>
-                                                <constraint firstAttribute="trailing" secondItem="oW7-8t-dPD" secondAttribute="trailing" constant="20" id="NRf-nn-Vde"/>
+                                                <constraint firstAttribute="trailing" secondItem="oW7-8t-dPD" secondAttribute="trailing" constant="78" id="NRf-nn-Vde"/>
                                                 <constraint firstItem="2Vt-Gx-nVK" firstAttribute="top" secondItem="Q1J-QL-8Ps" secondAttribute="top" id="Pfh-2e-XVu"/>
                                                 <constraint firstItem="Vfh-zf-AM3" firstAttribute="bottom" secondItem="Hma-xe-y5z" secondAttribute="bottom" id="TE3-FZ-yqa"/>
                                                 <constraint firstItem="Vfh-zf-AM3" firstAttribute="leading" secondItem="Hma-xe-y5z" secondAttribute="leading" id="UHE-SY-MuO"/>
-                                                <constraint firstItem="Hma-xe-y5z" firstAttribute="leading" secondItem="oW7-8t-dPD" secondAttribute="leading" id="UZM-Ai-0Xr"/>
+                                                <constraint firstItem="Hma-xe-y5z" firstAttribute="leading" secondItem="oW7-8t-dPD" secondAttribute="leading" constant="-57" id="UZM-Ai-0Xr"/>
                                                 <constraint firstItem="xeO-vp-cS2" firstAttribute="trailing" secondItem="Q1J-QL-8Ps" secondAttribute="trailing" id="WP4-g4-2ll"/>
                                                 <constraint firstItem="2Vt-Gx-nVK" firstAttribute="leading" secondItem="Q1J-QL-8Ps" secondAttribute="trailing" constant="26" id="Xpv-3l-Kyy"/>
                                                 <constraint firstItem="t5Q-Q5-9cE" firstAttribute="leading" secondItem="2Vt-Gx-nVK" secondAttribute="leading" id="YMc-f2-8gN"/>
@@ -987,13 +987,13 @@
                                                 <constraint firstItem="Q1J-QL-8Ps" firstAttribute="height" secondItem="Hma-xe-y5z" secondAttribute="height" id="dnc-TC-8PV"/>
                                                 <constraint firstItem="Vfh-zf-AM3" firstAttribute="trailing" secondItem="Hma-xe-y5z" secondAttribute="trailing" id="k5u-rp-seI"/>
                                                 <constraint firstItem="Q1J-QL-8Ps" firstAttribute="width" secondItem="Hma-xe-y5z" secondAttribute="width" constant="-1" id="kFh-hI-oYe"/>
-                                                <constraint firstItem="oW7-8t-dPD" firstAttribute="leading" secondItem="ss5-3b-ogb" secondAttribute="leading" constant="20" id="lvu-MD-wTS"/>
+                                                <constraint firstItem="oW7-8t-dPD" firstAttribute="leading" secondItem="ss5-3b-ogb" secondAttribute="leading" constant="77" id="lvu-MD-wTS"/>
                                                 <constraint firstItem="xeO-vp-cS2" firstAttribute="top" secondItem="Q1J-QL-8Ps" secondAttribute="top" id="npG-PV-gfp"/>
-                                                <constraint firstItem="2Vt-Gx-nVK" firstAttribute="trailing" secondItem="oW7-8t-dPD" secondAttribute="trailing" id="pW1-c0-GQo"/>
+                                                <constraint firstItem="2Vt-Gx-nVK" firstAttribute="trailing" secondItem="oW7-8t-dPD" secondAttribute="trailing" constant="58" id="pW1-c0-GQo"/>
                                                 <constraint firstItem="Vfh-zf-AM3" firstAttribute="top" secondItem="Hma-xe-y5z" secondAttribute="top" id="qNi-Vw-KI8"/>
-                                                <constraint firstItem="oW7-8t-dPD" firstAttribute="top" secondItem="ss5-3b-ogb" secondAttribute="top" constant="20" id="qkd-BB-2fU"/>
+                                                <constraint firstItem="oW7-8t-dPD" firstAttribute="top" secondItem="ss5-3b-ogb" secondAttribute="top" constant="10" id="qkd-BB-2fU"/>
                                                 <constraint firstAttribute="bottom" secondItem="Hma-xe-y5z" secondAttribute="bottom" constant="20" id="sag-3d-5F5"/>
-                                                <constraint firstItem="Hma-xe-y5z" firstAttribute="top" secondItem="oW7-8t-dPD" secondAttribute="bottom" constant="10" id="tSf-pd-JRT"/>
+                                                <constraint firstItem="Hma-xe-y5z" firstAttribute="top" secondItem="oW7-8t-dPD" secondAttribute="bottom" constant="8" id="tSf-pd-JRT"/>
                                                 <constraint firstItem="xeO-vp-cS2" firstAttribute="leading" secondItem="Q1J-QL-8Ps" secondAttribute="leading" id="uAc-hO-Vif"/>
                                                 <constraint firstItem="t5Q-Q5-9cE" firstAttribute="trailing" secondItem="2Vt-Gx-nVK" secondAttribute="trailing" id="z2k-Rm-3EV"/>
                                                 <constraint firstItem="Q1J-QL-8Ps" firstAttribute="leading" secondItem="Hma-xe-y5z" secondAttribute="trailing" constant="29" id="zbh-55-82U"/>
@@ -1011,7 +1011,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N6G-1H-jl2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3855.1999999999998" y="134.48275862068968"/>
+            <point key="canvasLocation" x="3857" y="136"/>
         </scene>
         <!--Becoming Human View Controller-->
         <scene sceneID="aXk-G4-dxW">
@@ -2011,7 +2011,7 @@ If you would like to send donation by check, please make your donation payable t
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="227.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="travellearnimge.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="4I8-pT-zmC">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trvl_learn.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="4I8-pT-zmC">
                                                     <rect key="frame" x="35" y="7" width="304" height="212"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="304" id="PPZ-eL-wPn"/>
@@ -2287,7 +2287,7 @@ If you would like to send donation by check, please make your donation payable t
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="uSO-QB-0vF"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="16"/>
-                                                    <state key="normal" title="Learn more about this lecturer">
+                                                    <state key="normal" title="Learn more about this scientist">
                                                         <color key="titleShadowColor" red="0.66659259800000004" green="0.66670930390000005" blue="0.66658520700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
@@ -2348,11 +2348,11 @@ If you would like to send donation by check, please make your donation payable t
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView opaque="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="kG4-oq-6OV">
-                                <rect key="frame" x="20" y="44" width="335" height="579"/>
+                                <rect key="frame" x="20" y="3" width="335" height="620"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="579" id="GPH-zE-ijx"/>
+                                    <constraint firstAttribute="height" constant="620" id="GPH-zE-ijx"/>
                                     <constraint firstAttribute="width" constant="335" id="fU0-jL-fY5"/>
                                 </constraints>
                                 <dataDetectorType key="dataDetectorTypes"/>
@@ -2363,7 +2363,7 @@ If you would like to send donation by check, please make your donation payable t
                             <constraint firstItem="Fio-ym-zUO" firstAttribute="top" secondItem="kG4-oq-6OV" secondAttribute="bottom" id="UCK-K1-3ih"/>
                             <constraint firstItem="kG4-oq-6OV" firstAttribute="leading" secondItem="ng3-bq-QH2" secondAttribute="leading" constant="20" id="ZN2-2v-ouL"/>
                             <constraint firstAttribute="trailing" secondItem="kG4-oq-6OV" secondAttribute="trailing" constant="20" id="az0-bP-zda"/>
-                            <constraint firstItem="kG4-oq-6OV" firstAttribute="top" secondItem="xOg-TZ-XNv" secondAttribute="bottom" id="r7F-kN-DWj"/>
+                            <constraint firstItem="kG4-oq-6OV" firstAttribute="top" secondItem="xOg-TZ-XNv" secondAttribute="bottom" constant="-41" id="r7F-kN-DWj"/>
                             <constraint firstItem="Fio-ym-zUO" firstAttribute="top" secondItem="kG4-oq-6OV" secondAttribute="bottom" id="st4-O8-nkR"/>
                         </constraints>
                     </view>
@@ -2457,7 +2457,7 @@ If you would like to send donation by check, please make your donation payable t
         <image name="invest.png" width="145" height="36"/>
         <image name="newLogo.jpg" width="384" height="96"/>
         <image name="search-icon-64.png" width="64" height="64"/>
-        <image name="travellearnimge.jpg" width="400" height="414"/>
+        <image name="trvl_learn.jpg" width="600" height="400"/>
         <image name="twitter.png" width="140" height="140"/>
         <image name="vimeo.png" width="500" height="300"/>
         <image name="youtube.png" width="500" height="300"/>
