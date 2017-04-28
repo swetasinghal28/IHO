@@ -11,7 +11,8 @@
         android:layout_height="60dp"
         android:background="#003366"
         android:orientation="horizontal"
-        android:paddingLeft="10dp">
+        android:paddingLeft="10dp"
+        android:onClick="onClick" >
 
         <ImageButton
             android:id="@+id/customBackButton"
@@ -67,7 +68,6 @@
             android:background="@drawable/shape"
             android:text="Institute of Human Origins                                                                    >"
             android:textColor="@android:color/background_light"
-            android:textStyle="bold"
             android:onClick="onClick" />
 
         <TextView
@@ -83,7 +83,6 @@
             android:background="@drawable/shape"
             android:text="Ask An Anthropologist                                                                          >"
             android:textColor="@android:color/background_light"
-            android:textStyle="bold"
             android:onClick="onClick" />
 
         <TextView
@@ -98,7 +97,6 @@
             android:layout_height="wrap_content"
             android:background="@drawable/shape"
             android:textColor="@android:color/background_light"
-            android:textStyle="bold"
             android:text="Becoming Human                                                                                   >"
             android:onClick="onClick"
             android:visibility="visible" />
@@ -115,7 +113,6 @@
             android:layout_height="wrap_content"
             android:background="@drawable/shape"
             android:textColor="@android:color/background_light"
-            android:textStyle="bold"
             android:text="Sign Up for E-News                                                                                 >"
             android:onClick="onClick"
             android:visibility="visible" />

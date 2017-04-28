@@ -162,7 +162,7 @@ public class EventsFragment extends ListFragment {
                 }
 
                 if (!event.isNull(EVENT_WHERE)) {
-                    where = event.getString(EVENT_WHERE);
+                    where = event.getString(EVENT_WHERE).replace("\\n","\n");
                 }
 
                 if (!event.isNull(EVENT_REG)) {
@@ -350,6 +350,7 @@ public class EventsFragment extends ListFragment {
             List<Events> eventsList = new ArrayList<>();
             for (Events event: eventsArray) {
                 event.setDate(new Date(event.getWhen()));
+                event.setWhere(event.getWhere().replace("\\n","\n"));
                 Log.i(TAG,event.toString());
                 eventsList.add(event);
                 eventsItems.put(event.getTitle(),event);

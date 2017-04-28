@@ -92,29 +92,6 @@ public class GalleryFragment extends ListFragment {
         return v;
     }
 
-   /* @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        Log.i(TAG, " onConfigurationChanged");
-        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            Log.i(TAG, " ORIENTATION_LANDSCAPE");
-            galleryItems.clear();
-            galleryTitle.clear();
-            getGalleryJson();
-        }
-
-        else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            Log.i(TAG, " ORIENTATION_LANDSCAPE");
-            galleryItems.clear();
-            galleryTitle.clear();
-            getGalleryItems();
-            CustomList adapter = new
-                    CustomList(this.getActivity(), galleryTitle, galleryItems);
-            this.setListAdapter(adapter);
-            adapter.notifyDataSetChanged();
-        }
-    }*/
-
     private void getGalleryJson() {
         Log.i(TAG, "getGalleryJson");
         isContentChanged = false;

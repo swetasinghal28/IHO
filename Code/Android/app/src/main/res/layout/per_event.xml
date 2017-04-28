@@ -10,7 +10,8 @@
         android:layout_height="40dp"
         android:background="#003366"
         android:orientation="horizontal"
-        android:paddingLeft="5dp">
+        android:paddingLeft="5dp"
+        android:onClick="onClick">
 
         <ImageButton
             android:id="@+id/customEventsBackbutton"

@@ -78,12 +78,14 @@ public class MainActivity extends Activity implements OnClickListener{
                 fragmentTransaction.commit();
                 break;
             case R.id.customConnectBackButton:
+            case R.id.customConnectBackButtonll:
             case R.id.connect:
                 fragment = new Connect(R.layout.fragment_connect);
                 fragmentTransaction.replace(R.id.main_layout, fragment);
                 fragmentTransaction.commit();
                 break;
             case R.id.customNEBackButton:
+            case R.id.customNEBackButtonll:
             case R.id.ne:
                 fragment = new NewsEvents();
                 fragmentTransaction.replace(R.id.main_layout, fragment);
@@ -96,6 +98,7 @@ public class MainActivity extends Activity implements OnClickListener{
                 fragmentTransaction.commit();
                 break;
             case R.id.customGalleryBackButton:
+            case R.id.customGalleryBackButtonll:
             case R.id.gallery:
                 fragment = new Gallery();
                 fragmentTransaction.replace(R.id.main_layout, fragment);
@@ -137,6 +140,7 @@ public class MainActivity extends Activity implements OnClickListener{
                 fragmentTransaction.commit();
                 break;
             case R.id.customBackButton:
+            case R.id.customBackButtonll:
                 fragment = new MainFragment();
                 fragmentTransaction.replace(R.id.main_layout, fragment);
                 fragmentTransaction.commit();
@@ -146,6 +150,7 @@ public class MainActivity extends Activity implements OnClickListener{
                 intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
                 break;
+
             case R.id.vimeoBtn:
                 uri = Uri.parse("http://vimeo.com/user5956652");
                 intent = new Intent(Intent.ACTION_VIEW, uri);
@@ -178,6 +183,11 @@ public class MainActivity extends Activity implements OnClickListener{
                 fragmentTransaction.replace(R.id.main_layout, fragment);
                 fragmentTransaction.commit();
                 break;
+            case R.id.trvlbtn:
+                uri = Uri.parse("https://iho.asu.edu/outreach/travel");
+                intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+                break;
             case R.id.website:
                 uri = Uri.parse("https://iho.asu.edu/");
                 intent = new Intent(Intent.ACTION_VIEW, uri);
@@ -205,12 +215,14 @@ public class MainActivity extends Activity implements OnClickListener{
                 startActivity(intent);
                 break;
             case R.id.customFNBackbutton:
+            case R.id.customFNBackbuttonll:
             case R.id.field:
                 fragment = new FieldNotes();
                 fragmentTransaction.replace(R.id.main_layout, fragment);
                 fragmentTransaction.commit();
                 break;
             case R.id.customLecturerBackbutton:
+            case R.id.customLecturerBackbuttonll:
             case R.id.fn1:
                 fragmentTransaction.remove(fragment);
                 fragment = new LecturerFragment();

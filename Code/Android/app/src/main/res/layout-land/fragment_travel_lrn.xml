@@ -11,7 +11,8 @@
         android:layout_height="60dp"
         android:background="#003366"
         android:orientation="horizontal"
-        android:paddingLeft="10dp">
+        android:paddingLeft="10dp"
+        android:onClick="onClick" >
 
         <ImageButton
             android:id="@+id/customNEBackButton"
@@ -110,13 +111,14 @@
                     android:maxLength="104"
                     android:background="@android:color/white"/>
 
-                <ListView
-                    android:id="@android:id/list"
+                <Button
+                    android:id="@+id/trvlbtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/editText"
-                    android:background="@drawable/shape">
-                </ListView>
+                    android:text="Click here to read more!"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/shape"
+                    android:onClick="onClick"></Button>
             </LinearLayout>
 </ScrollView>
 

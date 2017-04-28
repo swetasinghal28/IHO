@@ -10,7 +10,8 @@
         android:layout_height="80dp"
         android:background="#003366"
         android:orientation="horizontal"
-        android:paddingLeft="10dp">
+        android:paddingLeft="10dp"
+        android:onClick="onClick" >
 
         <ImageButton
             android:id="@+id/customLecturerBackbutton"
