@@ -16,10 +16,16 @@ class LecturerListViewController: UITableViewController {
     var names:[String]=[String]()
     var reachability: Reachability = Reachability();
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
+            let dictRoot = NSDictionary(contentsOfFile: path)
+            if let dict = dictRoot {
+                urlString = dict["URL"] as! String
+            }
+        }
+        
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
@@ -27,8 +33,7 @@ class LecturerListViewController: UITableViewController {
         
         let flag = reachability.connectedToNetwork();
         if flag{
-            print("Yes internet connection")
-            let url = URL(string:"http://107.170.239.62:3000/lectureobjects" )
+            let url = URL(string:urlString + "lectureobjects" )
             
             let task = URLSession.shared.dataTask(with: url!){ (data, response, error) in
                 if error != nil
@@ -39,16 +44,11 @@ class LecturerListViewController: UITableViewController {
                 {
                     if let content = data
                     {
-                        //self.news = [News]()
                         do{
                             //Array
                             let myJSON = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
                             
-                            print("myJSON", myJSON)
-                            
-                            
                             if let lecturerFromJSON = myJSON as? [[String: AnyObject]]{
-                                print("lecturerFromJSON", lecturerFromJSON)
                                 for lecturer in lecturerFromJSON{
                                     let lecturerObject = Lecturer()
                                     if let title = lecturer["title"] as? String,let bio = lecturer["bio"] as? String,let id = lecturer["id"] as? String,let image = lecturer["image"] as? String, let link = lecturer["link"] as? String, let name = lecturer["name"] as? String, let email = lecturer["email"] as? String, let order = lecturer["order"] as? Double{
@@ -81,9 +81,6 @@ class LecturerListViewController: UITableViewController {
             
         }
         else{
-            print("No internet connection")
-            
-            print("Loading from Local")
             
             do{
                 if let file = Bundle.main.url(forResource: "lecturer", withExtension: "json") {
@@ -92,11 +89,7 @@ class LecturerListViewController: UITableViewController {
                     //Array
                     let myJSON = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
                     
-                    print("myJSON", myJSON)
-                    
-                    
                     if let lecturerFromJSON = myJSON as? [[String: AnyObject]]{
-                        print("lecturerFromJSON", lecturerFromJSON)
                         for lecturer in lecturerFromJSON{
                             let lecturerObject = Lecturer()
                             if let title = lecturer["title"] as? String,let bio = lecturer["bio"] as? String,let id = lecturer["id"] as? String,let image = lecturer["image"] as? String, let link = lecturer["link"] as? String, let name = lecturer["name"] as? String, let email = lecturer["email"] as? String, let order = lecturer["order"] as? Double{
@@ -152,107 +145,34 @@ class LecturerListViewController: UITableViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        //print("rows",self.names.count)
+        
         return self.names.count
     }
-    
-    //    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    //        let cell = tableView.dequeueReusableCellWithIdentifier("News Cell", forIndexPath: indexPath)
-    //
-    //        cell.textLabel?.text = self.names[indexPath.row]
-    //        //cell.detailTextLabel?.text = "Testing huhhahhahah"
-    //        return cell
-    //    }
-    
-    
-    
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = lecturerTableView.dequeueReusableCell(withIdentifier: "Lecturer Cell", for: indexPath)
         
-        // Configure the cell...
+        if(self.names != nil){
         cell.textLabel?.text = self.names[indexPath.row]
-        
-        
-        
-        
+        }
         return cell
     }
-    
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         NSLog("seque identifier is \(segue.identifier)")
         if segue.identifier == "LecturerDetail" {
             let viewController:LecturerDetailViewController = segue.destination as! LecturerDetailViewController
             let indexPath = self.tableView.indexPathForSelectedRow!
-            
-            //let moviedata = self.tableView.indexPathForSelectedRow
-            
-            // let aMovie = movieLib.movies[movieLib.names[indexPath.row]]! as MovieDescription
             let title = self.names[(indexPath.row)]
             let lecturerObjectToBeSend = lecturerList[title]! as Lecturer
-            
-            //print( "Trying to print selected news object ", newsList[title]?.desc ?? "No value" , title)
-            
-           // print ("lec Name, lec Title", lecturerObjectToBeSend.name, lecturerObjectToBeSend.title)
             viewController.newsTitle = lecturerObjectToBeSend.title
             viewController.newsBio = lecturerObjectToBeSend.bio
             viewController.newsId = lecturerObjectToBeSend.id

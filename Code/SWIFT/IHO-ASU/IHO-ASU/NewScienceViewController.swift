@@ -18,10 +18,15 @@ class NewScienceViewController: UITableViewController {
     var names:[String]=[String]()
     var reachability: Reachability = Reachability();
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
+            let dictRoot = NSDictionary(contentsOfFile: path)
+            if let dict = dictRoot {
+                urlString = dict["URL"] as! String
+            }
+        }
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
@@ -29,7 +34,7 @@ class NewScienceViewController: UITableViewController {
         
         let flag = reachability.connectedToNetwork();
         if flag{
-            let url = URL(string:"http://107.170.239.62:3000/newscienceobjects" )
+            let url = URL(string:urlString + "newscienceobjects" )
             
             let task = URLSession.shared.dataTask(with: url!){ (data, response, error) in
                 if error != nil
@@ -43,9 +48,7 @@ class NewScienceViewController: UITableViewController {
                         do{
                             //Array
                             let myJSON = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
-                            print("myJSON", myJSON)
                             if let newsFromJSON = myJSON as? [[String: AnyObject]]{
-                                print("newsFromJSON", newsFromJSON)
                                 for news in newsFromJSON{
                                     let newsObject = Science()
                                     if let title = news["title"] as? String,let desc = news["desc"] as? String,let id = news["id"] as? String,let link = news["link"] as? String{
@@ -72,10 +75,6 @@ class NewScienceViewController: UITableViewController {
             task.resume()
             
         }else{
-            print("No internet connection")
-            
-            print("Loading from Local")
-            
             do {
                 if let file = Bundle.main.url(forResource: "newscience", withExtension: "json") {
                     
@@ -83,7 +82,6 @@ class NewScienceViewController: UITableViewController {
                     let myJSON = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
                     
                     if let newsFromJSON = myJSON as? [[String: AnyObject]]{
-                        print("newsFromJSON", newsFromJSON)
                         for news in newsFromJSON{
                             let newsObject = Science()
                             if let title = news["title"] as? String,let desc = news["desc"] as? String,let id = news["id"] as? String,let link = news["link"] as? String{
@@ -171,11 +169,9 @@ class NewScienceViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = newScienceTableView.dequeueReusableCell(withIdentifier: "News Cell", for: indexPath)
         
+        if(self.names != nil){
         cell.textLabel?.text = self.names[indexPath.row]
-        
-        
-        
-        
+        }
         return cell
     }
 }

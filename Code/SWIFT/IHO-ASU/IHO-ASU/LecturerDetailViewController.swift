@@ -22,28 +22,19 @@ class LecturerDetailViewController: UITableViewController, MFMailComposeViewCont
         } else {
             UIApplication.shared.openURL(url)
         }
-
+        
     }
     @IBAction func lEmail(_ sender: Any) {
-        
-        
-        
-        
         if MFMailComposeViewController.canSendMail() {
-            print("Can send mail \n \n")
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
             mail.setToRecipients([newsEmail!])
             mail.setSubject("Ask a question")
             mail.setMessageBody("<p>Enter your question here</p>" ,isHTML: true)
-            
             present(mail, animated: true)
         } else {
             // show failure alert
         }
-      
-        
-
     }
     
     @IBAction func lGallery(_ sender: Any) {
@@ -68,36 +59,29 @@ class LecturerDetailViewController: UITableViewController, MFMailComposeViewCont
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-        //
-        //        tableView.rowHeight = UITableViewAutomaticDimension
-        //        tableView.estimatedRowHeight = 40
-        
-        //self.navigationItem.title = "News Details"
         
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        //tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
         buttonReadMore.layer.cornerRadius = 15
         gallery.layer.cornerRadius = 15
         lecEmail.layer.cornerRadius = 15
         
-        print("Inside Lec detail view controller")
-        print("Lec Title", newsTitle ?? "no value")
-        print("Lec Title", newsName ?? "no value")
-        print("Lec Id",newsId ?? "no value")
-        print("Lec Bio",newsBio ?? "no value")
-        //print("Lec Image", newsImage ?? "no value")
-        print("Lec Link", newsLink ?? "no value")
-        
-        nTitle.text = newsName
-        nTitle.lineBreakMode = NSLineBreakMode.byWordWrapping
-        nTitle.numberOfLines = 0
+        if(newsName != nil){
+            nTitle.text = newsName
+            nTitle.lineBreakMode = NSLineBreakMode.byWordWrapping
+            nTitle.numberOfLines = 0
+        }
+        if(newsBio != nil){
         nDesc.text = newsBio
         nDesc.lineBreakMode = NSLineBreakMode.byWordWrapping
         nDesc.numberOfLines = 0
+        }
+        if(newsTitle != nil){
+        newsTitle = newsTitle!.replacingOccurrences(of: "\\n", with: "\n")
         lecTitle.text = newsTitle
         lecTitle.lineBreakMode = NSLineBreakMode.byWordWrapping
         lecTitle.numberOfLines = 0
+        }
         
         if (newsImage != nil)
         {
@@ -107,15 +91,6 @@ class LecturerDetailViewController: UITableViewController, MFMailComposeViewCont
             //NSData to UIImage
             nImage.image = UIImage(data: decodedData! as Data)
         }
-        
-        
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
         
         //toolbar
         let label = UILabel(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(350), height: CGFloat(21)))
@@ -148,90 +123,11 @@ class LecturerDetailViewController: UITableViewController, MFMailComposeViewCont
         NSLog("seque identifier is \(segue.identifier)")
         if segue.identifier == "LecturerGallery" {
             let viewController:LecturerGalleryViewController = segue.destination as! LecturerGalleryViewController
-            //let indexPath = self.tableView.indexPathForSelectedRow!
-            
-            //let moviedata = self.tableView.indexPathForSelectedRow
-            
-            // let aMovie = movieLib.movies[movieLib.names[indexPath.row]]! as MovieDescription
-            //let title = self.names[(indexPath.row)]
-            
-            
-            //print( "Trying to print selected news object ", newsList[title]?.desc ?? "No value" , title)
-            
-            
+            if(newsEmail != nil){
             viewController.lecEmail  = self.newsEmail!
+            }
         }
     }
-
-    
-    // MARK: - Table view data source
-    
-    //    override func numberOfSections(in tableView: UITableView) -> Int {
-    //        // #warning Incomplete implementation, return the number of sections
-    //        return 3
-    //    }
-    //
-    //    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    //        // #warning Incomplete implementation, return the number of rows
-    //        return 0
-    //    }
-    
-    
-    
-    /*
-     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-     
-     // Configure the cell...
-     
-     return cell
-     }
-     */
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
 

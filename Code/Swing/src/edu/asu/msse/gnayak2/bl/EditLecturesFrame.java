@@ -430,28 +430,28 @@ public class EditLecturesFrame extends JFrame implements GalleryDelegate {
 				 boolean validate = validate(tfOrder.getText());
 				 if(validate)
 				 {
-				 if(flag==1){
-					 int ord = Integer.parseInt(tfOrder.getText());
-					 Lecture newLecture = new Lecture(tfName.getText(), taDescription.getText(),tfLink.getText(),tfDesc.getText(),encodedImage,tfEmail.getText(),ord);
-					 lectureDelegate.addLecture(newLecture);
-				 }
-				
-				 else {
-					 int ord = Integer.parseInt(tfOrder.getText());
-					 Lecture newLecture = new Lecture(tfName.getText(), taDescription.getText(),tfLink.getText(),tfDesc.getText(),imageFileButton.getText(),tfEmail.getText(),ord);
-					 lectureDelegate.addLecture(newLecture);
-				 }
-				// delete old lecture
-				
-				if (lecture != null){
-					lectureDelegate.deleteLecture(lecture);
-				}
-				if (lecture == null && lecturesGalleryLibrary == null) {
-					lecturesGalleryLibrary = new LecturesGalleryLibrary(tfEmail.getText(), true);
-					postLibraryToServer();
-					
-				}
-				dispose();
+					 if(flag==1){
+						 int ord = Integer.parseInt(tfOrder.getText());
+						 Lecture newLecture = new Lecture(tfName.getText(), taDescription.getText(),tfLink.getText(),tfDesc.getText(),encodedImage,tfEmail.getText(),ord);
+						 lectureDelegate.addLecture(newLecture);
+					 }
+
+					 else {
+						 int ord = Integer.parseInt(tfOrder.getText());
+						 Lecture newLecture = new Lecture(tfName.getText(), taDescription.getText(),tfLink.getText(),tfDesc.getText(),imageFileButton.getText(),tfEmail.getText(),ord);
+						 lectureDelegate.addLecture(newLecture);
+					 }
+					 // delete old lecture
+
+					 if (lecture != null){
+						 lectureDelegate.deleteLecture(lecture);
+					 }
+					 if (lecture == null && lecturesGalleryLibrary == null) {
+						 lecturesGalleryLibrary = new LecturesGalleryLibrary(tfEmail.getText(), true);
+						 postLibraryToServer();
+
+					 }
+					 dispose();
 				 }
 			}
 		});

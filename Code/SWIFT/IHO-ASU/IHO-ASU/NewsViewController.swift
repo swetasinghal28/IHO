@@ -20,14 +20,9 @@ class NewsViewController: UITableViewController {
     let dispatch_group = DispatchGroup()
     let df = DateFormatter()
     
-    
-    
-    
     func loadNewsList(){
         
-        print("Loading from Internet")
-        
-        let url = URL(string:"http://107.170.239.62:3000/newsobjects" )
+        let url = URL(string:urlString + "newsobjects" )
         
         var task = URLSession.shared.dataTask(with: url!){ (data, response, error) in
             if error != nil
@@ -36,22 +31,13 @@ class NewsViewController: UITableViewController {
             }
             else
             {
-                print("Loading news Objects")
-                
                 if let content = data
                 {
-                    //self.news = [News]()
                     do{
                         //Array
                         let myJSON = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
-                        
-                        // let myJSON = try JSONSerialization.jsonObject(with: data!,options:.mutableContainers) as? [String:AnyObject]
-                        
-                        //print("myJSON", myJSON)
-                        
-                        
+                       
                         if let newsFromJSON = myJSON as? [[String: AnyObject]]{
-                            //print("newsFromJSON", newsFromJSON)
                             for news in newsFromJSON{
                                 let newsObject = News()
                                 if let title = news["title"] as? String,let desc = news["desc"] as? String,let id = news["id"] as? String,let image = news["image"] as? String, let link = news["link"] as? String, let date = news["date"] as? String{
@@ -62,8 +48,6 @@ class NewsViewController: UITableViewController {
                                     newsObject.link = link
                                     newsObject.newsDate = self.df.date(from: date)!
                                     self.names.append(newsObject.title)
-                                    //print(title)
-                                    
                                 }
                                 self.newsList[newsObject.title] = newsObject
                             }
@@ -89,7 +73,7 @@ class NewsViewController: UITableViewController {
     }
     
     func loadNewsId(){
-        let urlId = URL(string:"http://107.170.239.62:3000/newsid" )
+        let urlId = URL(string:urlString + "newsid" )
       
         dispatch_group.enter()
         var taskUrlId = URLSession.shared.dataTask(with: urlId!){ (data, response, error) in
@@ -98,10 +82,7 @@ class NewsViewController: UITableViewController {
                 print("ERROR",error ?? "There is an error")
             }
             else
-            {
-                print("Inside Load News Id function")
-                
-                self.newsId = [];
+            {                self.newsId = [];
                 
                 if let content = data
                 {
@@ -116,7 +97,6 @@ class NewsViewController: UITableViewController {
                                 }
                             }
                         }
-                        print("News Id: ", self.newsId)
                     }
                     catch let error{
                         print(error)
@@ -133,7 +113,14 @@ class NewsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         
+        if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
+            let dictRoot = NSDictionary(contentsOfFile: path)
+            if let dict = dictRoot {
+                urlString = dict["URL"] as! String
+            }
+        }
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
         self.navigationItem.title = "News"
@@ -154,22 +141,12 @@ class NewsViewController: UITableViewController {
         let flag = reachability.connectedToNetwork();
         if flag
         {
-            
-            print("Yes internet connection")
-            
             if (!mainInstance.newsList.isEmpty && !mainInstance.names.isEmpty){
                 
-                print("Calling news Id from internet")
                 loadNewsId();
                 dispatch_group.wait()
-                print("Completed loading news Id from Internet")
-                
-                print("Cache news Id",mainInstance.newsId)
-                print("Internet news Id",self.newsId)
                 
                 if(mainInstance.newsId == self.newsId){
-                
-                    print("News List unchanged")
                 
                 self.newsList = mainInstance.newsList;
                 
@@ -178,8 +155,6 @@ class NewsViewController: UITableViewController {
                 self.newsTableView.reloadData();
                 }
                 else{
-                    
-                    print("News List updated")
                     mainInstance.clearNewsCache()
                     loadNewsList();
                     loadNewsId();
@@ -190,8 +165,6 @@ class NewsViewController: UITableViewController {
                 
             }else{
                 
-                print("Loading from Internet")
-                
                 mainInstance.clearNewsCache()
                 loadNewsList();
                 loadNewsId();
@@ -200,16 +173,9 @@ class NewsViewController: UITableViewController {
                 
             }
             
-            print("News Id from cache: ", mainInstance.newsId)
-            
         }else{
             
-            print("No internet connection")
-            print("Cache value : ", mainInstance.names)
-            
             if (!mainInstance.newsList.isEmpty && !mainInstance.names.isEmpty){
-                
-                print("Loading from Cache")
                 
                 self.newsList = mainInstance.newsList;
                 
@@ -218,25 +184,14 @@ class NewsViewController: UITableViewController {
                 self.newsTableView.reloadData();
                 
             }else{
-                
-                print("Loading from Local")
-                
                 do {
                     
                     if let file = Bundle.main.url(forResource: "news", withExtension: "json") {
                         
                         let data = try Data(contentsOf: file)
-                        
-                        //let json = try JSONSerialization.jsonObject(with: data, options: [])
-                        
-                        
-                        
                         let myJSON = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
                         
-                        //print("myJSON", myJSON)
                         if let newsFromJSON = myJSON as? [[String: AnyObject]]{
-                            
-                            //print("newsFromJSON", newsFromJSON)
                             
                             for news in newsFromJSON{
                                 
@@ -258,9 +213,7 @@ class NewsViewController: UITableViewController {
                                     
                                     self.names.append(newsObject.title)
                                     
-                                    //print(title)
                                 }
-                                //self.news?.append(newsObject)
                                 self.newsList[newsObject.title] = newsObject
                             }
                             
@@ -285,7 +238,6 @@ class NewsViewController: UITableViewController {
             }
         }
         self.newsTableView.reloadData()
-        //print("Cache value while exiting: ", mainInstance.names)
         
     }
     
@@ -303,31 +255,23 @@ class NewsViewController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        //print("rows",self.names.count)
+        
         return self.names.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = newsTableView.dequeueReusableCell(withIdentifier: "News Cell", for: indexPath)
-        
-        // Configure the cell...
+        if(self.names != nil){
         cell.textLabel?.text = self.names[indexPath.row]
-        
-
-        
-
+        }
         return cell
     }
  
@@ -337,16 +281,8 @@ class NewsViewController: UITableViewController {
         if segue.identifier == "NewsDetail" {
             let viewController:NewsDetailViewController = segue.destination as! NewsDetailViewController
             let indexPath = self.tableView.indexPathForSelectedRow!
-            
-            //let moviedata = self.tableView.indexPathForSelectedRow
-            
-           // let aMovie = movieLib.movies[movieLib.names[indexPath.row]]! as MovieDescription
             let title = self.names[(indexPath.row)]
             let newsObjectToBeSend = newsList[title]! as News
-            
-            //print( "Trying to print selected news object ", newsList[title]?.desc ?? "No value" , title)
-            
-            
             viewController.newsTitle = title
             viewController.newsDesc = newsObjectToBeSend.desc
             viewController.newsId = newsObjectToBeSend.id

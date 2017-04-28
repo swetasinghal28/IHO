@@ -81,23 +81,7 @@ class ConnectViewController: UITableViewController, MFMailComposeViewControllerD
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: self.tableView.indexPathForSelectedRow!, animated: true)
         if indexPath.section == 3 {
-            //            var picker = mailComposeController()
-            //            picker.mailComposeDelegate = self
-            //            picker.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-            //            var emailTitle: String = "ENews Subscription"
-            //            // Email Content
-            //            var messageBody: String = "Sign me up for E News!"
-            //            // To address
-            //            var toRecipents: [Any] = ["iho@asu.edu"]
-            //            picker.setSubject(emailTitle)
-            //            picker.setMessageBody(messageBody, isHTML: false)
-            //            picker.setToRecipients(toRecipents)
-            //            self.present(picker, animated: true, completion: { _ in })
-            
-            //print("Going inside \n \n")
-            
             if MFMailComposeViewController.canSendMail() {
-                print("Can send mail \n \n")
                 let mail = MFMailComposeViewController()
                 mail.mailComposeDelegate = self
                 mail.setToRecipients(["iho@asu.edu"])
@@ -105,11 +89,7 @@ class ConnectViewController: UITableViewController, MFMailComposeViewControllerD
                 mail.setMessageBody("<p>Sign me up for E News!</p>", isHTML: true)
                 
                 present(mail, animated: true)
-            } else {
-                // show failure alert
             }
-            
-            
         }
     }
     

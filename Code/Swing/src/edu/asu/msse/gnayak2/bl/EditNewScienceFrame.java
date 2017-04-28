@@ -45,10 +45,10 @@ public class EditNewScienceFrame extends JFrame {
 		setResizable(false);
 		setPreferredSize(new Dimension(Constants.WIDTH,Constants.HEIGHT));
 		lblTitle = new JLabel("Title");
-		tfTitle = new JTextField();
+		tfTitle = new JTextField(120);
 		lblDesc = new JLabel("Description");
 		taDescription = new JTextArea("",120,120);
-		lblReadMore = new JLabel("Read More: ");
+		lblReadMore = new JLabel("Link");
 		tfLink = new JTextField("",120);
 		scrollPane = new JScrollPane(taDescription);
 		btnSubmit = new JButton("Submit");
@@ -60,8 +60,8 @@ public class EditNewScienceFrame extends JFrame {
 		panel.add(tfTitle, " wrap");
 		panel.add(lblReadMore);
 		panel.add(tfLink, "wrap");
-		panel.add(lblDesc);
-		panel.add(scrollPane,"wrap");	
+	//	panel.add(lblDesc);
+	// panel.add(scrollPane,"wrap");	
 		panel.add(btnSubmit,"wrap");
 
 		add(panel);
