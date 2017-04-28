@@ -45,22 +45,26 @@ public class ViewActivity extends Activity implements View.OnClickListener {
             Intent i= new Intent(this,MainActivity.class );
             FragmentTransaction ft = getFragmentManager().beginTransaction();
             switch (v.getId()) {
+                case R.id.customLecturerGalleryBackbuttonll:
                 case R.id.customLecturerGalleryBackbutton:
                     PerLecturerViewFragment fragment = new PerLecturerViewFragment();
                     ft.replace(R.id.per_view, fragment);
                     ft.commit();
                     break;
                 case R.id.customLecturerBackbutton:
+                case R.id.customLecturerBackbuttonll:
                     LecturerFragment lecturerFragment = new LecturerFragment();
                     ft.replace(R.id.per_view,lecturerFragment);
                     ft.commit();
                     break;
                 case R.id.customNewsBackbutton:
+                case R.id.customNewsBackbuttonll:
                     NewsFragment newsFragment = new NewsFragment();
                     ft.replace(R.id.per_view, newsFragment);
                     ft.commit();
                     break;
                 case R.id.customFNewsBackbutton:
+                case R.id.customFNewsBackbuttonll:
                     FeaturedNewsFragment featuredNewsFragment = new FeaturedNewsFragment();
                     ft.replace(R.id.per_view, featuredNewsFragment);
                     ft.commit();
@@ -87,6 +91,7 @@ public class ViewActivity extends Activity implements View.OnClickListener {
                     ft.commit();
                     break;
                 case R.id.customEventsBackbutton:
+                case R.id.customEventsBackbuttonll:
                     EventsFragment eFragment = new EventsFragment();
                     ft.replace(R.id.per_view, eFragment);
                     ft.commit();
@@ -106,10 +111,12 @@ public class ViewActivity extends Activity implements View.OnClickListener {
                     startActivity(Intent.createChooser(emailI, "Choose an Email Client:"));
                     break;
                 case R.id.customFNBackbutton:
+                case R.id.customFNBackbuttonll:
                     MainActivity.fragment = new FieldNotes();
                     startActivity(i);
                     break;
                 case R.id.customNEBackButton:
+                case R.id.customNEBackButtonll:
                     MainActivity.fragment = new NewsEvents();
                     startActivity(i);
                     break;

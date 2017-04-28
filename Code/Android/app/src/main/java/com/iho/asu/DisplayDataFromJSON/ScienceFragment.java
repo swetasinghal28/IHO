@@ -20,11 +20,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.google.common.io.Files;
 import com.google.gson.Gson;
-import com.iho.asu.Utilities.AppController;
 import com.iho.asu.Model.Science;
+import com.iho.asu.R;
+import com.iho.asu.Utilities.AppController;
 import com.iho.asu.Utilities.JSONCache;
 import com.iho.asu.Utilities.JSONResourceReader;
-import com.iho.asu.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,6 +34,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -185,7 +186,7 @@ public class ScienceFragment extends ListFragment {
                 scienceIds.add(s.getId());
                 scienceItems.put(title, s);
             }
-
+            Collections.reverse(scienceTitle);
             ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, scienceTitle);
             this.setListAdapter(adapter);
             adapter.notifyDataSetChanged();
@@ -335,7 +336,7 @@ public class ScienceFragment extends ListFragment {
                 scienceTitle.add(science.getTitle());
                 scienceItems.put(science.getTitle(), science);
             }
-
+            Collections.reverse(scienceTitle);
             ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, scienceTitle);
             this.setListAdapter(adapter);
             adapter.notifyDataSetChanged();

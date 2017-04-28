@@ -152,7 +152,7 @@ public class LecturerFragment extends ListFragment {
                 }
 
                 if (!lecturer.isNull(LECTURER_TITLE)) {
-                    title = lecturer.getString(LECTURER_TITLE);
+                    title = lecturer.getString(LECTURER_TITLE).replace("\\n","\n");
                 }
 
                 if (!lecturer.isNull(LECTURER_NAME)) {
@@ -354,13 +354,14 @@ public class LecturerFragment extends ListFragment {
             List<Lecturer> lecturerList = new ArrayList<>();
             for (Lecturer lecturer: lecturerArray) {
                 lecturer.setImg(Base64.decode(lecturer.getImage(), Base64.DEFAULT));
+                lecturer.setTitle(lecturer.getTitle().replace("\\n","\n"));
                 Log.i(TAG,lecturer.toString());
 
                 lecturerList.add(lecturer);
                 lecturers.put(lecturer.getName(),lecturer);
             }
 
-            Collections.sort(lecturerList, Collections.<Lecturer>reverseOrder(new LecturerComparator()));
+            Collections.sort(lecturerList, new LecturerComparator());
             for (Lecturer lecturer: lecturerList) {
                 lecturerNames.add(lecturer.getName());
                 lecturerIds.add(lecturer.getId());
