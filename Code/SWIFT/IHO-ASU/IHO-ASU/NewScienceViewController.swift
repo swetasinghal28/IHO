@@ -61,7 +61,7 @@ class NewScienceViewController: UITableViewController {
                                     self.newsList[newsObject.title] = newsObject
                                 }
                             }
-                            
+                            self.names = self.names.reversed()
                             self.newScienceTableView.reloadData()
                         }
                         catch let error{

@@ -53,7 +53,7 @@ class NewsViewController: UITableViewController {
                             }
                         }
                         
-                        let sortedArray = self.newsList.sorted { $0.value.newsDate < $1.value.newsDate }
+                        let sortedArray = self.newsList.sorted { $0.value.newsDate >  $1.value.newsDate }
                         self.names = sortedArray.map {$0.0 }
                         
                         mainInstance.newsList = self.newsList;
