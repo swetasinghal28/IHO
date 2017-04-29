@@ -7,20 +7,20 @@ import org.json.JSONObject;
 public class NewScience {
 	String id;
 	String title;
-	String desc;
+	int order;
 	String link;
 
-	public NewScience(String newsTitle, String description, String linkMore) {
+	public NewScience(String newsTitle, int order, String linkMore) {
 		id = UUID.randomUUID().toString().replace("-", "");
 		title = newsTitle;
-		desc = description;
+		this.order = order;
 		link = linkMore;
 	}
 	
 	public NewScience(JSONObject object) {
 		id = object.getString("id");
 		title = object.getString("title");
-		desc = object.getString("desc");
+		order = object.getInt("order");
 		link = object.getString("link");
 	}
 
@@ -40,12 +40,12 @@ public class NewScience {
 		this.title = title;
 	}
 
-	public String getDesc() {
-		return desc;
+	public int getOrder() {
+		return order;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setOrder(int order) {
+		this.order = order;
 	}
 
 	public String getLink() {
