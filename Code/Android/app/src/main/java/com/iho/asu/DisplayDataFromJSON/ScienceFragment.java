@@ -20,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.google.common.io.Files;
 import com.google.gson.Gson;
+import com.iho.asu.Comparators.ScienceComparator;
 import com.iho.asu.Model.Science;
 import com.iho.asu.R;
 import com.iho.asu.Utilities.AppController;
@@ -34,6 +35,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -41,6 +43,7 @@ import java.util.List;
 import static com.iho.asu.Constants.IHOConstants.SCIENCE_ID;
 import static com.iho.asu.Constants.IHOConstants.SCIENCE_IDS;
 import static com.iho.asu.Constants.IHOConstants.SCIENCE_LINK;
+import static com.iho.asu.Constants.IHOConstants.SCIENCE_ORDER;
 import static com.iho.asu.Constants.IHOConstants.SCIENCE_TITLE;
 import static com.iho.asu.Constants.IHOConstants.SCIENCE_URL;
 
@@ -148,7 +151,7 @@ public class ScienceFragment extends ListFragment {
         try {
 
             Log.i(TAG, "parseJSONResult");
-            String id = null, title = null, link = null;
+            String id = null, title = null, link = null, order = null;
 
             Log.i(TAG, "Writing json Array string to file");
             Files.write(jsonArray.toString().getBytes(), file);
@@ -159,7 +162,7 @@ public class ScienceFragment extends ListFragment {
             scienceTitle.clear();
             scienceIds.clear();
             scienceItems.clear();
-
+            List<Science> scienceList = new ArrayList<Science>();
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject sciences = jsonArray.getJSONObject(i);
 
@@ -175,18 +178,25 @@ public class ScienceFragment extends ListFragment {
                     link = sciences.getString(SCIENCE_LINK);
                 }
 
+                if (!sciences.isNull(SCIENCE_ORDER)) {
+                    order = sciences.getString(SCIENCE_ORDER);
+                }
+
                 Science s = new Science();
                 s.setId(id);
                 s.setTitle(title);
                 s.setLink(link);
+                s.setOrder(Integer.parseInt(order));
 
                 Log.i(TAG, i + ": " + s.toString());
-
-                scienceTitle.add(s.getTitle());
+                scienceList.add(s);
                 scienceIds.add(s.getId());
                 scienceItems.put(title, s);
             }
-            Collections.reverse(scienceTitle);
+            Collections.sort(scienceList, new ScienceComparator());
+            for (Science science: scienceList) {
+                scienceTitle.add(science.getTitle());
+            }
             ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, scienceTitle);
             this.setListAdapter(adapter);
             adapter.notifyDataSetChanged();
@@ -328,7 +338,7 @@ public class ScienceFragment extends ListFragment {
 
             Gson gson = new Gson();
             Science[] scienceArray = gson.fromJson(contents, Science[].class);
-
+            Arrays.sort(scienceArray, new ScienceComparator());
             for (Science science : scienceArray) {
 
                 Log.i(TAG, science.toString());
@@ -336,7 +346,7 @@ public class ScienceFragment extends ListFragment {
                 scienceTitle.add(science.getTitle());
                 scienceItems.put(science.getTitle(), science);
             }
-            Collections.reverse(scienceTitle);
+
             ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, scienceTitle);
             this.setListAdapter(adapter);
             adapter.notifyDataSetChanged();

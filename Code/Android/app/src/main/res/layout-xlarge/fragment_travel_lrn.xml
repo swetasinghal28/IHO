@@ -122,10 +122,13 @@
                 android:id="@+id/trvlbtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Click here to read more!"
-                android:textColor="@android:color/white"
                 android:background="@drawable/shape"
-                android:onClick="onClick">
+                android:textColor="@android:color/background_light"
+                android:textStyle="bold"
+                android:text="Click here to read more"
+                android:onClick="onClick"
+                android:layout_marginLeft="96dp"
+                android:layout_marginRight="96dp">
             </Button>
         </LinearLayout>
     </ScrollView>

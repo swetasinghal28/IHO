@@ -10,9 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="#003366"
+        android:onClick="onClick"
         android:orientation="horizontal"
-        android:paddingLeft="10dp"
-        android:onClick="onClick" >
+        android:paddingLeft="10dp">
 
         <ImageButton
             android:id="@+id/customBackButton"
@@ -40,7 +40,7 @@
                 android:text="Connect"
                 android:textColor="@android:color/white"
                 android:textSize="35dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
         </LinearLayout>
 
 
@@ -67,8 +67,7 @@
                 android:onClick="onClick"
                 android:text="Institute of Human Origins                                                                                 >"
                 android:textColor="@android:color/background_light"
-                android:textSize="22dp"
-                 />
+                android:textSize="22dp" />
 
             <TextView
                 android:id="@+id/textView"
@@ -84,8 +83,7 @@
                 android:onClick="onClick"
                 android:text="Ask An Anthropologist                                                                                        >"
                 android:textColor="@android:color/background_light"
-                android:textSize="22dp"
-                 />
+                android:textSize="22dp" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -139,42 +137,50 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:orientation="horizontal"
-                android:padding="@dimen/activity_horizontal_margin"
+                android:paddingLeft="50dp"
+                android:paddingTop="16dp"
                 android:visibility="visible"
-                android:weightSum="1">
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content" />
+                android:weightSum="10">
+
+
+
                 <ImageButton
                     android:id="@+id/fbButton"
-                    android:layout_width="125dp"
+                    android:layout_width="0dp"
                     android:layout_height="150dp"
                     android:background="@drawable/fb"
-                    android:onClick="onClick" />
+                    android:onClick="onClick"
+                    android:layout_weight="2"/>
 
                 <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="  "
+                    android:layout_weight="0.6"/>
 
 
                 <ImageButton
                     android:id="@+id/twButton"
-                    android:layout_width="125dp"
+                    android:layout_width="0dp"
                     android:layout_height="150dp"
                     android:background="@drawable/twitter"
-                    android:onClick="onClick" />
+                    android:onClick="onClick"
+                    android:layout_weight="2"/>
 
                 <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text=" "
+                    android:layout_weight="0.6"/>
 
 
                 <ImageButton
                     android:id="@+id/instaButton"
-                    android:layout_width="125dp"
+                    android:layout_width="0dp"
                     android:layout_height="150dp"
                     android:background="@drawable/insta"
-                    android:onClick="onClick" />
+                    android:onClick="onClick"
+                    android:layout_weight="2"/>
             </LinearLayout>
 
         </LinearLayout>

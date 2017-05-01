@@ -122,16 +122,17 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/white"
                 android:textSize="15dp" />
-
             <Button
                 android:id="@+id/trvlbtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Click here to read more!"
-                android:textColor="@android:color/white"
                 android:background="@drawable/shape"
-                android:onClick="onClick">
-            </Button>
+                android:textColor="@android:color/background_light"
+                android:textStyle="bold"
+                android:text="Click here to read more"
+                android:onClick="onClick"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"/>
             <TextView
 
                 android:layout_width="fill_parent"

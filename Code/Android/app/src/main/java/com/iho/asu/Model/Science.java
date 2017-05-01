@@ -7,6 +7,7 @@ public class Science {
     private String id;
     private String title;
     private String link;
+    private Integer order;
 
     public String getId() {
         return id;
@@ -35,5 +36,13 @@ public class Science {
     @Override
     public String toString(){
         return title;
+    }
+
+    public Integer getOrder() {
+        return order;
+    }
+
+    public void setOrder(Integer order) {
+        this.order = order;
     }
 }

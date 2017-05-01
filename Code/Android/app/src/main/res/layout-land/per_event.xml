@@ -87,35 +87,37 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="4">
 
                 <LinearLayout
-                    android:layout_width="280dp"
+                    android:layout_width="0dp"
                     android:layout_height="80dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_weight="3">
 
                     <TextView
-                        android:layout_width="280dp"
+                        android:layout_width="match_parent"
                         android:layout_height="10dp"
                         android:layout_gravity="center_horizontal" />
 
                     <TextView
                         android:id="@+id/where"
-                        android:layout_width="280dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
                         android:text="@string/locationInfo"
-                        android:textAlignment="textStart"
                         android:textSize="15dp" />
                 </LinearLayout>
 
                 <Button
                     android:id="@+id/eventsLink"
-                    android:layout_width="60dp"
+                    android:layout_width="0dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center"
                     android:background="@drawable/location"
-                    android:onClick="onClick" />
+                    android:onClick="onClick"
+                    android:layout_weight="0.5"/>
             </LinearLayout>
 
             <TextView
@@ -141,7 +143,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape"
                 android:onClick="onClick"
-                android:text="Click to read more"
+                android:text="Click here to read more"
                 android:textColor="@android:color/background_light"
                 android:textStyle="bold" />
         </LinearLayout>

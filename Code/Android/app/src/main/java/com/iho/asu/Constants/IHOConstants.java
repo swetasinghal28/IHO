@@ -63,6 +63,7 @@ public class IHOConstants {
     public static final String SCIENCE_TITLE = "title";
     public static final String SCIENCE_ID = "id";
     public static final String SCIENCE_LINK = "link";
+    public static final String SCIENCE_ORDER = "order";
 
 
 

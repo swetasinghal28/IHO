@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.iho.asu.DisplayDataFromJSON.EventsFragment;
 import com.iho.asu.DisplayDataFromJSON.FeaturedNewsFragment;
@@ -49,6 +50,11 @@ public class MainActivity extends Activity implements OnClickListener{
         ft.commit();
     }
 
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(getApplicationContext(),"Click back-arrow at the top to go back!", Toast.LENGTH_SHORT).show();
+        return;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

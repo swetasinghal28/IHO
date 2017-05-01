@@ -62,7 +62,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
-                android:background="@android:color/black"
+                android:background="@android:color/white"
                 android:gravity="center">
 
                 <ImageView
@@ -117,40 +117,36 @@
                 android:textSize="30dp"/>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="1">
-                <TextView
-                    android:id="@+id/textspace1"
-                    android:layout_width="32dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="15dp"
-                    android:textAlignment="center"
-                    android:maxLines="2"
-                    android:text="                                                                                                                 "
-                    android:maxLength="104"/>
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
+                android:paddingBottom="20dp"
+                android:weightSum="10.0">
+
                 <ImageButton
-                    android:layout_width="153dp"
+                    android:layout_width="0dp"
                     android:layout_height="79dp"
                     android:id="@+id/youtubeBtn"
                     android:background="@drawable/youtube"
-                    android:onClick="onClick" />
+                    android:onClick="onClick"
+                    android:layout_weight="2"/>
                 <TextView
                     android:id="@+id/textspace2"
-                    android:layout_width="100dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="15dp"
-                    android:textAlignment="center"
-                    android:maxLines="2"
-                    android:text="                                                                                                                 "
-                    android:maxLength="104"/>
+                    android:layout_weight="1"
+                    android:text="  "
+                    />
                 <ImageButton
-                    android:layout_width="114dp"
+                    android:layout_width="0dp"
                     android:layout_height="83dp"
                     android:id="@+id/vimeoBtn"
                     android:background="@drawable/vimeo"
-                    android:onClick="onClick" />
+                    android:onClick="onClick"
+                    android:layout_weight="2"/>
 
             </LinearLayout>
 

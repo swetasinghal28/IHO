@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.iho.asu.Constants.FragmentFieldsMapping;
 import com.iho.asu.Utilities.MainActivity;
@@ -35,6 +36,12 @@ public class ViewActivity extends Activity implements View.OnClickListener {
         FragmentTransaction ft = fm.beginTransaction();
         ft.add(R.id.per_view, returnFragment);
         ft.commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(getApplicationContext(),"Click back-arrow at the top to go back!", Toast.LENGTH_SHORT).show();
+        return;
     }
 
     @Override

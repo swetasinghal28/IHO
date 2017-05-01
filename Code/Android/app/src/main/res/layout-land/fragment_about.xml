@@ -114,20 +114,22 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:weightSum="4">
 
                         <LinearLayout
-                            android:layout_width="280dp"
+                            android:layout_width="0dp"
                             android:layout_height="80dp"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:layout_weight="3">
 
                             <TextView
-                                android:layout_width="280dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="10dp"
                                 android:layout_gravity="center_horizontal" />
 
                             <TextView
-                                android:layout_width="280dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="left"
                                 android:text="@string/locationInfo"
@@ -137,11 +139,12 @@
 
                         <Button
                             android:id="@+id/mapItBtn"
-                            android:layout_width="60dp"
+                            android:layout_width="0dp"
                             android:layout_height="80dp"
                             android:layout_gravity="center"
                             android:background="@drawable/location"
-                            android:onClick="onClick" />
+                            android:onClick="onClick"
+                            android:layout_weight="0.5"/>
                     </LinearLayout>
 
 
