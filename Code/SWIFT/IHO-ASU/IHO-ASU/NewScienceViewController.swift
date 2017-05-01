@@ -51,17 +51,18 @@ class NewScienceViewController: UITableViewController {
                             if let newsFromJSON = myJSON as? [[String: AnyObject]]{
                                 for news in newsFromJSON{
                                     let newsObject = Science()
-                                    if let title = news["title"] as? String,let desc = news["desc"] as? String,let id = news["id"] as? String,let link = news["link"] as? String{
+                                    if let title = news["title"] as? String,let id = news["id"] as? String,let link = news["link"] as? String, let scienceOrder = news["order"] as? Double{
                                         newsObject.id = id
                                         newsObject.title = title
-                                        newsObject.desc = desc
+                                        newsObject.scienceOrder = scienceOrder
                                         newsObject.link = link
                                         self.names.append(newsObject.title)
                                     }
                                     self.newsList[newsObject.title] = newsObject
                                 }
                             }
-                            self.names = self.names.reversed()
+                            let sortedArray = self.newsList.sorted { $0.value.scienceOrder < $1.value.scienceOrder }
+                            self.names = sortedArray.map {$0.0 }
                             self.newScienceTableView.reloadData()
                         }
                         catch let error{
