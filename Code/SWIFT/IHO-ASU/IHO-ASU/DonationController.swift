@@ -17,6 +17,7 @@ class DonationController: UIViewController {
         
         self.navigationItem.title = "Donate"
         
+        
         //toolbar
         let label = UILabel(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(350), height: CGFloat(21)))
         label.text = "ASU IHO 2017"
