@@ -1,0 +1,861 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		230EE9051E4E147100B4F9F9 /* About.html in Resources */ = {isa = PBXBuildFile; fileRef = 230EE8FE1E4E147100B4F9F9 /* About.html */; };
+		230EE9061E4E147100B4F9F9 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230EE8FF1E4E147100B4F9F9 /* AboutViewController.swift */; };
+		230EE9071E4E147100B4F9F9 /* ASU IHO vertical.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 230EE9001E4E147100B4F9F9 /* ASU IHO vertical.jpg */; };
+		230EE9081E4E147100B4F9F9 /* DonationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230EE9011E4E147100B4F9F9 /* DonationController.swift */; };
+		230EE9091E4E147100B4F9F9 /* DonationWebController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230EE9021E4E147100B4F9F9 /* DonationWebController.swift */; };
+		230EE90A1E4E147100B4F9F9 /* invest.png in Resources */ = {isa = PBXBuildFile; fileRef = 230EE9031E4E147100B4F9F9 /* invest.png */; };
+		230EE90B1E4E147100B4F9F9 /* search-icon-64.png in Resources */ = {isa = PBXBuildFile; fileRef = 230EE9041E4E147100B4F9F9 /* search-icon-64.png */; };
+		230EE90D1E4E149800B4F9F9 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 230EE90C1E4E149800B4F9F9 /* Info.plist */; };
+		9F30DEAB1E8EC79E00F40E06 /* askananthropologist.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE7B1E8EC79E00F40E06 /* askananthropologist.jpg */; };
+		9F30DEAC1E8EC79E00F40E06 /* AskAnAnthropologistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE7C1E8EC79E00F40E06 /* AskAnAnthropologistViewController.swift */; };
+		9F30DEAD1E8EC79E00F40E06 /* BecomingHumanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE7D1E8EC79E00F40E06 /* BecomingHumanViewController.swift */; };
+		9F30DEAE1E8EC79E00F40E06 /* claszen_logo_maroon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE7E1E8EC79E00F40E06 /* claszen_logo_maroon.png */; };
+		9F30DEAF1E8EC79E00F40E06 /* ConnectInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE7F1E8EC79E00F40E06 /* ConnectInfoViewController.swift */; };
+		9F30DEB01E8EC79E00F40E06 /* Contact.html in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE801E8EC79E00F40E06 /* Contact.html */; };
+		9F30DEB11E8EC79E00F40E06 /* CreditDetails.html in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE811E8EC79E00F40E06 /* CreditDetails.html */; };
+		9F30DEB21E8EC79E00F40E06 /* custom.css in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE821E8EC79E00F40E06 /* custom.css */; };
+		9F30DEB31E8EC79E00F40E06 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE831E8EC79E00F40E06 /* Events.swift */; };
+		9F30DEB41E8EC79E00F40E06 /* EventsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE841E8EC79E00F40E06 /* EventsDetailViewController.swift */; };
+		9F30DEB51E8EC79E00F40E06 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE851E8EC79E00F40E06 /* EventsViewController.swift */; };
+		9F30DEB61E8EC79E00F40E06 /* FB.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE861E8EC79E00F40E06 /* FB.png */; };
+		9F30DEB71E8EC79E00F40E06 /* FeaturedNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE871E8EC79E00F40E06 /* FeaturedNewsViewController.swift */; };
+		9F30DEB81E8EC79E00F40E06 /* GalleryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE881E8EC79E00F40E06 /* GalleryTableViewController.swift */; };
+		9F30DEB91E8EC79E00F40E06 /* IHO_h_mg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE891E8EC79E00F40E06 /* IHO_h_mg.png */; };
+		9F30DEBA1E8EC79E00F40E06 /* IHOlogoforapp.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE8A1E8EC79E00F40E06 /* IHOlogoforapp.jpg */; };
+		9F30DEBB1E8EC79E00F40E06 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE8B1E8EC79E00F40E06 /* Image.swift */; };
+		9F30DEBC1E8EC79E00F40E06 /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE8C1E8EC79E00F40E06 /* index.js */; };
+		9F30DEBD1E8EC79E00F40E06 /* instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE8D1E8EC79E00F40E06 /* instagram.png */; };
+		9F30DEBE1E8EC79E00F40E06 /* jqm-icon-pack-2.0-original.css in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE8E1E8EC79E00F40E06 /* jqm-icon-pack-2.0-original.css */; };
+		9F30DEBF1E8EC79E00F40E06 /* jquery-1.10.2.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE8F1E8EC79E00F40E06 /* jquery-1.10.2.min.js */; };
+		9F30DEC01E8EC79E00F40E06 /* jquery-1.11.0.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE901E8EC79E00F40E06 /* jquery-1.11.0.min.js */; };
+		9F30DEC11E8EC79E00F40E06 /* jquery.mobile-1.4.2.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE911E8EC79E00F40E06 /* jquery.mobile-1.4.2.min.css */; };
+		9F30DEC21E8EC79E00F40E06 /* jquery.mobile-1.4.2.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE921E8EC79E00F40E06 /* jquery.mobile-1.4.2.min.js */; };
+		9F30DEC31E8EC79E00F40E06 /* Lecturer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE931E8EC79E00F40E06 /* Lecturer.swift */; };
+		9F30DEC41E8EC79E00F40E06 /* LecturerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE941E8EC79E00F40E06 /* LecturerDetailViewController.swift */; };
+		9F30DEC51E8EC79E00F40E06 /* LecturerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE951E8EC79E00F40E06 /* LecturerListViewController.swift */; };
+		9F30DEC61E8EC79E00F40E06 /* lucy_chin.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE961E8EC79E00F40E06 /* lucy_chin.png */; };
+		9F30DEC71E8EC79E00F40E06 /* Lucy_FullSkeleton_uncolored.ai in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE971E8EC79E00F40E06 /* Lucy_FullSkeleton_uncolored.ai */; };
+		9F30DEC81E8EC79E00F40E06 /* lucy_skull.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE981E8EC79E00F40E06 /* lucy_skull.png */; };
+		9F30DEC91E8EC79E00F40E06 /* lucy.html in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE991E8EC79E00F40E06 /* lucy.html */; };
+		9F30DECA1E8EC79E00F40E06 /* lucy.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE9A1E8EC79E00F40E06 /* lucy.png */; };
+		9F30DECB1E8EC79E00F40E06 /* LucyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE9B1E8EC79E00F40E06 /* LucyViewController.swift */; };
+		9F30DECC1E8EC79E00F40E06 /* newLogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DE9C1E8EC79E00F40E06 /* newLogo.jpg */; };
+		9F30DECD1E8EC79E00F40E06 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE9D1E8EC79E00F40E06 /* News.swift */; };
+		9F30DECE1E8EC79E00F40E06 /* NewScienceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE9E1E8EC79E00F40E06 /* NewScienceViewController.swift */; };
+		9F30DECF1E8EC79E00F40E06 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DE9F1E8EC79E00F40E06 /* NewsDetailViewController.swift */; };
+		9F30DED01E8EC79E00F40E06 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DEA01E8EC79E00F40E06 /* NewsViewController.swift */; };
+		9F30DED11E8EC79E00F40E06 /* photoswipe.css in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DEA11E8EC79E00F40E06 /* photoswipe.css */; };
+		9F30DED21E8EC79E00F40E06 /* rsz_iho_h_mg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DEA21E8EC79E00F40E06 /* rsz_iho_h_mg.png */; };
+		9F30DED31E8EC79E00F40E06 /* Science.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DEA31E8EC79E00F40E06 /* Science.swift */; };
+		9F30DED41E8EC79E00F40E06 /* sediments.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DEA41E8EC79E00F40E06 /* sediments.jpg */; };
+		9F30DED51E8EC79E00F40E06 /* skull.html in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DEA51E8EC79E00F40E06 /* skull.html */; };
+		9F30DED61E8EC79E00F40E06 /* travellearnimge.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DEA61E8EC79E00F40E06 /* travellearnimge.jpg */; };
+		9F30DED71E8EC79E00F40E06 /* TravelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F30DEA71E8EC79E00F40E06 /* TravelViewController.swift */; };
+		9F30DED81E8EC79E00F40E06 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DEA81E8EC79E00F40E06 /* twitter.png */; };
+		9F30DED91E8EC79E00F40E06 /* vimeo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DEA91E8EC79E00F40E06 /* vimeo.png */; };
+		9F30DEDA1E8EC79E00F40E06 /* youtube.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F30DEAA1E8EC79E00F40E06 /* youtube.png */; };
+		9F36EA511EA01D380041582B /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F36EA4D1EA01D380041582B /* Cache.swift */; };
+		9F36EA521EA01D380041582B /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F36EA4E1EA01D380041582B /* CreditsViewController.swift */; };
+		9F36EA531EA01D380041582B /* news.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F36EA4F1EA01D380041582B /* news.json */; };
+		9F36EA541EA01D380041582B /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F36EA501EA01D380041582B /* Reachability.swift */; };
+		9F84B6481EADEC51007F74CB /* featuredNews.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F84B6471EADEC51007F74CB /* featuredNews.json */; };
+		9F84B64A1EADF4D0007F74CB /* events.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F84B6491EADF4D0007F74CB /* events.json */; };
+		9F84B64C1EADFAD0007F74CB /* gallery.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F84B64B1EADFAD0007F74CB /* gallery.json */; };
+		9F84B64E1EAEA945007F74CB /* askAnthro.html in Resources */ = {isa = PBXBuildFile; fileRef = 9F84B64D1EAEA945007F74CB /* askAnthro.html */; };
+		9F84B6501EAEAB1F007F74CB /* lecturer.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F84B64F1EAEAB1F007F74CB /* lecturer.json */; };
+		9F84B6521EAF06A5007F74CB /* newscience.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F84B6511EAF06A5007F74CB /* newscience.json */; };
+		9F87E3651E4D35560030F231 /* asu_logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9F87E3641E4D35560030F231 /* asu_logo.jpg */; };
+		9F87E3671E4D3DAE0030F231 /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F87E3661E4D3DAE0030F231 /* ConnectViewController.swift */; };
+		9F87E3691E4D3FAC0030F231 /* NewsEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F87E3681E4D3FAC0030F231 /* NewsEventsViewController.swift */; };
+		9F87E36B1E4D40740030F231 /* FieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F87E36A1E4D40740030F231 /* FieldViewController.swift */; };
+		9F87E36D1E4D41610030F231 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F87E36C1E4D41610030F231 /* GalleryViewController.swift */; };
+		9FB7C57D1E4AAA5900B88166 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB7C57C1E4AAA5900B88166 /* AppDelegate.swift */; };
+		9FB7C57F1E4AAA5900B88166 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB7C57E1E4AAA5900B88166 /* ViewController.swift */; };
+		9FB7C5821E4AAA5900B88166 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FB7C5801E4AAA5900B88166 /* Main.storyboard */; };
+		9FB7C5851E4AAA5900B88166 /* IHO_ASU.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9FB7C5831E4AAA5900B88166 /* IHO_ASU.xcdatamodeld */; };
+		9FB7C5871E4AAA5900B88166 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FB7C5861E4AAA5900B88166 /* Assets.xcassets */; };
+		9FB7C58A1E4AAA5900B88166 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FB7C5881E4AAA5900B88166 /* LaunchScreen.storyboard */; };
+		9FB7C5951E4AAA5A00B88166 /* IHO_ASUTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB7C5941E4AAA5A00B88166 /* IHO_ASUTests.swift */; };
+		9FB7C5A01E4AAA5A00B88166 /* IHO_ASUUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB7C59F1E4AAA5A00B88166 /* IHO_ASUUITests.swift */; };
+		9FFC3B6E1EA7F581004A0597 /* LecturerGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC3B6D1EA7F581004A0597 /* LecturerGalleryViewController.swift */; };
+		9FFC3B721EA840FF004A0597 /* ask_ananthropologist_v2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9FFC3B6F1EA840FF004A0597 /* ask_ananthropologist_v2.jpg */; };
+		9FFC3B731EA840FF004A0597 /* ASU-IHO-About.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9FFC3B701EA840FF004A0597 /* ASU-IHO-About.jpg */; };
+		9FFC3B741EA840FF004A0597 /* IHO_Gallery_main.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9FFC3B711EA840FF004A0597 /* IHO_Gallery_main.jpg */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9FB7C5911E4AAA5A00B88166 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9FB7C5711E4AAA5900B88166 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9FB7C5781E4AAA5900B88166;
+			remoteInfo = "IHO-ASU";
+		};
+		9FB7C59C1E4AAA5A00B88166 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9FB7C5711E4AAA5900B88166 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9FB7C5781E4AAA5900B88166;
+			remoteInfo = "IHO-ASU";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		230EE8FE1E4E147100B4F9F9 /* About.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = About.html; sourceTree = "<group>"; };
+		230EE8FF1E4E147100B4F9F9 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		230EE9001E4E147100B4F9F9 /* ASU IHO vertical.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ASU IHO vertical.jpg"; sourceTree = "<group>"; };
+		230EE9011E4E147100B4F9F9 /* DonationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationController.swift; sourceTree = "<group>"; };
+		230EE9021E4E147100B4F9F9 /* DonationWebController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationWebController.swift; sourceTree = "<group>"; };
+		230EE9031E4E147100B4F9F9 /* invest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = invest.png; sourceTree = "<group>"; };
+		230EE9041E4E147100B4F9F9 /* search-icon-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-icon-64.png"; sourceTree = "<group>"; };
+		230EE90C1E4E149800B4F9F9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9F30DE7B1E8EC79E00F40E06 /* askananthropologist.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = askananthropologist.jpg; sourceTree = "<group>"; };
+		9F30DE7C1E8EC79E00F40E06 /* AskAnAnthropologistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AskAnAnthropologistViewController.swift; sourceTree = "<group>"; };
+		9F30DE7D1E8EC79E00F40E06 /* BecomingHumanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BecomingHumanViewController.swift; sourceTree = "<group>"; };
+		9F30DE7E1E8EC79E00F40E06 /* claszen_logo_maroon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = claszen_logo_maroon.png; sourceTree = "<group>"; };
+		9F30DE7F1E8EC79E00F40E06 /* ConnectInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectInfoViewController.swift; sourceTree = "<group>"; };
+		9F30DE801E8EC79E00F40E06 /* Contact.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Contact.html; sourceTree = "<group>"; };
+		9F30DE811E8EC79E00F40E06 /* CreditDetails.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = CreditDetails.html; sourceTree = "<group>"; };
+		9F30DE821E8EC79E00F40E06 /* custom.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = custom.css; sourceTree = "<group>"; };
+		9F30DE831E8EC79E00F40E06 /* Events.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
+		9F30DE841E8EC79E00F40E06 /* EventsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsDetailViewController.swift; sourceTree = "<group>"; };
+		9F30DE851E8EC79E00F40E06 /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		9F30DE861E8EC79E00F40E06 /* FB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FB.png; sourceTree = "<group>"; };
+		9F30DE871E8EC79E00F40E06 /* FeaturedNewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedNewsViewController.swift; sourceTree = "<group>"; };
+		9F30DE881E8EC79E00F40E06 /* GalleryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryTableViewController.swift; sourceTree = "<group>"; };
+		9F30DE891E8EC79E00F40E06 /* IHO_h_mg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IHO_h_mg.png; sourceTree = "<group>"; };
+		9F30DE8A1E8EC79E00F40E06 /* IHOlogoforapp.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IHOlogoforapp.jpg; sourceTree = "<group>"; };
+		9F30DE8B1E8EC79E00F40E06 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		9F30DE8C1E8EC79E00F40E06 /* index.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
+		9F30DE8D1E8EC79E00F40E06 /* instagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instagram.png; sourceTree = "<group>"; };
+		9F30DE8E1E8EC79E00F40E06 /* jqm-icon-pack-2.0-original.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "jqm-icon-pack-2.0-original.css"; sourceTree = "<group>"; };
+		9F30DE8F1E8EC79E00F40E06 /* jquery-1.10.2.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-1.10.2.min.js"; sourceTree = "<group>"; };
+		9F30DE901E8EC79E00F40E06 /* jquery-1.11.0.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-1.11.0.min.js"; sourceTree = "<group>"; };
+		9F30DE911E8EC79E00F40E06 /* jquery.mobile-1.4.2.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "jquery.mobile-1.4.2.min.css"; sourceTree = "<group>"; };
+		9F30DE921E8EC79E00F40E06 /* jquery.mobile-1.4.2.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery.mobile-1.4.2.min.js"; sourceTree = "<group>"; };
+		9F30DE931E8EC79E00F40E06 /* Lecturer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lecturer.swift; sourceTree = "<group>"; };
+		9F30DE941E8EC79E00F40E06 /* LecturerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturerDetailViewController.swift; sourceTree = "<group>"; };
+		9F30DE951E8EC79E00F40E06 /* LecturerListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturerListViewController.swift; sourceTree = "<group>"; };
+		9F30DE961E8EC79E00F40E06 /* lucy_chin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lucy_chin.png; sourceTree = "<group>"; };
+		9F30DE971E8EC79E00F40E06 /* Lucy_FullSkeleton_uncolored.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Lucy_FullSkeleton_uncolored.ai; sourceTree = "<group>"; };
+		9F30DE981E8EC79E00F40E06 /* lucy_skull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lucy_skull.png; sourceTree = "<group>"; };
+		9F30DE991E8EC79E00F40E06 /* lucy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = lucy.html; sourceTree = "<group>"; };
+		9F30DE9A1E8EC79E00F40E06 /* lucy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lucy.png; sourceTree = "<group>"; };
+		9F30DE9B1E8EC79E00F40E06 /* LucyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LucyViewController.swift; sourceTree = "<group>"; };
+		9F30DE9C1E8EC79E00F40E06 /* newLogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = newLogo.jpg; sourceTree = "<group>"; };
+		9F30DE9D1E8EC79E00F40E06 /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		9F30DE9E1E8EC79E00F40E06 /* NewScienceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewScienceViewController.swift; sourceTree = "<group>"; };
+		9F30DE9F1E8EC79E00F40E06 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
+		9F30DEA01E8EC79E00F40E06 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		9F30DEA11E8EC79E00F40E06 /* photoswipe.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = photoswipe.css; sourceTree = "<group>"; };
+		9F30DEA21E8EC79E00F40E06 /* rsz_iho_h_mg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rsz_iho_h_mg.png; sourceTree = "<group>"; };
+		9F30DEA31E8EC79E00F40E06 /* Science.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Science.swift; sourceTree = "<group>"; };
+		9F30DEA41E8EC79E00F40E06 /* sediments.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sediments.jpg; sourceTree = "<group>"; };
+		9F30DEA51E8EC79E00F40E06 /* skull.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = skull.html; sourceTree = "<group>"; };
+		9F30DEA61E8EC79E00F40E06 /* travellearnimge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = travellearnimge.jpg; sourceTree = "<group>"; };
+		9F30DEA71E8EC79E00F40E06 /* TravelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelViewController.swift; sourceTree = "<group>"; };
+		9F30DEA81E8EC79E00F40E06 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter.png; sourceTree = "<group>"; };
+		9F30DEA91E8EC79E00F40E06 /* vimeo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vimeo.png; sourceTree = "<group>"; };
+		9F30DEAA1E8EC79E00F40E06 /* youtube.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = youtube.png; sourceTree = "<group>"; };
+		9F36EA4D1EA01D380041582B /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		9F36EA4E1EA01D380041582B /* CreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
+		9F36EA4F1EA01D380041582B /* news.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = news.json; sourceTree = "<group>"; };
+		9F36EA501EA01D380041582B /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		9F84B6471EADEC51007F74CB /* featuredNews.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = featuredNews.json; sourceTree = "<group>"; };
+		9F84B6491EADF4D0007F74CB /* events.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = events.json; sourceTree = "<group>"; };
+		9F84B64B1EADFAD0007F74CB /* gallery.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gallery.json; sourceTree = "<group>"; };
+		9F84B64D1EAEA945007F74CB /* askAnthro.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = askAnthro.html; sourceTree = "<group>"; };
+		9F84B64F1EAEAB1F007F74CB /* lecturer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lecturer.json; sourceTree = "<group>"; };
+		9F84B6511EAF06A5007F74CB /* newscience.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = newscience.json; sourceTree = "<group>"; };
+		9F87E3641E4D35560030F231 /* asu_logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = asu_logo.jpg; sourceTree = "<group>"; };
+		9F87E3661E4D3DAE0030F231 /* ConnectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
+		9F87E3681E4D3FAC0030F231 /* NewsEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsEventsViewController.swift; sourceTree = "<group>"; };
+		9F87E36A1E4D40740030F231 /* FieldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldViewController.swift; sourceTree = "<group>"; };
+		9F87E36C1E4D41610030F231 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		9FB7C5791E4AAA5900B88166 /* IHO-ASU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IHO-ASU.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FB7C57C1E4AAA5900B88166 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9FB7C57E1E4AAA5900B88166 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9FB7C5811E4AAA5900B88166 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9FB7C5841E4AAA5900B88166 /* IHO_ASU.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IHO_ASU.xcdatamodel; sourceTree = "<group>"; };
+		9FB7C5861E4AAA5900B88166 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9FB7C5891E4AAA5900B88166 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9FB7C5901E4AAA5A00B88166 /* IHO-ASUTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "IHO-ASUTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FB7C5941E4AAA5A00B88166 /* IHO_ASUTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IHO_ASUTests.swift; sourceTree = "<group>"; };
+		9FB7C5961E4AAA5A00B88166 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9FB7C59B1E4AAA5A00B88166 /* IHO-ASUUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "IHO-ASUUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FB7C59F1E4AAA5A00B88166 /* IHO_ASUUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IHO_ASUUITests.swift; sourceTree = "<group>"; };
+		9FB7C5A11E4AAA5A00B88166 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9FFC3B6D1EA7F581004A0597 /* LecturerGalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturerGalleryViewController.swift; sourceTree = "<group>"; };
+		9FFC3B6F1EA840FF004A0597 /* ask_ananthropologist_v2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ask_ananthropologist_v2.jpg; sourceTree = "<group>"; };
+		9FFC3B701EA840FF004A0597 /* ASU-IHO-About.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ASU-IHO-About.jpg"; sourceTree = "<group>"; };
+		9FFC3B711EA840FF004A0597 /* IHO_Gallery_main.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IHO_Gallery_main.jpg; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9FB7C5761E4AAA5900B88166 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FB7C58D1E4AAA5A00B88166 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FB7C5981E4AAA5A00B88166 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9F87E3631E4D35470030F231 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9F87E3641E4D35560030F231 /* asu_logo.jpg */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		9FB7C5701E4AAA5900B88166 = {
+			isa = PBXGroup;
+			children = (
+				9FB7C57B1E4AAA5900B88166 /* IHO-ASU */,
+				9FB7C5931E4AAA5A00B88166 /* IHO-ASUTests */,
+				9FB7C59E1E4AAA5A00B88166 /* IHO-ASUUITests */,
+				9FB7C57A1E4AAA5900B88166 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9FB7C57A1E4AAA5900B88166 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9FB7C5791E4AAA5900B88166 /* IHO-ASU.app */,
+				9FB7C5901E4AAA5A00B88166 /* IHO-ASUTests.xctest */,
+				9FB7C59B1E4AAA5A00B88166 /* IHO-ASUUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9FB7C57B1E4AAA5900B88166 /* IHO-ASU */ = {
+			isa = PBXGroup;
+			children = (
+				9F84B64D1EAEA945007F74CB /* askAnthro.html */,
+				9FFC3B6F1EA840FF004A0597 /* ask_ananthropologist_v2.jpg */,
+				9FFC3B701EA840FF004A0597 /* ASU-IHO-About.jpg */,
+				9FFC3B711EA840FF004A0597 /* IHO_Gallery_main.jpg */,
+				9F36EA4D1EA01D380041582B /* Cache.swift */,
+				9F36EA4E1EA01D380041582B /* CreditsViewController.swift */,
+				9F36EA4F1EA01D380041582B /* news.json */,
+				9F36EA501EA01D380041582B /* Reachability.swift */,
+				9F30DE7B1E8EC79E00F40E06 /* askananthropologist.jpg */,
+				9F30DE7C1E8EC79E00F40E06 /* AskAnAnthropologistViewController.swift */,
+				9F30DE7D1E8EC79E00F40E06 /* BecomingHumanViewController.swift */,
+				9F30DE7E1E8EC79E00F40E06 /* claszen_logo_maroon.png */,
+				9F30DE7F1E8EC79E00F40E06 /* ConnectInfoViewController.swift */,
+				9F30DE801E8EC79E00F40E06 /* Contact.html */,
+				9F30DE811E8EC79E00F40E06 /* CreditDetails.html */,
+				9F30DE821E8EC79E00F40E06 /* custom.css */,
+				9F30DE831E8EC79E00F40E06 /* Events.swift */,
+				9F30DE841E8EC79E00F40E06 /* EventsDetailViewController.swift */,
+				9F30DE851E8EC79E00F40E06 /* EventsViewController.swift */,
+				9F30DE861E8EC79E00F40E06 /* FB.png */,
+				9F30DE871E8EC79E00F40E06 /* FeaturedNewsViewController.swift */,
+				9F30DE881E8EC79E00F40E06 /* GalleryTableViewController.swift */,
+				9F30DE891E8EC79E00F40E06 /* IHO_h_mg.png */,
+				9F30DE8A1E8EC79E00F40E06 /* IHOlogoforapp.jpg */,
+				9F30DE8B1E8EC79E00F40E06 /* Image.swift */,
+				9F30DE8C1E8EC79E00F40E06 /* index.js */,
+				9F30DE8D1E8EC79E00F40E06 /* instagram.png */,
+				9F30DE8E1E8EC79E00F40E06 /* jqm-icon-pack-2.0-original.css */,
+				9F30DE8F1E8EC79E00F40E06 /* jquery-1.10.2.min.js */,
+				9F30DE901E8EC79E00F40E06 /* jquery-1.11.0.min.js */,
+				9F30DE911E8EC79E00F40E06 /* jquery.mobile-1.4.2.min.css */,
+				9F30DE921E8EC79E00F40E06 /* jquery.mobile-1.4.2.min.js */,
+				9F30DE931E8EC79E00F40E06 /* Lecturer.swift */,
+				9F30DE941E8EC79E00F40E06 /* LecturerDetailViewController.swift */,
+				9F30DE951E8EC79E00F40E06 /* LecturerListViewController.swift */,
+				9F30DE961E8EC79E00F40E06 /* lucy_chin.png */,
+				9F30DE971E8EC79E00F40E06 /* Lucy_FullSkeleton_uncolored.ai */,
+				9F30DE981E8EC79E00F40E06 /* lucy_skull.png */,
+				9F30DE991E8EC79E00F40E06 /* lucy.html */,
+				9F30DE9A1E8EC79E00F40E06 /* lucy.png */,
+				9F30DE9B1E8EC79E00F40E06 /* LucyViewController.swift */,
+				9F30DE9C1E8EC79E00F40E06 /* newLogo.jpg */,
+				9F30DE9D1E8EC79E00F40E06 /* News.swift */,
+				9F30DE9E1E8EC79E00F40E06 /* NewScienceViewController.swift */,
+				9F30DE9F1E8EC79E00F40E06 /* NewsDetailViewController.swift */,
+				9F30DEA01E8EC79E00F40E06 /* NewsViewController.swift */,
+				9F30DEA11E8EC79E00F40E06 /* photoswipe.css */,
+				9F30DEA21E8EC79E00F40E06 /* rsz_iho_h_mg.png */,
+				9F30DEA31E8EC79E00F40E06 /* Science.swift */,
+				9F30DEA41E8EC79E00F40E06 /* sediments.jpg */,
+				9F30DEA51E8EC79E00F40E06 /* skull.html */,
+				9F30DEA61E8EC79E00F40E06 /* travellearnimge.jpg */,
+				9F30DEA71E8EC79E00F40E06 /* TravelViewController.swift */,
+				9F30DEA81E8EC79E00F40E06 /* twitter.png */,
+				9F30DEA91E8EC79E00F40E06 /* vimeo.png */,
+				9F30DEAA1E8EC79E00F40E06 /* youtube.png */,
+				230EE90C1E4E149800B4F9F9 /* Info.plist */,
+				230EE8FE1E4E147100B4F9F9 /* About.html */,
+				230EE8FF1E4E147100B4F9F9 /* AboutViewController.swift */,
+				230EE9001E4E147100B4F9F9 /* ASU IHO vertical.jpg */,
+				230EE9011E4E147100B4F9F9 /* DonationController.swift */,
+				230EE9021E4E147100B4F9F9 /* DonationWebController.swift */,
+				230EE9031E4E147100B4F9F9 /* invest.png */,
+				230EE9041E4E147100B4F9F9 /* search-icon-64.png */,
+				9F87E3631E4D35470030F231 /* Resources */,
+				9FB7C57C1E4AAA5900B88166 /* AppDelegate.swift */,
+				9FB7C57E1E4AAA5900B88166 /* ViewController.swift */,
+				9FB7C5801E4AAA5900B88166 /* Main.storyboard */,
+				9FB7C5861E4AAA5900B88166 /* Assets.xcassets */,
+				9FB7C5881E4AAA5900B88166 /* LaunchScreen.storyboard */,
+				9FB7C5831E4AAA5900B88166 /* IHO_ASU.xcdatamodeld */,
+				9F87E3661E4D3DAE0030F231 /* ConnectViewController.swift */,
+				9F87E3681E4D3FAC0030F231 /* NewsEventsViewController.swift */,
+				9F87E36A1E4D40740030F231 /* FieldViewController.swift */,
+				9F87E36C1E4D41610030F231 /* GalleryViewController.swift */,
+				9FFC3B6D1EA7F581004A0597 /* LecturerGalleryViewController.swift */,
+				9F84B6471EADEC51007F74CB /* featuredNews.json */,
+				9F84B6491EADF4D0007F74CB /* events.json */,
+				9F84B64B1EADFAD0007F74CB /* gallery.json */,
+				9F84B64F1EAEAB1F007F74CB /* lecturer.json */,
+				9F84B6511EAF06A5007F74CB /* newscience.json */,
+			);
+			path = "IHO-ASU";
+			sourceTree = "<group>";
+		};
+		9FB7C5931E4AAA5A00B88166 /* IHO-ASUTests */ = {
+			isa = PBXGroup;
+			children = (
+				9FB7C5941E4AAA5A00B88166 /* IHO_ASUTests.swift */,
+				9FB7C5961E4AAA5A00B88166 /* Info.plist */,
+			);
+			path = "IHO-ASUTests";
+			sourceTree = "<group>";
+		};
+		9FB7C59E1E4AAA5A00B88166 /* IHO-ASUUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9FB7C59F1E4AAA5A00B88166 /* IHO_ASUUITests.swift */,
+				9FB7C5A11E4AAA5A00B88166 /* Info.plist */,
+			);
+			path = "IHO-ASUUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9FB7C5781E4AAA5900B88166 /* IHO-ASU */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9FB7C5A41E4AAA5A00B88166 /* Build configuration list for PBXNativeTarget "IHO-ASU" */;
+			buildPhases = (
+				9FB7C5751E4AAA5900B88166 /* Sources */,
+				9FB7C5761E4AAA5900B88166 /* Frameworks */,
+				9FB7C5771E4AAA5900B88166 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "IHO-ASU";
+			productName = "IHO-ASU";
+			productReference = 9FB7C5791E4AAA5900B88166 /* IHO-ASU.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9FB7C58F1E4AAA5A00B88166 /* IHO-ASUTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9FB7C5A71E4AAA5A00B88166 /* Build configuration list for PBXNativeTarget "IHO-ASUTests" */;
+			buildPhases = (
+				9FB7C58C1E4AAA5A00B88166 /* Sources */,
+				9FB7C58D1E4AAA5A00B88166 /* Frameworks */,
+				9FB7C58E1E4AAA5A00B88166 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9FB7C5921E4AAA5A00B88166 /* PBXTargetDependency */,
+			);
+			name = "IHO-ASUTests";
+			productName = "IHO-ASUTests";
+			productReference = 9FB7C5901E4AAA5A00B88166 /* IHO-ASUTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9FB7C59A1E4AAA5A00B88166 /* IHO-ASUUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9FB7C5AA1E4AAA5A00B88166 /* Build configuration list for PBXNativeTarget "IHO-ASUUITests" */;
+			buildPhases = (
+				9FB7C5971E4AAA5A00B88166 /* Sources */,
+				9FB7C5981E4AAA5A00B88166 /* Frameworks */,
+				9FB7C5991E4AAA5A00B88166 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9FB7C59D1E4AAA5A00B88166 /* PBXTargetDependency */,
+			);
+			name = "IHO-ASUUITests";
+			productName = "IHO-ASUUITests";
+			productReference = 9FB7C59B1E4AAA5A00B88166 /* IHO-ASUUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9FB7C5711E4AAA5900B88166 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Sweta Singhal";
+				TargetAttributes = {
+					9FB7C5781E4AAA5900B88166 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = XE6XA4DH2N;
+						ProvisioningStyle = Manual;
+					};
+					9FB7C58F1E4AAA5A00B88166 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 9FB7C5781E4AAA5900B88166;
+					};
+					9FB7C59A1E4AAA5A00B88166 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 9FB7C5781E4AAA5900B88166;
+					};
+				};
+			};
+			buildConfigurationList = 9FB7C5741E4AAA5900B88166 /* Build configuration list for PBXProject "IHO-ASU" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9FB7C5701E4AAA5900B88166;
+			productRefGroup = 9FB7C57A1E4AAA5900B88166 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9FB7C5781E4AAA5900B88166 /* IHO-ASU */,
+				9FB7C58F1E4AAA5A00B88166 /* IHO-ASUTests */,
+				9FB7C59A1E4AAA5A00B88166 /* IHO-ASUUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9FB7C5771E4AAA5900B88166 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F30DEBA1E8EC79E00F40E06 /* IHOlogoforapp.jpg in Resources */,
+				9F30DED11E8EC79E00F40E06 /* photoswipe.css in Resources */,
+				9F30DEC91E8EC79E00F40E06 /* lucy.html in Resources */,
+				9F30DEBF1E8EC79E00F40E06 /* jquery-1.10.2.min.js in Resources */,
+				9F84B6501EAEAB1F007F74CB /* lecturer.json in Resources */,
+				9F30DEB11E8EC79E00F40E06 /* CreditDetails.html in Resources */,
+				230EE90B1E4E147100B4F9F9 /* search-icon-64.png in Resources */,
+				9F87E3651E4D35560030F231 /* asu_logo.jpg in Resources */,
+				9F30DED61E8EC79E00F40E06 /* travellearnimge.jpg in Resources */,
+				9F30DEAE1E8EC79E00F40E06 /* claszen_logo_maroon.png in Resources */,
+				9F84B64C1EADFAD0007F74CB /* gallery.json in Resources */,
+				9F84B6521EAF06A5007F74CB /* newscience.json in Resources */,
+				9F30DEB01E8EC79E00F40E06 /* Contact.html in Resources */,
+				9F30DEB61E8EC79E00F40E06 /* FB.png in Resources */,
+				9FFC3B721EA840FF004A0597 /* ask_ananthropologist_v2.jpg in Resources */,
+				230EE90D1E4E149800B4F9F9 /* Info.plist in Resources */,
+				9F30DEB21E8EC79E00F40E06 /* custom.css in Resources */,
+				9F30DEC61E8EC79E00F40E06 /* lucy_chin.png in Resources */,
+				9F30DEBC1E8EC79E00F40E06 /* index.js in Resources */,
+				9F30DEC71E8EC79E00F40E06 /* Lucy_FullSkeleton_uncolored.ai in Resources */,
+				9F30DEC81E8EC79E00F40E06 /* lucy_skull.png in Resources */,
+				9F30DEC11E8EC79E00F40E06 /* jquery.mobile-1.4.2.min.css in Resources */,
+				9F30DEBE1E8EC79E00F40E06 /* jqm-icon-pack-2.0-original.css in Resources */,
+				9F84B64A1EADF4D0007F74CB /* events.json in Resources */,
+				9F30DEC21E8EC79E00F40E06 /* jquery.mobile-1.4.2.min.js in Resources */,
+				9F30DED91E8EC79E00F40E06 /* vimeo.png in Resources */,
+				9F30DEAB1E8EC79E00F40E06 /* askananthropologist.jpg in Resources */,
+				9F30DEBD1E8EC79E00F40E06 /* instagram.png in Resources */,
+				9F30DEDA1E8EC79E00F40E06 /* youtube.png in Resources */,
+				9F30DEB91E8EC79E00F40E06 /* IHO_h_mg.png in Resources */,
+				230EE9051E4E147100B4F9F9 /* About.html in Resources */,
+				9F84B6481EADEC51007F74CB /* featuredNews.json in Resources */,
+				230EE9071E4E147100B4F9F9 /* ASU IHO vertical.jpg in Resources */,
+				9F36EA531EA01D380041582B /* news.json in Resources */,
+				9FB7C58A1E4AAA5900B88166 /* LaunchScreen.storyboard in Resources */,
+				9FB7C5871E4AAA5900B88166 /* Assets.xcassets in Resources */,
+				230EE90A1E4E147100B4F9F9 /* invest.png in Resources */,
+				9F30DED41E8EC79E00F40E06 /* sediments.jpg in Resources */,
+				9F30DED51E8EC79E00F40E06 /* skull.html in Resources */,
+				9F30DED21E8EC79E00F40E06 /* rsz_iho_h_mg.png in Resources */,
+				9FB7C5821E4AAA5900B88166 /* Main.storyboard in Resources */,
+				9FFC3B741EA840FF004A0597 /* IHO_Gallery_main.jpg in Resources */,
+				9FFC3B731EA840FF004A0597 /* ASU-IHO-About.jpg in Resources */,
+				9F30DECA1E8EC79E00F40E06 /* lucy.png in Resources */,
+				9F30DED81E8EC79E00F40E06 /* twitter.png in Resources */,
+				9F30DEC01E8EC79E00F40E06 /* jquery-1.11.0.min.js in Resources */,
+				9F84B64E1EAEA945007F74CB /* askAnthro.html in Resources */,
+				9F30DECC1E8EC79E00F40E06 /* newLogo.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FB7C58E1E4AAA5A00B88166 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FB7C5991E4AAA5A00B88166 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9FB7C5751E4AAA5900B88166 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F30DECB1E8EC79E00F40E06 /* LucyViewController.swift in Sources */,
+				9F30DEAD1E8EC79E00F40E06 /* BecomingHumanViewController.swift in Sources */,
+				9F87E3691E4D3FAC0030F231 /* NewsEventsViewController.swift in Sources */,
+				9F30DED71E8EC79E00F40E06 /* TravelViewController.swift in Sources */,
+				9F87E36D1E4D41610030F231 /* GalleryViewController.swift in Sources */,
+				230EE9091E4E147100B4F9F9 /* DonationWebController.swift in Sources */,
+				9F30DEB31E8EC79E00F40E06 /* Events.swift in Sources */,
+				9F30DECF1E8EC79E00F40E06 /* NewsDetailViewController.swift in Sources */,
+				9F30DECE1E8EC79E00F40E06 /* NewScienceViewController.swift in Sources */,
+				9FB7C57F1E4AAA5900B88166 /* ViewController.swift in Sources */,
+				9F30DEB81E8EC79E00F40E06 /* GalleryTableViewController.swift in Sources */,
+				9FB7C57D1E4AAA5900B88166 /* AppDelegate.swift in Sources */,
+				9FB7C5851E4AAA5900B88166 /* IHO_ASU.xcdatamodeld in Sources */,
+				9F87E3671E4D3DAE0030F231 /* ConnectViewController.swift in Sources */,
+				9FFC3B6E1EA7F581004A0597 /* LecturerGalleryViewController.swift in Sources */,
+				9F30DEB51E8EC79E00F40E06 /* EventsViewController.swift in Sources */,
+				230EE9081E4E147100B4F9F9 /* DonationController.swift in Sources */,
+				9F36EA511EA01D380041582B /* Cache.swift in Sources */,
+				9F30DED01E8EC79E00F40E06 /* NewsViewController.swift in Sources */,
+				9F30DEAF1E8EC79E00F40E06 /* ConnectInfoViewController.swift in Sources */,
+				9F30DEC41E8EC79E00F40E06 /* LecturerDetailViewController.swift in Sources */,
+				9F30DED31E8EC79E00F40E06 /* Science.swift in Sources */,
+				9F30DEBB1E8EC79E00F40E06 /* Image.swift in Sources */,
+				9F30DEB71E8EC79E00F40E06 /* FeaturedNewsViewController.swift in Sources */,
+				9F30DEAC1E8EC79E00F40E06 /* AskAnAnthropologistViewController.swift in Sources */,
+				9F30DECD1E8EC79E00F40E06 /* News.swift in Sources */,
+				9F30DEB41E8EC79E00F40E06 /* EventsDetailViewController.swift in Sources */,
+				9F30DEC51E8EC79E00F40E06 /* LecturerListViewController.swift in Sources */,
+				230EE9061E4E147100B4F9F9 /* AboutViewController.swift in Sources */,
+				9F87E36B1E4D40740030F231 /* FieldViewController.swift in Sources */,
+				9F36EA521EA01D380041582B /* CreditsViewController.swift in Sources */,
+				9F36EA541EA01D380041582B /* Reachability.swift in Sources */,
+				9F30DEC31E8EC79E00F40E06 /* Lecturer.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FB7C58C1E4AAA5A00B88166 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FB7C5951E4AAA5A00B88166 /* IHO_ASUTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FB7C5971E4AAA5A00B88166 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FB7C5A01E4AAA5A00B88166 /* IHO_ASUUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9FB7C5921E4AAA5A00B88166 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9FB7C5781E4AAA5900B88166 /* IHO-ASU */;
+			targetProxy = 9FB7C5911E4AAA5A00B88166 /* PBXContainerItemProxy */;
+		};
+		9FB7C59D1E4AAA5A00B88166 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9FB7C5781E4AAA5900B88166 /* IHO-ASU */;
+			targetProxy = 9FB7C59C1E4AAA5A00B88166 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9FB7C5801E4AAA5900B88166 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9FB7C5811E4AAA5900B88166 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9FB7C5881E4AAA5900B88166 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9FB7C5891E4AAA5900B88166 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9FB7C5A21E4AAA5A00B88166 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9FB7C5A31E4AAA5A00B88166 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9FB7C5A51E4AAA5A00B88166 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = XE6XA4DH2N;
+				INFOPLIST_FILE = "IHO-ASU/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.arpit.asu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "33d8ade8-cd89-42c6-8a50-899e7a2b2d39";
+				PROVISIONING_PROFILE_SPECIFIER = DevSweta;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		9FB7C5A61E4AAA5A00B88166 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = XE6XA4DH2N;
+				INFOPLIST_FILE = "IHO-ASU/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.arpit.asu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "33d8ade8-cd89-42c6-8a50-899e7a2b2d39";
+				PROVISIONING_PROFILE_SPECIFIER = DevSweta;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		9FB7C5A81E4AAA5A00B88166 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "IHO-ASUTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.asu.msse.ssing134.IHO-ASUTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IHO-ASU.app/IHO-ASU";
+			};
+			name = Debug;
+		};
+		9FB7C5A91E4AAA5A00B88166 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "IHO-ASUTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.asu.msse.ssing134.IHO-ASUTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IHO-ASU.app/IHO-ASU";
+			};
+			name = Release;
+		};
+		9FB7C5AB1E4AAA5A00B88166 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = "IHO-ASUUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.asu.msse.ssing134.IHO-ASUUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "IHO-ASU";
+			};
+			name = Debug;
+		};
+		9FB7C5AC1E4AAA5A00B88166 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = "IHO-ASUUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.asu.msse.ssing134.IHO-ASUUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "IHO-ASU";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9FB7C5741E4AAA5900B88166 /* Build configuration list for PBXProject "IHO-ASU" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FB7C5A21E4AAA5A00B88166 /* Debug */,
+				9FB7C5A31E4AAA5A00B88166 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9FB7C5A41E4AAA5A00B88166 /* Build configuration list for PBXNativeTarget "IHO-ASU" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FB7C5A51E4AAA5A00B88166 /* Debug */,
+				9FB7C5A61E4AAA5A00B88166 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9FB7C5A71E4AAA5A00B88166 /* Build configuration list for PBXNativeTarget "IHO-ASUTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FB7C5A81E4AAA5A00B88166 /* Debug */,
+				9FB7C5A91E4AAA5A00B88166 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9FB7C5AA1E4AAA5A00B88166 /* Build configuration list for PBXNativeTarget "IHO-ASUUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FB7C5AB1E4AAA5A00B88166 /* Debug */,
+				9FB7C5AC1E4AAA5A00B88166 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9FB7C5831E4AAA5900B88166 /* IHO_ASU.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9FB7C5841E4AAA5900B88166 /* IHO_ASU.xcdatamodel */,
+			);
+			currentVersion = 9FB7C5841E4AAA5900B88166 /* IHO_ASU.xcdatamodel */;
+			path = IHO_ASU.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 9FB7C5711E4AAA5900B88166 /* Project object */;
+}

@@ -2011,7 +2011,7 @@ If you would like to send donation by check, please make your donation payable t
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="227.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trvl_learn.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="4I8-pT-zmC">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image_travel_iho" translatesAutoresizingMaskIntoConstraints="NO" id="4I8-pT-zmC">
                                                     <rect key="frame" x="35" y="7" width="304" height="212"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="304" id="PPZ-eL-wPn"/>
@@ -2452,12 +2452,12 @@ If you would like to send donation by check, please make your donation payable t
         <image name="ASU-IHO-About.jpg" width="648" height="140"/>
         <image name="FB.png" width="480" height="480"/>
         <image name="IHO_Gallery_main.jpg" width="349" height="299"/>
+        <image name="Image_travel_iho" width="600" height="400"/>
         <image name="ask_ananthropologist_v2.jpg" width="600" height="248"/>
         <image name="instagram.png" width="1000" height="1000"/>
         <image name="invest.png" width="145" height="36"/>
         <image name="newLogo.jpg" width="384" height="96"/>
         <image name="search-icon-64.png" width="64" height="64"/>
-        <image name="trvl_learn.jpg" width="600" height="400"/>
         <image name="twitter.png" width="140" height="140"/>
         <image name="vimeo.png" width="500" height="300"/>
         <image name="youtube.png" width="500" height="300"/>
