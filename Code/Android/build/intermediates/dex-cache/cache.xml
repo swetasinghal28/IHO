@@ -21,42 +21,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Mihir\Desktop\MS\Fall 2016\Software Factory\IHO\Code\Android\app\libs\additionnal.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="bd9e8dc422bb8c8405359947fe9f4282b49f57f4">
-        <dex dex="C:\Users\Mihir\Desktop\MS\Fall 2016\Software Factory\IHO\Code\Android\app\build\intermediates\transforms\dex\debug\folders\1000\2\additionnal_0a608f03f95a5800fd18bb34f7d1aa376dfe01fa\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Mihir\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.4.0\support-annotations-23.4.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
-        <dex dex="C:\Users\Mihir\Desktop\MS\Fall 2016\Software Factory\IHO\Code\Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.4.0_d0ea0ec456d4144eb9c2cb41b347d57f957b119c\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Mihir\Desktop\MS\Fall 2016\Software Factory\IHO\Code\Android\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
-        <dex dex="C:\Users\Mihir\Desktop\MS\Fall 2016\Software Factory\IHO\Code\Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.4.0_15825baa255ea6742cfc088c31dc7268b544b88c\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Mihir\Desktop\MS\Fall 2016\Software Factory\IHO\Code\Android\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="a65398cde7da7de0b46a63de371ec77524ffbeea">
-        <dex dex="C:\Users\Mihir\Desktop\MS\Fall 2016\Software Factory\IHO\Code\Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_46e1f26edf463e70d0b20f13522adab95d5a6564\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\Mihir\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.8.0\c4ba5371a29ac9b2ad6129b1d39ea38750043eff\gson-2.8.0.jar"
         jumboMode="true"
         optimize="true"
@@ -66,12 +30,30 @@
     </item>
     <item
         is-multidex="true"
+        jar="C:\Users\Mihir\Desktop\MS\Fall 2016\Software Factory\IHO\Code\Android\app\libs\additionnal.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="bd9e8dc422bb8c8405359947fe9f4282b49f57f4">
+        <dex dex="C:\Users\Mihir\Desktop\MS\Fall 2016\Software Factory\IHO\Code\Android\app\build\intermediates\transforms\dex\debug\folders\1000\2\additionnal_0a608f03f95a5800fd18bb34f7d1aa376dfe01fa\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\Mihir\Desktop\MS\Fall 2016\Software Factory\IHO\Code\Android\app\libs\activation.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
         sha1="d1257cbff6faa44c1f325ae0d9413522d4644383">
         <dex dex="C:\Users\Mihir\Desktop\MS\Fall 2016\Software Factory\IHO\Code\Android\app\build\intermediates\transforms\dex\debug\folders\1000\2\activation_6af81a44535f71f941f2c16251b76ec42736a42e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Mihir\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.4.0\support-annotations-23.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="C:\Users\Mihir\Desktop\MS\Fall 2016\Software Factory\IHO\Code\Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.4.0_d0ea0ec456d4144eb9c2cb41b347d57f957b119c\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -97,7 +79,7 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
-        sha1="8a0ff61a9b583808ed17144c2c87134f41ac7aa9">
+        sha1="b36dbf837233acacb5ddbd64a30a2baea68f3177">
         <dex dex="C:\Users\Mihir\Desktop\MS\Fall 2016\Software Factory\IHO\Code\Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_e9d26a45c56b867401533e8b8f98bec66dcb1886\classes.dex" />
     </item>
     <item
@@ -129,12 +111,30 @@
     </item>
     <item
         is-multidex="true"
+        jar="C:\Users\Mihir\Desktop\MS\Fall 2016\Software Factory\IHO\Code\Android\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="C:\Users\Mihir\Desktop\MS\Fall 2016\Software Factory\IHO\Code\Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.4.0_15825baa255ea6742cfc088c31dc7268b544b88c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\Mihir\.gradle\caches\modules-2\files-2.1\com.google.guava\guava\19.0\6ce200f6b23222af3d8abb6b6459e6c44f4bb0e9\guava-19.0.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
         sha1="6ce200f6b23222af3d8abb6b6459e6c44f4bb0e9">
         <dex dex="C:\Users\Mihir\Desktop\MS\Fall 2016\Software Factory\IHO\Code\Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\guava-19.0_abe7bd1a22f84d61073b2ec7b370cf08f02ce6ec\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Mihir\Desktop\MS\Fall 2016\Software Factory\IHO\Code\Android\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="ac3483808c35e5da6fe1747fa23c672d939befff">
+        <dex dex="C:\Users\Mihir\Desktop\MS\Fall 2016\Software Factory\IHO\Code\Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_46e1f26edf463e70d0b20f13522adab95d5a6564\classes.dex" />
     </item>
 
 </items>

@@ -70,12 +70,6 @@ public class ViewActivity extends Activity implements View.OnClickListener {
                     ft.replace(R.id.per_view, newsFragment);
                     ft.commit();
                     break;
-                case R.id.customFNewsBackbutton:
-                case R.id.customFNewsBackbuttonll:
-                    FeaturedNewsFragment featuredNewsFragment = new FeaturedNewsFragment();
-                    ft.replace(R.id.per_view, featuredNewsFragment);
-                    ft.commit();
-                    break;
                 case R.id.eventsLink:
                 case R.id.newsLink:
                 case R.id.lectureLink:

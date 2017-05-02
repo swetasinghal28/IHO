@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * Created by Barathi on 7/4/2014.
  */
-public class News {
+public class News implements Cloneable {
     @Expose
     private String id;
 

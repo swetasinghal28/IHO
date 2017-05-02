@@ -27,17 +27,17 @@
 
         <LinearLayout
 
-            android:layout_width="345dp"
+            android:layout_width="match_parent"
             android:layout_height="80dp"
             android:orientation="horizontal"
             android:paddingLeft="15dp">
 
             <TextView
                 android:id="@+id/txt"
-                android:layout_width="250dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="Connect"
+                android:text="Institute of Human Origins"
                 android:textColor="@android:color/white"
                 android:textSize="35dp"
                 android:textStyle="bold" />

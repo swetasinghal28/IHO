@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    android:layout_below="@+id/customLecturerBackbutton">
+    android:orientation="vertical">
+
     <TextView
+        android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        android:id="@+id/textView3"
         android:background="@android:color/background_dark"
         android:textSize="18dp" />
-    <TableRow
-        android:id="@+id/tableRow1"
-        android:layout_width="600dp"
-        android:layout_height="400dp"
-        android:paddingLeft="25dp" >
-        <ImageView
-            android:id="@+id/img"
-            android:layout_width="600dp"
-            android:layout_height="400dp" />
 
-    </TableRow>
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:gravity="center"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"/>
+
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:id="@+id/textView1"
-        android:background="@android:color/background_dark"
-        />
-    <TableRow
-        android:id="@+id/tableRow2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="25dp" >
+        android:background="@android:color/background_dark" />
+
     <TextView
         android:id="@+id/txt"
-        android:layout_width="650dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
         android:textSize="16dp"
-        android:textColor="@android:color/white"/>
-    </TableRow>
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"/>
+
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        android:id="@+id/textView2"
         android:background="@android:color/background_dark"
-        />
-    </TableLayout>
+        android:textSize="18dp" />
+
+
+</LinearLayout>
+
+

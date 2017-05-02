@@ -6,27 +6,28 @@ package com.iho.asu.Constants;
 
 public class IHOConstants {
     public static final String BASE_URL = "http://107.170.239.62:3000/";
+    //public static final String BASE_URL = "http://ihomobileapp.com/";
 
-    public static final String NEWS_URL = "http://107.170.239.62:3000/newsobjects";
-    public static final String NEWS_IDS = "http://107.170.239.62:3000/newsid";
+    public static final String NEWS_URL = BASE_URL + "newsobjects";
+    public static final String NEWS_IDS = BASE_URL + "newsid";
 
-    public static final String FEATURED_NEWS_URL = "http://107.170.239.62:3000/featureobjects";
-    public static final String FEATURED_NEWS_IDS = "http://107.170.239.62:3000/featureid";
+    public static final String FEATURED_NEWS_URL = BASE_URL + "featureobjects";
+    public static final String FEATURED_NEWS_IDS = BASE_URL + "featureid";
 
-    public static final String EVENTS_URL = "http://107.170.239.62:3000/eventobjects";
-    public static final String EVENTS_IDS = "http://107.170.239.62:3000/eventid";
+    public static final String EVENTS_URL = BASE_URL + "eventobjects";
+    public static final String EVENTS_IDS = BASE_URL + "eventid";
 
-    public static final String LECTURER_URL = "http://107.170.239.62:3000/lectureobjects";
-    public static final String LECTURER_IDS = "http://107.170.239.62:3000/lectureid";
+    public static final String LECTURER_URL = BASE_URL + "lectureobjects";
+    public static final String LECTURER_IDS = BASE_URL + "lectureid";
 
-    public static final String LECTURER_GALLERY_URL = "http://107.170.239.62:3000/lectureimages/";
+    public static final String LECTURER_GALLERY_URL = BASE_URL + "lectureimages/";
     public static final String LECTURER_GALLERY_KEY = "email";
 
-    public static final String SCIENCE_URL = "http://107.170.239.62:3000/newscienceobjects";
-    public static final String SCIENCE_IDS = "http://107.170.239.62:3000/newscienceid";
+    public static final String SCIENCE_URL = BASE_URL + "newscienceobjects";
+    public static final String SCIENCE_IDS = BASE_URL + "newscienceid";
 
-    public static final String GALLERY_URL = "http://107.170.239.62:3000/galleryobjects";
-    public static final String GALLERY_IDS = "http://107.170.239.62:3000/galleryid";
+    public static final String GALLERY_URL = BASE_URL + "galleryobjects";
+    public static final String GALLERY_IDS = BASE_URL + "galleryid";
 
     public static final String TRAVEL_URL = "https://iho.asu.edu/outreach/travel";
 
