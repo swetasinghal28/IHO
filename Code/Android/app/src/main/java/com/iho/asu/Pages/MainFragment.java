@@ -19,9 +19,7 @@ public class MainFragment extends Fragment {
 
     public Activity mainActivity;
     public MainFragment(){}
-    public MainFragment(Activity mainActivity){
-        this.mainActivity = mainActivity;
-    }
+
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

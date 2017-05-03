@@ -75,6 +75,7 @@ public class MainActivity extends Activity implements OnClickListener{
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Uri uri;
+        Bundle bundle;
         Intent intent;
         switch (v.getId()) {
             case R.id.about:
@@ -86,7 +87,10 @@ public class MainActivity extends Activity implements OnClickListener{
             case R.id.customConnectBackButton:
             case R.id.customConnectBackButtonll:
             case R.id.connect:
-                fragment = new Connect(R.layout.fragment_connect);
+                fragment = new Connect();
+                bundle = new Bundle();
+                bundle.putInt("resource", R.layout.fragment_connect);
+                fragment.setArguments(bundle);
                 fragmentTransaction.replace(R.id.main_layout, fragment);
                 fragmentTransaction.commit();
                 break;
@@ -163,12 +167,18 @@ public class MainActivity extends Activity implements OnClickListener{
                 startActivity(intent);
                 break;
             case R.id.connect1:
-                fragment = new Connect(R.layout.fragment_iho);
+                fragment = new Connect();
+                bundle = new Bundle();
+                bundle.putInt("resource", R.layout.fragment_iho);
+                fragment.setArguments(bundle);
                 fragmentTransaction.replace(R.id.main_layout, fragment);
                 fragmentTransaction.commit();
                 break;
             case R.id.connect2:
-                fragment = new Connect(R.layout.fragment_bh);
+                fragment = new Connect();
+                bundle = new Bundle();
+                bundle.putInt("resource", R.layout.fragment_bh);
+                fragment.setArguments(bundle);
                 fragmentTransaction.replace(R.id.main_layout, fragment);
                 fragmentTransaction.commit();
                 break;
@@ -185,7 +195,10 @@ public class MainActivity extends Activity implements OnClickListener{
                 startActivity(Intent.createChooser(email, "Choose an Email Client:"));
                 break;
             case R.id.connect4:
-                fragment = new Connect(R.layout.fragment_anthropologist);
+                fragment = new Connect();
+                bundle = new Bundle();
+                bundle.putInt("resource", R.layout.fragment_anthropologist);
+                fragment.setArguments(bundle);
                 fragmentTransaction.replace(R.id.main_layout, fragment);
                 fragmentTransaction.commit();
                 break;

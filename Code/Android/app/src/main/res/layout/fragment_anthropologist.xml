@@ -54,22 +54,17 @@
         android:id="@+id/anthropologistLayout"
         android:background="@drawable/border"
         android:layout_below="@+id/customConnectBackButtonll">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView1"
-            android:textSize="5dp"
-            android:layout_gravity="center_horizontal"
-            android:background="@android:color/white"/>
+
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:background="@android:color/white">
+            android:background="@android:color/white"
+            >
 
             <ImageView
-                android:layout_width="351dp"
+                android:layout_width="match_parent"
                 android:layout_height="145dp"
                 android:id="@+id/imageView"
                 android:layout_centerHorizontal="true"
